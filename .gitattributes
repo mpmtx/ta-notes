@@ -7,7 +7,21 @@
 # wrote LF turned its next commit into a whole-file rewrite. main.tex did
 # exactly that on 2026-08-09: 987 insertions and 1026 deletions, of which 65
 # lines were real, which is enough noise to hide someone's actual change.
-*               text=auto eol=crlf
+#
+# The checkout side is left to each machine. Until 2026-11-02 this line read
+# `text=auto eol=crlf`, and `eol=crlf` is not "CRLF on Windows": it forces CRLF
+# on every platform, so a Linux or macOS checkout got CRLF too and the
+# `#!/usr/bin/env python3` line of tools/audit.py ended in a carriage return,
+# which the kernel then looks for as part of the interpreter's name. With
+# `text=auto` alone, git converts to core.eol on checkout, which defaults to
+# `native`: CRLF on Windows, LF everywhere else. Storage in the repository
+# stays LF either way, so this changes no committed file.
+*               text=auto
+
+# Scripts run through a shebang need LF on every platform, Windows included
+# (Git Bash and WSL read the same files). Python itself accepts either.
+*.py            text eol=lf
+*.sh            text eol=lf
 
 # ---------------------------------------------------------------
 # Binaries -- never touch these
