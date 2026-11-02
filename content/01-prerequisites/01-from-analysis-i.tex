@@ -15,12 +15,16 @@ that relied on the \emph{order} of $\mathbb{R}$: there is no \qt{$\leq$} on $\ma
 $n \geq 2$, so statements like the intermediate value theorem or \qt{every bounded sequence has a
 convergent subsequence} need new proofs, or new hypotheses, once we leave $\mathbb{R}$.
 
+% Correction: Claude Opus 5.5 (Extra) --- this remark said the statement just quoted is "false as
+% written and true after one word is changed". The statement quoted is the subsequence version,
+% which is true; the remark was describing an earlier wording of the sentence above it.
 \begin{remark}
-The second of those statements is worth stating carefully, because it is false as written and true
-after one word is changed. Bounded does not imply convergent. What is true is that a bounded
-sequence in $\mathbb{R}^n$ always has a convergent \emph{subsequence}, which is the
-Bolzano--Weierstrass theorem, revisited via \cref{ex:analysis1_recap} below. It reappears in a more general
-form as the Heine--Borel theorem once compactness is introduced in \cref{sec:compactness}.
+The second of those statements is worth reading carefully, because one word carries it. Bounded
+does not imply convergent (\cref{ex:analysis1_recap}\textbf{(a)} below has a counterexample).
+What is true is that a bounded sequence has a convergent \emph{subsequence}, which is the
+Bolzano--Weierstrass theorem. In $\mathbb{R}^n$ it survives, by extracting a convergent
+subsequence one coordinate at a time. In a general metric space it fails, and the property that
+replaces it is compactness, introduced in \cref{sec:compactness}.
 \end{remark}
 
 % The common-mistakes note from Linus Lüchinger/Slides/Slides-02-23.pdf used to sit here, above

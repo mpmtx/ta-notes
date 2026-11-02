@@ -10,7 +10,7 @@ A \newterm{metric space} \germanfor{metrischer Raum} $(X,d)$ is any set $X$ with
 $x, y, z \in X$:
 \begin{enumerate}[label=\textbf{(\alph*)}]
   \item \textbf{Definiteness:} $d(x,y) \geq 0$, with equality if and only if $x = y$. In words: the
-    distance is non-negative, and a point has zero distance to itself.
+    distance is non-negative, and the only point at distance zero from $x$ is $x$ itself.
   \item \textbf{Symmetry:} $d(x,y) = d(y,x)$, that is, $x$ has the same distance to $y$ as $y$
     has to $x$.
   \item \textbf{Triangle inequality ($\Delta$-inequality):} $d(x,z) \leq d(x,y) + d(y,z)$. In
@@ -165,14 +165,16 @@ In general,
 d_m(x,y) := \sqrt[m]{\sum_{k=1}^{n} |x_k - y_k|^m}
 \]
 is a metric on $\mathbb{R}^n$ for every $m \geq 1$, with $d_1$, $d_2$ above as the cases
-$m = 1, 2$.
+$m = 1, 2$. Definiteness and symmetry are clear; the triangle inequality is the
+\newterm{Minkowski inequality}, proved by a convexity argument in
+\cref{ex:p_norms_unit_balls}\textbf{(e)}.
 
 \begin{ainote}
 Corsin writes this formula as $\sqrt[m]{\sum_k (x_k-y_k)^m}$, without the absolute values, and
 for any $m$. Two corrections have been applied above. The powers must be taken of
 \textbf{absolute values}, since for odd $m$ the radicand can otherwise be negative. And the
 result is a metric only for $m \geq 1$: for $m \in (0,1)$ the triangle inequality fails, as
-\Cref{ex:p_norms_unit_balls}\textbf{.6} shows with $x = e_1$ and $y = e_2$, where
+part \textbf{(f)} of \cref{ex:p_norms_unit_balls} shows with $x = e_1$ and $y = e_2$, where
 $|x+y|_m = 2^{1/m} > 2 = |x|_m + |y|_m$.
 \end{ainote}
 
@@ -246,7 +248,7 @@ reshaping happens in two stages.
 So for $m \in (0,1)$ it is the root that has to go, and $\rho_m$ is the metric to use. For
 $m \geq 1$ the two curvatures swap, $t^m$ convex and $s^{1/m}$ concave, and the proposition
 decides nothing. The triangle inequality for $d_m$ is then Minkowski's inequality, which needs a
-proof of its own.
+proof of its own; \cref{ex:p_norms_unit_balls}\textbf{(e)} gives one.
 \end{remark}
 
 % Generator: Claude Opus 5 (High) --- FIG-02-04
@@ -313,7 +315,7 @@ it converges to $x$ with respect to $h \circ d$.
     real work here: on $C^0(\mathbb{R},\mathbb{R})$ the same formula would produce $\infty$ for
     $f(x) := x$, $g := 0$.
   \item Let $X := S^2 := \{(x_1,x_2,x_3) \in \mathbb{R}^3 : x_1^2 + x_2^2 + x_3^2 = 1\}$. $S^n$ is
-    called the \newterm{$n$-dimensional sphere}, or \newterm{$n$-sphere}. The closest path between
+    called the \newterm{$n$-dimensional sphere}, or \newterm{$n$-sphere}. The shortest path between
     two points on the sphere is an \textbf{arc of a great circle} (a \textit{geodesic}). This
     defines a metric, similar to how straight lines define a metric on $\mathbb{R}^n$.
 \end{enumerate}
@@ -383,7 +385,7 @@ Both are genuine metrics on $S^2$ (\cref{ex:metric_examples}\textbf{(d)} already
 which measures the distance a great-circle flight would fly; $d_0$ appears here for the first
 time). They disagree as soon as
 $x \neq y$, since the chord always cuts inside the sphere. Therefore, $d_0(x,y) \leq d_1(x,y)$,
-with equality only in the limit $y \to x$. This is the sharpest instance in the chapter of a
+with equality only when $x = y$, although the ratio $d_0/d_1$ tends to $1$ as $y \to x$. This is the sharpest instance in the chapter of a
 general warning. A subset inherits a metric from its ambient space, but that inherited metric need
 not be the one a geometer studying the subset \emph{intrinsically} would choose.
 \end{remark}
@@ -461,6 +463,8 @@ Adding the inequalities, we obtain for all $x \in [0,1]$:
 &\leq \sup|p| + \sup|q| \\
 &= \sup|f - h| + \sup|h - g|.
 \end{align*}
+The right-hand side does not depend on $x$, so it is an upper bound for all the values
+$|f(x)-g(x)|$, and therefore for their supremum: $d(f,g) \leq d(f,h) + d(h,g)$.
 \end{exercisesolution}
 
 % Quelle: Jérôme Paschoud/Notizen/Woche 2.1 Metrische Räume.pdf, p. 2
@@ -564,7 +568,7 @@ first that the ``inf'' is in fact a ``min''.}
 % Reclassified from ainote to remark: this is mathematics, not commentary on the transcription.
 \begin{remark}[The flat torus $\mathbb{R}^2/\mathbb{Z}^2$, folded up]
 \label{rem:flat_torus_folding}
-Part \textbf{2.1.7} is much easier to think about with a picture. Every equivalence class in
+Part \textbf{(g)} is much easier to think about with a picture. Every equivalence class in
 $\mathbb{R}^2/\mathbb{Z}^2$ has a representative in the unit square $[0,1] \times [0,1]$, so the
 torus is that square with its opposite edges identified: $(0,t) \sim (1,t)$ glues left to right,
 and $(t,0) \sim (t,1)$ glues bottom to top. Performing the two gluings in turn folds the square

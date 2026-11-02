@@ -97,23 +97,22 @@ normalise the segment and set
 This is continuous, takes values in $S^{n-1}$, and satisfies $\gamma(0) = p$, $\gamma(1) = q$.
 
 It remains to handle $q = -p$, and this is exactly where $n \ge 2$ enters: the sphere $S^{n-1}$ then
-contains a point $r$ with $r \neq \pm p$. (For $n \ge 2$ the sphere is infinite --- pick any unit
-vector $v$ orthogonal to $p$, which exists because $p^\perp$ has dimension $n - 1 \ge 1$.) Neither
-$r$ nor $q$ is the antipode of the other's partner, so the previous construction gives a path from
-$p$ to $r$ and a path from $r$ to $q$; concatenating them joins $p$ to $q$. Hence $S^{n-1}$ is
-path-connected.
+contains a point $r$ with $r \neq \pm p$. Take for $r$ any unit vector orthogonal to $p$, which
+exists because $p^\perp$ has dimension $n - 1 \ge 1$. Since $r \neq -p$ and $r \neq p = -q$, the
+previous construction gives a path from $p$ to $r$ and a path from $r$ to $q$; concatenating them
+joins $p$ to $q$. Hence $S^{n-1}$ is path-connected.
 \begin{remark}
 The construction in the main case is the radial projection of the segment, and it is the standard way
 to move around a sphere: it works verbatim on any $S^{n-1}$ and explains why the antipodal pair is
-the only obstruction. Note also that $n \ge 2$ is used only once, to produce a third point --- which
+the only obstruction. Note also that $n \ge 2$ is used only once, to produce a third point, which
 is precisely what $S^0$ does not have.
 \end{remark}
 \begin{ainote}
 The official solution introduces the same construction with the words \qt{now let $n \ge 1$}, and
 then disposes of the antipodal case $x = -y$ by composing two paths through \qt{an arbitrary other
 point $w \in S^{n-1}$}. For $n = 1$ there is no such $w$: $S^0 = \{\pm1\}$ consists of $x$ and $-x$
-and nothing else. The bound is therefore $n \ge 2$, exactly as the statement being proved requires
---- and as the official solution's own preceding paragraph, which shows $S^0$ is \emph{not}
+and nothing else. The bound is therefore $n \ge 2$, exactly as the statement being proved requires,
+and as the official solution's own preceding paragraph, which shows $S^0$ is \emph{not}
 path-connected, confirms. The step is written out explicitly above rather than left to the reader,
 since it is the only place the hypothesis is used.
 \end{ainote}

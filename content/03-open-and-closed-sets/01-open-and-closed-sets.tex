@@ -15,7 +15,7 @@ Let $(X,d)$ be a metric space, let $x \in X$, and let $r \in \mathbb{R}$. Then w
 \begin{importantremark}
 Corsin marks the boxed part in red as an \qt{important subtlety}: the ambient set $X$ in
 $y \in X$ is what makes openness relative to the space, and it is exactly what the common
-misconception on \cref{rem:common_misconception} turns on.
+misconception in \cref{rem:common_misconception} turns on.
 \end{importantremark}
 
 % Supplement: lec_notes.pdf, p. 11 (Definition 9.38)
@@ -178,10 +178,12 @@ positive numbers can be $0$. Dually, $\bigcup_{n\geq1}\big[\tfrac1n,1\big] = (0,
 infinite union of closed sets that is not closed.
 
 \begin{ainote}
-These four closure properties are exactly the axioms of a \newterm{topology}, which is how the
+Parts \textbf{(a)} and \textbf{(b)}, together with the fact that $X$ and $\emptyset$ are open
+(\cref{ex:X_empty_clopen}), are exactly the axioms of a \newterm{topology}, which is how the
 subject is set up when one drops the metric altogether (\cref{sec:structured_spaces},
-\qt{fourth semester}). That is why they are worth isolating: they are the only facts about open
-sets that survive into the general theory.
+\qt{fourth semester}); part \textbf{(c)} is their translation to closed sets. That is why they
+are worth isolating: they are the only facts about open sets that survive into the general
+theory.
 \end{ainote}
 \end{importantremark}
 
@@ -190,8 +192,11 @@ sets that survive into the general theory.
 \label{ex:open_closed_R}
 Consider the following subsets of $\mathbb{R}$ with the standard metric:
 \begin{enumerate}[label=\textbf{(\alph*)}]
-  \item \textbf{Is $\mathbb{N}$ open, closed, or neither?} It is \textbf{closed}, since its
-    complement $\mathbb{R} \setminus \mathbb{N} = (-\infty, 1) \cup \bigcup_{n=1}^\infty (n, n+1)$
+  % Correction: Claude Opus 5.5 (Extra) --- the complement was written (-infinity,1) u U_{n>=1}
+  % (n,n+1), which assumes 0 is not in N; this document indexes sequences from 0, so 0 is in N.
+  \item \textbf{Is $\mathbb{N} = \{0,1,2,\dots\}$ open, closed, or neither?} It is
+    \textbf{closed}, since its complement
+    $\mathbb{R} \setminus \mathbb{N} = (-\infty, 0) \cup \bigcup_{n=0}^\infty (n, n+1)$
     is a union of open intervals, which is open by
     \Cref{prop:open_closed_operations}\textbf{\ref{item:arbitrary_union_open}}. It is not open,
     because no open ball around any $n \in \mathbb{N}$ is contained in $\mathbb{N}$.

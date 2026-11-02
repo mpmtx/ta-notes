@@ -4,11 +4,12 @@
 \label{sec:sequences_and_convergence}
 
 % Transition: Claude Opus 5 (High)
-Open and closed sets describe a space statically: which points sit comfortably inside a set and
-which sit on its edge. Sequences describe the same thing dynamically, by asking where a moving
-point ends up. The two descriptions turn out to be equivalent
-(\cref{prop:open_closed_via_sequences}), and having both is what makes metric spaces pleasant to
-work in. One description is usually easier to verify, the other easier to apply. Note that the
+% Correction: Claude Opus 5.5 (Extra) --- the first three sentences repeated the chapter's own
+% opening paragraph (00-chapter.tex) almost verbatim, one page apart; this chapter has only this
+% section. Kept the part the chapter opening does not say.
+Having both descriptions, the static one by open and closed sets and the dynamic one by
+sequences, is what makes metric spaces pleasant to work in: one is usually easier to verify, the
+other easier to apply, and \cref{prop:open_closed_via_sequences} says they agree. Note that the
 definition below is word for word the one from \emph{Analysis I}, with $|x_n - x|$ replaced by
 $d(x_n,x)$. That substitution is the pattern for the whole chapter.
 
@@ -59,7 +60,7 @@ throughout the rest of this chapter and the next three.
 % Supplement: Sascha Brack/Class Notes/Week_02_Notes_Monday_Updated.pdf, p. 7
 \begin{example}[A convergent sequence in $\mathbb{R}^3$]
 \label{ex:convergent_sequence_R3}
-Define a sequence $(x_n)_{n=1}^{\infty}$ in $\mathbb{R}^3$ by $x_n := \left(\frac{1}{n}, \frac{2}{n}, 1\right)$ for all $n \in \mathbb{N}$. Does a limit exist? If yes, what is it?
+Define a sequence $(x_n)_{n=1}^{\infty}$ in $\mathbb{R}^3$ by $x_n := \left(\frac{1}{n}, \frac{2}{n}, 1\right)$ for all $n \geq 1$. Does a limit exist? If yes, what is it?
 Yes, the sequence converges. Its limit can be computed coordinate-wise:
 \[
 \lim_{n\to\infty} x_n = \left(\lim_{n\to\infty} \frac{1}{n}, \lim_{n\to\infty} \frac{2}{n}, \lim_{n\to\infty} 1\right) = (0,0,1).
@@ -240,7 +241,8 @@ topologies coincide.
 This is the precise sense in which \qt{only the topology matters, not the metric itself} for
 convergence. Two visibly different metrics, even one bounded and one unbounded, generate the same
 convergent sequences exactly when they generate the same open sets, and one never has to compare
-the metrics directly. \Cref{ex:product_metric_spaces}\textbf{.2}'s three product metrics are one instance of this; so is
+the metrics directly. The three product metrics of \cref{ex:product_metric_spaces}, shown
+equivalent in its part \textbf{(b)}, are one instance of this; so is
 \cref{prop:concave_reshaping_metric} together with \cref{ex:reshaping_same_convergence}.
 \end{remark}
 
@@ -397,8 +399,8 @@ Open, since the full space is always open, as shown before.
 
     \textit{Proof.} Let $f \in X \setminus C^0([0,1])$, i.e., $f : [0,1] \to \mathbb{R}$ is
     bounded and has at least one discontinuity at a point $x_0 \in [0,1]$. That is, we find
-    $\varepsilon > 0$ such that for all $\delta > 0$ there exists $y \in (x_0 - \delta, x_0 +
-    \delta)$ with $|f(x_0) - f(y)| \geq \varepsilon$. Then the $\tfrac{\varepsilon}{3}$-ball in
+    $\varepsilon > 0$ such that for all $\delta > 0$ there exists
+    $y \in [0,1] \cap (x_0 - \delta, x_0 + \delta)$ with $|f(x_0) - f(y)| \geq \varepsilon$. Then the $\tfrac{\varepsilon}{3}$-ball in
     $X$,
     \[
     B_{\varepsilon/3}(f) := \Big\{ g \in X : \sup_{x \in [0,1]} |f(x) - g(x)| < \tfrac{\varepsilon}{3} \Big\},
@@ -453,6 +455,6 @@ Open, since the full space is always open, as shown before.
   % $x=1.05$ -- it crosses a \footnotesize box on either side.
   \draw[orange!90!black, <->, thick] (1.3, 0.6175)
     -- node[lbl, right, font=\footnotesize] {$\frac{2\varepsilon}{3}$} (1.3, 1.3175);
-  \node[red!80!black, font=\small, above] at (1.3, 1.8) {$B_{\varepsilon/3}(f)$ ($\varepsilon$-tube)};
+  \node[red!80!black, font=\small, above] at (1.3, 1.8) {$B_{\varepsilon/3}(f)$ (tube of radius $\tfrac{\varepsilon}{3}$)};
 \end{tikzpicture}
 \end{center}

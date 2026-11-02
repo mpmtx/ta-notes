@@ -13,26 +13,33 @@ A subset $K \subseteq \mathbb{R}^n$ equipped with the \textbf{standard metric} i
 \germanfor{beschr\"ankt}.
 \end{theorem}
 
-\begin{ainote}
-Neither Corsin nor this document proves \cref{thm:heine_borel}; it is proved in the lecture, and
-the full argument is longer than anything else in these two chapters. It is worth knowing what
-goes into it, though, since every ingredient has already appeared:
+% Correction: Claude Opus 5.5 (Extra) --- this was an ainote saying "neither Corsin nor this
+% document proves" the theorem, followed by a two-bullet sketch whose every step was already
+% proved elsewhere in the chapter. The sketch is now the proof; Corsin's notes still state the
+% theorem without one, which is recorded here rather than in the typeset text.
+\begin{proof}
+Every ingredient has already appeared; the proof only assembles them.
 \begin{itemize}
-  \item \textbf{($\Rightarrow$)} is short and general. A compact metric space is bounded and
-    complete (\cref{lem:sequentially_compact_totally_bounded},
-    \cref{ex:compact_finite_complete}), and a complete subset of the complete space
-    $\mathbb{R}^n$ is closed (\cref{rem:complete_vs_closed}).
-  \item \textbf{($\Leftarrow$)} is where the real content sits, and it is exactly
-    \textbf{Bolzano--Weierstrass}: a bounded sequence in $\mathbb{R}^n$ has a convergent
-    subsequence, obtained by bisecting a box $n$ times over, or by extracting coordinatewise
-    (\cref{prop:Rn_coordinatewise_complete}) $n$ times in succession. Closedness then puts the
-    limit back inside $K$, giving sequential compactness, which is compactness by
-    \cref{thm:sequential_topological_compactness_equivalence}.
+  \item \textbf{($\Rightarrow$)} holds in every metric space. A compact set is bounded
+    (\cref{lem:sequentially_compact_totally_bounded}) and closed
+    (\cref{prop:compact_implies_closed}).
+  \item \textbf{($\Leftarrow$)} is where the real content sits, and it is the
+    \textbf{Bolzano--Weierstrass theorem} in $\mathbb{R}^n$. Let $K$ be closed and bounded and
+    let $(x_m)$ be a sequence in $K$. Each coordinate sequence $(x_{m,j})_m$ is a bounded sequence
+    of real numbers. By Bolzano--Weierstrass in $\mathbb{R}$ (\emph{Analysis I}), the first
+    coordinate converges along some subsequence; along a further subsequence of that one, so does
+    the second; after $n$ such extractions every coordinate converges along one common
+    subsequence $(x_{m_k})_k$. By \cref{prop:Rn_coordinatewise_complete}\textbf{(a)} that
+    subsequence converges in $\mathbb{R}^n$, and since $K$ is closed its limit lies in $K$
+    (\cref{prop:open_closed_via_sequences}\textbf{(b)}). So $K$ is sequentially compact, which is
+    compactness by \cref{thm:sequential_topological_compactness_equivalence}. \qedhere
 \end{itemize}
-The reason the theorem is special to $\mathbb{R}^n$ with the standard metric is that both steps
-use the completeness of $\mathbb{R}$ and the finiteness of the dimension.
+\end{proof}
+
+The theorem is special to $\mathbb{R}^n$ with the standard metric because the second step uses
+both the completeness of $\mathbb{R}$, hidden inside Bolzano--Weierstrass, and the finiteness of
+the dimension, which is what lets the extraction stop after $n$ steps.
 \Cref{ex:heine_borel_fails} below shows how thoroughly it fails otherwise.
-\end{ainote}
 
 % Source: Lukas Krause/Week 3 March 2-6 Notes Lukas Krause.pdf, p. 2
 % Generator: Gemini 3.6 Flash (High)

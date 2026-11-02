@@ -180,13 +180,18 @@ the entries, which is usually what one wants.
 \end{remark}
 
 % Transition: Claude Opus 5 (High)
-Comparing the three lists of axioms is already informative. A norm has exactly the three
-properties a metric has, restated for a single vector instead of a pair of points, plus
-homogeneity. That extra axiom has no metric analogue at all, since stating it requires scalar
-multiplication. An inner product goes further and replaces the triangle inequality by
-bilinearity, which is far stronger, and then recovers the triangle inequality as a \emph{theorem}
-(\cref{prop:induced_norm_and_metric}) rather than assuming it. That is the precise sense in which
-each layer carries more structure than the one outside it.
+% Correction: Claude Opus 5.5 (Extra) --- read "Comparing the three lists of axioms", but only two
+% lists have been stated at this point (the metric axioms are def:metric_space, in the next
+% section), and "exactly the three properties a metric has ... plus homogeneity" counted four
+% axioms for a norm, which has three. Rewritten to say how the lists line up.
+The two lists of axioms just given already line up with the metric axioms of the next section
+(\cref{def:metric_space}). A norm's definiteness and triangle inequality are the metric's,
+restated for a single vector instead of a pair of points. The metric's symmetry is the special
+case $\alpha = -1$ of homogeneity, and homogeneity for other $\alpha$ has no metric analogue at
+all, since stating it requires scalar multiplication. An inner product goes further and replaces
+the triangle inequality by bilinearity, which is far stronger, and then recovers the triangle
+inequality as a \emph{theorem} (\cref{prop:induced_norm_and_metric}) rather than assuming it. That
+is the precise sense in which each layer carries more structure than the one outside it.
 
 % The two blocks that follow supplement Corsin's outline with material from other tutors. They
 % belong here logically, being about the innermost layer of the hierarchy just drawn, even though
@@ -267,7 +272,7 @@ If $w = 0$, both sides vanish and the inequality holds trivially. For $w \neq 0$
 \[
 f(\lambda) := \|v - \lambda w\|^2 = \langle v - \lambda w, v - \lambda w\rangle = \|v\|^2 - 2\lambda\langle v, w\rangle + \lambda^2\|w\|^2.
 \]
-Since $f(\lambda) \geq 0$ for all $\lambda \in \mathbb{R}$, $f$ is a convex quadratic polynomial in $\lambda$ with positive leading coefficient $\|w\|^2 > 0$. Differentiating or completing the square shows that $f$ attains its global minimum at $\lambda_0 := \frac{\langle v, w\rangle}{\|w\|^2}$. Evaluating $f$ at $\lambda_0$ yields
+By definiteness $f(\lambda) \geq 0$ for all $\lambda \in \mathbb{R}$, and $f$ is a quadratic polynomial in $\lambda$ with positive leading coefficient $\|w\|^2 > 0$. Differentiating or completing the square shows that $f$ attains its global minimum at $\lambda_0 := \frac{\langle v, w\rangle}{\|w\|^2}$. Evaluating $f$ at $\lambda_0$ yields
 \[
 0 \leq f(\lambda_0) = \|v\|^2 - 2\frac{\langle v, w\rangle^2}{\|w\|^2} + \frac{\langle v, w\rangle^2}{\|w\|^2} = \|v\|^2 - \frac{\langle v, w\rangle^2}{\|w\|^2}.
 \]

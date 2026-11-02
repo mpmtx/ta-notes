@@ -73,6 +73,26 @@ $A$ exactly when every ball around $x$ meets $X\setminus A$. In particular $\par
 boundary of the open disk and of its closed complement are the same circle.
 \end{remark}
 
+% Generator: Claude Opus 5.5 (Extra) --- def:interior_closure_boundary asserts "the largest open
+% subset" and "the smallest closed subset" without proof, and later solutions (closure of a ball,
+% sol:closure_multiple_choice) rely on both. The proof is short and uses only the duality above.
+\begin{proof}[Proof of the two extremal properties in \cref{def:interior_closure_boundary}]
+\textbf{$\operatorname{int}(A)$ is the largest open subset of $A$.} Let $x \in
+\operatorname{int}(A)$, with $B_r(x) \subseteq A$. Every $y \in B_r(x)$ has a ball
+$B_\varepsilon(y) \subseteq B_r(x) \subseteq A$, because open balls are open
+(\cref{ex:ai_open_balls_are_open}); so $B_r(x) \subseteq \operatorname{int}(A)$, and
+$\operatorname{int}(A)$ is open. If $U \subseteq A$ is open, each $x \in U$ has a ball inside
+$U \subseteq A$, so $x \in \operatorname{int}(A)$. Hence every open subset of $A$ lies in
+$\operatorname{int}(A)$.
+
+\textbf{$\overline{A}$ is the smallest closed superset of $A$.} By
+\cref{rem:interior_closure_dual}, $X\setminus\overline{A} = \operatorname{int}(X\setminus A)$,
+which is open by the first part, so $\overline{A}$ is closed, and it contains $A$ since every ball
+around a point of $A$ meets $A$. If $F \supseteq A$ is closed, then $X \setminus F$ is an open
+subset of $X\setminus A$, so $X\setminus F \subseteq \operatorname{int}(X\setminus A) =
+X\setminus\overline{A}$ by the first part, that is, $\overline{A} \subseteq F$.
+\end{proof}
+
 % Source: Corsin Nick/Class Notes/Week 2.pdf, p. 7
 \begin{exercise}[$X$ and $\emptyset$ are clopen]
 \label{ex:X_empty_clopen}

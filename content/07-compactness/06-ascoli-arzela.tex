@@ -120,41 +120,46 @@ Then $(f_k)$ has a subsequence converging uniformly to some $f \in C(K,\mathbb{R
 \end{theorem}
 
 % Linus states the theorem without proof, remarking that it is "mostly just used in proofs".
-\begin{ainote}
-None of the transcribed notes prove this theorem; Linus states it and remarks that it is
-\qt{mostly just used in proofs}. The sketch below is included because its mechanism, a
-diagonal argument, explains why \emph{both} hypotheses are needed, which the statement alone does
-not. It is a sketch and not a proof: the details are omitted.
-\end{ainote}
-
-\begin{remark}[Proof sketch: the diagonal argument]
-\label{rem:ascoli_diagonal_sketch}
-% Correction: Claude Opus 5 (Ultracode) --- the parenthetical read "the points of $K$ with
-% rational coordinates will do", which fails for most compact $K$: $K = \{\sqrt2\}$ contains no
-% rational point at all, and neither does a Cantor set of irrationals, so the proposed $D$ can be
-% empty. The existence of $D$ is true for a different reason, given below; the theorem is
-% unaffected.
-Fix a countable dense subset $D = \{q_1,q_2,\dots\} \subseteq K$, which exists because $K$ is
-compact and therefore totally bounded: take a finite $\tfrac1j$-net for each $j$ and let $D$ be
-the union of them all.
+% Correction: Claude Opus 5.5 (Extra) --- this was an ainote ("a sketch and not a proof: the
+% details are omitted") followed by rem:ascoli_diagonal_sketch. The only omitted detail was the
+% three-term estimate in Step 2, now written out, so the sketch is promoted to the proof. The
+% label rem:ascoli_diagonal_sketch had no references and is dropped with the remark.
+% (Earlier correction by Claude Opus 5 (Ultracode), kept: the dense set D used to be "the points
+% of K with rational coordinates", which can be empty, e.g. K = {sqrt 2}.)
+\begin{proof}
+The mechanism is a diagonal argument, and it shows why \emph{both} hypotheses are needed. Fix a
+countable dense subset $D = \{q_1,q_2,\dots\} \subseteq K$, which exists because $K$ is compact
+and therefore totally bounded: take a finite $\tfrac1j$-net for each $j$ and let $D$ be the union
+of them all.
 
 \textbf{Step 1: converge on $D$, using boundedness.} The values $(f_k(q_1))_k$ form a bounded
 sequence in $\mathbb{R}^m$, so by Bolzano--Weierstrass some subsequence converges at $q_1$. Pass
 to a further subsequence converging also at $q_2$, then at $q_3$, and so on. Each refinement is
-legitimate, but no single one of them handles all of $D$. Taking the \emph{diagonal} sequence,
-whose $j$-th member is the $j$-th member of the $j$-th subsequence, produces one subsequence
-converging at every point of $D$ simultaneously.
+legitimate, but no single one of them handles all of $D$. Taking the \emph{diagonal} sequence
+$(g_j)_j$, whose $j$-th member is the $j$-th member of the $j$-th subsequence, produces one
+subsequence of $(f_k)$ that converges at every point of $D$, since from the $i$-th term on it is
+a subsequence of the $i$-th refinement.
 
 \textbf{Step 2: upgrade to uniform convergence, using equicontinuity.} Convergence on a dense
 set says nothing on its own about the rest of $K$; a sequence can converge at every rational and
-oscillate wildly in between. Equicontinuity forbids that: given $\varepsilon$, pick the $\delta$
-it supplies, cover the compact $K$ by finitely many balls of radius $\delta$ centred at points
-of $D$, and control any $x$ by the nearby dense point. This makes the diagonal subsequence
-uniformly Cauchy, hence convergent by \cref{prop:function_space_complete}.
-\end{remark}
+oscillate wildly in between. Equicontinuity forbids that. Let $\varepsilon > 0$ and let $\delta$
+be supplied by \cref{def:equicontinuous} for $\varepsilon/3$. The balls $B_\delta(q)$, $q \in D$,
+cover $K$ because $D$ is dense, so finitely many of them do, say those centred at
+$q_{i_1},\dots,q_{i_r}$. Since $(g_j(q_{i_s}))_j$ converges for each of these finitely many $s$,
+there is $N$ with $\lvert g_j(q_{i_s}) - g_l(q_{i_s})\rvert < \varepsilon/3$ for all
+$j,l \geq N$ and all $s$. Now let $x \in K$ and pick $s$ with $\lvert x - q_{i_s}\rvert < \delta$.
+For $j,l \geq N$,
+\[\lvert g_j(x) - g_l(x)\rvert \leq \lvert g_j(x) - g_j(q_{i_s})\rvert
+  + \lvert g_j(q_{i_s}) - g_l(q_{i_s})\rvert + \lvert g_l(q_{i_s}) - g_l(x)\rvert
+  < \tfrac{\varepsilon}{3} + \tfrac{\varepsilon}{3} + \tfrac{\varepsilon}{3},\]
+the outer two terms by equicontinuity and the middle one by the choice of $N$. As $x$ was
+arbitrary, $\lVert g_j - g_l\rVert_\infty \leq \varepsilon$ for $j,l \geq N$: the diagonal
+subsequence is Cauchy in $C(K,\mathbb{R}^m)$, hence convergent by
+\cref{prop:function_space_complete}.
+\end{proof}
 
 \begin{remark}[Where each hypothesis does its work]
-The two hypotheses are not interchangeable, and the sketch shows which does what:
+The two hypotheses are not interchangeable, and the proof shows which does what:
 \textbf{boundedness} is what lets Bolzano--Weierstrass run at each individual point, and
 \textbf{equicontinuity} is what converts pointwise control on a dense set into uniform control
 everywhere. Delete the second and \cref{ex:bounded_no_convergent_subsequence} is a
@@ -179,5 +184,9 @@ Let $(f_k)_{k\in\mathbb{N}}$ be a sequence in $C^1([0,1],\mathbb{R})$ with
 \end{aiexercise}
 
 % Transition: Claude Opus 5 (High)
-That closes the account of compactness. What follows returns to $\mathbb{R}^n$ and to
+% Correction: Claude Opus 5.5 (Extra) --- read "What follows returns to R^n and to
+% differentiation", but the next chapter is ch:connectedness, the last of this part.
+That closes the account of compactness. One topological property remains before the part ends,
+connectedness, which \cref{rem:local_to_global} has already shown to be compactness's partner in
+turning local information into global. After it the course returns to $\mathbb{R}^n$ and to
 differentiation, where compactness reappears as a hypothesis rather than a subject.

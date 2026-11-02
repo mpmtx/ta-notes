@@ -48,8 +48,8 @@ $d$.
 \begin{remark}[Why continuity at $0$ has to be assumed separately]
 Concavity does not supply that hypothesis, and it is worth seeing why not. A concave function is
 automatically continuous on the \emph{interior} of its domain, but $[0,\infty)$ has an endpoint,
-and at an endpoint a concave function may jump --- upwards, since concavity is what bounds it
-below by its chords. Take
+and at an endpoint a concave function may jump. The value at the endpoint can only lie
+\emph{below} the limit from inside, since concavity bounds the function below by its chords. Take
 \[h(0) := 0, \qquad h(t) := 1+t \quad \text{for } t>0.\]
 All three hypotheses of \cref{prop:concave_reshaping_metric} hold: $h$ vanishes exactly at $0$,
 it is non-decreasing, and it is concave, the only case needing a look being a blend of $0$ with
@@ -59,8 +59,8 @@ $x \neq y$, so the sequences converging in $h \circ d$ are exactly the eventuall
 and on $\mathbb{R}$ with the standard metric $\tfrac1n \to 0$ is lost.
 
 Note which half of the proof breaks. The converse direction uses only \textbf{(a)} and
-\textbf{(b)}, never continuity, and remains true for this $h$ --- an eventually constant sequence
-converges in every metric. It is the forward direction that needs the hypothesis.
+\textbf{(b)}, never continuity, and remains true for this $h$, because an eventually constant
+sequence converges in every metric. It is the forward direction that needs the hypothesis.
 \end{remark}
 \end{exercisesolution}
 
@@ -384,8 +384,9 @@ $\lVert Df\rVert$ be handled like an absolute value in the mean value inequality
 % Generator: Claude Sonnet 5 (Medium)
 \begin{enumerate}[label=\textbf{(\alph*)}]
   \item For $n=2$, $\{x : |x|_1 \leq 1\}$ is the diamond with vertices $(\pm 1, 0)$, $(0,\pm 1)$;
-    $\{x : |x|_2 \leq 1\}$ is the Euclidean unit disc; $\{x : |x|_{10} \leq 1\}$ is a curve close
-    to the square $[-1,1]^2$, with rounded corners that flatten as $p$ grows. All three contain
+    $\{x : |x|_2 \leq 1\}$ is the Euclidean unit disc; $\{x : |x|_{10} \leq 1\}$ is a region close
+    to the square $[-1,1]^2$, bounded by a curve whose rounded corners sharpen towards the
+    square's corners as $p$ grows. All three contain
     the four points $(\pm1,0)$, $(0,\pm1)$, since $|e_i|_p = 1$ for every $p$, and they increase
     with $p$, which is the geometric content of part \textbf{(b)}.
     \begin{center}

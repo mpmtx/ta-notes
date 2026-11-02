@@ -68,11 +68,13 @@ $d_2$, the diamond for $d_1$. This is the quickest way to tell the three apart, 
 \[B^{d_1}_1(0) \ \subseteq\ B^{d_2}_1(0) \ \subseteq\ B^{d_3}_1(0)\]
 are precisely the inequalities $d_3 \leq d_2 \leq d_1$ read backwards. The larger the metric, the
 harder it is to be within distance $1$, and hence the smaller the ball. The same family, continued
-to all $p \geq 1$, is sketched in \cref{ex:p_norms_unit_balls}\textbf{.1}, where the square reappears as the
-limiting case $p \to \infty$.
+to all $p \geq 1$, is sketched in part \textbf{(a)} of \cref{ex:p_norms_unit_balls}, where the
+square reappears as the limiting case $p \to \infty$.
 
-None of this changes which sets are open. All three metrics have the same open sets, as
-\cref{ex:ai_metric_equivalence} shows. The balls look different, and the topology does not notice.
+None of this changes which sets are open. All three metrics have the same open sets: each ball of
+one metric contains a ball of the same centre for each of the others, as the inclusions above
+already show for radius $1$, and \cref{cor:norms_same_topology} turns this into a theorem about
+any two norms on $\mathbb{R}^n$. The balls look different, and the topology does not notice.
 \end{remark}
 
 
@@ -103,7 +105,12 @@ that are necessarily true.
   \item $\overline{Y_1 \cap Y_2} \subset \overline{Y_1} \cap \overline{Y_2}$
   \item $\overline{Y_1 \cap Y_2} = \overline{Y_1} \cap \overline{Y_2}$
 \end{enumerate}
-\exhint[Official hints]{\textbf{(b):} compare with \cref{ex:metric_space_examples}.3. \textbf{(d):} play with a set
+% Correction: Claude Opus 5.5 (Extra) --- the hint read "(b): compare with
+% \cref{ex:metric_space_examples}.3", i.e. Problem 2.1(c), a metric on R^2 that has nothing to do
+% with closures. Statement (b) is the reverse inclusion of statement (c), so the sheet's
+% "compare with 3" is read as pointing at part 3 of this problem. Not re-checked against the
+% official PDF, which is not in this checkout; restore the original if the sheet says otherwise.
+\exhint[Official hints]{\textbf{(b):} compare with \textbf{(c)}. \textbf{(d):} play with a set
 of three points (a triangle).}
 \exinfo{This exercise is Problem 2.2 of Problem Sheet 2, Analysis II, Spring Semester 2026.}
 \exsol{sol:closure_multiple_choice}

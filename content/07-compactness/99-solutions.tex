@@ -52,9 +52,12 @@ hence closed and bounded, and a non-empty proper subset of $\mathbb{R}^m$ cannot
 and closed, since $\mathbb{R}^m$ is connected (\cref{def:connectedness}).
 
 % Reclassified from ainote to remark: an observation about the table's mathematical content.
-\begin{remark}[Why the last two columns agree]
-The punchline of the table is that its last two columns are \textbf{identical}. That is not a
-coincidence of this particular list. Inside a \emph{complete} ambient space a subset is complete
+% Correction: Claude Opus 5.5 (Extra) --- read "its last two columns are identical", i.e. compact
+% and complete; they are not ((-infinity,1] is complete and not compact). The columns that agree
+% row for row are closed and complete, which is what the argument below proves.
+\begin{remark}[Why the closed and complete columns agree]
+The punchline of the table is that its \textbf{closed} and \textbf{complete} columns are
+\textbf{identical}. That is not a coincidence of this particular list. Inside a \emph{complete} ambient space a subset is complete
 exactly when it is closed (\cref{rem:complete_vs_closed}), and $\mathbb{R}^n$ is complete. Build
 the same table inside $\mathbb{Q}$ instead and the two columns come apart immediately.
 \end{remark}
@@ -203,7 +206,8 @@ whose limit escapes $U$.
 
 This avoids \cref{lem:path_connected_implies_connected} entirely, at the cost of only working in
 $\mathbb{R}^n$, since the segment needs the vector space structure. The connectedness proof above
-generalises to any connected, locally connected ambient space.
+generalises to any connected ambient metric space, since \qt{complete $\Rightarrow$ closed} holds
+in every metric space.
 \end{remark}
 
 \begin{exercisesolution}[Solution to \cref{ex:uniform_lipschitz_family}]
@@ -244,8 +248,8 @@ generalises to any connected, locally connected ambient space.
   \item The map $(x,y) \mapsto x^2+y^2$ is continuous, and $U$ is the preimage of the closed set
     $[1,4]$ under it, so $U$ is closed. It is also bounded, being contained in
     $\overline{B_2(0)}$. By Heine--Borel (\cref{thm:heine_borel}), $U$ is compact. It is moreover
-    path-connected --- any two of its points can be joined by moving along a circle and then
-    radially --- and therefore connected.
+    path-connected, since any two of its points can be joined by moving along a circle and then
+    radially, and therefore connected.
 
   \item Since $f$ is continuous and $U$ is compact, $f(U)$ is compact
     (\cref{item:continuity_preserves_compact}); since $U$ is connected, $f(U)$ is connected
@@ -279,7 +283,7 @@ generalises to any connected, locally connected ambient space.
   \item Take $A := \{x \in \mathbb{R}^n \mid 0 < \lvert x\rvert \le 1\}$, the closed unit ball with
     its centre removed. Then $\inf_A f = 0$, since $\lvert x\rvert$ can be made as small as we like,
     but $f(x) = 0$ would force $x = 0 \notin A$. So the infimum is not attained. The set is bounded,
-    which shows that closedness --- not boundedness --- is the hypothesis doing the work in
+    which shows that closedness, not boundedness, is the hypothesis doing the work in
     \textbf{(a)}.
 
   \item Let $A$ be convex and suppose $P_0, P_1 \in A$ both minimise, with common value
@@ -445,8 +449,8 @@ Only \textbf{(c)} is true.
     compact if and only if it is complete and totally bounded
     (\cref{rem:compact_iff_complete_totally_bounded}, built on
     \cref{lem:sequentially_compact_totally_bounded}).
-  \item \textbf{False.} Total boundedness alone is not enough --- completeness is the other half of
-    \textbf{(c)} --- and openness does not supply it. The interval $(0,1) \subseteq \mathbb{R}$ is
+  \item \textbf{False.} Total boundedness alone is not enough, since completeness is the other half
+    of \textbf{(c)}, and openness does not supply it. The interval $(0,1) \subseteq \mathbb{R}$ is
     open and totally bounded and not compact.
 \end{enumerate}
 \begin{remark}[Why \textbf{(a)} is the tempting one]
