@@ -56,12 +56,12 @@ f(x) = \tfrac12 \langle Hx, x\rangle + o(\lvert x\rvert^2)
     statement is made in the original ones. By \eqref{eq:hessian_gradient_diffeomorphism_taylor} the second-order
     part of $f$ is $\tfrac12 x_1^2 + x_2 x_3$, which is not $x_1^2 - x_2^2 - x_3^2$: evaluating both
     at $(0,1,1)$ gives $1$ and $-2$. What \emph{is} true is that in suitable coordinates the form
-    becomes $\tfrac12(u_1^2 + u_2^2 - u_3^2)$, matching the eigenvalues $1,1,-1$ --- note in
+    becomes $\tfrac12(u_1^2 + u_2^2 - u_3^2)$, matching the eigenvalues $1,1,-1$. Note in
     passing that this has signature $(2,1)$, not the $(1,2)$ the stated expression suggests.
   \item \textbf{True.} This is the same Taylor expansion read with a weaker conclusion: the
     right-hand side of \eqref{eq:hessian_gradient_diffeomorphism_taylor} is bounded by a constant times
-    $\lvert x\rvert^2$ near $0$. Vanishing to first order at a point is precisely what $O(\lvert
-    x\rvert^2)$ records.
+    $\lvert x\rvert^2$ near $0$. A value and a gradient that both vanish at the point are
+    precisely what $O(\lvert x\rvert^2)$ records.
   \item \textbf{True}, and this is where the chapter's theorem enters. The map $\nabla f$ is smooth,
     being the gradient of a smooth function, and its Jacobian at the origin is
     $\Jac(\nabla f)(0) = \Hess f(0) = H$, which we computed to be invertible. By the inverse function
@@ -71,7 +71,7 @@ f(x) = \tfrac12 \langle Hx, x\rangle + o(\lvert x\rvert^2)
 \begin{remark}
 Item \textbf{(e)} is the useful one to remember: \qt{non-degenerate critical point} means exactly
 \qt{$\nabla f$ is a local diffeomorphism there}, so such points are isolated. Item \textbf{(c)} is
-the standard trap --- diagonalising the Hessian is a statement about \emph{some} coordinates, and
+the standard trap: diagonalising the Hessian is a statement about \emph{some} coordinates, and
 carrying its conclusion back to the original ones without the change of variables is where the
 argument breaks.
 \end{remark}
@@ -117,8 +117,8 @@ The correct answer is \textbf{(b)}.
   \item \textbf{False}, and it fails before any hypothesis on the derivative is examined.
     \Cref{thm:inverse_function_theorem} needs domain and codomain of the \emph{same} dimension,
     because a local inverse has to be defined on a neighbourhood of the image point. For
-    $n > 2$ the image of $f$ has empty interior in $\mathbb{R}^n$ --- it is at best a
-    $2$-dimensional surface --- so no neighbourhood of $f(0,0)$ in $\mathbb{R}^n$ lies in the
+    $n > 2$ the image of $f$ has empty interior in $\mathbb{R}^n$ (it is at best a
+    $2$-dimensional surface), so no neighbourhood of $f(0,0)$ in $\mathbb{R}^n$ lies in the
     image, and there is nothing for an inverse to be defined on. Being locally \emph{injective},
     which is what an immersion gives, is a strictly weaker conclusion.
   \item \textbf{True.} For a map $\mathbb{R}^2 \to \mathbb{R}^2$, maximal rank means rank $2$,
@@ -129,7 +129,7 @@ The correct answer is \textbf{(b)}.
     matrix with one non-zero column can still be singular. Take $f(x,y) := (x,0)\transp$: then
     $\partial f/\partial x = (1,0)\transp \neq 0$ everywhere, while
     $\Jac f = \left(\begin{smallmatrix}1&0\\0&0\end{smallmatrix}\right)$ has determinant $0$, and
-    $f$ is not injective on any neighbourhood of the origin --- it collapses every vertical
+    $f$ is not injective on any neighbourhood of the origin, since it collapses every vertical
     segment to a point.
   \item \textbf{False}, by the same example with the roles of the variables exchanged: for
     $f(x,y) := (y,0)\transp$ the partial $\partial f/\partial y$ is non-zero and the Jacobian is
@@ -139,7 +139,7 @@ The correct answer is \textbf{(b)}.
 Items \textbf{(c)} and \textbf{(d)} are printed with $f$ itself, so
 $\partial f/\partial x(0,0) \neq 0$ says a whole column of the Jacobian is non-zero. A reader who
 takes $f = (f_1,f_2)\transp$ and reads them as $\partial f_1/\partial x(0,0) \neq 0$ gets a weaker
-hypothesis --- a single \emph{entry} is non-zero --- and the same counterexample refutes it. The
+hypothesis (a single \emph{entry} is non-zero), and the same counterexample refutes it. The
 question is robust to the ambiguity, which is presumably why it went unnoticed.
 
 What both readings test is the difference between \qt{some derivative does not vanish} and
@@ -223,7 +223,8 @@ diffeomorphically onto an open set. Everything below is a consequence of that on
     with $\overline{B_i} \subseteq U$ on which $f$ is Lipschitz with some constant $L_i$. A set of diameter $d$ has
     image of diameter at most $L_id$, so a cube of side $s$ lands inside a set of diameter
     $L_i s\sqrt n$ and hence inside a cube of side $L_i s\sqrt n$, whose volume is
-    $(L_i\sqrt n)^n$ times the original. Covering a null set $Z \cap B_i$ by cubes of total
+    $(L_i\sqrt n)^n$ times the original (apply this to the cube's intersection with $B_i$, whose
+    diameter is no larger). Covering a null set $Z \cap B_i$ by cubes of total
     volume $< \varepsilon$ therefore covers $f(Z \cap B_i)$ by cubes of total volume
     $< (L_i\sqrt n)^n\varepsilon$, so $f(Z\cap B_i)$ is null. A countable union of null sets is
     null, so $f(Z)$ is null.

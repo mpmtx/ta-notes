@@ -86,24 +86,56 @@ where $\phi : U \to \mathbb{R}^n$ is a $\lambda$-Lipschitz function with constan
 % inverse function theorem in full (Theorem 12.5, printed pp. 77--79), and by exactly the route
 % sketched below -- Lemma 12.1 there is our lem:lipschitz_perturbation_identity, and the proof
 % normalises f to L^{-1} o f and checks it is a small Lipschitz perturbation of the identity.
-% The proof is not transcribed here: it is two pages, and the sketch below carries the idea.
+% The sketch that first stood below has since been completed into the proof (see its Generator
+% line).
 % Supplement: lec_notes.pdf, pp. 75--79 (Lemma 12.1, Theorem 12.5)
-\begin{ainote}[Where this lemma is used]
-\Cref{thm:inverse_function_theorem} is stated above without proof, and the lemma just proved is
-the engine of the standard proof of it. Without that connection the lemma arrives, is proved,
-and is never used again, so it is worth seeing how the two fit together. The lecture notes do
-give the full proof, and it runs along exactly these lines (Theorem 12.5, p.\ 77).
+% Generator: Claude Opus 5.5 (Extra) --- the sketch that stood here (an ainote, "Where this lemma
+% is used") is completed into a proof for self-containedness. The lemma does the hard part, so
+% what is left is short: a normalisation, one estimate for the differential of the inverse, and a
+% bootstrap for C^k. Same route as lec_notes.pdf, Theorem 12.5.
+The lemma just proved is the engine of the proof of \cref{thm:inverse_function_theorem}: near a
+point where the differential is invertible, a map is, after a linear change of coordinates, a
+small Lipschitz perturbation of the identity.
 
-Assume $x_0 = 0$ and $f(x_0) = 0$, which costs nothing, and replace $f$ by $Df_0^{-1}\circ f$,
-which is legitimate because $Df_0$ is invertible by hypothesis and which makes $Df_0 = \id$.
-Then $\phi(x) := f(x) - x$ satisfies $D\phi_0 = 0$. Since $D\phi$ is continuous, there is a ball
-around $0$ on which $\|D\phi\|_{\mathrm{op}} \leq \lambda$ for any $\lambda \in (0,1)$ we like, and on a ball
-(a convex set) the mean value inequality upgrades that to $\phi$ being $\lambda$-Lipschitz. Now
-$f = \id + \phi$ is exactly the shape \cref{lem:lipschitz_perturbation_identity} handles, and the
-lemma returns, in one step, that $f$ is open and injective there with a Lipschitz inverse. Only
-differentiability of $f^{-1}$ is then left, and it follows from the definition of the
-differential together with the Lipschitz bound.
-\end{ainote}
+\begin{proof}[Proof of \cref{thm:inverse_function_theorem}]
+\textbf{Normalisation.} Put $A := Df_{x_0}$ and
+$\tilde f(x) := A^{-1}\big(f(x_0+x) - f(x_0)\big)$ on $U - x_0$. Then $\tilde f(0) = 0$ and
+$D\tilde f_0 = \id$, and $f$ is $\tilde f$ composed on both sides with affine bijections, so it
+suffices to prove the theorem for $\tilde f$ at $0$. We drop the tilde.
+
+\textbf{The local inverse exists and is Lipschitz.} Let $\phi(x) := f(x) - x$, so $D\phi_0 = 0$.
+The entries of $\Jac\phi$ are continuous and vanish at $0$, so by
+\cref{lem:hilbert_schmidt_bounds_lengths} there is $r > 0$ with $B_r(0) \subseteq U$ and
+$\|D\phi_x\|_{\mathrm{op}} \leq \|\Jac\phi(x)\|_2 \leq \tfrac12$ for all $x \in B_r(0)$. On the
+convex set $B_r(0)$ the mean value inequality (\cref{rem:mvi_lipschitz_bound}) makes $\phi$
+$\tfrac12$-Lipschitz. By \cref{lem:lipschitz_perturbation_identity}, with $U_0 := B_r(0)$, the
+image $V_0 := f(U_0)$ is open, $f|_{U_0} : U_0 \to V_0$ is a bijection, and its inverse
+$g : V_0 \to U_0$ is $2$-Lipschitz. Moreover $Df_x = \id + D\phi_x$ is invertible for every
+$x \in U_0$, since $|Df_xv| \geq |v| - \tfrac12|v| > 0$ for $v \neq 0$.
+
+\textbf{The inverse is differentiable.} Fix $y \in V_0$, let $x := g(y)$ and $L := Df_x$. For
+small $k \neq 0$ put $h := g(y+k) - x$, which is non-zero because $g$ is injective, and satisfies
+$\lvert h\rvert \leq 2\lvert k\rvert$. Differentiability of $f$ at $x$ gives
+$k = f(x+h) - f(x) = Lh + \rho(h)$ with $\rho(h) = o(\lvert h\rvert)$, hence
+\[g(y+k) - g(y) = h = L^{-1}k - L^{-1}\rho(h), \qquad
+  \lvert L^{-1}\rho(h)\rvert \leq \|L^{-1}\|_{\mathrm{op}}\,\frac{\lvert\rho(h)\rvert}{\lvert h\rvert}\,
+  2\lvert k\rvert .\]
+As $k \to 0$ also $h \to 0$, so the quotient $\lvert\rho(h)\rvert/\lvert h\rvert$ tends to $0$
+and the error is $o(\lvert k\rvert)$. Thus $g$ is differentiable at $y$ with
+$Dg_y = (Df_{g(y)})^{-1}$, which is the asserted formula.
+
+\textbf{The inverse is $C^k$.} The formula reads $Dg = \mathrm{inv}\circ Df\circ g$, where
+$\mathrm{inv}$ sends an invertible matrix to its inverse. By Cramer's rule each entry of $M^{-1}$
+is a polynomial in the entries of $M$ divided by $\det M \neq 0$, so $\mathrm{inv}$ is
+$C^\infty$. Now bootstrap: $g$ is continuous, so $Dg$ is a composition of continuous maps and $g$
+is $C^1$. If $g$ is $C^j$ for some $j < k$, then $Df \in C^{k-1}$ and $g \in C^j$ make $Dg$ a
+composition of $C^j$ maps, so $g$ is $C^{j+1}$. After $k-1$ steps $g$ is $C^k$.
+\end{proof}
+
+The proof shows where each hypothesis enters. Continuity of $Df$ is what keeps $D\phi$ small on
+a whole ball rather than only at the point; mere differentiability would not give a Lipschitz
+perturbation. Invertibility of $Df_{x_0}$ is spent in the normalisation, and completeness of
+$\mathbb{R}^n$ is hidden inside the lemma, which runs on the Banach fixed-point theorem.
 
 % Supplement: Sascha Brack/Class Notes/Week_06_Notes_Friday.pdf, p. 2
 \begin{remark}[Checking for a global diffeomorphism]
@@ -273,10 +305,10 @@ Reading the three regions left to right makes the two answers above concrete.
 \label{ex:open_mapping_grad_nonzero}
 Let $f : U \to \mathbb{R}$ be a continuously differentiable function, where $U \subseteq \mathbb{R}^n$ is open and connected. Assume that $\nabla f(x) \neq 0$ for all $x \in U$. Prove that $f(U)$ is open in $\mathbb{R}$.
 
-\exhint{Define an auxiliary function $F : \mathbb{R}^n \to \mathbb{R}^n$ and use the Inverse Function Theorem.}
+\exhint{Define an auxiliary function $F : U \to \mathbb{R}^n$ and use the Inverse Function Theorem.}
 \end{exercise}
 
-\begin{exercisesolution}[\cref{ex:open_mapping_grad_nonzero}]
+\begin{exercisesolution}[Solution to \cref{ex:open_mapping_grad_nonzero}]
 Let $x_0 \in U$. Since $\nabla f(x_0) \neq 0$, there exists an index $i \in \{1,\dots,n\}$ such that $\partial_{x_i} f(x_0) \neq 0$. Without loss of generality, assume $i=1$.
 Define the auxiliary function $F : U \to \mathbb{R}^n$ by
 \[ F(x_1, x_2, \dots, x_n) = (f(x_1, \dots, x_n), x_2, \dots, x_n). \]

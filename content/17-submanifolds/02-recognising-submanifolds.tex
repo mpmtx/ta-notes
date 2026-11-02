@@ -1,5 +1,5 @@
 % Originally: new section (no predecessor in the week-based skeleton).
-% Quelle: Linus Lüchinger/Slides/Slides-03-30.pdf, slides 12--13 (examples and
+% Source: Linus Lüchinger/Slides/Slides-03-30.pdf, slides 12--13 (examples and
 %         non-examples), 16, 23, 26 (one surface in three representations);
 %         Linus Lüchinger/Slides/Slides-04-30.pdf, slide 7 (tangent-field test).
 
@@ -172,9 +172,14 @@ there are several distinct ways to violate that.
   \item \textbf{The figure eight} $\{(x,y) : y^2 = x^2 - x^4\}$ has a \emph{crossing}. Away from
     the origin it is a perfectly good curve. At the origin four branches meet. This is the same
     failure as \cref{ex:cross_not_submanifold}, and the same connectedness count settles it.
-  \item \textbf{The lollipop} is a circle with a segment attached, or any \qt{line sticking out
-    of a sphere}. Here the trouble is not a crossing but a \emph{change of dimension} at the
-    junction: near the attachment point the set is neither $1$- nor $2$-dimensional.
+  % Correction: Claude Opus 5.5 (Extra) --- the circle-with-a-segment drawn below is
+  % 1-dimensional everywhere; its defect is a branch point. "Change of dimension" is the defect of
+  % the line through a sphere, which the item also mentioned, so the two are now told apart.
+  \item \textbf{The lollipop} is a circle with a segment attached. Here the trouble is not a
+    crossing but a \emph{branch point}: three arcs meet at the junction, where a curve has room
+    for only two. Its three-dimensional cousin, a line sticking out of a sphere, fails for yet
+    another reason, a \emph{change of dimension}: near the attachment point that set is neither
+    $1$- nor $2$-dimensional.
   \item \textbf{The closed square} $[0,1]^2 \subseteq \mathbb{R}^2$ has a \emph{boundary}. Its
     interior is a fine $2$-dimensional submanifold, but no neighbourhood of a corner or edge
     point looks like an open piece of $\mathbb{R}^2$, because points of $[0,1]^2$ near an edge
@@ -461,5 +466,6 @@ Which of the following subsets of $\mathbb{R}^2$ are $1$-dimensional $C^1$-subma
 \end{exercise}
 
 % Transition: Claude Opus 5 (High)
-Every argument in this section leaned on knowing which vectors point \emph{along} $M$ at a given
-point. The next section makes that space of directions an object in its own right.
+The tangent-field test leaned on knowing which vectors point \emph{along} $M$ at a given point,
+and so do the exercises above on transversal intersections and on normal vectors. The next
+section makes that space of directions an object in its own right.

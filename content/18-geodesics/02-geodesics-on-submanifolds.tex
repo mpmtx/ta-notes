@@ -38,7 +38,10 @@ parameter domain, move there, and push forward again. This is the one step taken
 and it is the only place the submanifold structure is used.
 
 From there the computation of \cref{prop:geodesic_straight_line} runs verbatim, since it never
-asked where $g$ came from, and yields
+asked where $g$ came from (the one new ingredient is
+$\partial_\varepsilon c_\varepsilon' = (\partial_\varepsilon c_\varepsilon)'$ at $\varepsilon = 0$,
+which is \cref{thm:schwarz_mixed_partials} for a family that is $C^2$ in $(t,\varepsilon)$), and
+yields
 \[0 = \left.\frac{d}{d\varepsilon}\right|_{\varepsilon=0}L(c_\varepsilon)
     = -\frac1\lambda\int_0^1 \big\langle c''(t),\,g(t)\big\rangle\,dt.\]
 The fundamental lemma of the calculus of variations now applies to tangential $g$ only, so it

@@ -253,7 +253,7 @@ $F(x,y) := x^2+y^2-1$, i.e., $S^1 = F^{-1}\{0\}$. Locally, there are explicit fu
 \[x \mapsto \pm\sqrt{1-x^2} = y(x),\]
 defined on open intervals around $x_0$ whenever $y(x_0)\neq0$. And indeed,
 \[D_yF(x,y) = \frac{\partial F}{\partial y} = 2y\]
-is bijective whenever $y \neq 0$, so the implicit function theorem holds there.
+is bijective whenever $y \neq 0$, so the implicit function theorem applies there.
 
 \begin{remark}[The circle realizes both panels]
 The circle exhibits both cases of the figure above, and it is worth checking them against each
@@ -318,10 +318,13 @@ satisfying
 \[y^5+y^3+y+x(y)=0, \qquad y(x)^5+y(x)^3+y(x)+x=0.\]
 
 \begin{remark}
-As Galois and Abel showed, no closed-form expression for $y(x)$ in radicals exists in general,
-since $y^5+y^3+y+x=0$ is a genuine quintic in $y$. Nevertheless, the implicit function theorem
-guarantees that $y(x)$ exists (and is $C^\infty$, since $G$ is a polynomial), and it can be
-computed and plotted numerically.
+% Correction: Claude Opus 5.5 (Extra) --- "no formula exists ... since it is a genuine quintic"
+% over-reads Abel--Ruffini, which is about the general quintic; some quintics (y^5 + x, say) are
+% solvable by radicals. The point survives with the claim stated at its true strength.
+Do not look for a formula for $y(x)$. By the work of Abel and Galois, quintic equations have in
+general no solution in radicals, and the theorem does not need one: it guarantees that $y(x)$
+exists (and is $C^\infty$, since $G$ is a polynomial), and it can be computed and plotted
+numerically.
 \end{remark}
 \end{example}
 
@@ -357,7 +360,7 @@ x^2 + e^{y-1} - 2y = 0
 for $y, z$ as functions of $x$ (i.e.\ $y(x), z(x)$) close enough to the point $(1,1,1)$. Calculate $\begin{pmatrix} y'(1) \\ z'(1) \end{pmatrix}$. (cf.\ Michaels Bsp 8.3.5)
 \end{exercise}
 
-\begin{exercisesolution}[\cref{ex:implicit_system_yz_of_x}]
+\begin{exercisesolution}[Solution to \cref{ex:implicit_system_yz_of_x}]
 Let $F(x,y,z) = \begin{pmatrix} -2x^2 + y^2 + z^2 \\ x^2 + e^{y-1} - 2y \end{pmatrix}$. We have $F(1,1,1) = \begin{pmatrix} -2+1+1 \\ 1+1-2 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}$.
 The Jacobian of $F$ with respect to $(y,z)$ is
 \[
@@ -398,7 +401,7 @@ Consider the equation $xyz - yz^4 + x^2y = 2$ near the point $(0,-2,1)$. Can one
 Calculate the derivative of the solution at the given point, if possible. (cf.\ Michaels Bsp 8.3.3)
 \end{exercise}
 
-\begin{exercisesolution}[\cref{ex:implicit_xyz_equation}]
+\begin{exercisesolution}[Solution to \cref{ex:implicit_xyz_equation}]
 Let $F(x,y,z) = xyz - yz^4 + x^2y - 2$. At the point $P = (0,-2,1)$, we have $F(0,-2,1) = 0 - (-2)(1) + 0 - 2 = 0$.
 We compute the partial derivatives of $F$:
 \begin{align*}
@@ -525,7 +528,7 @@ the graph of a $C^1$ function $t = \tau(x)$, not of a function $x = \gamma(t)$. 
 this is the parabola $t = -x^2$, and the picture says everything. The zero set is a perfectly nice
 curve through the origin; it simply doubles back, so it is a graph over the $x$-axis and not over
 the $t$-axis. Which of the two variables can be solved for is precisely what the invertible
-partial derivative decides, and it is never symmetric in the two.
+partial derivative decides, and the answer need not be the same for both.
 \end{remark}
 \exinfo{This example is taken from the Analysis I \& II examination of summer 2016
 (Prof.\ H.\ Kn\"orrer), Problem 12, which asks for a counterexample and for the flaw in the

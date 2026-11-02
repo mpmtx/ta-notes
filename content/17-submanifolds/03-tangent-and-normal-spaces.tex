@@ -104,7 +104,7 @@ In particular, at the outer point $p_0 := (R_1+R_2, 0, 0)\transp$ (where $t = 0,
 \end{tikzpicture}
 \end{center}
 
-% Quelle: Diego Torres Tejeda/Notes - 30.03 - Diego Torres Tejeda.pdf, p. 2 -- Sonnet 5 (Medium)
+% Source: Diego Torres Tejeda/Notes - 30.03 - Diego Torres Tejeda.pdf, p. 2 -- Sonnet 5 (Medium)
 % Corsin defines T_pM only via a parametrization; the curve description below is Diego's. (Was
 % an ainote until 2026-08-09. The mathematics is the proposition, and who-wrote-which-definition
 % is editor-facing by Test 2 in style.md.)
@@ -164,10 +164,10 @@ $f$ is defined on all of $\eta$'s image), so by the chain rule,
 % Generator: Gemini 3.1 Pro (High)
 \begin{remark}[Four representations of the tangent space]
 \label{rem:four_representations_tangent_space}
-Depending on how a $m$-dimensional submanifold $M \subseteq \mathbb{R}^n$ is locally described near $p$, its tangent space $T_pM$ can be computed algebraically in four equivalent ways:
+Depending on how an $m$-dimensional submanifold $M \subseteq \mathbb{R}^n$ is locally described near $p$, its tangent space $T_pM$ can be computed algebraically in four equivalent ways:
 \begin{itemize}
   \item \textbf{Diffeomorphism} (from the definition, $\Psi(p)=0$): $T_pM = (D\Psi_p)^{-1}(\mathbb{R}^m \times \{0\})$.
-  \item \textbf{Implicit representation} ($M = F^{-1}\{0\}$): $T_pM = \ker(DF_p)$.
+  \item \textbf{Implicit representation} ($M = F^{-1}\{0\}$ with $DF_p$ surjective): $T_pM = \ker(DF_p)$.
   \item \textbf{Parametric representation} (local parametrization $g$ with $g(q)=p$): $T_pM = Dg_q(\mathbb{R}^m)$.
   \item \textbf{Graph representation} (graph of $h$, $p=(z, h(z))$): $T_pM = \{(w, Dh_z(w)) \mid w \in \mathbb{R}^m\}$.
 \end{itemize}
@@ -187,7 +187,7 @@ definition,
   \item $T_{f(q)}M = \operatorname{span}\{\partial_if(q)\}$, as above;
   \item $F(f(x)) = 0$ for all $x \in V$, since $f(x) \in M = F^{-1}\{0\}$.
 \end{enumerate}
-From \textbf{3}, it follows that
+From \textbf{(c)}, it follows that
 \begin{align*}
 \Jac(F\circ f)(q)
   &= \Jac F(f(q))\cdot\Jac f(q) \\
@@ -197,7 +197,7 @@ From \textbf{3}, it follows that
 \end{align*}
 Now, since $\big(\Jac F(f(q))\cdot\Jac f(q)\big)_{ij} = \langle \nabla F_i(f(q)), \partial_jf(q)\rangle = 0$
 for all $i=1,\dots,n-m$, $j=1,\dots,m$, the vectors $\nabla F_i(f(q))$ are perpendicular, that is,
-\newterm{normal}, to $T_{f(q)}M$. Since by \textbf{1} we have $n-m$ linearly independent vectors
+\newterm{normal}, to $T_{f(q)}M$. Since by \textbf{(a)} we have $n-m$ linearly independent vectors
 normal to the $m$-dimensional plane $T_{f(q)}M$, we can define:
 
 \begin{definition}[Normal space]
@@ -206,6 +206,9 @@ Let $M^m \subseteq \mathbb{R}^n$ be a submanifold and $F : U^n \to \mathbb{R}^{n
 representation, $M = F^{-1}\{0\}$. Then the \newterm{normal space} \germanfor{Normalraum} of
 $M$ at $p \in M$ is
 \[N_pM := \operatorname{span}\{\nabla F_1(p),\dots,\nabla F_{n-m}(p)\}.\]
+By the computation above, these $n-m$ independent vectors are orthogonal to the $m$-dimensional
+$T_pM$, so by counting dimensions $N_pM = (T_pM)^\perp$. In particular $N_pM$ does not depend on
+the choice of $F$.
 \end{definition}
 
 \begin{example}[Normal space to the sphere]

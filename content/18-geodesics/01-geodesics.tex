@@ -53,7 +53,7 @@ $\lvert\alpha(t)\rvert = \lvert t-\tfrac12\rvert$ is not differentiable at $t=\t
 % Source: Corsin Nick/Class Notes/Week 10.pdf, pp. 4--5
 \begin{proposition}[The shortest path is a straight line]
 \label{prop:geodesic_straight_line}
-Assume that $c \in C^\infty([0,1],\mathbb{R}^n)$ with $c(0)=0$, $c(1)=x$ and
+Let $x \neq 0$, and assume that $c \in C^\infty([0,1],\mathbb{R}^n)$ with $c(0)=0$, $c(1)=x$ and
 $\lvert c'(t)\rvert \equiv \lambda$ is the optimal path we are looking for. Then $c(t) = xt$
 and $\lambda = \lvert x\rvert$.
 \end{proposition}
@@ -123,13 +123,22 @@ The proof moves quickly over $\left.\frac{d}{d\varepsilon}\right|_{\varepsilon=0
 = 0$ and over the final $\overset{!}{=}\,0$, and those are precisely the two places where
 something is being assumed.
 
+% Correction: Claude Opus 5.5 (Extra) --- this paragraph located the hidden work in A failing to be
+% a vector space. For a fixed g, though, eps -> L(c_eps) is a function of one real variable with a
+% minimum at 0, and nothing more is needed for its derivative to vanish; what is genuinely assumed
+% is that the derivative exists and may be taken under the integral sign.
 The first is the claim that a minimizer of $L$ over the infinite-dimensional set $\mathcal A$ is
-a critical point of every one-parameter family through it. That is the same fact used for
-optimization on $\mathbb{R}^n$ in \cref{prop:extremum_implies_critical}, and it wants $\mathcal A$
-to be a vector space. It is not one, since $\mathcal A$ is an affine subspace. What rescues the
-argument is that the \emph{differences} $c_\varepsilon - c$ range over
-$\{g \in C^\infty([0,1],\mathbb{R}^n) : g(0)=g(1)=0\}$, which is a genuine vector space, so the
-perturbation directions form one even though the curves themselves do not.
+a critical point of every one-parameter family through it. For a fixed $g$, the function
+$\varphi(\varepsilon) := L(c_\varepsilon)$ is an ordinary function of one real variable, and it
+has a minimum at $\varepsilon = 0$ because every $c_\varepsilon$ lies in $\mathcal A$ (the
+differences $c_\varepsilon - c = \varepsilon g$ vanish at both endpoints). So
+$\varphi'(0) = 0$ by the one-variable case of \cref{prop:extremum_implies_critical},
+\emph{provided} $\varphi$ is differentiable. That proviso, together with the exchange of
+$d/d\varepsilon$ and $\int_0^1$ in the computation, is the real work. It holds because the
+integrand $\lvert c'(t) + \varepsilon g'(t)\rvert$ is $C^1$ in $(t,\varepsilon)$ near
+$\varepsilon = 0$, the constant speed $\lambda > 0$ keeping it away from the kink of the norm at
+$0$, and a $C^1$ integrand on a compact interval may be differentiated under the integral sign
+(\cref{thm:feynmans_trick}).
 
 The second is the fundamental lemma named in the proof, which upgrades \qt{the integral vanishes
 for every $g$} to \qt{$c''$ vanishes at every $t$}, rather than merely on average. Corsin gives

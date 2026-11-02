@@ -121,7 +121,10 @@ nonzero. For $R>0$, $(0,0) \notin F^{-1}\{R^2\}$, so
 \[F^{-1}\{R^2\} = \{(x,y) \in \mathbb{R}^2 : x^2+y^2=R^2\}\]
 is a submanifold of dimension $2-1=1$ by \cref{thm:regular_value_theorem}. Similarly,
 $\{x \in \mathbb{R}^n : |x|^2=R^2\}$ is a submanifold of dimension $n-1$ for $n \geq 1$ (the
-\newterm{$n$-sphere} of radius $R$).
+\newterm{$(n-1)$-sphere} of radius $R$, named after its dimension, which is why the unit sphere
+of $\mathbb{R}^n$ is written $S^{n-1}$).
+% Correction: Claude Opus 5.5 (Extra) --- was "the n-sphere": the sphere in R^n is (n-1)-dimensional,
+% and the notes write it S^{n-1} everywhere else.
 \end{example}
 
 % Sonnet 5 (Medium) --- FIG-W07-02
@@ -162,16 +165,22 @@ worth remembering, since it is the standard way to prove a negative here.
 
 Suppose $C$ were a $1$-dimensional submanifold. By \cref{def:submanifold} there would be a
 neighbourhood $U$ of the origin and a diffeomorphism $\Phi : U \to V$ carrying $C \cap U$ onto a
-piece of a \emph{line}, $(\mathbb{R}\times\{0\})\cap V$. Now delete the centre point from each
-side and count connected components (\cref{def:connectedness}):
+piece of a \emph{line}, $(\mathbb{R}\times\{0\})\cap V$. Shrinking, we may take $V$ to be a ball
+around $0$ (replace $U$ by the preimage of such a ball), so that this piece is an open interval.
+Now delete the centre point from each side and count connected components
+(\cref{def:connectedness}):
+% Correction: Claude Opus 5.5 (Extra) --- for a general open V the piece of line need not be an
+% interval, and the count "two" fails; the shrinking step is added, and "four" becomes "at least
+% four" since U is arbitrary.
 \begin{itemize}
-  \item Removing a point from a small piece of a line leaves \textbf{two} pieces.
-  \item Removing the origin from $C \cap U$ leaves \textbf{four} pieces, one along each
-    half-axis.
+  \item Removing a point from an open interval leaves \textbf{two} pieces.
+  \item Removing the origin from $C \cap U$ leaves \textbf{at least four} pieces, since $U$
+    meets all four open half-axes and no connected subset of $C\setminus\{(0,0)\}$ meets two of
+    them.
 \end{itemize}
 But $\Phi$ is a homeomorphism, and homeomorphisms preserve the number of connected components
-(\cref{thm:continuity_preserves_connected}, applied to $\Phi$ and to $\Phi^{-1}$). Four cannot
-equal two, so no such $\Phi$ exists and $C$ is not a submanifold.
+(\cref{thm:continuity_preserves_connected}, applied to $\Phi$ and to $\Phi^{-1}$). Four or more
+cannot equal two, so no such $\Phi$ exists and $C$ is not a submanifold.
 
 \begin{remark}
 The moral is that submanifolds are forbidden from having \emph{crossings, corners or cusps}: near
@@ -186,10 +195,10 @@ phenomenon, seen through the Lagrange-multiplier lens back in \cref{ch:lagrange}
 \subsubsection{Connection to Lagrange multipliers}
 
 \begin{remark}[Constraint sets are submanifolds]
-Recall the Lagrangian from \cref{prop:constrained_optimization}: when optimizing $f|_M$ for
-$f \in C^k(\mathbb{R}^n,\mathbb{R})$, where $g_1,\dots,g_k : U \to \mathbb{R}$,
-\[M := \{x \in \mathbb{R}^n : g_1(x)=\dots=g_k(x)=0\}, \qquad (\nabla g_1,\dots,\nabla g_k) \text{ linearly independent for all } x \in M\]
-(hence $k \leq n$). This means precisely that, for $g : \mathbb{R}^n \to \mathbb{R}^k$,
+Recall the setting of \cref{prop:constrained_optimization}: we optimize $f|_M$ for
+$f \in C^1(U,\mathbb{R})$, where $g_1,\dots,g_k \in C^1(U,\mathbb{R})$,
+\[M := \{x \in U : g_1(x)=\dots=g_k(x)=0\}, \qquad (\nabla g_1,\dots,\nabla g_k) \text{ linearly independent for all } x \in M\]
+(hence $k \leq n$). This means precisely that, for $g : U \to \mathbb{R}^k$,
 $x \mapsto (g_1(x),\dots,g_k(x))$, the Jacobian
 \[\Jac g(x) = \begin{pmatrix} \nabla g_1(x) \longrightarrow \\ \vdots \\ \nabla g_k(x) \longrightarrow \end{pmatrix}\]
 has full rank. Therefore, $M = g^{-1}\{0\}$ is an $(n-k)$-dimensional submanifold by the regular
@@ -211,6 +220,40 @@ for every $p \in M$ there exist an open neighbourhood $V$ of $p$, an open set $U
   \item $f$ is a homeomorphism (bijective, continuous, with continuous inverse $f^{-1}$).
 \end{itemize}
 \end{theorem}
+
+% Generator: Claude Opus 5.5 (Extra) --- proof added for self-containedness. The easy direction
+% reads a parametrization off a chart; the other builds a chart from a parametrization with the
+% inverse function theorem, and it is the one place where the homeomorphism clause is used, which
+% is the insight worth having.
+\begin{proof}
+\textbf{($\Rightarrow$)} Let $\Phi : U \to V$ be a submanifold chart around $p$, named as in
+\cref{def:submanifold} (so here the neighbourhood of $p$ is $U$, and the parameter domain will be
+$U_0$). The set $U_0 := \{x \in \mathbb{R}^m : (x,0) \in V\}$ is open, and
+$f(x) := \Phi^{-1}(x,0)$ is a $C^k$ bijection of $U_0$ onto $U \cap M$. Its inverse is the first $m$ coordinates of $\Phi$, hence
+continuous, and $Df_x$ is the invertible $D(\Phi^{-1})_{(x,0)}$ restricted to
+$\mathbb{R}^m\times\{0\}$, hence injective.
+
+\textbf{($\Leftarrow$)} Fix $p = f(x_0)$. As $\Jac f(x_0)$ has rank $m$, after renumbering the
+coordinates of $\mathbb{R}^n$ its first $m$ rows form an invertible block. Thicken $f$ to a map
+between spaces of equal dimension,
+\[G : U\times\mathbb{R}^{n-m} \to \mathbb{R}^n, \qquad G(x,z) := f(x) + (0,z),\]
+whose Jacobian at $(x_0,0)$ is block lower triangular with that invertible block and $I_{n-m}$ on
+the diagonal. By the inverse function theorem $G$ restricts to a $C^k$-diffeomorphism from a box
+$W := U_1\times B_\varepsilon(0)$ around $(x_0,0)$ onto an open set $G(W) \ni p$, and on the slice
+$z = 0$ it is $f$: $G(x,0) = f(x)$.
+
+Here the homeomorphism clause enters. It says $f(U_1)$ is open \emph{in $M \cap V$}, so
+$f(U_1) = O \cap M$ for some open $O \subseteq V$. Put $U' := G(W) \cap O$ and
+$\Phi := (G|_W)^{-1}$ on $U'$, shifted by $-(x_0,0)$ so that $p \mapsto 0$. A point of $U'$ lies
+in $M$ exactly when it lies in $f(U_1) = G(U_1\times\{0\})$, that is, exactly when its image under
+$(G|_W)^{-1}$ has $z = 0$. So $\Phi(U'\cap M) = (\mathbb{R}^m\times\{0\}) \cap \Phi(U')$, which is
+a submanifold chart around $p$.
+\end{proof}
+
+Without the homeomorphism clause the last step fails, and the failure is visible. Other parts of
+$M$ may come back arbitrarily close to $p$ without belonging to the sheet $f(U_1)$, as in a
+figure-eight traversed injectively: near the crossing point the image of a small parameter
+interval is only one branch, while $M$ has two.
 
 % Generator: Claude Opus 5 (Medium)
 \begin{remark}[Three descriptions, and which one to reach for]
@@ -257,7 +300,7 @@ theorem, but instead take
 \[ \Jac f(x) = \begin{pmatrix} \id_{n\times n} \\ 2x\transp \end{pmatrix}. \]
     This one is tall, so by \cref{rem:full_rank_two_meanings} full rank means that $Df_x$ is
     \textbf{injective}, which is clear from the $\id_{n\times n}$ block alone.
-  \item $f$ is bijective onto $P$ and continuous, with inverse $\pi : f(U) \to \mathbb{R}^n$,
+  \item $f$ is bijective onto $P$ and continuous, with inverse $\pi : P \to \mathbb{R}^n$,
     $(x,t) \mapsto x$ (the canonical projection), which is also continuous.
   \item $f(\mathbb{R}^n) = P$.
 \end{enumerate}
@@ -313,7 +356,7 @@ two methods agree.
 Show that $M := \{(x,y,z) \in \mathbb{R}^3 \mid 2x+z=1, x^2+y^2-z^2=1\}$ is a submanifold of $\mathbb{R}^3$. What is its dimension? (cf.\ Michaels Bsp 9.1.2 d)
 \end{exercise}
 
-\begin{exercisesolution}[\cref{ex:dimension_submanifold_system}]
+\begin{exercisesolution}[Solution to \cref{ex:dimension_submanifold_system}]
 Let $F(x,y,z) = \begin{pmatrix} 2x+z-1 \\ x^2+y^2-z^2-1 \end{pmatrix}$. Then $M = F^{-1}\{0\}$.
 We compute the Jacobian matrix of $F$:
 \[ \Jac F(x,y,z) = \begin{pmatrix} 2 & 0 & 1 \\ 2x & 2y & -2z \end{pmatrix}. \]
@@ -330,7 +373,7 @@ Then $x = 2/3$. Thus the point is $(2/3, 0, -1/3)$.
 Now check the second equation of $M$: $(2/3)^2 + 0^2 - (-1/3)^2 = 4/9 - 1/9 = 3/9 = 1/3 \neq 1$.
 Therefore, this point is not in $M$.
 Since $\Jac F(x,y,z)$ has maximal rank 2 for all $(x,y,z) \in M$, $M$ is a submanifold of $\mathbb{R}^3$.
-Its dimension is $n - k = 3 - 2 = 1$.
+Its dimension is $3 - 2 = 1$: three coordinates minus two independent equations.
 \end{exercisesolution}
 
 % Source: Jérôme Paschoud/Notizen/Woche 7.2 Untermannigfaltigkeiten.pdf, p. 4
@@ -340,7 +383,7 @@ Its dimension is $n - k = 3 - 2 = 1$.
 Show that $M := \{ A \in \operatorname{Mat}_{2\times 2}(\mathbb{R}) \mid \rank(A) = 1 \}$ is a submanifold of $\operatorname{Mat}_{2\times 2}(\mathbb{R})$. What is the dimension of $M$?
 \end{exercise}
 
-\begin{exercisesolution}[\cref{ex:submanifold_matrices_rank1}]
+\begin{exercisesolution}[Solution to \cref{ex:submanifold_matrices_rank1}]
 Let $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$. The condition $\rank(A) \leq 1$ is equivalent to $\det(A) = ad - bc = 0$.
 The condition $\rank(A) = 1$ means $\det(A) = 0$ but $A \neq 0$.
 So, $M$ is the zero set of $F : \mathbb{R}^4 \setminus \{0\} \to \mathbb{R}$, $F(a,b,c,d) = ad - bc$.
