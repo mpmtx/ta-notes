@@ -13,8 +13,9 @@ we define the $d$-volume of $\phi(E)$ by
 \[\vol_d(\phi(E)) := \int_E \sqrt{\det\big(D\phi(x)\transp D\phi(x)\big)}\,dx.\]
 \end{definition}
 
-Here the Gram determinant in the integrand is the volume of the parallelotope spanned by the
-vectors $\partial_1\phi(x),\partial_2\phi(x),\dots,\partial_d\phi(x)$, which by assumption
+Here the integrand, the square root of the Gram determinant, is the volume of the parallelotope
+spanned by the vectors $\partial_1\phi(x),\partial_2\phi(x),\dots,\partial_d\phi(x)$, which by
+assumption
 (see \qt{parametrized submanifold}) are linearly independent, i.e.\ $D\phi(x)$ has full rank,
 so the volume is strictly positive.
 
@@ -195,12 +196,19 @@ so the volume is strictly positive.
 \end{tikzpicture}
 \end{center}
 
+% Correction: Claude Opus 5.5 (Extra) --- an isometry was defined by sqrt(det(Dphi^T Dphi)) = 1,
+% which only says that phi preserves d-volume: (x,y) -> (2x, y/2, 0) satisfies it and doubles
+% lengths along the x-axis. The correct condition is Dphi^T Dphi = I. The two agree for d = 1.
 This factor gives a measure for the stretching of $E$ as it is \qt{glued} to the surface. If
-\[\sqrt{\det\big(D\phi(x)\transp D\phi(x)\big)} = 1 \quad \text{for all } x,\]
-then $\phi$ is called an \newterm{isometry} \germanfor{Isometrie}. A special case is the
-length of a curve, treated in \cref{sec:length_of_curve} below.
+\[D\phi(x)\transp D\phi(x) = I_d \quad \text{for all } x,\]
+that is, if the columns $\partial_i\phi(x)$ are orthonormal, then $\phi$ preserves lengths of
+curves and angles between them and is called an \newterm{isometry} \germanfor{Isometrie}; the
+factor is then $1$. The weaker condition $\sqrt{\det(D\phi\transp D\phi)} \equiv 1$ only says
+that $\phi$ preserves $d$-volume: $(x,y) \mapsto (2x, y/2, 0)$ satisfies it and doubles every
+length along the $x$-axis. For $d = 1$ the two conditions coincide, and an isometry is a curve
+parametrized by arc length, treated in \cref{sec:length_of_curve} below.
 
-% Quelle: Linus Lüchinger/Slides/Slides-04-20.pdf, slide 14
+% Source: Linus Lüchinger/Slides/Slides-04-20.pdf, slide 14
 % Generator: Claude Opus 5 (High)
 % Feedback: Gemini 3.1 Pro (2026-08-11) --- praised for stopping the cross-product formula from
 % reading as magic: the three steps derive it, and the closing paragraph recovers arc length and
@@ -223,8 +231,13 @@ map $D\phi(x)$, and the answer runs in three steps.
     constant $c \geq 0$. It is what we want; we only need a formula for it.
   \item \textbf{The Gram matrix supplies it.} The product $D\phi(x)\transp D\phi(x)$ is
     $d \times d$, square at last, so it \emph{does} have a determinant, and that
-    determinant turns out to be exactly $c^2$. Hence $c = \sqrt{\det(D\phi\transp D\phi)}$, and
-    the square root is there for no deeper reason than to undo that squaring.
+    determinant turns out to be exactly $c^2$. To see why, write $D\phi(x) = QM$, where the $d$
+    columns of $Q \in \mathrm{Mat}_{n\times d}(\mathbb{R})$ are an orthonormal basis of a
+    $d$-dimensional subspace containing the image and $M := Q\transp D\phi(x)$ is square. The map
+    $Q$ carries $\mathbb{R}^d$ onto that subspace without distorting anything, so $c =
+    \lvert\det M\rvert$, while $D\phi\transp D\phi = M\transp Q\transp QM = M\transp M$ has
+    determinant $(\det M)^2$. Hence $c = \sqrt{\det(D\phi\transp D\phi)}$, and the square root is
+    there for no deeper reason than to undo that squaring.
 \end{enumerate}
 The two familiar formulas are the small cases. For $d=1$ the matrix $D\phi(t)$ is the single
 column $\phi'(t)$, so $D\phi\transp D\phi = \lvert\phi'(t)\rvert^2$ and $c = \lvert\phi'(t)\rvert$,
@@ -233,7 +246,7 @@ $c = \lvert\partial_1\phi \times \partial_2\phi\rvert$, the area of the parallel
 tangent vectors span, which is the surface-area formula used throughout this chapter.
 \end{remark}
 
-% Quelle: Linus Lüchinger/Slides/Slides-04-20.pdf, slide 12
+% Source: Linus Lüchinger/Slides/Slides-04-20.pdf, slide 12
 \begin{remark}[Two objects, three notations]
 \label{rem:notation_D_phi}
 From this chapter onwards the lecture notes write $D\phi(x)$ for the Jacobian \emph{matrix} of
@@ -256,7 +269,7 @@ Assuming $M := \operatorname{Im}\phi$ is a $C^1$ submanifold, its area is given 
 
 We first find the Jacobian matrix of the parametrization:
 \[\Jac\phi(x,y) = \begin{pmatrix} 1 & 0 \\ 0 & 1 \\ \partial_1 f(x,y) & \partial_2 f(x,y) \end{pmatrix}.\]
-Then we compute the Gram determinant:
+Then we compute the square root of the Gram determinant:
 \begin{align*}
 \sqrt{|\det(\Jac\phi\transp \Jac\phi)|}
 &= \sqrt{\det \begin{pmatrix} 1+(\partial_1 f)^2 & \partial_1 f \partial_2 f \\ \partial_2 f \partial_1 f & 1+(\partial_2 f)^2 \end{pmatrix}} \\
@@ -346,7 +359,9 @@ The surface area is given by the integral:
 &= r^2 \left(\int_{-\pi}^\pi d\varphi\right) \left(\int_0^\pi \sin\theta \,d\theta\right) \\
 &= r^2 \cdot 2\pi \cdot 2 = 4\pi r^2.
 \end{align*}
-Note that here, our partition of unity simply was the identity (since the parametrization covers the sphere up to a null set).
+Note that no partition of unity was needed here, since the parametrization covers the sphere up
+to a null set. Partitions of unity, which glue several charts together, are the subject of
+\cref{sec:integration_over_submanifolds}; the sketch below is Corsin's picture of the idea.
 
 \begin{center}
 \begin{tikzpicture}[scale=1.5]
@@ -369,13 +384,13 @@ Note that here, our partition of unity simply was the identity (since the parame
   % submanifold." across the label. Node text does not follow `scale=1.5', so the block is
   % wider and taller than the coordinates suggest. Shifted right to clear the label.
   \node[right, font=\footnotesize, align=left, text=green!60!black] at (2.9, -0.3) {
-    and $\eta_\ell(x)$ is defined such\\
-    that when we integrate\\
-    in each ball separately\\
-    and add all the\\
-    integrals together,\\
-    we exactly get a notion\\
-    of the integral on the\\
+    the weights $\eta_\ell$\\
+    are chosen so that\\
+    integrating in each\\
+    ball separately and\\
+    adding the integrals\\
+    gives exactly the\\
+    integral over the\\
     whole submanifold.
   };
 \end{tikzpicture}

@@ -338,10 +338,10 @@ All parts of \cref{ex:spherical_quadrilateral_area,ex:torus_surface_area,ex:soli
 -\sin\theta_1)$, $8\pi^2$, $\pi\int_a^bf(x)^2dx$ / $2\pi\int_a^bf(x)\sqrt{1+f'(x)^2}dx$ /
 volume $\pi$, area $+\infty$) match exactly. Part \textbf{(e)} was reconstructed independently
 along the same two-directional strategy (build an explicit $C^1$ parametrization near each
-endpoint using the inverse function theorem; for the converse, derive a contradiction from the
-tangent space being forced to both contain $\operatorname{span}\{e_2,e_3\}$ and the limiting
-direction of $v_\varepsilon$) and agrees with the official solution in substance, though the
-write-up above is condensed relative to the official one.
+endpoint using the inverse function theorem; for the converse, show that the tangent plane at the
+rim is $\operatorname{span}\{e_2,e_3\}$ and that the tangent directions $(1,f'(x),0)$ of the side
+must approach it) and agrees with the official solution in substance, though the write-up above
+is condensed relative to the official one.
 \end{ainote}
 
 \begin{exercisesolution}[Solution to \cref{ex:ai_circle_two_atlases}]
@@ -353,7 +353,7 @@ root is the familiar speed $\lvert\Phi'\rvert$ of \cref{sec:length_of_curve}.
 \begin{enumerate}[label=\textbf{(\alph*)}]
   \item Here $\Phi'(t) = (-\sin t,\cos t)$ has $\lvert\Phi'\rvert \equiv 1$, so
     \[\int_{S^1} 1 \mathop{d\text{vol}}_1 = \int_0^{2\pi} 1\,dt = 2\pi .\]
-    The omitted point $(1,0)$ is a single point, hence $\vol_1$-null, and contributes nothing ---
+    The omitted point $(1,0)$ is a single point, hence $\vol_1$-null, and contributes nothing,
     which is the shortcut \cref{rem:one_chart_recovers_the_earlier_definition} describes.
   \item Let $\eta_1,\eta_2$ be \emph{any} partition of unity subordinate to this atlas, so that
     $\eta_1+\eta_2 \equiv 1$ on $S^1$. Since $\lvert\Phi_i'\rvert \equiv 1$ for both,
@@ -383,7 +383,7 @@ root is the familiar speed $\lvert\Phi'\rvert$ of \cref{sec:length_of_curve}.
     $\eta_\pm$ summing to $1$ off those two points and substituting $u = \cos t$, which turns
     $(1-u^2)^{-1/2}\,\lvert du\rvert$ into $dt$, gives $\pi + \pi = 2\pi$ again. The reason is the
     one from part \textbf{(a)}: the uncovered set is $\vol_1$-null. So this atlas is illegitimate
-    and harmless at once, and only the first of those is a statement about $S^1$ --- the second
-    is an accident of the set that was missed.
+    and harmless at once, and only the first of those is a statement about $S^1$; the second is
+    an accident of the set that was missed.
 \end{enumerate}
 \end{exercisesolution}

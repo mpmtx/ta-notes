@@ -66,9 +66,14 @@ and in general it does not. On the domain here it does: $\mathbb{R}^3$ is star-s
 \cref{thm:poincare_lemma} applies and every curl-free field on it is a gradient. The guess in
 part \textbf{(b)} was therefore guaranteed to succeed before it was made.
 
-What the caution in \textbf{(a)} protects against is the same field on a smaller domain. Delete
-the $z$-axis and the conclusion fails, as \cref{q:quiz_q11} exhibits. The hypothesis that
-matters is a property of the domain, never of the field.
+What the caution in \textbf{(a)} protects against is a curl-free field on a smaller domain.
+Delete the $z$-axis from $\mathbb{R}^3$ and there are curl-free fields with no potential, such as
+the vortex field $(-y,x,0)/(x^2+y^2)$, whose circulation around the axis is $2\pi$; this is the
+point of \cref{q:quiz_q11}. The hypothesis that matters is a property of the domain, not of the
+curl.
+% Correction: Claude Opus 5.5 (Extra) --- read "the same field on a smaller domain ... the
+% conclusion fails", but F = grad(xyz) stays a gradient on every subdomain. The failure needs a
+% different field.
 \end{remark}
 \end{exercisesolution}
 
@@ -148,8 +153,8 @@ $\lvert\nabla u\rvert^2$ is traded for $u\Delta u$ throughout the theory of the 
 Parts \textbf{(b)} and \textbf{(d)} both say a gradient field cannot do something, and both are
 proved the same way: integrate $f$ rather than reason about $\nabla f$ directly. That is the
 whole advantage of being a gradient, and the contrast is sharp. A general vector field has closed
-orbits routinely --- $F(x,y) := (-y,x)$ is the rotation field of \cref{ex:autonomous_rotation},
-whose orbits are circles --- and part \textbf{(b)} says no gradient field ever does. In physical
+orbits routinely ($F(x,y) := (-y,x)$ is the rotation field of \cref{ex:autonomous_rotation},
+whose orbits are circles), and part \textbf{(b)} says no gradient field ever does. In physical
 terms a conservative field cannot drive a cycle, because going round would return the potential
 to its starting value while the field did strictly positive work.
 \end{remark}
