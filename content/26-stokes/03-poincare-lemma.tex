@@ -170,6 +170,26 @@ of coordinate steps used in the proof of \cref{thm:continuous_partials_imply_dif
 often quicker, since each step integrates a single component $F_i$ in a single variable.
 \end{remark}
 
+% Generator: Claude Opus 5.5 (Extra) --- several places in the document cited thm:poincare_lemma for
+% "closed forms are exact on star-shaped domains", which is the textbook statement of that name but
+% not the one proved here. This remark says what is proved and what is not, and they now cite it.
+\begin{remark}[Which statement is \qt{the} Poincaré lemma]
+\label{rem:poincare_lemma_star_shaped}
+In most texts the name \emph{Poincaré lemma} refers to a different-looking statement. A set
+$U$ is \emph{star-shaped} if it contains a point $x_0$ such that the segment from $x_0$ to any
+point of $U$ lies in $U$; on a star-shaped open $U \subseteq \mathbb{R}^n$, every closed $C^1$
+$k$-form is exact, for every $k \geq 1$. How much of that this document covers:
+\begin{itemize}
+  \item For $k = 1$ and $U$ convex, it follows from what is proved here. The straight-line
+    homotopy $H(s,t) := (1-s)\gamma_0(t) + s\gamma_1(t)$ stays in $U$ and fixes the endpoints,
+    so $U$ is simply connected and \cref{cor:potentials_simply_connected} applies. A star-shaped
+    set is simply connected as well, by a homotopy routed through $x_0$, and
+    \cref{rem:potential_by_line_integral} then writes the potential down.
+  \item For $k \geq 2$ the statement is true but not proved here. For $k = 2$ on a star-shaped
+    domain in $\mathbb{R}^3$ it says that every divergence-free field there is a curl.
+\end{itemize}
+\end{remark}
+
 % Supplement: Analysis_II_Script_v1.pdf, p. 153
 \begin{example}[Integrability without a potential: why simple connectedness is needed]
 \label{ex:vortex_field_not_conservative}

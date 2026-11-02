@@ -87,7 +87,9 @@ Theorem 14.24), as with the two definitions quoted in \cref{sec:orientable_manif
 \begin{theorem}[Green's theorem in the plane]
 \label{thm:green_theorem}
 Let $F : U \to \mathbb{R}^2$ be a continuously differentiable vector field on an open set
-$U \subseteq \mathbb{R}^2$. Then, for any compact $C^1$ domain $\Omega \subseteq U$,
+$U \subseteq \mathbb{R}^2$. Then, for any bounded $C^1$ domain $\Omega$ with $\overline\Omega
+\subseteq U$,
+% Correction: Claude Opus 5.5 (Extra) --- was "compact C^1 domain", as in thm:greens_theorem.
 \[\int_\Omega \curl F\,dx = \int_{\partial\Omega} F\cdot\tau\,dL,\]
 with $\tau = \nu^\perp = (-\nu_2,\nu_1)$, where $\nu$ is the exterior unit normal.
 \end{theorem}

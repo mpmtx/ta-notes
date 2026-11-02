@@ -57,9 +57,12 @@ but a diagram drawn with the paths the wrong way round will not close up.
 
 \begin{theorem}[Green's Theorem]
 \label{thm:greens_theorem}
-Let $F : U \to \mathbb{R}^2$ be a continuously differentiable vector field on an open set $U \subseteq \mathbb{R}^2$. Then, for any compact $C^1$ domain $\Omega \subseteq U$,
+Let $F : U \to \mathbb{R}^2$ be a continuously differentiable vector field on an open set $U \subseteq \mathbb{R}^2$. Then, for any bounded $C^1$ domain $\Omega$ (\cref{def:bounded_ck_domain}) with $\overline\Omega \subseteq U$,
 \[\int_\Omega \curl F \mathop{d\text{vol}}_2 = \int_{\partial\Omega} F \cdot \tau \,dL,\]
-where $\tau$ is the unit tangent vector to the boundary $\partial\Omega$ oriented counter-clockwise (i.e.\ $\tau = (-\nu_2, \nu_1)\transp$, with $\nu$ being the outward unit normal).
+where $\tau$ is the unit tangent vector to the boundary $\partial\Omega$ oriented so that $\Omega$ lies to its left, which is counter-clockwise on the outer boundary curve (i.e.\ $\tau = (-\nu_2, \nu_1)\transp$, with $\nu$ being the outward unit normal).
+% Correction: Claude Opus 5.5 (Extra) --- "compact C^1 domain": a domain is open, so it is never
+% compact; the hypothesis is that of thm:gauss_divergence. "Counter-clockwise" was wrong on the
+% inner boundary of a domain with holes, where tau = nu^perp runs clockwise.
 \end{theorem}
 
 \begin{ainote}
