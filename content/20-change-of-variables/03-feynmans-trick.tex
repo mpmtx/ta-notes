@@ -55,12 +55,14 @@ not merely in $y$ for each fixed $x$, is what uniform continuity was applied to.
 \label{ex:feynman_log_integral}
 We want to compute the integral
 \[I(1) = \int_0^1 \frac{\log(1+x)}{1+x^2}\,dx,\]
-which has no convenient antiderivative. By introducing a parameter $\alpha \in (-1,1)$:
+which has no convenient antiderivative. By introducing a parameter $\alpha \in [0,1]$:
 \[I(\alpha) := \int_0^1 \frac{\log(1+\alpha x)}{1+x^2}\,dx.\]
 Note that the integrand is a $C^1$ function on
 $U := \big(-\tfrac{1}{1+\varepsilon},\ \tfrac1\varepsilon\big) \times (-\varepsilon,\ 1+\varepsilon)$
-in the variables $(x,\alpha)$, with $K := [0,1]$ and $[a,b] := [0,1]$ satisfying
-$K\times[a,b] \subseteq U$ for $0 < \varepsilon < 1$ (pay attention to the logarithm, which is
+in the variables $(x,\alpha)$, with $K := [0,1]$ and
+$[a,b] := [-\tfrac\varepsilon2, 1+\tfrac\varepsilon2]$ satisfying
+$K\times[a,b] \subseteq U$ for $0 < \varepsilon < 1$, so that $I$ is $C^1$ on an open interval
+containing $[0,1]$ (pay attention to the logarithm, which is
 what forces $1+\alpha x > 0$). So, we may differentiate under the integral!
 
 \textbf{We obtain an ordinary differential equation.} By \cref{thm:feynmans_trick},
@@ -169,9 +171,10 @@ The pattern is worth naming:
     that partial fractions can handle.
   \item Integrate $I'$ back from $\alpha_0$ to $\alpha_1$.
 \end{enumerate}
-The self-reference in step 3, where the answer reappears on the right-hand side so that one
-solves for $I(1)$ rather than computing it, is specific to this integral and is the reason it
-is a classic. Do not expect it in general. Usually step 3 is an honest integration.
+The self-reference in step \textbf{(c)}, where the answer reappears on the right-hand side so
+that one solves for $I(1)$ rather than computing it, is specific to this integral and is the
+reason it is a classic. Do not expect it in general. Usually step \textbf{(c)} is an honest
+integration.
 \end{ainote}
 
 % Feedback: Gemini 3.1 Pro (2026-08-11) --- part (c) was singled out: making the reader find the

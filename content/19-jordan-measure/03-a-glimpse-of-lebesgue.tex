@@ -146,11 +146,17 @@ Compare the hypotheses. Ours is uniform convergence, a statement about $\sup_x\l
 only for pointwise convergence plus one integrable envelope, and the envelope is usually the easy
 part. Monotone convergence asks for nothing but monotonicity.
 
+% Correction: Claude Opus 5.5 (Extra) --- this paragraph said uniform convergence is "assumed by
+% hand" in sec:ascoli_arzela and sec:improper_integrals. Neither assumes it: Ascoli--Arzela
+% concludes it, and the improper integral is a monotone supremum. The two places where the cost is
+% really paid are now named for what they do.
 This is where the cost of staying inside the Riemann theory is actually paid in this document.
-Uniform convergence is assumed by hand in \cref{sec:ascoli_arzela}, in the treatment of improper
-integrals in \cref{sec:improper_integrals}, and again when differentiating under the integral sign
-in \cref{sec:feynmans_trick}, where a domination hypothesis is what the argument morally wants.
-Each of those becomes shorter and more general in the Lebesgue setting.
+Differentiating under the integral sign (\cref{sec:feynmans_trick}) has to manufacture uniform
+convergence of the difference quotients out of compactness, which is why it asks for a continuous
+partial derivative on a compact set where a domination hypothesis is what the argument morally
+wants. And the improper integral (\cref{sec:improper_integrals}) is restricted to non-negative
+integrands, so that a monotone supremum can stand in for the monotone convergence theorem. Both
+become shorter and more general in the Lebesgue setting.
 \end{remark}
 
 \subsection{How the two integrals compare}
@@ -214,7 +220,8 @@ rational translates that together fill up an interval, so countable additivity w
 $\lambda(V)$ to be simultaneously $0$ and positive. No value works, and $V$ is unmeasurable.
 
 The construction needs the axiom of choice, and this is not a technicality. It is consistent with
-the other axioms of set theory that \emph{every} subset of $\mathbb{R}$ is Lebesgue measurable, so
+the other axioms of set theory (granted a large-cardinal assumption, by a theorem of Solovay) that
+\emph{every} subset of $\mathbb{R}$ is Lebesgue measurable, so
 the pathology is imported by the choice principle rather than discovered in the reals.
 
 Pushed into $\mathbb{R}^3$, the same idea gives the Banach--Tarski paradox: a solid ball can be cut

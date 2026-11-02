@@ -243,7 +243,7 @@ $\alpha$, and the bounded oscillating factor $\cos(xy)$ changes none of it.
 
 % Generator: Claude Opus 5 (High)
 % No solution key ships with the Jossen papers, so this is an independent derivation.
-\begin{exercisesolution}[\cref{ex:lebesgue_null_sets_properties}]
+\begin{exercisesolution}[Solution to \cref{ex:lebesgue_null_sets_properties}]
 \label{sol:lebesgue_null_sets_properties}
 \begin{enumerate}[label=\textbf{(\alph*)}]
   \item \textbf{No.} Pick $p \in U$ and a closed cube $K \subseteq U$ centred at $p$, of side
@@ -333,7 +333,7 @@ The covers produced above are finite, so the argument proves more than was asked
 $A_t$ with $t>0$ is \emph{Jordan} null, not merely Lebesgue null
 (\cref{rem:lebesgue_vs_jordan_null}). The final set $\{f > 0\}$ need not be, because Jordan
 content is not countably additive and a countable union of Jordan null sets can fail to be Jordan
-null --- $\mathbb{Q}\cap[0,1]$ is the standing example, a countable union of points whose Jordan
+null; $\mathbb{Q}\cap[0,1]$ is the standing example, a countable union of points whose Jordan
 outer content is $1$. So the countable union in the first display is exactly the step that forces
 the weaker notion, and it is the reason the conclusion is stated \qt{almost everywhere} rather
 than on the complement of a Jordan null set.
@@ -344,14 +344,14 @@ boxes could contribute an arbitrarily negative amount and the estimate collapses
 integrability is what makes an upper sum small at all. And the conclusion really cannot be
 improved to $f \equiv 0$: the function on $[0,1]$ that is $1$ at each of finitely many points and
 $0$ elsewhere is Riemann integrable with integral $0$, and is not identically zero. For
-\emph{continuous} $f$ the stronger conclusion does hold, and needs no null sets --- if
+\emph{continuous} $f$ the stronger conclusion does hold, and needs no null sets: if
 $f(p) > 0$, continuity gives a whole box on which $f > f(p)/2$, forcing a positive integral.
 \end{remark}
 \end{exercisesolution}
 
 % Generator: Claude Opus 5 (High)
 % Solutions to the four aiexercises in 03-a-glimpse-of-lebesgue.tex.
-\begin{exercisesolution}[\cref{ex:ai_lebesgue_null_countable}]
+\begin{exercisesolution}[Solution to \cref{ex:ai_lebesgue_null_countable}]
 \label{sol:ai_lebesgue_null_countable}
 \begin{enumerate}[label=\textbf{(\alph*)}]
   \item Let $p \in \mathbb{R}^n$ and $\varepsilon > 0$. The single cube of side length
@@ -376,14 +376,14 @@ Part \textbf{(b)} is the whole difference between the two theories in three line
 series is what lets infinitely many cubes have finite total volume, and it is available only
 because the cubes are allowed different sizes, which is exactly the point of
 \cref{rem:jordan_vs_lebesgue_sizes}. Part \textbf{(c)} then says a null set is small in the
-topological sense too, though the converse fails badly: the Cantor set
-(\cref{ex:cantor_set_jordan_null}) is null and uncountable, and there are nowhere dense sets of
-positive measure.
+topological sense too, though the converse fails badly: there are nowhere dense sets of positive
+measure (\qt{fat} Cantor sets). Nor is \qt{null} the same as \qt{countable}: the Cantor set of
+\cref{ex:cantor_set_jordan_null} is null and uncountable.
 \end{remark}
 \end{exercisesolution}
 
 % Generator: Claude Opus 5 (High)
-\begin{exercisesolution}[\cref{ex:ai_lebesgue_three_valued}]
+\begin{exercisesolution}[Solution to \cref{ex:ai_lebesgue_three_valued}]
 \label{sol:ai_lebesgue_three_valued}
 \begin{enumerate}[label=\textbf{(\alph*)}]
   \item Split $[0,1]$ into the three sets on which $f$ is constant:
@@ -415,7 +415,7 @@ over whole intervals and every interval meets $\mathbb{Q}$.
 \end{exercisesolution}
 
 % Generator: Claude Opus 5 (High)
-\begin{exercisesolution}[\cref{ex:ai_dominated_beats_uniform}]
+\begin{exercisesolution}[Solution to \cref{ex:ai_dominated_beats_uniform}]
 \label{sol:ai_dominated_beats_uniform}
 \begin{enumerate}[label=\textbf{(\alph*)}]
   \item For $0 \le x < 1$ we have $x^k \to 0$, and $1^k = 1$ for every $k$. So the pointwise limit
@@ -441,7 +441,7 @@ use the Lebesgue theory for.
 \end{exercisesolution}
 
 % Generator: Claude Opus 5 (High)
-\begin{exercisesolution}[\cref{ex:ai_improper_not_lebesgue}]
+\begin{exercisesolution}[Solution to \cref{ex:ai_improper_not_lebesgue}]
 \label{sol:ai_improper_not_lebesgue}
 \begin{enumerate}[label=\textbf{(\alph*)}]
   \item $f$ is constant on each $[k,k+1)$, an interval of length $1$, so for integer $N \ge 1$
@@ -524,7 +524,7 @@ to see the two notions come apart.
 \label{sol:kobel_ball_minus_lattice}
 % Generator: Claude Opus 5 (High)
 Two facts do all the work: $M$ is Jordan measurable, and $f$ is continuous and bounded. The
-criterion quoted with \cref{def:riemann_integral_rn} then applies.
+criterion of \cref{rem:riemann_integral_inherited_properties} then applies.
 
 \textbf{$M$ is bounded}, being a subset of $\overline{B}_2(0)$.
 
@@ -535,7 +535,7 @@ and $S \subseteq \{-2,-1,0,1,2\}^4$. In particular $S$ is finite.
 
 \textbf{$M$ is Jordan measurable.} A single point is a Jordan null set (cover it by one cube of
 side $\varepsilon$), hence Jordan measurable, and a finite union of Jordan measurable sets is
-Jordan measurable, so $S$ is. The closed ball is Jordan measurable --- its boundary is the sphere
+Jordan measurable, so $S$ is. The closed ball is Jordan measurable: its boundary is the sphere
 $\partial B_2(0)$, a Jordan null set, so
 \cref{thm:jordan_measurability_boundary_criterion} applies. Then
 $M = \overline{B}_2(0)\setminus S$ is Jordan measurable by
@@ -548,12 +548,13 @@ continuous on $[0,\infty)$, and $\cos$ is continuous on $\mathbb{R}$. So $f$ is 
 of $\mathbb{R}^4$, in particular on $\overline{M} = \overline{B}_2(0)$, and
 $\lvert f\rvert \le 1$ everywhere because it is a cosine.
 
-\textbf{Conclusion.} $M$ is Jordan measurable and $f$ is continuous on $\overline M$, so $f$ is
-Riemann integrable over $M$.
+\textbf{Conclusion.} $M$ is Jordan measurable and $f$ is continuous on $\overline M$. The criterion
+is stated for non-negative functions, so apply it to the continuous non-negative parts
+$f^\pm := \max\{\pm f, 0\}$ and use linearity: $f = f^+ - f^-$ is Riemann integrable over $M$.
 \begin{remark}[What the exercise is actually testing]
 Neither the dimension $4$ nor the elaborate formula for $f$ matters; both are there to discourage
 computation. The formula is chosen so that $f$ is manifestly continuous but has no closed-form
-integral, and the removed set is chosen to look infinite --- $\mathbb{Z}^4$ is --- while being
+integral, and the removed set is chosen to look infinite ($\mathbb{Z}^4$ is) while being
 finite \emph{after intersection with the ball}. Establishing that is the one step of the problem
 that is not bookkeeping.
 
@@ -602,14 +603,16 @@ with $c_0 := 0$, the middle step being an exchange of the order of summation and
 telescoping sum. The two sides agree.
 
 Of the alternatives, \textbf{(c)} is zero for all but finitely many $t$ and so integrates to $0$;
-\textbf{(b)} and \textbf{(d)} use \emph{sub}level sets, which run the wrong way --- their integral
+\textbf{(b)} and \textbf{(d)} use \emph{sub}level sets, which run the wrong way: their integral
 is $\mu(\Omega)\max f - \int_\Omega f$, not $\int_\Omega f$.
 \begin{remark}[Why the layer-cake formula is worth remembering]
 It computes an integral by slicing the \emph{range} rather than the domain, which is exactly the
 move that separates the Lebesgue integral from the Riemann integral
 (\cref{sec:lebesgue_digression}). Here it is proved for step functions only, but that is the
-general case in disguise: the Lebesgue integral of a non-negative measurable function is
-\emph{defined} by this formula, with $\mu$ the Lebesgue measure and the right-hand side an
-improper Riemann integral of a monotone function of $t$.
+general case in disguise: the Lebesgue integral of a non-negative measurable function satisfies
+the same formula, with $\mu$ the Lebesgue measure and the right-hand side an improper Riemann
+integral of a monotone function of $t$, and some treatments take it as the definition.
+% Correction: Claude Opus 5.5 (Extra) --- said the Lebesgue integral "is defined by this formula",
+% contradicting sec:lebesgue_digression, which defines it as a supremum over simple functions.
 \end{remark}
 \end{exercisesolution}

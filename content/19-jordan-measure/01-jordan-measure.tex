@@ -103,8 +103,8 @@ are
 \[\mu_{\mathrm{out}}(E) := \inf\{\mu(G) : G \text{ dyadic set},\ E \subseteq G\}, \qquad
   \mu_{\mathrm{in}}(E) := \sup\{\mu(F) : F \text{ dyadic set},\ F \subseteq E\},\]
 where the empty union counts as a dyadic set of volume $0$. Always
-$\mu_{\mathrm{in}}(E) \leq \mu_{\mathrm{out}}(E)$. The set $E$ is \textbf{Jordan measurable} if
-the two agree, and their common value $\mu(E)$ is its \newterm{Jordan measure}. It is a
+$\mu_{\mathrm{in}}(E) \leq \mu_{\mathrm{out}}(E)$. The set $E$ is \newterm{Jordan measurable}
+\germanfor{Jordan-messbar} if the two agree, and their common value $\mu(E)$ is its \newterm{Jordan measure}. It is a
 \newterm{Jordan null set} if $\mu_{\mathrm{out}}(E) = 0$.
 \end{definition}
 
@@ -278,8 +278,13 @@ $f: \overline{E} \to [0, \infty)$ is continuous, then $f$ is Riemann integrable 
 states this without proving it, and the proof is the same one as in \emph{Analysis I} with cubes
 in place of intervals: continuity on the compact set $\overline{E}$ gives uniform continuity
 (\cref{prop:compact_implies_uniformly_continuous}), which bounds the oscillation of $f$ on every
-cube of a fine enough mesh simultaneously, and the upper and lower sums then differ by at most
-that bound times $\vol(E)$.
+cube of a fine enough mesh simultaneously. The upper and lower sums then differ by at most that
+bound times the volume of the cubes meeting $E$, plus $\sup f$ times the volume of the cubes
+meeting $\partial E$, and the second term is small because $\partial E$ is a Jordan null set
+(\cref{thm:jordan_measurability_boundary_criterion}).
+% Correction: Claude Opus 5.5 (Extra) --- the sketch ended "differ by at most that bound times
+% vol(E)", which ignores the cubes straddling the boundary; that is where measurability of E is
+% used at all.
 \end{remark}
 
 % Source: Diego Torres Tejeda/Notes - 17.04 - Diego Torres Tejeda.pdf, p. 1
@@ -289,9 +294,41 @@ that bound times $\vol(E)$.
 A bounded subset $E \subseteq \mathbb{R}^n$ is Jordan measurable if and only if its boundary $\partial E$ is a Jordan null set, i.e.\ $\mu_{\mathrm{out}}(\partial E) = 0$.
 \end{theorem}
 
+% Generator: Claude Opus 5.5 (Extra) --- proof added for self-containedness: every measurability
+% argument in Parts VI and VII runs through this criterion. The insight is that the gap between
+% the outer and inner counts is made of cubes that straddle the boundary.
+\begin{proof}
+For a bounded $S$ and a generation $p$, let $N_p(S)$ count the generation-$p$ cubes meeting $S$
+and $K_p(S)$ those contained in $S$. The smallest generation-$p$ dyadic set containing $S$ is the
+union of the $N_p(S)$ cubes, and the largest one inside $S$ is the union of the $K_p(S)$ cubes.
+Splitting each cube into its $2^n$ children leaves volumes unchanged, so any dyadic set can be
+moved to a finer generation, and therefore
+\[\mu_{\mathrm{out}}(S) = \lim_{p\to\infty} 2^{-pn}N_p(S), \qquad
+  \mu_{\mathrm{in}}(S) = \lim_{p\to\infty} 2^{-pn}K_p(S),\]
+the first sequence decreasing and the second increasing.
+
+\textbf{($\Leftarrow$)} A cube that meets $E$ without lying in $E$ contains a point of $E$ and a
+point of its complement. Being convex, hence connected, it must then meet $\partial E$: otherwise
+it would split into its parts in $\operatorname{int}E$ and in the exterior of $E$, two disjoint
+non-empty relatively open pieces. So $N_p(E) - K_p(E) \leq N_p(\partial E)$, and letting
+$p \to \infty$ gives $\mu_{\mathrm{out}}(E) - \mu_{\mathrm{in}}(E) \leq
+\mu_{\mathrm{out}}(\partial E) = 0$.
+
+\textbf{($\Rightarrow$)} Given $\varepsilon > 0$, pick dyadic sets $F \subseteq E \subseteq G$ of
+one common generation with $\mu(G) - \mu(F) < \varepsilon$. A point $x \in \partial E$ lies in
+$\overline E \subseteq \overline G$ but not in $\operatorname{int} E \supseteq \operatorname{int}F$,
+so $x \in (G \setminus F) \cup \partial G \cup \partial F$. The last two sets lie in the union $Z$
+of the boundaries of the finitely many cubes of $G$, and $Z$ is Jordan null: a face of a cube of
+side $s$ meets at most $(2^qs+2)^{n-1}$ cubes of generation $q$, of total volume at most
+$2^{-q}(s+2^{1-q})^{n-1} \to 0$. Hence
+$\mu_{\mathrm{out}}(\partial E) \leq \mu(G\setminus F) + \mu_{\mathrm{out}}(Z) < \varepsilon$.
+\end{proof}
+
 \begin{lemma}[Compact sets: Jordan null versus Lebesgue null]
 \label{lem:compact_jordan_vs_lebesgue_null}
-Let $K \subseteq \mathbb{R}^n$ be compact. Then $K$ is a Jordan null set if and only if $K$ is a Lebesgue null set.
+Let $K \subseteq \mathbb{R}^n$ be compact. Then $K$ is a Jordan null set if and only if $K$ is a
+Lebesgue null set (in the sense of \cref{rem:lebesgue_vs_jordan_null} below: coverable by
+countably many cubes of arbitrarily small total volume).
 \end{lemma}
 
 \begin{proof}
@@ -323,7 +360,18 @@ Jordan measurability can fail even for open sets. Enumerate the rational numbers
 \[
 U := \bigcup_{k=1}^\infty B_{2^{-(k+2)}}(q_k) \;\cap\; (0,1).
 \]
-Since $\mathbb{Q} \cap [0,1]$ is dense in $[0,1]$, the closure of $U$ is $\overline{U} = [0,1]$. If $U$ were Jordan measurable, its measure would satisfy $\mu(U) = \mu(\overline{U}) = 1$. However, any finite union of intervals covering a dyadic inner approximation of $U$ has measure bounded by $\sum_{k=1}^\infty 2 \cdot 2^{-(k+2)} = \frac{1}{2}$. Thus $\mu_{\mathrm{in}}(U) \leq \frac{1}{2} < 1 = \mu_{\mathrm{out}}(U)$, showing that $U$ is \textbf{not} Jordan measurable. Its boundary $\partial U = [0,1] \setminus U$ is a \qt{fat} boundary of positive outer measure.
+% Correction: Claude Opus 5.5 (Extra) --- the inner bound read "any finite union of intervals
+% covering a dyadic inner approximation of U has measure at most 1/2", which does not parse into
+% an argument, and mu_out(U) = 1 was asserted without one. Both are now argued.
+Since $\mathbb{Q} \cap [0,1]$ is dense in $[0,1]$, so is $U$. On the outside, a dyadic set
+$G \supseteq U$ leaves out of $[0,1]$ only finitely many half-open intervals, none of positive
+length since each would miss the dense set $U$; so $\mu(G) \geq 1$ and
+$\mu_{\mathrm{out}}(U) = 1$. On the inside, let $F \subseteq U$ be a dyadic set. Shrinking each of
+its finitely many intervals $[a,b)$ to $[a,b-\delta]$ gives a compact subset of $U$, which is
+covered by finitely many of the open intervals $B_{2^{-(k+2)}}(q_k)$, of total length at most
+$\sum_{k=1}^\infty 2 \cdot 2^{-(k+2)} = \frac{1}{2}$; letting $\delta \to 0$ gives
+$\mu(F) \leq \frac12$. Thus $\mu_{\mathrm{in}}(U) \leq \frac{1}{2} < 1 = \mu_{\mathrm{out}}(U)$,
+showing that $U$ is \textbf{not} Jordan measurable. Its boundary $\partial U = [0,1] \setminus U$ is a \qt{fat} boundary of positive outer measure.
 \end{example}
 
 % Source: Jérôme Paschoud/Notizen/Woche 8.1 Tangentialräume und Jordan Mass.pdf, p. 3
@@ -375,7 +423,7 @@ A set $E \subset \mathbb{R}^n$ is \newterm{Lebesgue null} if for every $\varepsi
 Because a countable cover is allowed, the set $\mathbb{Q} \cap [0,1]$ is Lebesgue null. However, it is not Jordan null (in fact, it is not even Jordan measurable, since its boundary is all of $[0,1]$; compare \cref{thm:jordan_measurability_boundary_criterion}), since any finite union of intervals covering it must also cover its closure $[0,1]$, thus having measure at least $1$.
 \end{remark}
 
-% Quelle: Linus Lüchinger/Slides/Slides-04-16.pdf, slide 6
+% Source: Linus Lüchinger/Slides/Slides-04-16.pdf, slide 6
 % Generator: Claude Opus 5 (High)
 \begin{remark}[The relaxation is really about \emph{sizes}, not just counts]
 \label{rem:jordan_vs_lebesgue_sizes}
@@ -434,7 +482,8 @@ Let $L: \mathbb{R}^n \to \mathbb{R}^n$ be a linear, invertible map. If $E \subse
   \item A bounded countable set is always Jordan-null.
   \item A countable set is always Lebesgue-null.
   \item Let $D \subset [0,1]$ be a dense set (i.e.\ $\overline D = [0,1]$). Then
-    $\mu_{out}(D) = 1$. ($\mu_{out}$ was defined in Definition 13.10.)
+    $\mu_{out}(D) = 1$. ($\mu_{out}$ was defined in Definition 13.10 of the lecture notes; here
+    it is \cref{def:jordan_inner_outer_measure}.)
   \item Let $X, Y \subset [0,1]$ Jordan measurable sets such that $\mu(X) > 1/2$ and
     $\mu(Y) > 1/2$. Then $X \cap Y \neq \emptyset$.
   \item Let $X, Y \subset [0,1]$ such that $\mu_{out}(X) > 1/2$ and $\mu_{out}(Y) > 1/2$. Then
@@ -540,7 +589,7 @@ for the definition of a null set and for closure under countable unions, which a
 % (exercises_2024/ps8.pdf, p. 1), differing only in the definition number it cites.
 \begin{exercise}[A null set times a null set, and a null set times an interval]
 \label{ex:jordan_null_products}
-Let $X \subset \mathbb{R}$ be a Jordan null set (\cref{rem:lebesgue_vs_jordan_null}).
+Let $X \subset \mathbb{R}$ be a Jordan null set (\cref{def:jordan_inner_outer_measure}).
 \begin{enumerate}[label=\textbf{(\alph*)}]
   \item Show rigorously that $X \times X \subset \mathbb{R}^2$ is also Jordan null.
   \item Show rigorously that $X \times [0,1] \subset \mathbb{R}^2$ is also Jordan null.

@@ -11,7 +11,7 @@ In each part the work is the same two steps: find $\lvert\det\Jac\rvert$, then t
 constraint. As the exercise says, no integral is actually evaluated.
 \begin{enumerate}[label=\textbf{(\alph*)}]
   \item \textbf{Polar coordinates.} Here $\Phi(r,\theta) := (r\cos\theta, r\sin\theta)$ has
-    $\det\Jac\Phi = r > 0$ (\cref{ex:polar_spherical_coordinates}), so
+    $\det\Jac\Phi = r > 0$ (\cref{rem:coordinate_jacobians_table}), so
     $dx_1dx_2 = r\,dr\,d\theta$. The three constraints translate one at a time:
     \begin{itemize}
       \item $1 < x_1^2+x_2^2 < 4$ becomes $1 < r < 2$;
@@ -485,7 +485,7 @@ destroyed; only area survives, and area is all the change of variables formula e
 
 % Generator: Claude Opus 5 (High)
 % No solution key ships with the Einsiedler papers, so this is an independent derivation.
-\begin{exercisesolution}[\cref{ex:linear_substitution_elementary_matrices}]
+\begin{exercisesolution}[Solution to \cref{ex:linear_substitution_elementary_matrices}]
 \label{sol:linear_substitution_elementary_matrices}
 \begin{enumerate}[label=\textbf{(\alph*)}]
   \item Let $A = \operatorname{diag}(\lambda_1,\dots,\lambda_n)$ with all $\lambda_i \neq 0$, so
@@ -628,7 +628,7 @@ integral once part \textbf{(b)} is known.
 
 Note also that nothing in the computation used the particular placement of the vertices. Any
 triangle is the image of $T$ under some invertible affine map, and $z_B = \tfrac13(o+p+q)$ says
-that the centroid is carried along by that map --- an affine map sends the centroid of a region
+that the centroid is carried along by that map: an affine map sends the centroid of a region
 to the centroid of the image, because it commutes with averaging. The same is not true of the
 circumcentre or of any other centre a triangle has.
 \end{remark}
@@ -750,7 +750,7 @@ above.
       &= \frac{2t}{\sqrt{1+t^2}} \int_t^1 \sqrt{1-x^2}\,dx - 2\sqrt{1-t^4}.
     \end{align*}
     The first term accounts for the dilation of the vertical semi-axis, while the second term accounts
-    for the loss of area as the vertical cutting plane sweeps rightward at unit speed.
+    for the loss of area as the vertical cutting line sweeps rightward at unit speed.
 \end{enumerate}
 \end{exercisesolution}
 

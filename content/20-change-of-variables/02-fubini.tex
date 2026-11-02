@@ -14,6 +14,34 @@ where we look at the expression in brackets as a function, e.g.\
 $x \mapsto \int_Y f(x,y)\,dy$.
 \end{theorem}
 
+% Generator: Claude Opus 5.5 (Extra) --- proof added for self-containedness. For a continuous
+% integrand on a box it is one squeeze: the lower and upper sums of a product partition bracket
+% both the double integral and the iterated one.
+\begin{proof}[Proof for closed boxes]
+Let $X$ and $Y$ be closed, so that $f$ is uniformly continuous on the compact box $X\times Y$
+(\cref{prop:compact_implies_uniformly_continuous}). First, $F(x) := \int_Y f(x,y)\,dy$ is
+continuous, since
+$\lvert F(x)-F(x')\rvert \leq \vol(Y)\sup_{y}\lvert f(x,y)-f(x',y)\rvert$ and the supremum tends
+to $0$ as $x' \to x$; so $\int_X F$ exists.
+
+Let $\varepsilon > 0$ and cut $X$ into boxes $X_1,\dots,X_p$ and $Y$ into boxes
+$Y_1,\dots,Y_q$, so finely that $f$ varies by less than $\varepsilon$ on each $X_i\times Y_j$.
+Let $m_{ij}$ and $M_{ij}$ be the minimum and maximum of $f$ there. For $x \in X_i$, integrating
+$m_{ij} \leq f(x,y) \leq M_{ij}$ over each $Y_j$ and adding gives
+$\sum_j m_{ij}\vol(Y_j) \leq F(x) \leq \sum_j M_{ij}\vol(Y_j)$, and integrating that over each
+$X_i$ and adding,
+\[L := \sum_{i,j} m_{ij}\vol(X_i)\vol(Y_j) \ \leq\ \int_X F \ \leq\
+  \sum_{i,j} M_{ij}\vol(X_i)\vol(Y_j) =: R.\]
+But $L$ and $R$ are a lower and an upper sum of $f$ for the partition of $X\times Y$ into the
+boxes $X_i\times Y_j$, so $\int_{X\times Y}f$ lies in $[L,R]$ as well. The interval has length
+$R - L \leq \varepsilon\vol(X)\vol(Y)$, and $\varepsilon$ was arbitrary, so
+$\int_X F = \int_{X\times Y} f$. The other order is the same argument with the roles of $X$ and
+$Y$ exchanged.
+\end{proof}
+
+The proof also shows what Fubini is: a double sum $\sum_{i,j}$ may be added row by row or column
+by column, and the integral inherits that freedom from its Riemann sums.
+
 % Source: Diego Torres Tejeda/Notes - 27.04 - Diego Torres Tejeda.pdf, p. 1
 % Generator: Gemini 3.6 Flash (High)
 \begin{proposition}[Cavalieri's principle]
@@ -276,7 +304,7 @@ the two mechanical rules follow from looking:
     different numbers, which is the most common slip.
   \item \textbf{The inner limits are functions of the outer variable, read off where the slice
     enters and leaves the region.} Entering and leaving happens on the \emph{same two curves} in
-    both panels --- there is only one pair of boundary curves here. What changes is which of
+    both panels, since there is only one pair of boundary curves here. What changes is which of
     $x = y^2$ and $y = \sqrt{x}$ is the useful way to write the first of them.
 \end{itemize}
 
@@ -330,11 +358,11 @@ diffeomorphism. Now
 so that
 \[\big|\det \Jac\Phi(x,y)\big| = \left|-\frac32\,\frac{y}{\sqrt x}\right| = \frac32\,\frac{y}{\sqrt x} = \frac32\,u(x,y).\]
 So, $\Phi$ is a diffeomorphism and $du\,dv = \tfrac32 u\,dx\,dy$. Furthermore, by design,
-\[\Phi(A) = (1,2)^2.\]
+\[\Phi(A) = [1,2]^2.\]
 So, with the change of variables (\cref{thm:change_of_variables}), followed by Fubini
 (\cref{thm:fubini}),
 \[\int_A \frac{y}{\sqrt x}\,dy\,dx
-  = \int_{(1,2)^2} u\,\frac{1}{\tfrac32 u}\,du\,dv
+  = \int_{[1,2]^2} u\,\frac{1}{\tfrac32 u}\,du\,dv
   = \frac23\int_1^2 dv \int_1^2 du
   = \frac23.\]
 \end{example}

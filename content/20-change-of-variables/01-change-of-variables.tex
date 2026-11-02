@@ -13,10 +13,11 @@ and $f : A \to \mathbb{R}$ is continuous, then
 \end{theorem}
 
 \begin{ainote}
-Corsin uses \newterm{Jordan measurable} \germanfor{Jordan-messbar} here without defining it;
-the definition is in the lecture (ch.~13). For this chapter it is enough to know that boxes,
-and the bounded regions cut out by finitely many smooth curves that appear in the examples, are
-all Jordan measurable.
+Corsin uses Jordan measurability here without defining it; the definition is
+\cref{def:jordan_inner_outer_measure} in the previous chapter. For this chapter it is enough to
+know that boxes, and the bounded regions cut out by finitely many smooth curves that appear in the
+examples, are all Jordan measurable, because their boundaries are Jordan null
+(\cref{thm:jordan_measurability_boundary_criterion}).
 
 On the shape of the formula: it is often quoted the other way round, as
 $\int_{\Phi(A)} f = \int_A (f\circ\Phi)\,\lvert\det\Jac\Phi\rvert$. The version above is the same
@@ -236,7 +237,7 @@ Applying the change of variables formula and Fubini's theorem (which allows slic
 \end{align*}
 \end{example}
 
-% Quelle: Linus Lüchinger/Slides/Slides-05-11.pdf, slide 3
+% Source: Linus Lüchinger/Slides/Slides-05-11.pdf, slide 3
 % Generator: Claude Opus 5 (High)
 \begin{remark}[Polar coordinates as slicing into shells]
 \label{rem:polar_as_shells}
@@ -421,7 +422,7 @@ directions flipping.}
 \end{exercise}
 
 \begin{ainote}
-The integral in \textbf{8.5.3} is written $\int_C xyz\,dx\,dy$ on the official sheet, but $C$ is
+The integral in part \textbf{(c)} is written $\int_C xyz\,dx\,dy$ on the official sheet, but $C$ is
 a subset of $\mathbb{R}^3$ and the right-hand side carries three differentials, so this must
 read $dx\,dy\,dz$. Quoted verbatim above, as the sheet is a primary source.
 \end{ainote}
@@ -466,7 +467,7 @@ also asks for a labelled 3D sketch of $U$.}
 
 \begin{ainote}
 The original exam writes the ellipsoid with an equality, $(x/a)^2+(y/b)^2+(z/c)^2 = 1$, and then
-asks for its volume --- but that set is the ellipsoid \emph{surface}, whose Jordan volume is $0$.
+asks for its volume, but that set is the ellipsoid \emph{surface}, whose Jordan volume is $0$.
 The intended object is the solid region it bounds, so the inequality is used here.
 \end{ainote}
 
