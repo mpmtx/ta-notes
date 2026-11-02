@@ -258,7 +258,9 @@ $\mathbb{R}^2$, which supplies the open set that \cref{prop:work_difference_pote
 % Michael's Bsp. 18.2.7
 Consider the vector field $F(x,y) := (10x^4 - 2xy^3, -3x^2y^2)\transp$ and a path $\gamma$ connecting $(0,0)$ to $(2,1)$, for instance, the curve defined by $x^4 - 6xy^3 = 4y^2$.
 
-Since $F$ is defined on all of $\mathbb{R}^2$ and satisfies $\partial_y F_1 = -6xy^2 = \partial_x F_2$, it is conservative. We find a potential $f(x,y)$ by integration:
+Since $F$ is defined on all of $\mathbb{R}^2$, which is simply connected, and satisfies $\partial_y F_1 = -6xy^2 = \partial_x F_2$, it is conservative by \cref{cor:potentials_simply_connected} in the next section. Here we need not rely on that, since a potential can be found directly by integration:
+% Correction: Claude Opus 5.5 (Extra) --- "it is conservative" followed from the integrability
+% condition alone, which lem:integrability_conditions gives only as a necessary condition.
 \begin{align*}
 \partial_x f &= 10x^4 - 2xy^3 \implies f(x,y) = 2x^5 - x^2y^3 + c(y), \\
 \partial_y f &= -3x^2y^2 + c'(y).

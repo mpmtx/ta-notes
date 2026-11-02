@@ -3,6 +3,17 @@
 \section{The Poincaré lemma and simply connected domains}
 \label{sec:poincare_lemma_simply_connected}
 
+% Transition: Claude Opus 5.5 (Extra)
+\Cref{lem:integrability_conditions} gives a necessary condition for a potential. When is it also
+sufficient? \Cref{prop:work_difference_potential} points the way: a potential exists as soon as
+the integral of $F$ along a path depends only on the path's endpoints, for then
+$f(x) := \int_{x_0}^{x} F$ is well defined. The question becomes when two paths with the same
+endpoints give the same integral. For a field satisfying the integrability conditions, which in
+the language of \cref{ch:differential_forms} says that the $1$-form
+$\alpha = \sum_k F_k\,dx^k$ is closed, the answer is: whenever one path can be deformed into the
+other.
+
+% Transcribed content resumes here (provenance: the % Originally: line at the top of this file).
 \begin{theorem}[Poincaré Lemma]
 \label{thm:poincare_lemma}
 Let $U \subseteq \mathbb{R}^n$ be open, and let $\alpha \in \Omega^1(U)$ be a $C^1$ closed $1$-form, that is, $d\alpha = 0$.

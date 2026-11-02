@@ -13,8 +13,13 @@
 
 % Transition: Claude Opus 5 (High)
 Having examined how maps behave between metric spaces, we return to a property of a single space.
-Does every sequence that \qt{looks like} it ought to converge (\cref{def:convergent_sequence})
-actually do so? A space where the answer is yes is called complete.
+Does every sequence that \qt{looks like} it ought to converge, because its terms eventually crowd
+arbitrarily close together, actually converge in the sense of \cref{def:convergent_sequence}?
+Such sequences are called Cauchy, and a space in which every one of them converges is called
+complete.
+% Correction: Claude Opus 5.5 (Extra) --- the reference to def:convergent_sequence sat on the
+% phrase "looks like it ought to converge", i.e. on the Cauchy condition, which that definition
+% is not; and the intro never said what such a sequence is called.
 
 Completeness is the first genuinely \emph{metric} rather than topological property met in this
 part, and the distinction is sharp: two metrics can generate exactly the same open sets while
