@@ -12,7 +12,7 @@ domain $D \subseteq \mathbb{R}^n$ if, for every $x \in D$, $\omega(x) = \omega_x
 of $\mathbb{R}^n$ for every $x \in D$, \cref{prop:k_form_basis_expansion} lets us write
 \[\omega(x) = \sum_{1\leq i_1<\cdots<i_p\leq n} \omega_{i_1\cdots i_p}(x)\,e_{i_1}^*(x)\wedge
   \cdots\wedge e_{i_p}^*(x)\]
-for functions $\omega_{i_1\cdots i_p} : \mathbb{R}^n \to \mathbb{R}$.
+for functions $\omega_{i_1\cdots i_p} : D \to \mathbb{R}$.
 \end{definition}
 
 % Source: Corsin Nick/Class Notes/Week 11.pdf, p. 11
@@ -83,6 +83,22 @@ the shape
   dx^{i_p} = \sum_I \omega_I\,dx^I, \qquad \omega_I \in C^\infty(U),\]
 with exterior derivative
 \[d\omega = \sum_I d\omega_I \wedge dx^I.\]
+
+% Generator: Claude Opus 5.5 (Extra) --- the formula above was stated bare. That it is forced by
+% (a)-(c) is three lines, proves the uniqueness half of thm:exterior_derivative, and shows where
+% d o d = 0 comes from on functions.
+This formula is not a further choice: properties \textbf{(a)}--\textbf{(c)} force it. Since
+$dx^i = d(x^i)$ by \textbf{(a)}, property \textbf{(c)} gives $d(dx^i) = 0$, and then
+\textbf{(b)}, applied repeatedly, gives $d(dx^I) = 0$ for every wedge of coordinate differentials.
+One more application of \textbf{(b)} yields
+$d(\omega_I\,dx^I) = d\omega_I\wedge dx^I + \omega_I\,d(dx^I) = d\omega_I\wedge dx^I$, and
+linearity does the rest. That is the uniqueness half of \cref{thm:exterior_derivative}; existence
+amounts to checking that the formula does satisfy \textbf{(b)} and \textbf{(c)}. For a function
+$f$, the check of \textbf{(c)} is Schwarz's theorem in disguise:
+\[d(df) = \sum_{i,j}\partial_j\partial_if\,dx^j\wedge dx^i = 0,\]
+because the coefficient $\partial_j\partial_if$ is symmetric in $(i,j)$
+(\cref{thm:schwarz_mixed_partials}) while $dx^j\wedge dx^i$ is antisymmetric, so the terms cancel
+in pairs.
 
 % Source: Corsin Nick/Class Notes/Week 11.pdf, pp. 14--15
 \begin{example}[The exterior derivative recovers the gradient and the curl]
@@ -283,5 +299,3 @@ the second (\cref{thm:exterior_derivative}). The degree bookkeeping is what make
 in different spaces: $df\wedge\lambda$ is a $2$-form in \textbf{(a)}--\textbf{(c)} and a $3$-form
 in \textbf{(d)}--\textbf{(f)}, which is why the requested output shapes differ.
 \end{ainote}
-
-% Supplement: Sascha Brack/Class Notes/Week_11_Notes_Friday.pdf, pp. 2--4

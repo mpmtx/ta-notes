@@ -34,11 +34,14 @@
 
 \begin{remark}[The cross product is a $2$-form in disguise]
 \label{rem:cross_product_is_a_two_form}
-This is not a coincidence about these two vectors. Comparing with example item \textbf{(d)} of
-\cref{sec:differential_forms}, the identity says exactly that
-$\omega^2_{v\times w} = dx^1\wedge dx^2$-and-friends evaluated on $(v,w)$, i.e.\ that the cross
-product \emph{is} the $2$-form $(v,w) \mapsto \det(\,\cdot\mid v\mid w)$ read as a vector through
-the $\mathbb{R}^3$ inner product.
+This is not a coincidence about these two vectors. Expanding $\det(u\mid v\mid w)$ along its
+first column, as in example item \textbf{(c)} of \cref{sec:differential_forms}, gives
+$\det(u\mid v\mid w) = \langle u,\ v\times w\rangle$ for every $u$, with exactly the three
+shadows above, in cyclic order, as the components of $v \times w$. So the cross product
+\emph{is} the $2$-form $(v,w) \mapsto \det(\,\cdot\mid v\mid w)$, read as a vector through the
+inner product of $\mathbb{R}^3$; example item \textbf{(d)} records the same fact.
+% Correction: Claude Opus 5.5 (Extra) --- the first sentence read "omega^2_{v x w} = dx^1 ^ dx^2
+% -and-friends evaluated on (v,w)", which does not parse as an identity.
 
 Two things fall out. The alternating sign that everyone memorises in the cofactor expansion of
 $v\times w$ is the same sign as $dx^3\wedge dx^1 = -\,dx^1\wedge dx^3$, so it is antisymmetry
@@ -94,8 +97,8 @@ cross product.
 
 \begin{remark}[What the counterexample is really about]
 \label{rem:angle_form_hole}
-The obstruction is not analytic but topological. On any simply connected subset of $U$ --- the
-plane slit along a ray, say --- the form \emph{is} exact, with $f$ the polar angle $\theta$,
+The obstruction is not analytic but topological. On any simply connected open subset of $U$ (the
+plane slit along a ray, say) the form \emph{is} exact, with $f$ the polar angle $\theta$,
 which is why $\omega$ is called the \newterm{angle form}. What fails on all of
 $\mathbb{R}^2\setminus\{0\}$ is that $\theta$ cannot be defined continuously all the way round:
 it gains $2\pi$ per circuit, and $2\pi$ is exactly the integral computed above.
@@ -142,7 +145,7 @@ theorems need a hypothesis on the domain at all.
 % NOT % Generator: --- the mathematics below is Serra's own worked solution from the same sheet,
 % reformulated to house style, not authored here. Every one of the six was re-derived
 % independently before his page was read, and all six of his boxed answers are correct.
-\begin{exercisesolution}[\cref{ex:serra_df_wedge_lambda}]
+\begin{exercisesolution}[Solution to \cref{ex:serra_df_wedge_lambda}]
 \label{sol:serra_df_wedge_lambda}
 Throughout, the only two facts used are that $\wedge$ is bilinear and that it is alternating on
 $1$-forms, so $dx\wedge dx = 0$ and $dy\wedge dx = -dx\wedge dy$.

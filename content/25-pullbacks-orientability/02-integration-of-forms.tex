@@ -9,7 +9,7 @@ and $\omega \in \Omega^m(\mathcal{M})$ is an $m$-form, then
 \[\int_{\mathcal{M}} \omega := \int_{\mathcal{M}} \omega_x(e_1,\ldots,e_m)\,dx;\]
 in particular, for $f \in C^\infty(\mathcal{M})$,
 \[\int_{\mathcal{M}} f\,dx^1\wedge\cdots\wedge dx^m = \int_{\mathcal{M}} f(x)\,dx,\]
-recovering the ordinary Lebesgue integral of $f$.
+recovering the ordinary (Riemann) integral of $f$.
 
 \begin{definition}[Integral of a form over a parametrized submanifold]
 \label{def:integral_of_form_over_submanifold}
@@ -21,7 +21,7 @@ is a parametrization with $U \subseteq \mathbb{R}^k$ open, then the integral of 
 \end{definition}
 
 In particular, for $f \in C^\infty(L)$ and $1\leq i_1<\cdots<i_k\leq n$,
-\[\int_L f\,dx^{i_1}\wedge\cdots\wedge dx^{i_k} = \int_U f(x)\det\!\left(\frac{\partial
+\[\int_L f\,dx^{i_1}\wedge\cdots\wedge dx^{i_k} = \int_U f(\phi(x))\det\!\left(\frac{\partial
   \phi^{i_s}}{\partial x^t}\right)_{1\leq s,t\leq k} dx,\]
 because, by property \textbf{(d)} of \cref{def:wedge_product},
 \[dx^{i_1}\wedge\cdots\wedge dx^{i_k}(\partial_1\phi,\ldots,\partial_k\phi) = \det\!\left(
@@ -30,7 +30,7 @@ because, by property \textbf{(d)} of \cref{def:wedge_product},
   \end{smallmatrix}\right) = \det\!\left(\frac{\partial\phi^{i_s}}{\partial x^t}\right)_{1\leq
   s,t\leq k}.\]
 
-% Quelle: Linus Lüchinger/Slides/Slides-05-11.pdf, slides 7--8
+% Source: Linus Lüchinger/Slides/Slides-05-11.pdf, slides 7--8
 % Generator: Claude Opus 5 (High)
 \begin{aiexample}[Evaluating a $2$-form on a concrete pair of vectors]
 \label{ex:evaluating_a_two_form}
@@ -92,7 +92,11 @@ Let $U \subseteq \mathbb{R}^n$ be open and $f: U \to \mathbb{R}$ a continuous fu
 \[
 \operatorname{supp}(f) := \overline{\{x \in U \mid f(x) \neq 0\}}.
 \]
-If $\operatorname{supp}(f)$ is a bounded set (and $\operatorname{supp}(f) \subset U$), we say that $f$ is \newterm{compactly supported} \germanfor{kompakt getragen}.
+If $\operatorname{supp}(f)$ is compact, that is, bounded and with no limit point on the boundary
+of $U$, we say that $f$ is \newterm{compactly supported} \germanfor{kompakt getragen}.
+% Correction: Claude Opus 5.5 (Extra) --- read "if supp(f) is a bounded set (and supp(f) in U)",
+% but the closure is taken in U, so supp(f) lies in U automatically and boundedness alone does not
+% give compactness: f = 1 on U = (0,1) has the bounded, non-compact support (0,1).
 \end{definition}
 
 % Source: Jérôme Paschoud/Notizen/Woche 9.2 d-Volumen.pdf, p. 2

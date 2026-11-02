@@ -32,10 +32,13 @@ along smooth maps:
 This is precisely the operation used, informally, in the reparametrization-invariance
 motivation for \cref{def:antisymmetric_k_linear_form}: writing $\phi^*\omega$ and
 $(\phi\circ\Psi)^*\omega$ for the two sides of that calculation makes it read as $\int_D
-\phi^*\omega = \int_V (\phi\circ\Psi)^*\omega = \int_V \Psi^*(\phi^*\omega)$, i.e.\ property
-\textbf{(a)} applied to $\phi^*\omega$ and the fact that pullback along a composition is the
-composition of
-pullbacks.
+\phi^*\omega = \int_V \Psi^*(\phi^*\omega) = \int_V (\phi\circ\Psi)^*\omega$. The first step is
+the change of variables formula for a top-degree form, $\int_D\eta = \int_V\Psi^*\eta$ when
+$\det D\Psi > 0$ (\cref{ex:change_of_variables_differential_forms}), applied to
+$\eta := \phi^*\omega$; the second is the fact that pullback along a composition is the
+composition of pullbacks, $(\phi\circ\Psi)^* = \Psi^*\circ\phi^*$, which is the chain rule.
+% Correction: Claude Opus 5.5 (Extra) --- attributed the calculation to "property (a)", which is
+% the wedge-product rule and plays no part in it.
 \end{ainote}
 
 % Source: Jérôme Paschoud/Notizen/Woche 12.1 Differentialformen.pdf, p. 7

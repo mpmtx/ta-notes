@@ -353,9 +353,14 @@ F,\nu\rangle\,d\vol_{n-1}$ already noted in \cref{ch:pullbacks}.
 The pattern is worth stating in words, because it is easy to lose under the notation: a
 $k$-dimensional derivative measured \emph{inside} a region always equals the corresponding
 $(k{-}1)$-dimensional quantity measured on its \emph{boundary}. Differentiation and taking a
-boundary are, in this precise sense, the same operation viewed from two sides. That is also
-exactly the content of $d^2=0$ (\cref{thm:exterior_derivative}\textbf{(c)}): a boundary has no
-boundary, just as $d\omega$ has no further exterior derivative to take that isn't already zero.
+boundary are, in this precise sense, the same operation viewed from two sides. And $d^2=0$
+(\cref{thm:exterior_derivative}\textbf{(c)}) is the mirror image of the fact that a boundary has
+no boundary: for compact $M$, Stokes' theorem applied twice gives
+$\int_M d(d\omega) = \int_{\partial M} d\omega = \int_{\partial(\partial M)}\omega = 0$, since
+$\partial(\partial M) = \emptyset$.
+% Correction: Claude Opus 5.5 (Extra) --- called d^2 = 0 "exactly the content" of the pattern and
+% explained it as "dw has no further exterior derivative to take that isn't already zero", which
+% restates d^2 = 0 rather than relating it to anything. The relation is duality with bd o bd = 0.
 \end{remark}
 
 % Source: old_exams/examFS24.pdf (21 August 2024), Problem 3, parts 1--2, p. 10

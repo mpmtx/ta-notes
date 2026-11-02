@@ -10,6 +10,26 @@ Let $\gamma_0, \gamma_1 : [0,1] \to U$ be piecewise $C^1$ paths with the same in
 \[\int_{\gamma_0} \alpha = \int_{\gamma_1} \alpha.\]
 \end{theorem}
 
+% Generator: Claude Opus 5.5 (Extra) --- proof added for self-containedness. With a smooth homotopy
+% it is four lines: closedness of alpha, pulled back to the square, says that the integral along
+% the intermediate paths has derivative equal to a boundary term, and the fixed endpoints kill it.
+\begin{proof}
+Write $H(s,\cdot)$ for the intermediate paths, so that $H(0,\cdot) = \gamma_0$ and
+$H(1,\cdot) = \gamma_1$, and pull $\alpha$ back to the square (\cref{def:pullback_of_forms}):
+\[H^*\alpha = P\,ds + Q\,dt, \qquad P := \alpha_H(\partial_sH), \quad Q := \alpha_H(\partial_tH).\]
+The pullback commutes with $d$, so
+$(\partial_sQ - \partial_tP)\,ds\wedge dt = d(H^*\alpha) = H^*(d\alpha) = 0$, that is,
+$\partial_sQ = \partial_tP$. Now $I(s) := \int_0^1 Q(s,t)\,dt$ is the integral of $\alpha$ along
+the path $H(s,\cdot)$, so the claim is $I(0) = I(1)$. Differentiating under the integral sign
+(\cref{thm:feynmans_trick}),
+\[I'(s) = \int_0^1 \partial_sQ(s,t)\,dt = \int_0^1 \partial_tP(s,t)\,dt = P(s,1) - P(s,0).\]
+Both terms vanish, because the endpoints are fixed: $H(s,0) = x_0$ and $H(s,1) = x_1$ for every
+$s$, so $\partial_sH = 0$ at $t = 0$ and at $t = 1$. Hence $I$ is constant.
+\end{proof}
+
+The proof shows what \qt{closed} means geometrically. Deforming the path changes the integral
+only through what happens at its ends, and with the ends pinned there is nothing left to change.
+
 \begin{corollary}[Existence of potentials in simply connected domains]
 \label{cor:potentials_simply_connected}
 Let $U \subseteq \mathbb{R}^n$ be an open \newterm{simply connected} set. Then every closed $C^1$ $1$-form on $U$ is exact. That is, if $\alpha \in \Omega^1(U)$ satisfies $d\alpha = 0$, then there exists a function $f \in C^2(U)$ such that $\alpha = df$.

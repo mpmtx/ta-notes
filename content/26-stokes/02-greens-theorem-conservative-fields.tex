@@ -3,9 +3,9 @@
 \section{Green's theorem and conservative fields}
 \label{sec:greens_theorem_conservative_fields}
 
-\begin{ainote}
-Green's theorem, conservative vector fields, and path integrals were also discussed in the Monday session. 
-\end{ainote}
+% Green's theorem, conservative vector fields and path integrals were also discussed in Sascha
+% Brack's Monday session (Week_11_Notes_Monday.pdf, pp. 5--10). This stood as an ainote until the
+% 2026-11 review; it is editor-facing, so it is a comment now.
 
 \subsection{Line integrals (Wegintegrale)}
 
@@ -49,8 +49,8 @@ Read the definition before trusting the name: $\gamma * \sigma$ traverses $\bold
 $\gamma(0) = \sigma(1)$ rather than the other way round. The ordering is the one familiar from
 composition of maps, where $f \circ g$ applies $g$ first, and the sheet's own phrase
 \qt{concatenation of $\sigma$ and $\gamma$} names them in the order they are traversed even though
-the symbol does not. Nothing below depends on the convention --- the sum on the right is symmetric
---- but a diagram drawn with the paths the wrong way round will not close up.
+the symbol does not. Nothing below depends on the convention (the sum on the right is symmetric),
+but a diagram drawn with the paths the wrong way round will not close up.
 \end{ainote}
 
 \subsection{Green's theorem}
@@ -125,7 +125,9 @@ where $\tau$ is the unit tangent vector to the boundary $\partial\Omega$ oriente
   \draw[purple, ->] (-0.25,0.30) -- (-0.25,0.52);
 \end{tikzpicture}
 \end{center}
-We integrate the rotation inside the domain. Basically all the \qt{intermediate values} cancel out because for two points close to each other, the rotation points in opposite directions. Only the boundary is left over in the end!
+We integrate the rotation inside the domain, cell by cell. Every interior edge is traversed
+twice, once by each of the two cells that share it and in opposite directions, so its
+contributions cancel. Only the boundary is left over in the end!
 \end{ainote}
 
 \begin{example}[Area of a region via Green's theorem]
@@ -137,7 +139,14 @@ By Green's theorem, we have:
 \[\vol_2(\Omega) = \int_\Omega \curl F \mathop{d\text{vol}}_2 = \int_{\partial\Omega} F \cdot \tau \,dL = \int_0^{\pi/2} F(\varphi(t)) \cdot \varphi'(t) \,dt.\]
 Since $\tau(\varphi(t)) \,dL = \varphi'(t) \,dt$ along the parametrization, we compute the dot product:
 \[F(\varphi(t)) \cdot \varphi'(t) = \begin{pmatrix} 0 \\ \varphi_1(t) \end{pmatrix} \cdot \begin{pmatrix} \varphi_1'(t) \\ \varphi_2'(t) \end{pmatrix} = \varphi_1(t)\varphi_2'(t).\]
-This turns the area computation into a single 1D integral in $t$.
+The two straight pieces of $\partial\Omega$ contribute nothing: on the $y$-axis $F = 0$, and on the
+$x$-axis $F$ is vertical while the boundary runs horizontally. So the area is a single
+one-dimensional integral,
+\[\vol_2(\Omega) = \int_0^{\pi/2} \cos^3t\cdot 3\sin^2t\cos t\,dt
+  = 3\int_0^{\pi/2}\cos^4t\,\sin^2t\,dt = 3\cdot\frac{\pi}{32} = \frac{3\pi}{32},\]
+a quarter of the area $3\pi/8$ enclosed by the whole astroid.
+% Correction: Claude Opus 5.5 (Extra) --- the example stopped at "a single 1D integral" without
+% evaluating it, and did not say why the two axis segments of the boundary drop out.
 \end{example}
 
 \begin{example}[Line integral via Green's theorem]
@@ -238,7 +247,9 @@ By the fundamental theorem of calculus, this equals $(f \circ \gamma)(1) - (f \c
 Consider the vector field $F : [0,1] \times [0,2] \to \mathbb{R}^2$ given by $F(x,y) := (y^2, 2xy)\transp$.
 First, we show that $F$ is conservative by finding a potential $f$ such that $\nabla f = F$. We need $\partial_x f = y^2$ and $\partial_y f = 2xy$. Integrating the first equation with respect to $x$ gives $f(x,y) = xy^2 + c(y)$. Differentiating with respect to $y$ gives $\partial_y f = 2xy + c'(y)$, which must equal $2xy$. Thus $c'(y) = 0$, and we can choose $c(y) = 0$. The potential is $f(x,y) = xy^2$.
 
-Now, let $\Gamma$ be a closed path on the boundary $\partial U$ of the domain, starting and ending at $\gamma(0) = \gamma(1) = (0,0)\transp$. By \cref{prop:work_difference_potential}, the line integral around this closed loop is simply the difference in potential at the endpoints:
+Now let $\Gamma$ be a closed path in the rectangle, for instance its boundary, parametrized by
+$\gamma$ with $\gamma(0) = \gamma(1) = (0,0)\transp$. (The formula for $F$ makes sense on all of
+$\mathbb{R}^2$, which supplies the open set that \cref{prop:work_difference_potential} asks for.) By \cref{prop:work_difference_potential}, the line integral around this closed loop is simply the difference in potential at the endpoints:
 \[\oint_\Gamma F \cdot d\gamma = f(\gamma(1)) - f(\gamma(0)) = f(0,0) - f(0,0) = 0.\]
 \end{example}
 

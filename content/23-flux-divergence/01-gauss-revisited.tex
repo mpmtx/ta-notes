@@ -25,7 +25,7 @@ for a square}
 % what the block claims to be, and Corsin's own framing is that it proves the theorem.
 
 % Source: Corsin Nick/Class Notes/Week 11.pdf, p. 2
-Gauss' theorem (\cref{thm:gauss_divergence}), proved in \cref{sec:flux_divergence_theorem}
+Gauss' theorem (\cref{thm:gauss_divergence}), stated in \cref{sec:flux_divergence_theorem}
 below, is, in a precise sense, a higher-dimensional
 fundamental theorem of calculus: it trades a derivative integrated over a region for the
 original quantity evaluated on the region's boundary. Setting $n=1$ makes the analogy
@@ -79,8 +79,8 @@ Grouping the first pair and the second pair,
 \int_{\partial B} \langle F,\nu\rangle\,d\vol_1
   = \int_0^1 \big[F_1(1,t) - F_1(0,t)\big]\,dt + \int_0^1 \big[F_2(t,1) - F_2(t,0)\big]\,dt.
 \]
-By the fundamental theorem of calculus applied to $t \mapsto F_1(s,t)$ along $s$ and to
-$s \mapsto F_2(t,s)$ along the second variable,
+By the fundamental theorem of calculus applied to $s \mapsto F_1(s,t)$ and to
+$s \mapsto F_2(t,s)$, each on $[0,1]$,
 \[
 \int_{\partial B} \langle F,\nu\rangle\,d\vol_1
   = \int_0^1\!\!\left(\int_0^1 \partial_1 F_1(s,t)\,ds\right) dt

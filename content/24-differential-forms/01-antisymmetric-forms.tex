@@ -74,8 +74,9 @@ standard basis.
 In the lecture, antisymmetry was replaced by the equivalent condition
 \[L(VA) = L(V)\det(A), \qquad V := (v_1,\ldots,v_k) \in \mathrm{Mat}_{n\times k}(\mathbb{R}),
   \quad A \in \mathrm{Mat}_{k\times k}(\mathbb{R}),\]
-writing $L(V)$ for $L(v_1,\ldots,v_k)$. We verify the equivalence in the special case $n=3$,
-$k=2$: let $V = (v\mid w) \in \mathrm{Mat}_{3\times2}(\mathbb{R})$ and $A = \begin{pmatrix} a &
+writing $L(V)$ for $L(v_1,\ldots,v_k)$. One direction is immediate: taking for $A$ the matrix
+that swaps two columns, with $\det A = -1$, gives back antisymmetry. We verify the other in the
+special case $n=3$, $k=2$: let $V = (v\mid w) \in \mathrm{Mat}_{3\times2}(\mathbb{R})$ and $A = \begin{pmatrix} a &
 b \\ c & d \end{pmatrix}$, so that $VA = (av+cw \mid bv+dw)$. Rewriting $L(VA)$ in bilinear
 form and using $L(v,v) = -L(v,v) = 0$ (from antisymmetry) together with $L(w,v) = -L(v,w)$,
 \begin{align}
@@ -114,8 +115,8 @@ The following properties of $\wedge$ are the ones actually used:
   \item For $1$-forms $L_1,\ldots,L_k$ and vectors $v_1,\ldots,v_k \in \mathbb{R}^n$,
   \[L_1\wedge L_2\wedge\cdots\wedge L_k(v_1,\ldots,v_k) = \det\big(L_i(v_j)\big)_{1\leq i,j
   \leq k}.\]
-  \item For $\alpha(T) := \det(AT)$, $\beta(S) := \det(BS)$ as in \cref{def:antisymmetric_k_linear_form}
-  example \textbf{(a)},
+  \item For $\alpha(T) := \det(AT)$, $\beta(S) := \det(BS)$ as in example \textbf{(a)} of the two
+  families above,
   \[\alpha\wedge\beta(X) = \det\!\left(\begin{bmatrix} A \\ B \end{bmatrix} X\right).\]
 \end{enumerate}
 
@@ -284,6 +285,13 @@ L(v_1,\ldots,v_k) &= \sum_{1\leq i_1<\cdots<i_k\leq n} L(e_{i_1},\ldots,e_{i_k})
 with $\ell_{i_1\cdots i_k} := L(e_{i_1},\ldots,e_{i_k})$, using that the inner sum over $\sigma$
 is exactly the determinant expansion of $e_{i_1}^*\wedge\cdots\wedge e_{i_k}^*(v_1,\ldots,v_k)$
 from property \textbf{(d)} above.
+
+For uniqueness, evaluate both sides at $(e_{j_1},\ldots,e_{j_k})$ with $j_1 < \cdots < j_k$. By
+property \textbf{(d)}, $e_{i_1}^*\wedge\cdots\wedge e_{i_k}^*(e_{j_1},\ldots,e_{j_k})$ is the
+determinant of the matrix $\big(\delta_{i_a j_b}\big)_{a,b}$, which is $1$ if the two increasing
+tuples agree and has a zero row otherwise. So the right-hand side returns
+$\ell_{j_1\cdots j_k}$, and the coefficients are the values of $L$ on increasing tuples of basis
+vectors, whatever expansion one started from.
 \end{proof}
 
 \begin{aiexercise}[Reading off all three shadows]

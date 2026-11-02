@@ -31,9 +31,9 @@ C^1(\overline\Omega,\mathbb{R}^3)$ a vector field, and let $\phi : B \to \partia
     {\lvert\partial_1\phi(x)\times\partial_2\phi(x)\rvert}$ is an (interior or exterior) Gauss
     map (more precisely, $\nu\circ\phi^{-1}$ is a Gauss map, i.e.\
     $\nu(x) \in N_{\phi(x)}(\partial\Omega\setminus N)$).
-  \item The Gram determinant is given by
+  \item The square root of the Gram determinant is given by
     $\sqrt{\det D\phi(x)\transp D\phi(x)} = \lvert\partial_1\phi(x)\times\partial_2\phi(x)
-    \rvert$.
+    \rvert$ (\cref{ex:gram_m2_n3_area}).
   \item Therefore,
     \[\int_{\partial\Omega} \vec F\cdot d\vec A = \pm\int_B \big\langle F\circ\phi(x),\
       \partial_1\phi(x)\times\partial_2\phi(x)\big\rangle\,dx,\]
@@ -209,11 +209,11 @@ of its cross-product bookkeeping.
 
 \begin{ainote}
 Corsin writes the divergence as $\divg F = z$ directly without the intermediate
-$\partial_x(xz)+\partial_z(z)+\partial_y(y)$ step; spelled out above for clarity. Worth
+$\partial_x(xz)+\partial_y(z)+\partial_z(y)$ step; spelled out above for clarity. Worth
 noting how much the two computations of the same flux differ in character: the direct
 definition needs an explicit Gauss map, an orientation sanity check, and three cross terms
-in the integrand, while the divergence theorem needs only $\divg F$ and a coordinate change
-already used in \cref{ex:paraboloid_patch_area}. This is the theorem's main
+in the integrand, while the divergence theorem needs only $\divg F$ and the spherical coordinates
+already used in \cref{ex:volume_sphere}. This is the theorem's main
 practical use, and it is not conceptual elegance but the plain fact that $\divg F$ is often far
 simpler than $F$ restricted to a curved boundary.
 \end{ainote}
@@ -558,9 +558,12 @@ at all, so the correct majorant is a quantity blind to constants: the oscillatio
 
 Once that is seen, the proof writes itself, and this is the general shape: to prove an estimate
 invariant under some family of perturbations, first normalise using the invariance, then be as
-crude as you like. Note also how little was used. The field is $C^1$ only so that the divergence
-theorem applies to the constant field's counterpart; no derivative of $f$ appears in the final
-bound, and the constant $4\pi$ is just the area of the sphere. The same statement holds for any
+crude as you like. Note also how little was used. The divergence theorem was applied only to the
+constant field $c$, so the hypothesis that $f$ is $C^1$ is never used; continuity, which makes the
+flux integral exist, is all the proof needs. No derivative of $f$ appears in the final bound, and
+the constant $4\pi$ is just the area of the sphere.
+% Correction: Claude Opus 5.5 (Extra) --- said f is C^1 "so that the divergence theorem applies
+% to the constant field's counterpart"; the theorem is applied to c alone and never to f. The same statement holds for any
 bounded $C^1$ domain, with $C$ the area of its boundary.
 \end{remark}
 \exinfo{This example is taken from the Analysis I \& II examination of summer 2018

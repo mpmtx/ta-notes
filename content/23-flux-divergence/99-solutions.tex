@@ -163,7 +163,7 @@ What survives is the radial field $(x,y,z)$, whose divergence is $3$.
 \[\int_{\partial U} \langle E,\nu\rangle \, d\vol_2 = \frac{1}{r_0^2}\,\vol_2(\partial B_{r_0}(0)) = \frac{4\pi r_0^2}{r_0^2} = 4\pi.\]
 \end{enumerate}
 \begin{remark}
-The answer does not depend on $a$, $b$, $c$ --- or, for that matter, on the shape of $U$ at all,
+The answer does not depend on $a$, $b$, $c$, nor for that matter on the shape of $U$ at all,
 only on whether it encloses the origin. That is Gauss' law: the flux counts the charge inside, and
 nothing else. The $r_0$ in the argument is a device that never appears in the answer, which is the
 usual sign that the quantity computed is a topological one.
@@ -183,7 +183,7 @@ using $\vol_2(U) = 1$. Setting this equal to $1$ gives $\boxed{\alpha = 2}$.
 \begin{remark}
 The terms $3y^2$ and $2x$ are decoration: they contribute nothing to the divergence, so nothing to
 the flux, however violently they stir the field around inside $U$. Only the parts of $F_\alpha$ that
-create or destroy field lines --- here $\alpha x$ and $-y$ --- can be seen from the boundary. Note
+create or destroy field lines (here $\alpha x$ and $-y$) can be seen from the boundary. Note
 also that the answer is independent of the shape of $U$ and uses only its area.
 \end{remark}
 \end{exercisesolution}
@@ -336,7 +336,7 @@ have to compute a volume there.
 
 % Generator: Claude Opus 5 (High)
 % No solution key ships with the Knörrer papers, so this is an independent derivation.
-\begin{exercisesolution}[\cref{ex:knoerrer_divergence_free_compact_support}]
+\begin{exercisesolution}[Solution to \cref{ex:knoerrer_divergence_free_compact_support}]
 \label{sol:knoerrer_divergence_free_compact_support}
 \begin{enumerate}[label=\textbf{(\alph*)}]
   \item The product rule for the divergence of a scalar multiple of a vector field reads
@@ -419,7 +419,7 @@ The mechanism is worth naming. Part \textbf{(a)} is \newterm{Green's first ident
 integration by parts: the product rule for $\divg(u\nabla u)$, which is
 \cref{ex:differential_identities_true_false}\textbf{(d)}, trades a derivative from one factor to
 the other at the cost of a boundary term. The harmonicity is what kills the term that would
-otherwise survive, and the sign is what makes the argument work at all --- $\lvert\nabla
+otherwise survive, and the sign is what makes the argument work at all: $\lvert\nabla
 u\rvert^2$ has one sign, so a vanishing integral forces a vanishing integrand, which no
 indefinite quantity would allow.
 \end{remark}
@@ -519,7 +519,7 @@ for the extremum over $\Omega$, the form in which the strong maximum principle i
   \item \textbf{True}, and note that the field above already illustrates it: $I_r = 4\pi$ for
     every $r$. In general, fix $0 < r_1 < r_2$ and integrate over the shell
     $A := \{x \mid r_1 \leq \lvert x\rvert \leq r_2\}$, which is a compact smoothly bounded region
-    contained in $U$ --- this is the step the puncture at the origin does not obstruct, and it is
+    contained in $U$. This is the step the puncture at the origin does not obstruct, and it is
     why the hypothesis is enough. Its boundary is the two spheres, and the outward normal of $A$
     on the inner one is $-\nu$, pointing towards the origin. So \cref{thm:gauss_divergence} gives
     \[0 = \int_A \divg f\,d\vol_3 = I_{r_2} - I_{r_1} .\]
@@ -530,7 +530,7 @@ for the extremum over $\Omega$, the form in which the strong maximum principle i
     which depends on $r$ as much as anything could. Being curl free constrains circulation, not
     flux, and the two conditions answer different questions.
   \item \textbf{True.} By \cref{prop:curl_grad_div_curl_zero} the field $\curl g$ is divergence
-    free, so part \textbf{(b)} already makes $I_r$ independent of $r$ --- but that alone does not
+    free, so part \textbf{(b)} already makes $I_r$ independent of $r$. That alone does not
     give the value $0$, as part \textbf{(a)} shows, and it cannot be obtained by letting
     $r \to 0$, since $g$ need not extend across the origin. What settles it is that a sphere has
     no boundary. Cut $\partial B_r(0)$ along its equator $C$ into the upper and lower caps

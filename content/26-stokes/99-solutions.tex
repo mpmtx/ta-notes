@@ -40,8 +40,8 @@ Adding $A$ and $B$ gives the claim. Note that $F$ enters only through its contin
 hypothesis $F \in C^1$ is more than the statement needs.
 
 \textbf{In terms of work.} The work done against a force field over a journey is the sum of the
-work done over its legs. Nothing about the field is required for this --- not conservativity, not
-even path independence --- because it is a statement about the \emph{path}, not the field: the
+work done over its legs. Nothing about the field is required for this (not conservativity, not
+even path independence), because it is a statement about the \emph{path}, not the field: the
 integral does not know that the journey was made in two stages.
 \begin{remark}[The factor $2$ is the whole proof, and it is not a coincidence]
 \label{rem:line_integral_reparametrisation_invariance}
@@ -53,7 +53,7 @@ That cancellation is not special to this substitution. It is
 $\varphi : [a,b] \to [0,1]$, the substitution $s = \varphi(t)$ gives
 $\int_{\gamma\circ\varphi} F\cdot d(\gamma\circ\varphi) = \int_\gamma F \cdot d\gamma$, by the same
 one-line chain rule and change of variable. The line integral depends on the curve and the
-direction of travel, not on the schedule --- which is what licenses writing $\int_\gamma F$ for a
+direction of travel, not on the schedule, which is what licenses writing $\int_\gamma F$ for a
 \emph{curve} at all, as the rest of this chapter does. Reverse the direction and the sign flips,
 since $\varphi$ is then decreasing.
 \end{remark}
@@ -381,7 +381,7 @@ also a gradient is precisely what the domain decides.
     that hypothesis.
   \item \textbf{True.} The half-plane $V$ is convex, hence simply connected, so a closed field on it
     is exact (\cref{cor:potentials_simply_connected}). Explicitly, $v(x,y) := \arctan(y/x)$ is $C^1$
-    on $V$ --- note $x > 0$ there, so the quotient is defined and smooth --- and
+    on $V$ (note $x > 0$ there, so the quotient is defined and smooth), and
 \[\nabla v = \frac{1}{1 + y^2/x^2}\left(-\frac{y}{x^2},\; \frac{1}{x}\right)
    = \frac{1}{x^2+y^2}\,(-y,\, x) = X .\]
     The potential is the polar angle, which is single-valued on the half-plane but not on $U$: that
@@ -406,7 +406,7 @@ also a gradient is precisely what the domain decides.
 \begin{remark}
 This one field carries most of the chapter's content. It is closed but not exact, so it separates the
 two notions; the failure is measured by an integer, the winding number; and the obstruction is a
-property of the \emph{domain}, not of the field --- restrict it to any simply connected piece of $U$,
+property of the \emph{domain}, not of the field. Restrict it to any simply connected piece of $U$,
 as in \textbf{(b)}, and a potential appears at once.
 \end{remark}
 \end{exercisesolution}
@@ -527,7 +527,7 @@ that is the difference between one line and half a page.
 
 % Generator: Claude Opus 5 (High)
 % No solution key ships with the Jossen papers, so this is an independent derivation.
-\begin{exercisesolution}[\cref{ex:jossen_potential_on_disconnected_domain}]
+\begin{exercisesolution}[Solution to \cref{ex:jossen_potential_on_disconnected_domain}]
 \label{sol:jossen_potential_on_disconnected_domain}
 \begin{enumerate}[label=\textbf{(\alph*)}]
   \item $U$ is \textbf{open}: it is the preimage of the open set $\mathbb{R}\setminus\{0\}$ under
@@ -625,7 +625,7 @@ Neither requires the parametrisation, and both are worth having.
 \textbf{The field is constant on the curve.} A constant field is a gradient field, of the linear
 function $\varphi(x,y,z) := x - 2z$, and by \cref{prop:work_difference_potential} the work of a
 gradient field around a \emph{closed} path is zero. The only reason $V$ itself is not a gradient
-field is its $x$ component in the second slot --- and that component is exactly what the plane
+field is its $x$ component in the second slot, and that component is exactly what the plane
 $x=0$ switches off.
 
 \textbf{Stokes' theorem.} We have $\curl V = (0,0,1)\transp$, which is constant. Take the flat unit
@@ -652,22 +652,22 @@ The correct answer is \textbf{(d)}, the guarded one.
     curve can encircle a hole.
   \item \textbf{False}, and it is the option most likely to be chosen. The correct hypothesis is
     \newterm{simply connected}, not connected: \cref{cor:potentials_simply_connected} needs every
-    loop to be contractible, and $\mathbb{R}^2\setminus\{0\}$ is connected --- indeed
-    path-connected --- while having no potential for the field above. Connectedness only buys
+    loop to be contractible, and $\mathbb{R}^2\setminus\{0\}$ is connected, indeed
+    path-connected, while having no potential for the field above. Connectedness only buys
     uniqueness of a potential up to an additive constant, once one exists.
   \item \textbf{False.} Curl and divergence are independent of one another; nothing links them. The
     field $V(x,y) := (x,y)\transp$ has $\curl V = 0$ and $\divg V = 2$.
   \item \textbf{True}, and it is true because it claims almost nothing: \emph{may} be. It is
     satisfied by any irrotational field on a simply connected $G$, for instance $G =
-    \mathbb{R}^2$, where \cref{thm:poincare_lemma} produces a potential outright.
+    \mathbb{R}^2$, where \cref{cor:potentials_simply_connected} produces a potential outright.
 \end{enumerate}
 \begin{remark}[Why the correct answer is the weakest one]
 \label{rem:irrotational_weakest_true_statement}
 The question is unusual in that the true option is the one asserting the least, and a reader who
 reads \qt{it may be that} as a hedge rather than a claim will pass over it. The design is
 deliberate: options \textbf{(a)} and \textbf{(b)} are the two standard over-readings of
-$\curl V = 0$ --- that it forces closed line integrals to vanish, and that connectedness is the
-missing topological hypothesis --- and \textbf{(c)} tests whether the two differential operators
+$\curl V = 0$ (that it forces closed line integrals to vanish, and that connectedness is the
+missing topological hypothesis), and \textbf{(c)} tests whether the two differential operators
 have been kept apart. Under a hypothesis on $G$ this weak, nothing stronger than \textbf{(d)}
 survives.
 \end{remark}
