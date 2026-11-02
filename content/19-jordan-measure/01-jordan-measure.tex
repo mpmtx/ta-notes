@@ -91,6 +91,23 @@ Jordan theory from the Lebesgue theory, as \cref{rem:jordan_vs_lebesgue_sizes} m
 % Supplement: Sascha Brack/Class Notes/Week_08_Notes_Monday.pdf, pp. 5--7
 Similar to the 1D Riemann integral, we approximate the volume of a set $E \subseteq \mathbb{R}^n$ using an outer sequence of dyadic sets $G_i \supseteq E$ and an inner sequence $F_i \subseteq E$. If the limits of their volumes coincide as the pixel size $2^{-p} \to 0$, $E$ is \newterm{Jordan measurable}.
 
+% Generator: Claude Opus 5.5 (High) --- mu_in, mu_out and "Jordan null" were used throughout this
+% chapter (thm:jordan_measurability_boundary_criterion, the Cantor set, the exercises) without a
+% formal definition. Supplied for self-containedness; it says precisely what the paragraph above
+% says in words. Inf/sup over all generations is the same as the limit p -> infinity, because
+% refining a dyadic set to the next generation leaves its volume unchanged.
+\begin{definition}[Inner and outer Jordan measure]
+\label{def:jordan_inner_outer_measure}
+Let $E \subseteq \mathbb{R}^n$ be bounded. Its \newterm{outer} and \newterm{inner Jordan measure}
+are
+\[\mu_{\mathrm{out}}(E) := \inf\{\mu(G) : G \text{ dyadic set},\ E \subseteq G\}, \qquad
+  \mu_{\mathrm{in}}(E) := \sup\{\mu(F) : F \text{ dyadic set},\ F \subseteq E\},\]
+where the empty union counts as a dyadic set of volume $0$. Always
+$\mu_{\mathrm{in}}(E) \leq \mu_{\mathrm{out}}(E)$. The set $E$ is \textbf{Jordan measurable} if
+the two agree, and their common value $\mu(E)$ is its \newterm{Jordan measure}. It is a
+\newterm{Jordan null set} if $\mu_{\mathrm{out}}(E) = 0$.
+\end{definition}
+
 Furthermore, the multidimensional integral of a non-negative function $f : A \to \mathbb{R}$ is exactly the $(n+1)$-dimensional Jordan measure (volume) of its hypograph $\Gamma_A(f)$:
 
 \begin{center}
@@ -278,7 +295,7 @@ Let $K \subseteq \mathbb{R}^n$ be compact. Then $K$ is a Jordan null set if and 
 \end{lemma}
 
 \begin{proof}
-If $K$ is Jordan null, then for every $\varepsilon > 0$, $K$ is covered by finitely many dyadic cubes $Q_1, \dots, Q_m$ with total volume $\sum_{i=1}^m \mu(Q_i) < \varepsilon$, so $K$ is a Lebesgue null set. Conversely, if $K$ is Lebesgue null, there is a countable cover by dyadic cubes $\{Q_j\}_{j \ge 1}$ with $\sum_{j=1}^\infty \mu(Q_j) < \varepsilon$. Taking the interiors of slightly enlarged cubes yields an open cover of the compact set $K$, which admits a finite subcover of total volume $< 2\varepsilon$, proving $K$ is Jordan null.
+If $K$ is Jordan null, then for every $\varepsilon > 0$, $K$ is covered by finitely many dyadic cubes $Q_1, \dots, Q_m$ with total volume $\sum_{i=1}^m \mu(Q_i) < \varepsilon$, so $K$ is a Lebesgue null set. Conversely, if $K$ is Lebesgue null, there is a countable cover by dyadic cubes $\{Q_j\}_{j \ge 1}$ with $\sum_{j=1}^\infty \mu(Q_j) < \varepsilon$. Taking the interiors of slightly enlarged cubes yields an open cover of the compact set $K$, which admits a finite subcover of total volume $< 2\varepsilon$. These finitely many boxes are not yet a dyadic set, since their side lengths differ, but covering each of them by the dyadic cubes of one sufficiently fine common generation that meet it adds as little volume as we like. So $K$ is Jordan null.
 \end{proof}
 
 % Source: Diego Torres Tejeda/Notes - 17.04 - Diego Torres Tejeda.pdf, pp. 3--4
@@ -320,12 +337,42 @@ Furthermore, if $E \cap F = \emptyset$ (or if they only intersect in a Jordan nu
 \]
 \end{proposition}
 
+% Generator: Claude Opus 5.5 (High) --- proof added for self-containedness. The point worth
+% seeing is that one boundary inclusion handles all four set operations at once.
+\begin{proof}
+All four sets are bounded. By \cref{thm:jordan_measurability_boundary_criterion} it suffices to
+show that their boundaries are Jordan null, and this rests on a single observation:
+\[\partial(E\cup F),\ \partial(E\cap F),\ \partial(E\setminus F) \ \subseteq\ \partial E \cup \partial F.\]
+Indeed, if $x \notin \partial E$, some ball around $x$ lies entirely in $E$ or entirely in its
+complement; shrinking it, the same holds for $F$. On such a ball each of $E\cup F$, $E\cap F$,
+$E\setminus F$ is either everything or nothing, so $x$ is not a boundary point of any of them.
+
+A union of two Jordan null sets is Jordan null: cover them by dyadic sets $G$, $H$ with
+$\mu(G),\mu(H) < \varepsilon/2$, refine both to a common generation (which changes no volume, see
+the solution of \cref{ex:inclusion_exclusion_dyadic}), and note
+$\mu(G\cup H) \leq \mu(G)+\mu(H) < \varepsilon$ by inclusion--exclusion. A subset of a Jordan
+null set is trivially Jordan null. So all three boundaries are null, which proves measurability.
+
+For additivity, let $\mu_{\mathrm{out}}(E\cap F) = 0$ (this includes $E \cap F = \emptyset$).
+\begin{itemize}
+  \item \textbf{$\geq$:} take dyadic $A \subseteq E$, $B \subseteq F$ of a common generation. Then
+    $A \cap B \subseteq E\cap F$ is a dyadic set inside a null set, so $\mu(A\cap B) = 0$, and
+    $\mu(A)+\mu(B) = \mu(A\cup B) \leq \mu_{\mathrm{in}}(E\cup F)$. Taking suprema,
+    $\mu(E)+\mu(F) \leq \mu(E\cup F)$.
+  \item \textbf{$\leq$:} take dyadic $G \supseteq E$, $H \supseteq F$. Then $G\cup H \supseteq
+    E\cup F$ and $\mu(G\cup H) \leq \mu(G)+\mu(H)$. Taking infima,
+    $\mu(E\cup F) \leq \mu(E)+\mu(F)$.
+\end{itemize}
+Only the first bullet used the hypothesis on $E\cap F$, as it must: the second is the
+subadditivity that holds for every pair of sets.
+\end{proof}
+
 % Source: Jérôme Paschoud/Notizen/Woche 8.1 Tangentialräume und Jordan Mass.pdf, p. 4
 % Generator: Gemini 3.1 Pro (High)
 \begin{remark}[Lebesgue null vs.\ Jordan null]
 \label{rem:lebesgue_vs_jordan_null}
 A set $E \subset \mathbb{R}^n$ is \newterm{Lebesgue null} if for every $\varepsilon > 0$, there exist \emph{countably} many dyadic cubes $Q_i$ covering $E$ with $\sum \mu(Q_i) < \varepsilon$. For a \newterm{Jordan null} set, the cover must be formed by \emph{finitely} many cubes (which implicitly requires $E$ to be bounded).
-Because a countable cover is allowed, the set $\mathbb{Q} \cap [0,1]$ is Lebesgue null. However, it is not Jordan null (in fact, it is not even Jordan measurable, as seen in \cref{ex:non_jordan_measurable_open_set}), since any finite union of intervals covering it must also cover its closure $[0,1]$, thus having measure at least $1$.
+Because a countable cover is allowed, the set $\mathbb{Q} \cap [0,1]$ is Lebesgue null. However, it is not Jordan null (in fact, it is not even Jordan measurable, since its boundary is all of $[0,1]$; compare \cref{thm:jordan_measurability_boundary_criterion}), since any finite union of intervals covering it must also cover its closure $[0,1]$, thus having measure at least $1$.
 \end{remark}
 
 % Quelle: Linus Lüchinger/Slides/Slides-04-16.pdf, slide 6

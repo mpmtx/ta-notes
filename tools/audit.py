@@ -72,9 +72,11 @@ for f in FILES:
         line = code(raw)
         for m in re.finditer(r"\\label\{([^}]*)\}", line):
             labels[m.group(1)].append(f"{rel(f)}:{i}")
-        for m in re.finditer(r"\\[cC]?ref\{([^}]*)\}|\\cpageref\{([^}]*)\}"
+        # \eqref, \crefrange and \Cpageref were not matched until 2026-11-02, so a dangling
+        # equation reference passed the audit and was caught only by the LaTeX log.
+        for m in re.finditer(r"\\(?:[cC]?ref|eqref|[cC]pageref|[cC]refrange)\{([^}]*)\}"
                              r"|\\hyperref\[([^\]]*)\]", line):
-            for name in (m.group(1) or m.group(2) or m.group(3)).split(","):
+            for name in (m.group(1) or m.group(2)).split(","):
                 refs[name.strip()].append(f"{rel(f)}:{i}")
         for m in re.finditer(r"\\exsol(?:\[[^\]]*\])?\{([^}]*)\}", line):
             exsol[m.group(1)].append(f"{rel(f)}:{i}")
@@ -406,6 +408,14 @@ report("area fill drawn after a text node (paints over it)", sorted(buried),
 # and overfull counts printed here therefore described a document nobody had built.
 # check.log was four days old when this was found. Nothing had slipped through, but only
 # by luck.
+# With neither log present (a fresh clone: *.log is gitignored) every check in this section is
+# skipped, and until 2026-11-02 that happened silently, so "Clean." could certify a document
+# nobody had built. Say so instead; it stays informational because a clone legitimately has no
+# log, but the verdict line below then no longer reads as covering the build.
+if not any((ROOT / n).exists() for n in ("main.log", "check.log")):
+    report("no main.log or check.log -- build checks skipped, build before trusting the verdict",
+           ["run latexmk first; this audit has said nothing about errors or references"],
+           informational=True)
 for logname in ("main.log", "check.log"):
     log = ROOT / logname
     if not log.exists():

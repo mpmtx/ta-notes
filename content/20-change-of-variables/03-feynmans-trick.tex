@@ -20,6 +20,36 @@ is continuously differentiable, and
 \qquad \text{for all } y \in (a,b).\]
 \end{theorem}
 
+% Generator: Claude Opus 5.5 (High) --- proof added for self-containedness. Its one idea is that
+% compactness of K x [a,b] makes the difference quotients converge UNIFORMLY in x, and uniform
+% convergence is what may be passed through an integral.
+\begin{proof}
+Write $\partial_yf$ for the partial derivative in the last variable, and $\mu(K)$ for the Jordan
+measure of $K$. The set $K\times[a,b]$ is compact, so $\partial_yf$ is uniformly continuous on it
+(\cref{prop:compact_implies_uniformly_continuous}): for every $\varepsilon > 0$ there is
+$\delta > 0$ such that $\lvert\partial_yf(x,s)-\partial_yf(x,t)\rvert \leq \varepsilon$ whenever
+$x \in K$, $s,t \in [a,b]$ and $\lvert s-t\rvert < \delta$. All integrands below are continuous on
+the compact Jordan measurable set $K$, hence integrable.
+
+Fix $y \in (a,b)$ and $h \neq 0$ with $\lvert h\rvert < \delta$ and $y+h \in [a,b]$. For each
+$x \in K$, the one-variable mean value theorem gives $\theta_x \in (0,1)$ with
+$f(x,y+h) - f(x,y) = h\,\partial_yf(x,y+\theta_xh)$, and therefore
+\[\left\lvert \frac{f(x,y+h)-f(x,y)}{h} - \partial_yf(x,y)\right\rvert
+  = \big\lvert \partial_yf(x,y+\theta_xh) - \partial_yf(x,y)\big\rvert \leq \varepsilon .\]
+The left-hand side is a continuous function of $x$ (the point $\theta_x$ only served to bound
+it), so integrating over $K$,
+\[\left\lvert \frac{1}{h}\left(\int_K f(x,y+h)\,dx - \int_K f(x,y)\,dx\right)
+   - \int_K \partial_yf(x,y)\,dx \right\rvert \leq \varepsilon\,\mu(K).\]
+As $\varepsilon$ was arbitrary, the difference quotient converges to $\int_K\partial_yf(x,y)\,dx$,
+which is the asserted formula. The same uniform continuity gives
+$\big\lvert \int_K\partial_yf(x,s)\,dx - \int_K\partial_yf(x,t)\,dx\big\rvert \leq
+\varepsilon\,\mu(K)$ for $\lvert s-t\rvert < \delta$, so the derivative is continuous.
+\end{proof}
+
+Both hypotheses are visible in the proof. Compactness of $K$ is what makes the convergence of the
+difference quotients uniform in $x$, and continuity of $\partial_yf$ \emph{jointly} in $(x,y)$,
+not merely in $y$ for each fixed $x$, is what uniform continuity was applied to.
+
 % Source: Corsin Nick/Class Notes/Week 8.pdf, pp. 11--13
 \begin{example}[$\int_0^1 \frac{\log(1+x)}{1+x^2}\,dx$ by Feynman's trick]
 \label{ex:feynman_log_integral}

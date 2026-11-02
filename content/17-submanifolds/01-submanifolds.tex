@@ -65,6 +65,31 @@ is surjective (i.e., $\Jac F(x)$ has full rank) for all $x \in F^{-1}\{y\} = \{\
 F(\bar x) = y\}$, then $F^{-1}\{y\}$ is a $C^k$ submanifold of dimension $n-\ell$.
 \end{theorem}
 
+% Generator: Claude Opus 5.5 (High) --- proof added for self-containedness. It constructs the
+% submanifold chart of def:submanifold explicitly, with the same straightening map that proves
+% the implicit function theorem in sec:implicit_function_theorem.
+\begin{proof}
+Write $M := F^{-1}\{y\}$, $m := n-\ell$, and fix $p \in M$ (we assume $k \geq 1$). Since $\Jac F(p)$
+has rank $\ell$, some $\ell$ of its columns are linearly independent. After renumbering the
+coordinates of $\mathbb{R}^n$, which is a linear isomorphism and does not affect any of the
+statements, these are the last $\ell$ columns. Write $x = (u,w)$ with $u \in \mathbb{R}^m$,
+$w \in \mathbb{R}^\ell$, so that the block $\Jac_wF(p)$ is invertible, and define
+\[\Phi(x) := \big(u - u_p,\ F(x) - y\big) \in \mathbb{R}^m\times\mathbb{R}^\ell,
+  \qquad\text{where } p = (u_p,w_p).\]
+Then $\Phi \in C^k$, $\Phi(p) = 0$, and
+$\Jac\Phi(p) = \left(\begin{smallmatrix} I_m & 0 \\ \Jac_uF(p) & \Jac_wF(p)\end{smallmatrix}\right)$
+has determinant $\det\Jac_wF(p) \neq 0$. By the inverse function theorem there is an open
+$U' \ni p$ such that $\Phi : U' \to V' := \Phi(U')$ is a $C^k$-diffeomorphism onto an open
+neighbourhood of $0$. Finally, for $x \in U'$ the last $\ell$ coordinates of $\Phi(x)$ are $F(x)-y$,
+so $x \in M$ if and only if $\Phi(x) \in \mathbb{R}^m\times\{0\}$. That is,
+\[\Phi(U' \cap M) = (\mathbb{R}^m\times\{0\}) \cap V',\]
+which is exactly a submanifold chart around $p$ in the sense of \cref{def:submanifold}.
+\end{proof}
+
+The chart in the proof is worth remembering: its last $\ell$ coordinates are \emph{the equations
+themselves}, and the first $m$ are whichever coordinates the equations leave free. Straightening
+a level set is nothing more than declaring the defining equations to be new coordinates.
+
 % Sonnet 5 (Medium)
 \begin{importantremark}[Full rank means two opposite things]
 \label{rem:full_rank_two_meanings}

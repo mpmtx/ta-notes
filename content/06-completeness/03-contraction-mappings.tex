@@ -35,10 +35,31 @@ The core idea is to create a Cauchy sequence by repeatedly applying the contract
 Fix an arbitrary starting point $x_0 \in X$, and define the sequence by $x_{n+1} := f(x_n)$ for all $n \geq 0$.
 Comparing consecutive terms gives:
 \[
-d(x_{n+1}, x_n) = d(f(x_n), f(x_{n-1})) \leq \lambda \cdot d(x_n, x_{n-1}).
+d(x_{n+1}, x_n) = d(f(x_n), f(x_{n-1})) \leq L \cdot d(x_n, x_{n-1}).
 \]
-Iterating this inequality yields $d(x_{n+1}, x_n) \leq \lambda^n d(x_1, x_0)$. Since $\lambda < 1$, one can use the triangle inequality and the geometric series to show that the distance between any two terms $x_m$ and $x_n$ (for $m > n$) becomes arbitrarily small as $n \to \infty$. Thus, the sequence is Cauchy.
+Iterating this inequality yields $d(x_{n+1}, x_n) \leq L^n d(x_1, x_0)$. Since $L < 1$, one can use the triangle inequality and the geometric series to show that the distance between any two terms $x_m$ and $x_n$ (for $m > n$) becomes arbitrarily small as $n \to \infty$. Thus, the sequence is Cauchy.
 Because $X$ is a complete metric space, this sequence converges to some limit $x^* \in X$. Since contraction mappings are continuous, one can pass the limit inside the function to conclude $f(x^*) = x^*$.
+\end{proof}
+
+% Generator: Claude Opus 5.5 (High) --- the proof idea above, carried out. Added for
+% self-containedness: this theorem drives the inverse function theorem and Picard--Lindelof, so
+% its proof should not be left as a sketch. The a-priori bound is the useful by-product.
+% (The sketch above wrote the Lipschitz constant as lambda; changed to L to match
+% def:contraction_mapping.)
+\begin{proof}[Proof of existence and convergence]
+Fix $x_0 \in X$ and let $x_{n+1} := f(x_n)$. As in the sketch,
+$d(x_{k+1},x_k) \leq L^k\,d(x_1,x_0)$ for every $k$. For $m > n$ the triangle inequality and the
+geometric series give
+\[d(x_m,x_n) \leq \sum_{k=n}^{m-1} d(x_{k+1},x_k) \leq d(x_1,x_0)\sum_{k=n}^{\infty}L^k
+  = \frac{L^n}{1-L}\,d(x_1,x_0),\]
+and the right-hand side tends to $0$ as $n \to \infty$ because $0 \leq L < 1$. So $(x_n)$ is
+Cauchy, and by completeness it converges to some $x^* \in X$. A contraction is Lipschitz, hence
+continuous (\cref{def:lipschitz_continuous}), so
+\[f(x^*) = f\Big(\lim_{n\to\infty}x_n\Big) = \lim_{n\to\infty}f(x_n) = \lim_{n\to\infty}x_{n+1} = x^*.\]
+Letting $m \to \infty$ in the displayed estimate, with $n$ fixed, also gives the
+\newterm{a-priori error bound}
+\[d(x_n,x^*) \leq \frac{L^n}{1-L}\,d(x_1,x_0),\]
+which says, before any iteration is carried out, how many steps guarantee a prescribed accuracy.
 \end{proof}
 
 % Generator: Claude Opus 5 (High) --- Sascha's proof idea establishes existence only; uniqueness

@@ -129,6 +129,82 @@ Let $K \subseteq \mathbb{R}^n$ be compact, and let $\{B_{r_l}(p_l)\}_{l=1}^N$ be
 In particular, on the neighborhood $U$ of $K$, $\tilde{\eta} \equiv 0$ so that $\sum_{l=1}^N \eta_l(x) = 1$.
 \end{proposition}
 
+% Generator: Claude Opus 5.5 (High) --- proof added for self-containedness. The idea, "make one
+% bump per ball, then divide by their sum", is the whole content; the rest is making sure the
+% division never happens where the sum is zero.
+\begin{proof}
+\textbf{Step 1: shrink the balls.} The function
+$x \mapsto \max_l\big(r_l - \lvert x-p_l\rvert\big)$ is continuous and positive on $K$, because
+every point of $K$ lies in some $B_{r_l}(p_l)$. On the compact $K$ it therefore has a positive
+minimum $\delta$. Put $\rho_l := r_l - \delta/2$ and $\sigma_l := r_l - \delta/4$, so that
+$\rho_l < \sigma_l < r_l$ and still $K \subseteq U := \bigcup_l B_{\rho_l}(p_l)$, an open set.
+
+\textbf{Step 2: one bump per ball.} With $\psi$ from \cref{def:smooth_bump_function}, let
+$\varphi_l(x) := \psi\big((x-p_l)/\sigma_l\big)$. Each $\varphi_l$ is smooth, non-negative,
+positive exactly on $B_{\sigma_l}(p_l)$, and has support $\overline{B_{\sigma_l}(p_l)} \subseteq
+B_{r_l}(p_l)$. Their sum $\Phi := \sum_l\varphi_l$ is positive on the compact set
+$\overline U = \bigcup_l\overline{B_{\rho_l}(p_l)}$, so $\Phi \geq c$ there for some $c > 0$.
+
+\textbf{Step 3: divide, but only where it is safe.} Choose a smooth $h : \mathbb{R} \to [0,1]$ with
+$h(s) = 1$ for $s \leq c/2$ and $h(s) = 0$ for $s \geq c$. For instance, with $g$ from
+\cref{ex:supports_functions}\textbf{(b)}, $h(s) := g(c-s)/\big(g(c-s)+g(s-c/2)\big)$; the
+denominator never vanishes because at least one of $c-s > 0$ and $s-c/2 > 0$ holds. Now set
+\[\tilde\eta := h\circ\Phi, \qquad
+  \eta_l := \begin{cases} (1-h(\Phi))\,\dfrac{\varphi_l}{\Phi} & \text{where } \Phi > 0,\\[1ex]
+  0 & \text{where } \Phi < c/2.\end{cases}\]
+The two cases overlap only where $0 < \Phi < c/2$, and there $1 - h(\Phi) = 0$, so they agree. Each
+is smooth on an open set, and the two open sets cover $\mathbb{R}^n$, so $\eta_l$ is smooth. All
+values lie in $[0,1]$.
+\begin{enumerate}[label=\textbf{(\alph*)}]
+  \item Where $\Phi > 0$: $\tilde\eta + \sum_l\eta_l = h(\Phi) + (1-h(\Phi))\cdot\Phi/\Phi = 1$.
+    Where $\Phi = 0$: $\tilde\eta = h(0) = 1$ and every $\eta_l = 0$.
+  \item $\eta_l$ vanishes wherever $\varphi_l$ does, so
+    $\operatorname{supp}\eta_l \subseteq \operatorname{supp}\varphi_l \subseteq B_{r_l}(p_l)$.
+  \item On $U$ we have $\Phi \geq c$, hence $\tilde\eta = 0$. So $\{\tilde\eta \neq 0\}$ lies in
+    the closed set $\mathbb{R}^n\setminus U$, and so does its closure. \qedhere
+\end{enumerate}
+\end{proof}
+
+% Generator: Claude Opus 5.5 (High) --- the construction in one dimension, without the cut-off h
+% (which only matters where both bumps are nearly zero). Two balls B_{1.5}(-0.9), B_{1.5}(0.9)
+% cover K = [-1.6,1.6]; bumps phi_l(x) = exp(-1/(1-u^2)), u = (x-p_l)/1.5, peak value e^{-1}
+% = 0.368, drawn at vertical scale 4 (peak height 1.47). Bottom panel: eta_l = phi_l/(phi_1+phi_2)
+% at vertical scale 1.5, plotted on [-2.3,2.3] where the sum is safely positive; the two curves
+% add to 1 (the dashed line at height 1.5) at every x. Below each plot, phi is evaluated with
+% max(1-u^2, 0.02) under an indicator so the exponent never overflows outside the ball.
+\begin{center}
+\begin{tikzpicture}[>=Latex, x=1.5cm, y=1cm,
+  declare function={bump(\x,\p)=(abs((\x-\p)/1.5)<1) * exp(-1/max(1-((\x-\p)/1.5)^2, 0.02));
+                    etaone(\x)=bump(\x,-0.9)/(bump(\x,-0.9)+bump(\x,0.9));}]
+  % top panel: the two bumps
+  \draw[->, gray] (-2.7,0) -- (2.8,0) node[right, font=\scriptsize, text=black] {$x$};
+  \draw[very thick, OliveGreen] (-1.6,-0.08) -- (1.6,-0.08);
+  \node[font=\scriptsize, OliveGreen, below] at (0,-0.1) {$K$};
+  \draw[thick, blue!70!black, domain=-2.39:0.59, samples=90, smooth]
+    plot (\x, {4*bump(\x,-0.9)});
+  \draw[thick, dashed, BurntOrange, domain=-0.59:2.39, samples=90, smooth]
+    plot (\x, {4*bump(\x,0.9)});
+  \node[font=\scriptsize, blue!70!black] at (-1.75,1.25) {$\varphi_1$};
+  \node[font=\scriptsize, BurntOrange] at (1.75,1.25) {$\varphi_2$};
+  \node[font=\scriptsize, anchor=west] at (2.45,1.0) {bumps};
+
+  % bottom panel: normalised
+  \begin{scope}[yshift=-3.2cm]
+    \draw[->, gray] (-2.7,0) -- (2.8,0) node[right, font=\scriptsize, text=black] {$x$};
+    \draw[gray, dashed] (-2.3,1.5) -- (2.3,1.5) node[right, font=\scriptsize, text=black] {$1$};
+    \draw[very thick, OliveGreen] (-1.6,-0.08) -- (1.6,-0.08);
+    \node[font=\scriptsize, OliveGreen, below] at (0,-0.1) {$K$};
+    \draw[thick, blue!70!black, domain=-2.3:2.3, samples=90, smooth]
+      plot (\x, {1.5*etaone(\x)});
+    \draw[thick, dashed, BurntOrange, domain=-2.3:2.3, samples=90, smooth]
+      plot (\x, {1.5*(1-etaone(\x))});
+    \node[font=\scriptsize, blue!70!black] at (-1.9,1.2) {$\eta_1$};
+    \node[font=\scriptsize, BurntOrange] at (1.9,1.2) {$\eta_2$};
+    \node[font=\scriptsize, anchor=west, align=left] at (2.0,0.6) {divided by\\ the sum};
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+
 
 % --- exercises relocated here from the dissolved sheets ---
 

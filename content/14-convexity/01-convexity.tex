@@ -255,6 +255,33 @@ The picture records both halves of \textbf{(b)} at once. Each tangent line lies 
 \emph{below} the graph, which is the inequality $f(y)-f(x) \geq Df_x(y-x)$ read along the
 segment, and the slope grows from $s$ to $t$, which is $f'_{x,y}$ increasing.
 
+% Generator: Claude Opus 5.5 (High) --- the exercise above proves (a) <=> (c); the Hessian
+% criterion (a) <=> (b), which is the one used in practice, had no proof anywhere. Added for
+% self-containedness. Same one-variable reduction as the exercise, one derivative further.
+\begin{proof}[Proof of \cref{prop:convexity_characterizations}]
+\textbf{(a)}$\iff$\textbf{(c)} is \cref{ex:convexity_characterizations}\textbf{(b)}. For
+\textbf{(a)}$\iff$\textbf{(b)}, recall from Analysis~I that a $C^2$ function on an interval is
+convex if and only if its second derivative is non-negative. By
+\cref{ex:convexity_characterizations}\textbf{(a)}, $f$ is convex if and only if every
+$f_{x,y}(s) = f(x+s(y-x))$ is, and differentiating twice with the chain rule,
+\begin{equation}
+\label{eq:second_derivative_along_segment}
+  f''_{x,y}(s) = (y-x)\transp\,\Hess f\big(x+s(y-x)\big)\,(y-x).
+\end{equation}
+\begin{itemize}
+  \item \textbf{(b)$\Rightarrow$(a).} If every Hessian is positive semidefinite, the right-hand side
+    of \eqref{eq:second_derivative_along_segment} is $\geq 0$, so every $f_{x,y}$ is convex, and
+    hence so is $f$.
+  \item \textbf{(a)$\Rightarrow$(b).} Let $z \in U$ and $v \in \mathbb{R}^n$. Since $U$ is open,
+    $y := z + \varepsilon v \in U$ for some $\varepsilon > 0$. The function $f_{z,y}$ is convex, so
+    $f''_{z,y}(0) \geq 0$, and by \eqref{eq:second_derivative_along_segment} with $s = 0$ this
+    reads $\varepsilon^2\,v\transp\Hess f(z)\,v \geq 0$. As $v$ was arbitrary, $\Hess f(z)$ is
+    positive semidefinite.
+\end{itemize}
+The second bullet is where openness of $U$ is used: it lets us probe every direction $v$ from
+every point, which a closed domain would not allow at its boundary.
+\end{proof}
+
 % Supplement: Analysis_II_Script_v1.pdf, p. 75
 \begin{proposition}[Jensen's inequality]
 \label{prop:jensen_inequality}

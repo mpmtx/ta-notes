@@ -55,7 +55,7 @@ closed loop in $U$ can be continuously contracted to a point within $U$.
   \draw[thick] (x0) to[out=-20, in=220] node[lbl, pos=0.5] {$\gamma_{0.75}$} (x1);
   \draw[thick] (x0) to[out=-40, in=240] node[lbl, pos=0.5] {$\gamma_1 = H(1,\cdot)$} (x1);
 
-  \node[blue, align=left, font=\small] at (4, -0.2) {We try to \textbf{reshape}\\the path continuously from\\$\gamma_0$ to $\gamma_1$.};
+  \node[blue, align=left, font=\small, anchor=west] at (3.35, -0.2) {We try to \textbf{reshape}\\the path continuously from\\$\gamma_0$ to $\gamma_1$.};
 \end{tikzpicture}
 \end{center}
 
@@ -72,6 +72,70 @@ Examples of spaces that are \emph{not} simply connected:
 \end{itemize}
 This topological property is what allows the integrability conditions to globally imply the existence of a potential.
 \end{ainote}
+
+% Generator: Claude Opus 5.5 (High) --- proof added for self-containedness. It is the
+% construction every potential computation in this chapter performs by hand: integrate from a
+% base point, and use the Poincare lemma to know the answer does not depend on the route.
+\begin{proof}[Proof of \cref{cor:potentials_simply_connected}]
+Write $\alpha = \sum_i F_i\,dx_i$, so that $\int_\gamma\alpha = \int_\gamma F\cdot d\gamma$ and
+$d\alpha = 0$ is exactly the integrability condition. Fix a base point $x_0 \in U$.
+
+\textbf{Polygonal paths reach everything.} The proof of
+\cref{prop:open_euclidean_connected_path_connected} joins points of a connected open set by
+concatenating straight segments, so it produces \emph{polygonal} paths, which are piecewise
+$C^1$. As $U$ is path-connected, hence connected, every $x \in U$ is reached from $x_0$ by such a
+path $\gamma_x$.
+
+\textbf{The candidate potential is well defined.} Put
+\[f(x) := \int_{\gamma_x}\alpha .\]
+Any two piecewise $C^1$ paths from $x_0$ to $x$ are homotopic with fixed endpoints, because $U$ is
+simply connected, so by \cref{thm:poincare_lemma} they give the same integral, and $f(x)$ does not
+depend on which $\gamma_x$ was chosen. (The lemma as stated assumes a smooth homotopy. That a
+continuous homotopy between piecewise $C^1$ paths can be smoothed without leaving the open set $U$
+is a standard approximation fact, which we use without proof.)
+
+\textbf{Its gradient is $F$.} Let $x \in U$, $B_r(x) \subseteq U$, $i \in \{1,\dots,n\}$ and
+$0 < \lvert t\rvert < r$. A path from $x_0$ to $x+te_i$ is $\gamma_x$ followed by the segment
+$\sigma(s) := x + s\,te_i$, $s \in [0,1]$, which stays in the ball. Since the integral over a
+concatenation is the sum of the integrals (\cref{ex:path_concatenation_work}),
+\[f(x+te_i) - f(x) = \int_\sigma F\cdot d\sigma = \int_0^1 F_i(x+ste_i)\,t\,ds
+  = \int_0^t F_i(x+ue_i)\,du .\]
+Dividing by $t$ and letting $t \to 0$, the fundamental theorem of calculus gives
+$\partial_if(x) = F_i(x)$. Hence $\nabla f = F$, which is $C^1$, so $f \in C^2(U)$ and
+$df = \alpha$.
+\end{proof}
+
+% Generator: Claude Opus 5.5 (High) --- the route in the proof above. x_0 = (0,0), x = (3,1);
+% gamma_x is a three-segment polygon (0,0) -> (1.2,1.3) -> (2.1,0.2) -> (3,1). The step to
+% x + t e_1 = (3.8,1) is horizontal, inside the dashed ball B_r(x) of radius 0.95, which is all
+% the proof differentiates. A second, curved route from x_0 to x (dashed) is drawn to show the
+% choice of gamma_x does not matter, which is the Poincare lemma's contribution.
+\begin{center}
+\begin{tikzpicture}[>=Latex, scale=1.15,
+  lbl/.style={fill=white, fill opacity=0.85, text opacity=1, inner sep=1.2pt, rounded corners=1pt}]
+  \draw[gray, dashed] (3,1) circle (0.95);
+  \draw[->, thick, blue!70!black] (0,0) -- (1.2,1.3) -- (2.1,0.2) -- (2.96,0.96);
+  \draw[thick, dashed, gray!70!black] (0,0) .. controls (0.6,-1.0) and (2.6,-0.9) .. (3,1);
+  \draw[->, very thick, BurntOrange] (3,1) -- (3.8,1);
+  \fill (0,0) circle (1.6pt) node[left] {$x_0$};
+  \fill (3,1) circle (1.6pt);
+  \node[lbl, above left] at (2.95,1.05) {$x$};
+  \fill (3.8,1) circle (1.6pt) node[right] {$x+te_i$};
+  \node[lbl, font=\small, text=blue!70!black] at (1.0,1.55) {$\gamma_x$};
+  \node[lbl, font=\scriptsize, text=gray!60!black, align=center] at (1.6,-1.1)
+    {another route:\\ same integral (Poincaré)};
+  \node[lbl, font=\scriptsize, text=BurntOrange, below] at (3.45,0.92) {$\sigma$};
+  \node[font=\scriptsize, text=gray] at (4.25,1.85) {$B_r(x)$};
+\end{tikzpicture}
+\end{center}
+
+\begin{remark}[Computing a potential in practice]
+\label{rem:potential_by_line_integral}
+The proof is also a recipe. On a star-shaped $U$ take straight segments from the centre
+$x_0$, so $f(x) = \int_0^1 F\big(x_0 + s(x-x_0)\big)\cdot(x-x_0)\,ds$; on a box, the staircase
+of coordinate steps used in the proof of \cref{thm:continuous_partials_imply_differentiable} is
+often quicker, since each step integrates a single component $F_i$ in a single variable.
+\end{remark}
 
 % Supplement: Analysis_II_Script_v1.pdf, p. 153
 \begin{example}[Integrability without a potential: why simple connectedness is needed]

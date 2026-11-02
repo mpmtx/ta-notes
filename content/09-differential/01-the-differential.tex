@@ -34,6 +34,44 @@ than $|h|$.} Everything that follows, the Jacobian, the chain rule and Taylor ex
 is bookkeeping for that single idea. The reason the derivative becomes a \emph{linear map} rather
 than a number is simply that a linear map is what an approximation in $n$ variables looks like.
 
+% Generator: Claude Opus 5.5 (High) --- what "error o(|h|)" looks like, in one variable.
+% f(x) = 1 + 0.5x + 0.35x^2 near x_0 = 0, tangent 1 + 0.5x. For eps = 0.35 the wedge between
+% the lines of slope 0.5 - 0.35 = 0.15 and 0.5 + 0.35 = 0.85 through (0,1) contains the graph
+% exactly when 0.35x^2 <= 0.35|x|, i.e. |x| <= 1; so delta = 1, and the graph leaves the wedge at
+% (1, 1.85) and (-1, 0.85), both of which lie on a wedge edge (1 + 0.85 = 1.85, 1 - 0.15 = 0.85).
+% Wedge polygon over [-2.2, 2.2]: right half between heights 1.33 and 2.87 at x = 2.2, left half
+% between -0.87 and 0.67 at x = -2.2. A smaller eps gives a thinner wedge and a smaller delta.
+\begin{center}
+\begin{tikzpicture}[>=Latex, scale=1.0,
+  lbl/.style={fill=white, fill opacity=0.85, text opacity=1, inner sep=1.2pt, rounded corners=1pt}]
+  \fill[orange!18] (0,1) -- (2.2,1.33) -- (2.2,2.87) -- cycle;
+  \fill[orange!18] (0,1) -- (-2.2,0.67) -- (-2.2,-0.87) -- cycle;
+  \draw[orange!80!black, dashed] (-2.2,-0.87) -- (2.2,2.87);
+  \draw[orange!80!black, dashed] (-2.2,0.67) -- (2.2,1.33);
+  \draw[->, gray] (-2.5,-1.2) -- (2.6,-1.2) node[right, font=\scriptsize, text=black] {$x$};
+  \draw[thick, OliveGreen] (-2.3,-0.15) -- (2.3,2.15);
+  \draw[very thick, blue!70!black, domain=-2.2:2.2, samples=60, smooth]
+    plot (\x, {1 + 0.5*\x + 0.35*\x*\x});
+  \fill (0,1) circle (1.6pt);
+  \fill[blue!70!black] (1,1.85) circle (1.3pt);
+  \fill[blue!70!black] (-1,0.85) circle (1.3pt);
+  \draw[gray, dotted] (1,-1.2) -- (1,1.85);
+  \draw[gray, dotted] (-1,-1.2) -- (-1,0.85);
+  \draw[gray] (0,-1.15) -- (0,-1.25) node[below, font=\scriptsize, text=black] {$x_0$};
+  \draw[<->, thick] (-1,-0.95) -- (1,-0.95);
+  \node[lbl, font=\scriptsize] at (0.5,-0.95) {$\lvert h\rvert<\delta$};
+  \node[lbl, font=\scriptsize, text=blue!70!black] at (-1.65,2.0) {graph of $f$};
+  \node[lbl, font=\scriptsize, text=OliveGreen, anchor=west] at (2.35,2.15) {tangent: slope $f'(x_0)$};
+  \node[lbl, font=\scriptsize, text=orange!70!black, anchor=west, align=left] at (2.35,1.4)
+    {wedge: slopes\\ $f'(x_0)\pm\varepsilon$};
+\end{tikzpicture}
+\end{center}
+For every $\varepsilon > 0$ there is a $\delta > 0$ such that, over $\lvert h\rvert < \delta$, the
+graph lies inside the shaded wedge around the tangent line. That is the statement
+$\lvert f(x_0+h)-f(x_0)-f'(x_0)h\rvert \leq \varepsilon\lvert h\rvert$, and it is the form that
+generalises: in several variables the line becomes the graph of the affine map
+$h \mapsto F(x_0) + DF_{x_0}(h)$, and the wedge becomes a cone around it.
+
 \begin{ainote}
 Corsin's middle line reads
 $\lim_{h\to0}\frac{F(x_0+h)-F(x_0)}{|h|} = DF_{x_0}\!\left(\frac{h}{|h|}\right)$, inside a chain

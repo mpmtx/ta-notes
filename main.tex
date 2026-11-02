@@ -257,7 +257,7 @@
 
 
 % 0. Custom Part Format: a title page carrying "PART III" over the part name.
-% Parts group the ~25 topic chapters into the seven thematic blocks of the course;
+% Parts group the 26 topic chapters into the seven thematic blocks of the course;
 % they do NOT reset \thechapter, so chapter (and therefore theorem) numbering runs
 % continuously across the whole document -- which is what \thetheorem below assumes.
 \titleformat{name=\part}[display]
@@ -1051,7 +1051,6 @@
 % directory under content/ as a thin 00-chapter.tex stub (\chapter + intro + \input lines)
 % plus one file per \section. Every moved file records its provenance in an
 % "% Originally:" comment at the top; the "% Source:" comments are unchanged.
-% Chapters still carrying a week-NN.tex name have not been migrated yet.
 
 \part{Foundations}
 
@@ -1165,7 +1164,8 @@ equation $f(x,y) = 0$ be solved for $y$ as a function of $x$? Neither has a work
 answer, but both have clean local ones, and both rest on the same linear-algebra hypothesis, that
 a Jacobian, or one square block of it, is invertible. The inverse function theorem is proved here
 from the contraction principle of Part II, which is the first place that fixed-point machinery
-repays what it cost to set up. The deeper use of both theorems is definitional. A level set on
+repays what it cost to set up, and the implicit function theorem then follows from it in a few
+lines. The deeper use of both theorems is definitional. A level set on
 which the differential has full rank is locally a graph, being locally a graph is precisely what
 it means to be a submanifold, and a submanifold is a subset of $\mathbb{R}^n$ that looks like
 $\mathbb{R}^m$ from close up, which is the object the last two parts integrate over. Once such a

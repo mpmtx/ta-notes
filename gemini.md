@@ -95,7 +95,8 @@ where a passage came from is worth having before you rewrite it:
 
 **`% Feedback:` marks what not to touch, and that is a different job from the markers above.**
 Added 2026-08-11, when the user had Gemini 3.1 Pro review the whole document (`feedback/`, nine
-files, committed) and asked that its *praise* be recorded at the passages it praised. Every other
+files; committed then, removed again in `7278918`) and asked that its *praise* be recorded at the
+passages it praised. Every other
 marker in the table answers "where did this come from"; this one answers "has anyone read this and
 liked it".
 
@@ -245,8 +246,9 @@ Two corollaries:
   `content/appendix-d-problem-sheets.tex`. Those name a part of *their* document and must stay
   verifiable. If the original notes carried a label, put it in a `%` comment above the new one.
 
-⚠️ Roughly sixty `ex:N.M` labels predate this rule and are still in the tree. They are being swept
-to descriptive slugs; **do not add more, and do not treat their presence as permission**.
+The sixty `ex:N.M` labels that predated this rule were all swept to descriptive slugs on
+2026-08-23, and `tools/audit.py` now rejects any new one. A numeric label in the tree is a
+regression, not a leftover.
 
 ## THE SOURCES
 
@@ -282,7 +284,7 @@ to descriptive slugs; **do not add more, and do not treat their presence as perm
 | `lec_notes.pdf` (project root) | **The official lecture notes**, and the file to cite. 239 pp, dated 27 July 2026. The authority our theorems and notation are **checked against** — not a blueprint to transcribe. Its chapters run **9–15**, continuing the Analysis I numbering. |
 | `exercises/ExN_Analysis2_eng.pdf` | The official problem sheets — quoted verbatim, never paraphrased. |
 | `exercises/SolN_Analysis2_eng.pdf` | Official solutions, used only to **check** a solution you derived first. |
-| `feedback/` | **Gemini 3.1 Pro's review of the whole document**, committed 2026-08-11: three feedback batches, three exam-extraction lists, one script-extraction list, two brainstorming files. Bilingual, English first. Treat it as a *proposal* register, not an instruction list — its praise is recorded in the source as `% Feedback:` comments, its defects were fixed, and its file paths and labels need checking before use (see above). |
+| `feedback/` | ⚠️ **No longer in the tree** — deleted in `7278918` (2026-08-23); recover it with `git show 7278918^:feedback/<file>`. **Gemini 3.1 Pro's review of the whole document**, committed 2026-08-11: three feedback batches, three exam-extraction lists, one script-extraction list, two brainstorming files. Bilingual, English first. Treat it as a *proposal* register, not an instruction list — its praise is recorded in the source as `% Feedback:` comments, its defects were fixed, and its file paths and labels need checking before use (see above). |
 | `exercises_2024/` | **The FS 2024 edition of this same course** (401-1262-07L, Prof. Joaquim Serra; sheets written by Federico Franceschini). Thirteen problem sheets with full official solutions in English and German, a mock exam with a key, and `exam1.pdf`, which is the 21 August 2024 paper already in `old_exams/` as `examFS24.pdf`. Recorded in `old-exam-mining.md`. |
 | `old_exams/` | Past exams, gitignored like the rest of the PDFs. ⚠️ **The naming misleads:** `examHS24.pdf` is the exam **of 13 February 2025**, `examFS24.pdf` is **21 August 2024** (both Serra); `WS22_Prüfung.pdf` is **24 January 2022** and `fs2023/Prüfung.pdf` is **9 August 2021** (both Felder, Analysis I & II). An `HSnn.pdf` is sat in the January **after** `nn` (`HS19.pdf` is 22 January 2020). Always cite the date, not the file name. **Read `old-exam-mining.md` before opening any of these** — it says which are done, which are rejected forever, and which to mine next. |
 
@@ -316,7 +318,7 @@ However, the following specific topics should still remain skipped unless explic
 > is a section the script does not have and the course does not teach, added after the user asked
 > whether Jordan measure and Lebesgue measure are the same thing and then asked for a short
 > digression on Lebesgue theory. **Do not delete it as out of scope, and do not grow it either.**
-> It exists because "Lebesgue-null" appears on Problem Sheet 8 (`ex:8.2` part (b)) and in two
+> It exists because "Lebesgue-null" appears on Problem Sheet 8 (`ex:jordan_measure_properties_tf` part (b)) and in two
 > comparison remarks, with nothing anywhere to attach the word to. Every statement in it is given
 > **without proof and says so**, nothing later in the document depends on a line of it, and its
 > exercises are deliberately easy `aiexercise`s. That combination is what keeps it a digression

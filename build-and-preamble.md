@@ -7,9 +7,8 @@ it claims, fix it here rather than working around it.
 
 | Companion file | What lives there |
 |---|---|
-| `gemini.md` | Role, fidelity policy, tool usage — read first |
+| `gemini.md` | Role, fidelity policy, tool usage, and the sources (blueprint tutor, reference documents, scope against the script) — read first |
 | `style.md` | House style: prose, notation, environments, provenance conventions |
-| `gemini.md` | Also holds the sources: blueprint tutor, reference documents, scope against the script |
 
 ## Document layout — SETTLED
 
@@ -73,7 +72,7 @@ section and subsection titles are `MidnightBlue`; subsubsection is `TextBoldColo
 ## Numbering is automatic — do not configure it
 
 * **Theorem Numbering — do NOT set it per file in this project.** The scheme is
-  `Chapter.SectionLetter.TheoremNumber` (e.g. 2.b.1), and `main.tex:476` already derives it
+  `Chapter.SectionLetter.TheoremNumber` (e.g. 2.b.1), and `main.tex:478` already derives it
   automatically from `\thechapter` and the section counter, resetting per chapter. **No
   `content/*.tex` file overrides `\thetheorem`, and none should.**
 
@@ -87,7 +86,7 @@ section and subsection titles are `MidnightBlue`; subsubsection is `TextBoldColo
   > corroboration. **That comment no longer exists** — `git log -S Biran -- main.tex` puts its
   > removal in `ee8ddb8`, and `main.tex` has contained no such string since. The instruction to
   > ignore the imported numbering still stands; only its supporting evidence is gone.
-* **Exercises are already numbered — nothing to configure.** `main.tex:535` declares
+* **Exercises are already numbered — nothing to configure.** `main.tex:537` declares
   `exercise` via `\newaliascnt{exercise}{theorem}`, so every `\begin{exercise}` is numbered and
   `\cref{ex:...}` resolves to a clickable reference out of the box. Do **not** declare a local
   counter, and do not look for an `exercise*` variant — there isn't one. Give every exercise a

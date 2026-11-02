@@ -91,6 +91,29 @@ $x_0 \in g^{-1}\{0\}$, then
 \[\{\nabla f(x_0), \nabla g_1(x_0), \dots, \nabla g_k(x_0)\} \text{ are linearly dependent.}\]
 \end{proposition}
 
+% Generator: Claude Opus 5.5 (High) --- proof added for self-containedness. It borrows two
+% results from Part V (regular value theorem, tangent vectors as velocities of curves); neither
+% of those depends on this proposition, so the forward reference is not circular.
+\begin{proof}
+If $\nabla g_1(x_0),\dots,\nabla g_k(x_0)$ are already linearly dependent, there is nothing to
+prove. So assume they are independent, which says that $Dg_{x_0}$ has rank $k$. Some $k\times k$
+minor of $\Jac g(x_0)$ is then non-zero, and by continuity it stays non-zero on a ball
+$B \subseteq U$ around $x_0$. By the regular value theorem (\cref{thm:regular_value_theorem},
+applied to $g|_B$), $M := g^{-1}\{0\} \cap B$ is a $C^1$ submanifold of dimension $n-k$, and its
+tangent space at $x_0$ is $T_{x_0}M = \ker Dg_{x_0}$ (\cref{rem:four_representations_tangent_space}).
+
+Now take any $v \in T_{x_0}M$. By \cref{prop:tangent_space_via_curves} there is a $C^1$ curve
+$\gamma : (-\varepsilon,\varepsilon) \to M$ with $\gamma(0) = x_0$ and $\gamma'(0) = v$. Since
+$f|_M$ has a local extremum at $x_0$, the one-variable function $t \mapsto f(\gamma(t))$ has a
+local extremum at $t = 0$, so its derivative vanishes there. By the chain rule,
+\[0 = \frac{d}{dt}\Big|_{t=0} f(\gamma(t)) = \langle \nabla f(x_0), v\rangle .\]
+Hence $\nabla f(x_0)$ is orthogonal to $\ker Dg_{x_0}$. But $\ker Dg_{x_0}$ is exactly the
+orthogonal complement of $W := \operatorname{span}\{\nabla g_1(x_0),\dots,\nabla g_k(x_0)\}$,
+because $Dg_{x_0}v = \big(\langle\nabla g_j(x_0),v\rangle\big)_{j}$. So
+$\nabla f(x_0) \in (W^\perp)^\perp = W$, which is the asserted linear dependence. In fact we have
+shown more: $\nabla f(x_0) = \sum_j \lambda_j \nabla g_j(x_0)$ for some $\lambda \in \mathbb{R}^k$.
+\end{proof}
+
 \begin{remark}
 Once $(\nabla g_1,\dots,\nabla g_k)$ are linearly independent everywhere on $g^{-1}\{0\}$ (the
 standing assumption below), the constraint set $g^{-1}\{0\}$ is in fact a submanifold of

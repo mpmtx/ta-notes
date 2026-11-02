@@ -213,6 +213,45 @@ term vanishes entirely, so the approximation says nothing and the behaviour is d
 this expansion has discarded.
 \end{remark}
 
+% Generator: Claude Opus 5.5 (High) --- proof added for self-containedness. It is the remark
+% above made honest: the only new ingredients are compactness of the unit sphere and continuity
+% of the second derivatives, which together turn "approximately" into an inequality.
+\begin{proof}[Proof of \cref{thm:hessian_test}]
+Write $A := \Hess f(x_0)$ and choose $r > 0$ with $B_r(x_0) \subseteq U$. For $\lvert h\rvert < r$,
+Taylor's theorem with Lagrange remainder (\cref{thm:taylor_lagrange_remainder} with $k = 1$) and
+$\nabla f(x_0) = 0$ give a $\theta \in (0,1)$ with
+\begin{equation}
+\label{eq:hessian_test_taylor}
+  f(x_0+h) - f(x_0) = \tfrac12\,h\transp\,\Hess f(x_0+\theta h)\,h .
+\end{equation}
+\begin{itemize}
+  \item \textbf{Positive definite.} The function $v \mapsto v\transp Av$ is continuous on the unit
+    sphere $S^{n-1}$, which is compact (\cref{thm:heine_borel}), so it attains a minimum
+    $\lambda$ there, and $\lambda > 0$ because $A$ is positive definite. By homogeneity,
+    $h\transp Ah \geq \lambda\lvert h\rvert^2$ for all $h$. The second partial derivatives are
+    continuous at $x_0$, so there is $\delta \in (0,r)$ with
+    $\lVert \Hess f(y) - A\rVert_2 \leq \lambda/2$ whenever $\lvert y - x_0\rvert < \delta$, where
+    $\lVert\cdot\rVert_2$ is the Hilbert--Schmidt norm. For $0 < \lvert h\rvert < \delta$ and
+    $B := \Hess f(x_0+\theta h)$, \cref{lem:hilbert_schmidt_bounds_lengths} gives
+    $\lvert h\transp(B-A)h\rvert \leq \lvert h\rvert\,\lvert(B-A)h\rvert \leq
+    \tfrac{\lambda}{2}\lvert h\rvert^2$, hence
+    \[h\transp Bh \ \geq\ h\transp Ah - \tfrac{\lambda}{2}\lvert h\rvert^2
+      \ \geq\ \tfrac{\lambda}{2}\lvert h\rvert^2 \ >\ 0.\]
+    By \eqref{eq:hessian_test_taylor}, $f(x_0+h) > f(x_0)$: a strict local minimum.
+  \item \textbf{Negative definite.} Apply the previous case to $-f$, whose Hessian is $-A$.
+  \item \textbf{Indefinite.} Pick $v, u$ with $v\transp Av > 0 > u\transp Au$. The function
+    $g(t) := f(x_0+tv)$ is $C^2$ near $0$ with $g'(0) = \langle\nabla f(x_0),v\rangle = 0$ and
+    $g''(0) = v\transp Av > 0$ (chain rule twice), so by the one-variable test $g$ has a strict
+    local minimum at $0$: $f(x_0+tv) > f(x_0)$ for all small $t \neq 0$. The same argument along
+    $u$ gives $f(x_0+tu) < f(x_0)$ for all small $t \neq 0$. Every ball around $x_0$ therefore
+    contains points with larger and with smaller values, so $x_0$ is neither a local minimum nor
+    a local maximum, which is what a saddle point is.
+\end{itemize}
+For the degenerate case, the three functions $x^4+y^2$, $-x^4-y^2$ and $x^3+y^2$ all have the
+semidefinite Hessian $\operatorname{diag}(0,2)$ or $\operatorname{diag}(0,-2)$ at the origin and
+exhibit a minimum, a maximum and a saddle respectively.
+\end{proof}
+
 % Moved here from the Lagrange-multiplier section (review item D2): it uses the Hessian,
 % "indefinite" and the eigenvalue criterion, none of which were available at its former
 % position 260 lines earlier.
