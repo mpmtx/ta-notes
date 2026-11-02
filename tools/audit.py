@@ -74,9 +74,12 @@ for f in FILES:
             labels[m.group(1)].append(f"{rel(f)}:{i}")
         # \eqref, \crefrange and \Cpageref were not matched until 2026-11-02, so a dangling
         # equation reference passed the audit and was caught only by the LaTeX log.
-        for m in re.finditer(r"\\(?:[cC]?ref|eqref|[cC]pageref|[cC]refrange)\{([^}]*)\}"
+        for m in re.finditer(r"\\[cC]refrange\{([^}]*)\}\{([^}]*)\}"
+                             r"|\\(?:[cC]?ref|eqref|[cC]pageref)\{([^}]*)\}"
                              r"|\\hyperref\[([^\]]*)\]", line):
-            for name in (m.group(1) or m.group(2)).split(","):
+            names = [m.group(1), m.group(2)] if m.group(1) is not None \
+                else (m.group(3) or m.group(4)).split(",")
+            for name in names:
                 refs[name.strip()].append(f"{rel(f)}:{i}")
         for m in re.finditer(r"\\exsol(?:\[[^\]]*\])?\{([^}]*)\}", line):
             exsol[m.group(1)].append(f"{rel(f)}:{i}")

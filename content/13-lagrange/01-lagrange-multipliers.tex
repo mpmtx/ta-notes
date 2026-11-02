@@ -91,7 +91,7 @@ $x_0 \in g^{-1}\{0\}$, then
 \[\{\nabla f(x_0), \nabla g_1(x_0), \dots, \nabla g_k(x_0)\} \text{ are linearly dependent.}\]
 \end{proposition}
 
-% Generator: Claude Opus 5.5 (High) --- proof added for self-containedness. It borrows two
+% Generator: Claude Opus 5.5 (Extra) --- proof added for self-containedness. It borrows two
 % results from Part V (regular value theorem, tangent vectors as velocities of curves); neither
 % of those depends on this proposition, so the forward reference is not circular.
 \begin{proof}
@@ -99,8 +99,14 @@ If $\nabla g_1(x_0),\dots,\nabla g_k(x_0)$ are already linearly dependent, there
 prove. So assume they are independent, which says that $Dg_{x_0}$ has rank $k$. Some $k\times k$
 minor of $\Jac g(x_0)$ is then non-zero, and by continuity it stays non-zero on a ball
 $B \subseteq U$ around $x_0$. By the regular value theorem (\cref{thm:regular_value_theorem},
-applied to $g|_B$), $M := g^{-1}\{0\} \cap B$ is a $C^1$ submanifold of dimension $n-k$, and its
-tangent space at $x_0$ is $T_{x_0}M = \ker Dg_{x_0}$ (\cref{rem:four_representations_tangent_space}).
+applied to $g|_B$), $M := g^{-1}\{0\} \cap B$ is a $C^1$ submanifold of dimension $n-k$, so its
+tangent space $T_{x_0}M$ has dimension $n-k$.
+
+\textbf{The tangent space is $\ker Dg_{x_0}$.} If $\gamma$ is a $C^1$ curve in $M$ with
+$\gamma(0) = x_0$, then $g(\gamma(t)) = 0$ for all $t$, and differentiating at $t=0$ gives
+$Dg_{x_0}\gamma'(0) = 0$. By \cref{prop:tangent_space_via_curves} every tangent vector is such a
+$\gamma'(0)$, so $T_{x_0}M \subseteq \ker Dg_{x_0}$. The kernel also has dimension $n-k$, because
+$Dg_{x_0}$ has rank $k$, so the two spaces are equal.
 
 Now take any $v \in T_{x_0}M$. By \cref{prop:tangent_space_via_curves} there is a $C^1$ curve
 $\gamma : (-\varepsilon,\varepsilon) \to M$ with $\gamma(0) = x_0$ and $\gamma'(0) = v$. Since

@@ -129,15 +129,19 @@ Let $K \subseteq \mathbb{R}^n$ be compact, and let $\{B_{r_l}(p_l)\}_{l=1}^N$ be
 In particular, on the neighborhood $U$ of $K$, $\tilde{\eta} \equiv 0$ so that $\sum_{l=1}^N \eta_l(x) = 1$.
 \end{proposition}
 
-% Generator: Claude Opus 5.5 (High) --- proof added for self-containedness. The idea, "make one
+% Generator: Claude Opus 5.5 (Extra) --- proof added for self-containedness. The idea, "make one
 % bump per ball, then divide by their sum", is the whole content; the rest is making sure the
 % division never happens where the sum is zero.
 \begin{proof}
 \textbf{Step 1: shrink the balls.} The function
 $x \mapsto \max_l\big(r_l - \lvert x-p_l\rvert\big)$ is continuous and positive on $K$, because
 every point of $K$ lies in some $B_{r_l}(p_l)$. On the compact $K$ it therefore has a positive
-minimum $\delta$. Put $\rho_l := r_l - \delta/2$ and $\sigma_l := r_l - \delta/4$, so that
-$\rho_l < \sigma_l < r_l$ and still $K \subseteq U := \bigcup_l B_{\rho_l}(p_l)$, an open set.
+minimum $\delta$. Every $x \in K$ has some $l$ with $\lvert x-p_l\rvert \leq r_l - \delta$. Discard
+the balls with $r_l \leq \delta/2$ and set $\eta_l := 0$ for them: no point of $K$ needs them,
+since for those $l$ the inequality would force $\lvert x - p_l\rvert < 0$. For the remaining balls
+put $\rho_l := r_l - \delta/2 > 0$ and $\sigma_l := r_l - \delta/4$, so that
+$0 < \rho_l < \sigma_l < r_l$ and still $K \subseteq U := \bigcup_l B_{\rho_l}(p_l)$, an open set.
+From here on, $l$ ranges over the remaining balls only.
 
 \textbf{Step 2: one bump per ball.} With $\psi$ from \cref{def:smooth_bump_function}, let
 $\varphi_l(x) := \psi\big((x-p_l)/\sigma_l\big)$. Each $\varphi_l$ is smooth, non-negative,
@@ -165,7 +169,7 @@ values lie in $[0,1]$.
 \end{enumerate}
 \end{proof}
 
-% Generator: Claude Opus 5.5 (High) --- the construction in one dimension, without the cut-off h
+% Generator: Claude Opus 5.5 (Extra) --- the construction in one dimension, without the cut-off h
 % (which only matters where both bumps are nearly zero). Two balls B_{1.5}(-0.9), B_{1.5}(0.9)
 % cover K = [-1.6,1.6]; bumps phi_l(x) = exp(-1/(1-u^2)), u = (x-p_l)/1.5, peak value e^{-1}
 % = 0.368, drawn at vertical scale 4 (peak height 1.47). Bottom panel: eta_l = phi_l/(phi_1+phi_2)

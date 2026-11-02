@@ -73,16 +73,18 @@ Examples of spaces that are \emph{not} simply connected:
 This topological property is what allows the integrability conditions to globally imply the existence of a potential.
 \end{ainote}
 
-% Generator: Claude Opus 5.5 (High) --- proof added for self-containedness. It is the
+% Generator: Claude Opus 5.5 (Extra) --- proof added for self-containedness. It is the
 % construction every potential computation in this chapter performs by hand: integrate from a
 % base point, and use the Poincare lemma to know the answer does not depend on the route.
 \begin{proof}[Proof of \cref{cor:potentials_simply_connected}]
 Write $\alpha = \sum_i F_i\,dx_i$, so that $\int_\gamma\alpha = \int_\gamma F\cdot d\gamma$ and
 $d\alpha = 0$ is exactly the integrability condition. Fix a base point $x_0 \in U$.
 
-\textbf{Polygonal paths reach everything.} The proof of
-\cref{prop:open_euclidean_connected_path_connected} joins points of a connected open set by
-concatenating straight segments, so it produces \emph{polygonal} paths, which are piecewise
+\textbf{Polygonal paths reach everything.} Run the proof of
+\cref{prop:open_euclidean_connected_path_connected} with \qt{polygonal path} (finitely many
+straight segments, traversed one after another) in place of \qt{path}. Every step survives: the
+constant path is polygonal, and the only paths the argument appends are straight segments inside a
+ball. So in a connected open set any two points are joined by a polygonal path, which is piecewise
 $C^1$. As $U$ is path-connected, hence connected, every $x \in U$ is reached from $x_0$ by such a
 path $\gamma_x$.
 
@@ -105,7 +107,7 @@ $\partial_if(x) = F_i(x)$. Hence $\nabla f = F$, which is $C^1$, so $f \in C^2(U
 $df = \alpha$.
 \end{proof}
 
-% Generator: Claude Opus 5.5 (High) --- the route in the proof above. x_0 = (0,0), x = (3,1);
+% Generator: Claude Opus 5.5 (Extra) --- the route in the proof above. x_0 = (0,0), x = (3,1);
 % gamma_x is a three-segment polygon (0,0) -> (1.2,1.3) -> (2.1,0.2) -> (3,1). The step to
 % x + t e_1 = (3.8,1) is horizontal, inside the dashed ball B_r(x) of radius 0.95, which is all
 % the proof differentiates. A second, curved route from x_0 to x (dashed) is drawn to show the

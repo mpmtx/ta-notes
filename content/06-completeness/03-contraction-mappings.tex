@@ -41,7 +41,7 @@ Iterating this inequality yields $d(x_{n+1}, x_n) \leq L^n d(x_1, x_0)$. Since $
 Because $X$ is a complete metric space, this sequence converges to some limit $x^* \in X$. Since contraction mappings are continuous, one can pass the limit inside the function to conclude $f(x^*) = x^*$.
 \end{proof}
 
-% Generator: Claude Opus 5.5 (High) --- the proof idea above, carried out. Added for
+% Generator: Claude Opus 5.5 (Extra) --- the proof idea above, carried out. Added for
 % self-containedness: this theorem drives the inverse function theorem and Picard--Lindelof, so
 % its proof should not be left as a sketch. The a-priori bound is the useful by-product.
 % (The sketch above wrote the Lipschitz constant as lambda; changed to L to match
@@ -54,7 +54,7 @@ geometric series give
   = \frac{L^n}{1-L}\,d(x_1,x_0),\]
 and the right-hand side tends to $0$ as $n \to \infty$ because $0 \leq L < 1$. So $(x_n)$ is
 Cauchy, and by completeness it converges to some $x^* \in X$. A contraction is Lipschitz, hence
-continuous (\cref{def:lipschitz_continuous}), so
+continuous (\cref{rem:continuity_hierarchy}), so
 \[f(x^*) = f\Big(\lim_{n\to\infty}x_n\Big) = \lim_{n\to\infty}f(x_n) = \lim_{n\to\infty}x_{n+1} = x^*.\]
 Letting $m \to \infty$ in the displayed estimate, with $n$ fixed, also gives the
 \newterm{a-priori error bound}
