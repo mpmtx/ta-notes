@@ -89,12 +89,14 @@ sheet 4), so no problem on them is singled out, and all of them are reproduced a
 \end{tabular}
 \end{center}
 
-\begin{ainote}
-Problems \textbf{4.4} and \textbf{4.5} appear in this document for the first time. They had been
-transcribed into \texttt{content/exercise-sheets/week-04.tex}, but that file was never
-\texttt{\textbackslash input} by anything, so neither problem had ever reached the built PDF and
-neither carried a solution. Both are now placed and solved.
-\end{ainote}
+% Correction: Claude Opus 5.5 (Extra) --- the printed notes under sheets 4, 5, 6, 8, 12 and 13
+% recorded the repository's own history ("appear for the first time", "added on 2026-08-11",
+% "until this restructure", "considered and rejected"), which tells a reader of the PDF nothing
+% and is what git log is for. Kept below as comments; the printed notes keep only what a reader
+% can use.
+% Problems 4.4 and 4.5 had been transcribed into content/exercise-sheets/week-04.tex, but that
+% file was never \input by anything, so neither problem had ever reached the built PDF and
+% neither carried a solution. Both are now placed and solved.
 
 \section{Sheet 5}
 \label{sec:sheet_index_5}
@@ -120,11 +122,8 @@ neither carried a solution. Both are now placed and solved.
 \end{tabular}
 \end{center}
 
-\begin{ainote}
-Problems \textbf{5.4}--\textbf{5.7} appear here for the first time, for the same reason as 4.4
-and 4.5: they lived in \texttt{content/exercise-sheets/week-05.tex}, which nothing ever
-\texttt{\textbackslash input}. All four are now placed and solved.
-\end{ainote}
+% Problems 5.4--5.7 likewise lived in content/exercise-sheets/week-05.tex, which nothing ever
+% \input. All four are now placed and solved.
 
 \section{Sheet 6}
 \label{sec:sheet_index_6}
@@ -157,12 +156,12 @@ is solved. This is a gap in the source material, not a casualty of the restructu
 
 \textbf{6.1 is the exception, and it is deliberate.} It asks for two things about a convex
 $f \in C^2(\mathbb{R}^n)$: that a critical point is exactly a global minimiser, and for a
-non-negative example whose infimum is not attained. Both are already in the document ---
+non-negative example whose infimum is not attained. Both are already in the document:
 \cref{ex:convexity_characterizations}\textbf{(c)} and
 \cref{ex:convex_function_unattained_infimum}, the latter with precisely the required
 $f(x) = e^{x_1+x_2}$. Transcribing 6.1 would print the same two questions a second time, so the
-row above stays \qt{not transcribed} while the mathematics is covered. Considered and rejected
-2026-08-11.
+row above stays \qt{not transcribed} while the mathematics is covered.
+% Considered and rejected 2026-08-11.
 \end{ainote}
 
 \section{Sheet 7}
@@ -220,19 +219,15 @@ never transcribed.
 \end{tabular}
 \end{center}
 
+% 8.1 was added on 2026-08-11 as ex:jordan_null_products; the row above used to read "not
+% transcribed". Sheet 8's other transcribed problems had no solutions at all until the
+% restructure (the old Solutions section held only a stale placeholder); all are now solved.
+% Standing decision: no more of Sascha Brack's annotated sheet copies are mined. They are copies
+% of the official sheet rather than independent notes, so the yield is cross-tutor priority
+% agreement plus short margin hints, not worth the reading cost next to Corsin's priority page.
 \begin{ainote}
-8.1 was added on 2026-08-11 as \cref{ex:jordan_null_products}; the row above used to read
-\qt{not transcribed}.
-
-Sheet 8's three transcribed problems had \emph{no} solutions at all until this restructure. The
-old chapter's \emph{Solutions} section held nothing but a placeholder note, which had already
-gone stale, since the statements were in fact transcribed. All three are now solved.
-
-Sheet 8 is the one place where a second tutor's hint file was mined, namely Sascha Brack's
-annotated copy of the sheet. That material stays, but per a standing decision no more of it is
-added: those files are annotated copies of the official sheet rather than independent notes, so
-the yield is cross-tutor priority agreement plus short margin hints, which is not worth the
-reading cost next to Corsin's own priority page.
+Sheet 8 is the one sheet for which a second tutor's annotations were used: some hints quoted with
+its problems come from Sascha Brack's annotated copy of the sheet rather than from Corsin.
 \end{ainote}
 
 \section{Sheet 9}
@@ -336,10 +331,9 @@ differential-form computations.
 12.2 (existence of a potential via a path integral, building the tool used implicitly in
 \cref{ex:conservative_vector_field_potential}), 12.6 (a Stokes reality check structurally identical to \cref{ex:stokes_work_along_paths} part
 \textbf{(c)}) and 12.7 (four standard $\curl$/$\divg$ product-rule identities) have not been
-transcribed. 12.1 was in that list until 2026-08-11; it is now
-\cref{ex:path_concatenation_work}, placed beside \cref{def:line_integral} rather than with the
-other sheet-12 problems, because it is a property of that definition and is used implicitly from
-there onwards.
+transcribed. 12.1 is \cref{ex:path_concatenation_work}, placed beside \cref{def:line_integral}
+rather than with the other sheet-12 problems, because it is a property of that definition and is
+used implicitly from there onwards.
 \end{ainote}
 
 \section{Sheet 13}
@@ -372,20 +366,22 @@ there onwards.
 \end{tabular}
 \end{center}
 
+% The week-13 chapter carried no exercise-sheet heading, and until 2026-08-11 this appendix
+% recorded that no thirteenth sheet was known to exist; see the correction comment above.
 \begin{ainote}
 Sheet 13 is the course's ODE sheet, and its material belongs to \cref{ch:odes} rather than to any
-chapter of the main text --- which is why the week-13 chapter carried no exercise-sheet heading and
-why, until 2026-08-11, this appendix recorded that no thirteenth sheet was known to exist. It does
-exist; see the correction comment in the source.
+chapter of the main text.
 
 Only 13.4 is transcribed, as \cref{ex:serra_normal_form_cauchy_lipschitz}. It was chosen because it
 is the one problem on the sheet that is not a computation: it asks in each case \emph{whether} the
 existence and uniqueness theorem applies before asking for a solution, which is the question
 \cref{sec:cauchy_lipschitz} exists to answer. 13.1--13.3 are solution techniques that
 \cref{sec:solving_linear_systems_odes} and \cref{sec:inhomogeneous_odes} already cover, and 13.5
-reaches into the Picard iteration and the long-time behaviour of $\dot x = Ax$, neither of which
-this document develops.
-
-The two exercises in \cref{ch:stokes} that are not from an official sheet
-(\cref{ex:area_boundary_functional} and \cref{ex:area_ellipse}) come from Corsin's own notes.
+asks about the long-time behaviour of $\dot x = Ax$, which this document does not develop, and
+about convergence of the Picard iteration, which \cref{sec:picard_iteration} treats only briefly.
 \end{ainote}
+% Correction: Claude Opus 5.5 (Extra) --- 13.5 was said to reach into "the Picard iteration ...
+% which this document does not develop", but sec:picard_iteration exists; and the closing
+% sentence called ex:area_boundary_functional and ex:area_ellipse "exercises", which they stopped
+% being when they were reclassified as worked examples (see 26-stokes/05). Removed: it answered
+% nothing about sheet 13.

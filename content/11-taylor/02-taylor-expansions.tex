@@ -25,7 +25,11 @@ Before unpacking the formula, one hypothesis hidden in the notation deserves to 
 Writing $\partial^\alpha$ for a multi-index $\alpha$ presumes that it does not matter \emph{in
 which order} the derivatives are taken, since otherwise $\partial^{(1,1)}$ would be ambiguous
 between $\partial_1\partial_2$ and $\partial_2\partial_1$. That the presumption is legitimate is
-itself a theorem, and it is stated next.
+itself a theorem, \newterm{Schwarz's theorem} \germanfor{Satz von Schwarz}, and it is stated
+next.
+% Correction: Claude Opus 5.5 (Extra) --- the term pair sat in ch. 12, a chapter after the
+% theorem it names; first introduction is here. "Schwarz's lemma" elsewhere normalised to
+% "theorem" (the lemma of that name is the complex-analysis one).
 
 \begin{theorem}[Schwarz / Clairaut --- mixed partial derivatives commute]
 \label{thm:schwarz_mixed_partials}
@@ -340,7 +344,7 @@ seeing why is worth the paragraph.
 
 The working formula's $\tfrac{1}{\ell!}$ weights \emph{all} $\ell$-fold products of partials
 globally, including repeated ones such as $\partial_1\partial_2$, which appears in more than one
-order in the multinomial expansion of $(h_1\partial_1+h_2\partial_2)^\ell$. By Schwarz's lemma
+order in the multinomial expansion of $(h_1\partial_1+h_2\partial_2)^\ell$. By Schwarz's theorem
 (equality of mixed partial derivatives, valid here because $f \in C^k$) all those repeats collapse
 onto the same $\partial^\alpha$, and there are exactly $\ell!/\alpha!$ of them. That collapsing is
 what turns the global $1/\ell!$ into the per-term $1/\alpha!$ seen in

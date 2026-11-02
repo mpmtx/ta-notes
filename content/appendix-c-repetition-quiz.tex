@@ -59,9 +59,12 @@ complete, is it closed?
 \end{question}
 
 \begin{answer}
-\textbf{True.} Let $(a_n)_{n=0}^\infty$ be a convergent sequence with elements in $X$. Then
-$(a_n)$ is Cauchy, and by completeness it has a limit point in $X$. So $X$ is sequentially
-closed, hence closed (\cref{prop:open_closed_via_sequences}).
+\textbf{True.} Let $(a_n)_{n=0}^\infty$ be a sequence in $X$ converging to some $a \in
+\mathbb{R}^2$. Then $(a_n)$ is Cauchy, and by completeness it converges to a point of $X$; by
+uniqueness of limits that point is $a$. So $X$ is sequentially closed, hence closed
+(\cref{prop:open_closed_via_sequences}).
+% Correction: Claude Opus 5.5 (Extra) --- "has a limit point in X" (a limit point is an
+% accumulation point, and its identification with the limit in R^2 was the missing step).
 \end{answer}
 
 \begin{ainote}
@@ -84,7 +87,7 @@ Let $X \subseteq \mathbb{R}^2$ as above. If $X$ is not open, is it closed?
 % Generator: Claude Opus 5 (Medium) --- Corsin gives the verdict without a counterexample.
 \begin{ainote}
 Corsin marks this false but gives no counterexample; the half-open square
-$X := [0,1] \times (0,1)$ from \cref{sec:open_closed_sets} is one, being neither open
+$X := [0,1] \times (0,1)$ from \cref{ex:open_closed_neither_R2} is one, being neither open
 nor closed. \qt{Open} and \qt{closed} are not opposites and not exhaustive: $\emptyset$ and
 $\mathbb{R}^2$ are both, most sets are neither, and the excluded values
 $X \neq \emptyset,\ X \neq \mathbb{R}^2$ in the hypothesis are there precisely to rule out the
@@ -141,7 +144,7 @@ Which of the following is \textbf{false}?
 $\alpha$ (the third standard basis vector is an eigenvector), so $\Hess f(0)$ is never negative
 semidefinite and $0$ can never be a local maximum.
 
-\textbf{(b) is true.} Let $\lambda_1,\lambda_2,\lambda_3 = 1$ be the eigenvalues of
+\textbf{(b) is true.} Let $\lambda_1$, $\lambda_2$ and $\lambda_3 = 1$ be the eigenvalues of
 $\Hess f(0)$. Then
 \[\lambda_1\lambda_2 = \det\big(\Hess f(0)\big) = 2-\alpha^2 < 0 \quad \text{for } \alpha > \sqrt2,\]
 so $\Hess f(0)$ has both positive and negative eigenvalues, making it indefinite, and $0$ is a
@@ -194,8 +197,8 @@ no points at all just to the left of the origin, and cannot be a graph over $x$ 
 The two parts are settled by different means, and the asymmetry is the point. Part \textbf{(a)}
 is decided by \emph{checking a derivative}; part \textbf{(b)} needs an \emph{explicit
 computation} showing the set is empty on one side. That is because the implicit function theorem
-yields no negative results: failure of its hypothesis proves nothing on its own, exactly as
-discussed after \cref{thm:implicit_function_theorem}.
+yields no negative results: failure of its hypothesis proves nothing on its own, exactly as for
+the regular value theorem in \cref{ex:cross_not_submanifold}.
 \end{ainote}
 
 % Source: Corsin Nick/Class Notes/Week 8.pdf, p. 6
@@ -236,8 +239,9 @@ not injectivity, and not injectivity of $D\gamma_t$; it is the requirement that 
 parametrization be a \textbf{homeomorphism} onto its image. Here $\gamma^{-1}$ is discontinuous
 at $(0,0)$: points of the image arbitrarily close to the origin have parameters near $0$ and near
 $2\pi$, far apart in $I$. That the resulting set is not a submanifold can then be confirmed by
-the component count of \cref{ex:cross_not_submanifold}. Deleting the crossing point leaves
-four pieces, while deleting a point from an interval leaves two.
+the component count of \cref{ex:cross_not_submanifold}. Near the origin, deleting the crossing
+point leaves four arcs, while deleting a point from an interval leaves two. (Globally the
+punctured figure eight has only two components, the two loops; the count must be local.)
 \end{ainote}
 
 % Sonnet 5 (Medium)
@@ -276,8 +280,9 @@ $\mu_{\mathrm{in}} \leq \tfrac12$ and $\mu_{\mathrm{out}} = 1$.
 
 \begin{ainote}
 The instinct to be corrected is that \qt{nice} should mean open or closed. It does not: a closed
-set can fail just as badly, since the complement construction is available in both directions,
-and $\overline U = [0,1]$ in the example above is Jordan measurable while $U$ is not. What Jordan
+set can fail just as badly. With $U$ the example above, $[0,1]\setminus U$ is closed and
+bounded, and it is not Jordan measurable either, since otherwise $U = [0,1]\setminus([0,1]
+\setminus U)$ would be. Meanwhile $\overline U = [0,1]$ is Jordan measurable while $U$ is not. What Jordan
 measurability actually asks is that the boundary be thin, and \emph{thin} is a size condition
 that topology alone never supplies.
 \end{ainote}
@@ -365,8 +370,13 @@ on $U$. Which of the following holds?
 \textbf{(a) is false; (b) and (c) are true.} By \cref{lem:integrability_conditions} the
 vanishing of $\curl F$ is \emph{necessary} for $F$ to be conservative, and
 \cref{cor:potentials_simply_connected} makes it sufficient once the domain is simply connected,
-which gives \textbf{(b)}. A ball is star-shaped, so \textbf{(c)} follows from the Poincaré lemma
-(\cref{thm:poincare_lemma}) and shows that the failure in \textbf{(a)} can only ever be global.
+which gives \textbf{(b)}. A ball is convex, so any two paths in it with the same endpoints are
+homotopic through the straight-line homotopy $H(s,t) := (1-s)\gamma_0(t) + s\gamma_1(t)$; it is
+simply connected, and \textbf{(c)} follows from \textbf{(b)}. It shows that the failure in
+\textbf{(a)} can only ever be global.
+% Correction: Claude Opus 5.5 (Extra) --- (c) was credited to "the Poincare lemma" for star-shaped
+% sets; thm:poincare_lemma here is the homotopy-invariance statement, and the star-shaped version
+% is not in the document.
 
 For \textbf{(a)} itself, take $U := \mathbb{R}^3\setminus\{x = y = 0\}$, the complement of the
 $z$-axis, and
@@ -461,11 +471,15 @@ closed. It is therefore closed and not exact.
 \end{answer}
 
 \begin{ainote}
-Part \textbf{(b)} is worth holding onto, because it is the first obstruction in this document
-that is detected by an \emph{integral} rather than by a computation. The angle form of
-\cref{ex:ai_angle_form_closed} was closed and not exact for the same reason, one dimension down,
-and there too the witness was a number: $2\pi$ around the puncture, $4\pi$ over the sphere. In
-both cases the domain is not star-shaped, so \cref{thm:poincare_lemma} does not apply, and in
-both cases the integral says not merely that the lemma is unavailable but that its conclusion is
-genuinely false.
+Part \textbf{(b)} is worth holding onto, because differentiation cannot detect it: $d\sigma = 0$
+is all a local computation reveals, and the obstruction is visible only to an \emph{integral}.
+The angle form of \cref{ex:ai_angle_form_closed} was closed and not exact for the same reason,
+one dimension down, and there too the witness was a number: $2\pi$ around the puncture, $4\pi$
+over the sphere. One difference is instructive. The punctured plane is not simply connected, but
+the sphere is, so \cref{cor:potentials_simply_connected} cannot be what fails here: it is a
+statement about $1$-forms, and simple connectedness says nothing about whether a closed $2$-form
+is exact.
+% Correction: Claude Opus 5.5 (Extra) --- the note called this "the first obstruction detected by
+% an integral" and then cited an earlier one, and said the Poincare lemma fails for want of a
+% star-shaped domain; the lemma in this document is about 1-forms and homotopic paths.
 \end{ainote}
