@@ -79,34 +79,29 @@ using $dx\wedge dx = dy\wedge dy = 0$ and $dy\wedge dx = -dx\wedge dy$.
 \label{sec:green_theorem_proof}
 
 % Source: Corsin Nick/Class Notes/Week 13.pdf, p. 3
+% Merged: Claude Opus 5.5 (Extra) --- Corsin restates Green's theorem here, copied from the lecture
+% script (Theorem 14.24), and then derives it. The restatement used to stand as a second numbered
+% theorem (thm:green_theorem) with the same content as thm:greens_theorem; it is now the proof of
+% that theorem, and every citation of the old label points at the surviving one.
 \begin{ainote}
-The theorem below is reproduced by Corsin directly from the lecture script (numbered there as
-Theorem 14.24), as with the two definitions quoted in \cref{sec:orientable_manifolds}.
+Corsin reproduces Green's theorem at this point directly from the lecture script (numbered there
+as Theorem 14.24), as with the two definitions quoted in \cref{sec:orientable_manifolds}. It is
+\cref{thm:greens_theorem}, stated in \cref{sec:greens_theorem_conservative_fields} and used since;
+what he adds is the derivation below.
 \end{ainote}
 
-\begin{theorem}[Green's theorem in the plane]
-\label{thm:green_theorem}
-Let $F : U \to \mathbb{R}^2$ be a continuously differentiable vector field on an open set
-$U \subseteq \mathbb{R}^2$. Then, for any bounded $C^1$ domain $\Omega$ with $\overline\Omega
-\subseteq U$,
-% Correction: Claude Opus 5.5 (Extra) --- was "compact C^1 domain", as in thm:greens_theorem.
-\[\int_\Omega \curl F\,dx = \int_{\partial\Omega} F\cdot\tau\,dL,\]
-with $\tau = \nu^\perp = (-\nu_2,\nu_1)$, where $\nu$ is the exterior unit normal.
-\end{theorem}
-
-Writing $F(x,y) = (P(x,y),Q(x,y))$, so that $\curl F = \partial_xQ - \partial_yP$ (the scalar
-$2$-dimensional curl), \cref{thm:green_theorem} follows from
-\cref{thm:stokes_general,ex:exterior_derivative_r2} applied to $\omega = P\,dx+Q\,dy$:
+\begin{proof}[Proof of \cref{thm:greens_theorem}]
+Write $F(x,y) = (P(x,y),Q(x,y))$, so that $\curl F = \partial_xQ - \partial_yP$ (the scalar
+$2$-dimensional curl), and apply \cref{thm:stokes_general} to $\omega = P\,dx+Q\,dy$, whose
+exterior derivative was computed in \cref{ex:exterior_derivative_r2}:
 \[
 \int_\Omega \curl F\,dx\,dy = \int_\Omega \left(\frac{\partial Q}{\partial x} -
   \frac{\partial P}{\partial y}\right) dx\wedge dy = \int_\Omega d\omega
   \overset{\text{Stokes}}{=} \int_{\partial\Omega} P(x,y)\,dx + Q(x,y)\,dy
   = \int_{\partial\Omega} F\cdot\tau\,dL.
 \]
-
-\begin{proof}[Justification of the last step]
-Suppose $\gamma : [0,L] \to \partial\Omega$ is a $C^1$ curve of unit speed and positive
-orientation, i.e.\ $\gamma'(t) = \tau(\gamma(t))$. Then
+The last step needs a word. Let $\gamma : [0,L] \to \partial\Omega$ be a $C^1$ curve of unit
+speed and positive orientation, i.e.\ $\gamma'(t) = \tau(\gamma(t))$. Then
 \[\langle F,\tau\rangle = \langle F,\gamma'(t)\rangle = (P\,dx+Q\,dy)(\gamma'(t)),\]
 since $\tau = \begin{pmatrix}0&-1\\1&0\end{pmatrix}\nu$ is the tangent vector consistent with
 the induced orientation, so integrating $(P\,dx+Q\,dy)(\gamma'(t))$ over $t \in [0,L]$ is
@@ -120,7 +115,11 @@ exactly $\int_{\partial\Omega} P\,dx+Q\,dy$ by \cref{def:integral_of_form_over_s
 Recall from \cref{ex:exterior_derivative_gradient_curl} that for $\omega_F =
 \langle F,\cdot\rangle$, $d\omega_F = \langle\curl F,\cdot\times\cdot\rangle$. So, if $\Omega
 \subseteq \mathbb{R}^3$ is a $2$-dimensional submanifold with boundary, parametrized by $\phi$
-with tangent vectors $\tau_i := \partial_i\phi$ and exterior unit normal $\nu$, then
+with tangent vectors $\tau_i := \partial_i\phi$ and oriented by the unit normal
+$\nu := \tau_1\times\tau_2/\lvert\tau_1\times\tau_2\rvert$, then
+% Correction: Claude Opus 5.5 (Extra) --- "exterior unit normal": a surface in R^3 has no
+% exterior; nu is the normal that orients it, and the middle equality below needs exactly this
+% one, since |tau_1 x tau_2| dx is the area element.
 \[
 \int_\Omega d\omega_F = \int_\Omega \langle\curl F,\tau_1\times\tau_2\rangle\,dx
   = \int_\Omega \langle\curl F,\nu\rangle\,d\vol_2 = \int_\Omega \vec\nabla\times\vec F\cdot
@@ -131,27 +130,17 @@ and
   = \int_{\partial\Omega} \vec F\cdot d\vec s.\]
 By \cref{thm:stokes_general}, these are equal, which recovers \cref{thm:stokes_classical}.
 
-% Added 2026-08-13 (Claude Opus 5, Extra): the line above says the derivation "recovers
-% thm:stokes_classical", and the theorem below then states the same result again under its own
-% number. A reader meets classical Stokes as two separately numbered theorems with no word
-% connecting them. Flagged rather than merged: thm:stokes_classical sits in ch. 25 and is cited
-% from ch. 23's solutions, so which of the two should survive is a question about where the
-% classical form belongs in the document, not a local edit.
-% Transition: Claude Opus 5 (Extra)
-Restated in full, and with the orientation convention spelled out, this is the following. It is
-\cref{thm:stokes_classical} again, recorded here in the notation of this section because the
-convention at the end of the statement is what the rest of the section computes with.
-
-% Source: Jérôme Paschoud/Notizen/Woche 13.1 Stokes.pdf, p. 4
-\begin{theorem}[Stokes' theorem in 3D]
-\label{thm:stokes_3d}
-For an orientable, parametrized $2$-dimensional submanifold $M \subseteq \mathbb{R}^3$ with boundary $\partial M$, and a $C^1$ vector field $F$:
-\[\int_M \curl(F) \cdot \nu \,d\vol_2 = \int_{\partial M} F \cdot \tau \,d\vol_1.\]
-The orientation of $\partial M$ is chosen such that when traversing $\partial M$ in the direction of $\tau$, the surface $M$ (given by the normal $\nu$) is to the left (the ``right-hand rule'').
-\end{theorem}
+% Merged: Claude Opus 5.5 (Extra) --- a second statement of the same theorem stood here as
+% thm:stokes_3d (from Jérôme Paschoud/Notizen/Woche 13.1 Stokes.pdf, p. 4), introduced as
+% "thm:stokes_classical again". Its orientation convention now sits in thm:stokes_classical
+% itself, and its citations point there.
+% Transition: Claude Opus 5.5 (Extra)
+The last sentence of \cref{thm:stokes_classical}, the right-hand rule fixing the direction of
+$\tau$ from $\nu$, is what the rest of this section computes with, and it is the one convention
+in this part that is easy to get backwards.
 
 % Generator: Claude Opus 5 (High) --- FIG-26-03. This section is the chapter's main one and had
-% no figure at all, while the theorem just above states its orientation convention purely in
+% no figure at all, while thm:stokes_classical states its orientation convention purely in
 % words. "The surface is to the left" is the one convention in this part of the course that a
 % reader cannot reliably reconstruct from prose, and getting it backwards flips the sign of
 % every answer, which is why it earns a picture here rather than a longer sentence.
@@ -214,7 +203,7 @@ unit disc in the $xy$-plane with $\nu = e_3$, at the point $(1,0,0)$, the positi
 $\tau$ is $(0,1,0)$ and $\nu\times\tau = (-1,0,0)$ does point at the origin, confirming the
 familiar counterclockwise convention.
 
-Reversing $\nu$ reverses $\tau$, which is why both sides of \cref{thm:stokes_3d} change sign
+Reversing $\nu$ reverses $\tau$, which is why both sides of \cref{thm:stokes_classical} change sign
 together and the theorem is insensitive to the choice. What it is \emph{not} insensitive to is
 choosing the two independently, and that is the error the formula above rules out.
 \end{remark}
@@ -226,7 +215,7 @@ Let $F(x,y,z) := (z, x, y)\transp$. We want to compute the flux of the curl of $
 
 First, the curl of $F$ is:
 \[\curl(F) = \begin{pmatrix} \partial_y F_3 - \partial_z F_2 \\ \partial_z F_1 - \partial_x F_3 \\ \partial_x F_2 - \partial_y F_1 \end{pmatrix} = \begin{pmatrix} 1 - 0 \\ 1 - 0 \\ 1 - 0 \end{pmatrix} = \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}.\]
-By \cref{thm:stokes_3d}, the flux of $\curl(F)$ through $H$ equals the line integral of $F$ along the boundary $\partial H$. The boundary is the unit circle in the $xy$-plane, which we parametrize by $\gamma(t) = (\cos t, \sin t, 0)\transp$ for $t \in [0, 2\pi]$. The tangent vector is $\gamma'(t) = (-\sin t, \cos t, 0)\transp$.
+By \cref{thm:stokes_classical}, the flux of $\curl(F)$ through $H$ equals the line integral of $F$ along the boundary $\partial H$. The boundary is the unit circle in the $xy$-plane, which we parametrize by $\gamma(t) = (\cos t, \sin t, 0)\transp$ for $t \in [0, 2\pi]$. The tangent vector is $\gamma'(t) = (-\sin t, \cos t, 0)\transp$.
 The line integral is:
 \begin{align*}
 \int_{\partial H} F \cdot d\gamma &= \int_0^{2\pi} F(\gamma(t)) \cdot \gamma'(t) \,dt \\
@@ -326,7 +315,7 @@ the area of a disk of radius $\sqrt{1-h^2}$ times $2$, again the same answer.
 % divergence theorem in \cref{sec:flux_divergence_theorem}) as one theorem, stated once, here.
 \begin{remark}[One theorem, four costumes]
 \label{rem:one_theorem_four_costumes}
-Every integral theorem proved in this part of the course is the single identity
+Every integral theorem in this part of the course is the single identity
 $\int_M d\omega = \int_{\partial M}\omega$ of \cref{thm:stokes_general}, for a different choice
 of the dimension $m$ of $M$ and the degree of $\omega$. Collected in one place:
 \begin{center}
@@ -337,7 +326,7 @@ of the dimension $m$ of $M$ and the degree of $\omega$. Collected in one place:
 \midrule
 FTC &
   $[a,b]\subset\mathbb{R}$ & $1$ & $f$ ($0$-form) & $f'\,dx$ \\
-Green (\cref{thm:green_theorem}) &
+Green (\cref{thm:greens_theorem}) &
   $\Omega\subseteq\mathbb{R}^2$ & $2$ & $P\,dx+Q\,dy$ & $(\partial_xQ{-}\partial_yP)\,dx\!\wedge\! dy$ \\
 Classical Stokes (\cref{thm:stokes_classical}) &
   surface $S\subset\mathbb{R}^3$ & $2$ & $\omega_F$ & $\omega_{\curl F}^2$ \\
@@ -375,7 +364,7 @@ $\partial(\partial M) = \emptyset$.
 % Source: old_exams/examFS24.pdf (21 August 2024), Problem 3, parts 1--2, p. 10
 % Extractor: Gemini 3.6 Flash (High)
 % Correction: Claude Opus 5 (High) --- \operatorname{rot} -> \curl and J\Phi -> \Jac\Phi per the
-% declared-macro rule; \iint -> \int, matching thm:green_theorem two pages above.
+% declared-macro rule; \iint -> \int, matching the proof of thm:greens_theorem two pages above.
 \begin{exercise}[Curl identity and Green's formula area preservation]
 \label{ex:curl_identity_greens_formula}
 Let $\Omega \subseteq \mathbb{R}^2$ be a bounded $C^1$ domain, and let $\Phi = (\Phi_1, \Phi_2) \in C^2(\overline{\Omega}, \mathbb{R}^2)$ be a vector-valued mapping, not assumed to be a diffeomorphism.

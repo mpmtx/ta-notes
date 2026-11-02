@@ -184,7 +184,7 @@ with no relative sign corrections needed: $\boxed{I_b+I_t+I_r+I_l}$, answer \tex
 % Generator: Gemini 3.6 Flash (High)
 % Correction: Claude Opus 5 (High) --- \operatorname{rot} -> \curl, J\Phi -> \Jac\Phi, and the line
 % integrals rewritten in this chapter's own notation (\int_{\partial\Omega} F\cdot\tau\,dL, as in
-% thm:green_theorem) rather than the physics d\mathbf{r}. Part (b) also justified properly: Flash
+% thm:greens_theorem) rather than the physics d\mathbf{r}. Part (b) also justified properly: Flash
 % asserted "d\Phi_2 = d\Psi_2 on \partial\Omega", which is false for the full differentials --- only
 % the tangential derivative agrees, and that is all the line integral sees.
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -204,7 +204,7 @@ the identity is simply false.
 
   \item Write $V_\Phi := \Phi_1 \nabla \Phi_2$ and $V_\Psi := \Psi_1 \nabla \Psi_2$. By part
 \textbf{(a)}, $\curl V_\Phi = \det \Jac\Phi$ and $\curl V_\Psi = \det \Jac\Psi$, so Green's theorem
-(\cref{thm:green_theorem}) turns both integrals into boundary integrals:
+(\cref{thm:greens_theorem}) turns both integrals into boundary integrals:
 \[\int_\Omega \det \Jac\Phi \, dx = \int_{\partial \Omega} V_\Phi \cdot \tau \, dL,
 \qquad
 \int_\Omega \det \Jac\Psi \, dx = \int_{\partial \Omega} V_\Psi \cdot \tau \, dL.\]
@@ -271,7 +271,7 @@ determinant.
     \[G := \frac{\Phi - p}{\lvert\Phi - p\rvert} \ \in\ C^2(\overline{B_1},\mathbb{R}^2),
       \qquad \lvert G\rvert \equiv 1 .\]
     The computation in \textbf{(d)} applies verbatim to $G$ and gives $\det\Jac G \equiv 0$.
-    Feeding that into \textbf{(a)} and Green's theorem (\cref{thm:green_theorem}),
+    Feeding that into \textbf{(a)} and Green's theorem (\cref{thm:greens_theorem}),
     \begin{equation}
     \label{eq:bonus_boundary_integral}
       0 = \int_{B_1}\det\Jac G = \int_{\partial B_1} G_1\nabla G_2 \cdot \tau\,dL .
@@ -397,7 +397,7 @@ also a gradient is precisely what the domain decides.
     simple closed curve in $U$ passing through $(0,1)$, and since it bounds a disc on which $X$
     is defined and closed (every point of that disc is at distance at least $1$ from the
     origin), Green's
-    theorem (\cref{thm:green_theorem}) gives $\int_\gamma X \cdot d\gamma = 0$. Second, even a loop
+    theorem (\cref{thm:greens_theorem}) gives $\int_\gamma X \cdot d\gamma = 0$. Second, even a loop
     that does enclose the origin may be traversed clockwise, giving $-2\pi$. The correct general
     statement is that the integral equals $2\pi$ times the winding number of $\gamma$ about the
     origin, and \qt{simple closed curve} pins that number down only up to sign, and only once the

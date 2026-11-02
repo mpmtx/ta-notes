@@ -126,27 +126,26 @@ orientation.
 % Generator: Claude Sonnet 5 (Medium)
 \begin{ainote}
 \Cref{ex:stokes_work_along_paths} and Exercise 12.6 (the latter not reproduced below, see the priority table)
-invoke \newterm{Stokes' theorem} in its classical $\mathbb{R}^3$ form, which none of Corsin's
-transcribed pages state explicitly. Recorded here for self-containedness, since the
-exercise-sheet solutions below rely on it.
+invoke \newterm{Stokes' theorem} in its classical $\mathbb{R}^3$ form, which Corsin's transcribed
+pages reach only in \cref{sec:stokes_in_r3}, as a consequence of the general theorem. It is
+recorded here ahead of that, since the exercise-sheet solutions rely on it.
 \end{ainote}
 
-% ⚠️ OPEN, raised by the 2026-08-13 audit. This theorem is stated a second time in
-% content/26-stokes/04-stokes-theorem.tex as thm:stokes_3d, three lines after that section's
-% derivation says it "recovers thm:stokes_classical". So classical Stokes carries two numbers in
-% two chapters. A sentence there now names the relationship, but the duplication stands.
-% Whichever way it is repaired, note the constraint that makes it awkward: thm:stokes_classical is
-% cited from content/23-flux-divergence/99-solutions.tex, which is TWO CHAPTERS EARLIER, so the
-% statement cannot simply be moved down to ch. 26 without leaving that citation pointing forwards.
-% The honest options are to keep this statement as the definitive one and demote thm:stokes_3d to
-% a remark restating the orientation convention (its citations would then read "By Remark ...",
-% which is why it was not just done), or to accept the forward reference from ch. 23 and let ch. 26
-% own the theorem outright.
+% Merged: Claude Opus 5.5 (Extra) --- this was stated a second time in
+% content/26-stokes/04-stokes-theorem.tex as thm:stokes_3d (Paschoud's formulation, with the
+% orientation convention spelled out). This statement is kept because ch. 23's solutions cite it,
+% two chapters before ch. 26; it now carries the convention from thm:stokes_3d, whose citations
+% point here. The derivation from thm:stokes_general stays in sec:stokes_in_r3.
 \begin{theorem}[Stokes' theorem, classical form in $\mathbb{R}^3$]
 \label{thm:stokes_classical}
 % Generator: Claude Sonnet 5 (Medium)
-Let $S \subseteq \mathbb{R}^3$ be a compact, oriented $C^1$ surface with boundary $\partial S$
-carrying the induced orientation, and let $F$ be a $C^1$ vector field on a neighborhood of
-$S$. Then
-\[\int_S \curl F \cdot d\vec{n} = \int_{\partial S} F \cdot d\vec{s}.\]
+% Source (orientation convention): Jérôme Paschoud/Notizen/Woche 13.1 Stokes.pdf, p. 4
+Let $S \subseteq \mathbb{R}^3$ be a compact, oriented $C^1$ surface with boundary, oriented by a
+continuous unit normal field $\nu$, and let $F$ be a $C^1$ vector field on a neighbourhood of
+$S$. Let $\partial S$ carry the induced orientation, given by the unit tangent $\tau$ for which,
+walking along $\partial S$ in the direction of $\tau$ with $\nu$ pointing up, $S$ lies to the
+left (the \qt{right-hand rule}). Then
+\[\int_S \langle\curl F,\nu\rangle\,d\vol_2 = \int_{\partial S} \langle F,\tau\rangle\,d\vol_1,
+  \qquad\text{in physics notation}\qquad
+  \int_S \curl \vec F \cdot d\vec A = \int_{\partial S} \vec F \cdot d\vec s.\]
 \end{theorem}
