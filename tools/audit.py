@@ -500,7 +500,7 @@ for f in FILES:
         for m in GERMANFOR.finditer(code(line)):
             mirrored[gnorm(m.group(1))].append(f"{rel(f)}:{i}")
 
-glossary_rows = {}
+glossary_rows, glossary_ch = {}, {}
 if GLOSSARY.exists():
     for line in TEXT[GLOSSARY].splitlines():
         stripped = code(line)
@@ -509,6 +509,16 @@ if GLOSSARY.exists():
         cells = [c.strip() for c in stripped.split("\\\\")[0].split("&")]
         if len(cells) == 3 and not cells[0].startswith("\\textbf"):
             glossary_rows[gnorm(cells[1])] = cells[1]
+            glossary_ch[gnorm(cells[1])] = cells[2]
+
+def chapter_of(site):
+    """`07-compactness/01-open-covers.tex:12` -> "7"; `appendix-a-odes.tex:3` -> "A"."""
+    head = site.split("/")[0].split(":")[0]
+    m = re.match(r"(\d+)-", head)
+    if m:
+        return str(int(m.group(1)))
+    m = re.match(r"appendix-([a-z])-", head)
+    return m.group(1).upper() if m else "?"
 
 report("German term mirrored more than once (mirroring is first-introduction only)",
        [f"{term}  {sites}" for term, sites in sorted(mirrored.items()) if len(sites) > 1])
@@ -516,6 +526,12 @@ report("mirrored German term with no row in appendix-b-glossary.tex",
        [f"{mirrored[t][0]}  {t}" for t in sorted(mirrored) if t not in glossary_rows])
 report("glossary row whose German term is mirrored nowhere in content/",
        [glossary_rows[t] for t in sorted(glossary_rows) if t not in mirrored])
+# The third column is the chapter of first introduction (style.md). Unchecked until 2026-11-02,
+# when a manual pass found it had to be re-derived by hand to be trusted.
+report("glossary Ch. column disagrees with where the term is mirrored",
+       [f"{glossary_rows[t]}: row says {glossary_ch[t]}, mirrored at {mirrored[t][0]}"
+        for t in sorted(glossary_rows)
+        if t in mirrored and glossary_ch[t] != chapter_of(mirrored[t][0])])
 
 # ------------------------------------------------------------- verdict ------
 print("\n" + "-" * 62)

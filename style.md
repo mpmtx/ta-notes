@@ -191,15 +191,10 @@ a style decision actually changes.
   ratio is the problem: a mark that is meant to signal a rupture had become this document's
   default connector, so nothing it marked read as a rupture any more.
 
-  **Recounted 2026-08-13: 376** in typeset lines of `content/` (lines opening with `%` excluded;
-  inline trailing comments are still counted, so the true figure is somewhat lower). Two thirds of
-  them are gone, which is real progress, and it is still roughly triple what the rule above asks
-  for over 416 pages. Four files hold a quarter of the remainder and are where a further pass
-  should start:
-  `01-prerequisites/99-solutions.tex` (32), `02-metric-normed-inner-product/02-metric-spaces.tex`
-  (30), `11-taylor/01-mean-value-theorem.tex` (30), `19-jordan-measure/01-jordan-measure.tex` (30).
-  Repair them sentence by sentence; the ban on a global search-and-replace below is not softened by
-  the count having come down.
+  **Recounted 2026-11-02: 26** in typeset text of `content/` (comments excluded), after a
+  sentence-by-sentence pass over every file. What remains is environment titles, the empty cells
+  of the sheet-index tables in appendix D, and verbatim quotations from official sheets. New prose
+  should keep it there; the ban on a global search-and-replace below still applies to any repair.
 
   **The rule is not a quota, it is a test.** Before keeping an em-dash, ask: *does a comma, a
   colon, a semicolon, a pair of parentheses, or a full stop carry this?* If any of them does,

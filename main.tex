@@ -1159,6 +1159,8 @@ theorem, which falls out of maximising a quadratic form on the unit sphere.
 % half held. The document derives no equivalence, and only thm:inverse_function_theorem is proved
 % (via lem:lipschitz_perturbation_identity and Banach); thm:implicit_function_theorem is stated.
 % The geodesics chapter, a quarter of the part, also went unmentioned.
+% Update: Claude Opus 5.5 (Extra) --- thm:implicit_function_theorem now has a proof, derived from
+% the inverse function theorem in 16-implicit-function-theorem/01, and the sentence below says so.
 Two questions run through this part. When is a map invertible near a point, and when can an
 equation $f(x,y) = 0$ be solved for $y$ as a function of $x$? Neither has a workable global
 answer, but both have clean local ones, and both rest on the same linear-algebra hypothesis, that
@@ -1210,10 +1212,14 @@ $\mathbb{R}^n$ rather than over a piece of $\mathbb{R}^n$ itself.
 % integrals finite", which names no mechanism the part actually uses; what it uses is compactly
 % supported partitions of unity (prop:partition_of_unity_finite). Simple connectedness, which is
 % what the Poincare lemma turns on, was missing from the list altogether.
+% Correction: Claude Opus 5.5 (Extra) --- "This part proves all three": only the n = 2 square case
+% of thm:gauss_divergence is proved (23-flux-divergence/01); Green and classical Stokes are stated,
+% then read off from thm:stokes_general, which is itself stated.
 The classical integral theorems of vector calculus look at first like three unrelated results.
 Green's theorem converts a line integral into a double integral, the divergence theorem converts a
 flux through a closed surface into a triple integral, and the classical theorem of Stokes converts
-a circulation into a flux. This part proves all three, and then explains why they are one theorem.
+a circulation into a flux. This part states all three, proves the divergence theorem by hand on a
+square, and then explains why they are one theorem.
 The apparatus that achieves this consists of differential forms and the exterior derivative $d$,
 a single operator absorbing $\grad$, $\curl$ and $\divg$ at once, which satisfies the one identity
 $d \circ d = 0$ in place of the two unrelated-looking ones $\curl\grad = 0$ and $\divg\curl = 0$.
