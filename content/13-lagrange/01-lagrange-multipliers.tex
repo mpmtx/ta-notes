@@ -131,8 +131,11 @@ space of the constraint set at a constrained extremum.
 For $k = 1$, this corresponds to our intuition above of $\nabla f(x_0)$ \textbf{parallel to}
 $\nabla g(x_0)$.
 
+% Correction: Claude Opus 5.5 (Extra) --- lambda_0 was used here before anything named it; it is
+% the coefficient of grad f in the dependence relation, introduced in the remark further down.
 \textit{In practice}, we assume $(\nabla g_1, \dots, \nabla g_k)$ nowhere linearly dependent,
-since otherwise $\lambda_0 = 0$ is possible (which does not give us anything).
+since otherwise the dependence relation may give $\nabla f(x_0)$ the coefficient $\lambda_0 = 0$,
+which tells us nothing about $f$ (see the remark on $\lambda_0$ below).
 
 % Generator: Claude Opus 5 (Medium)
 % Feedback: Gemini 3.1 Pro (2026-08-11) --- called a perfect, memorable counterexample for the
@@ -265,8 +268,10 @@ the end. It is scaffolding, not part of the answer. That does not make it meanin
 % practice, because the chapter's eight genuine exercises still sit at the end with their
 % solutions in 99-solutions.tex. Corsin's own order and wording are untouched.
 % Transition: Claude Opus 5 (Extra)
-Three worked examples follow, in increasing order of how much of the work is not the multiplier
-rule. The first has a constraint set with an interior, so it needs the unconstrained theory as
+% Correction: Claude Opus 5.5 (Extra) --- the opening clause promised an increasing order that the
+% list below contradicts (the first example has the most non-multiplier work, not the least).
+Three worked examples follow, each needing something the multiplier rule alone does not supply.
+The first has a constraint set with an interior, so it needs the unconstrained theory as
 well; the second is the smallest non-trivial case and gets reopened later with the second-order
 test; the third has to be turned into a constrained problem before any of this applies.
 
@@ -305,7 +310,8 @@ and therefore $x^2 = y^2 = z^2$.
 Then $x^2+y^2+z^2 = 1 \implies 3x^2 = 1 \implies x = \pm\frac{1}{\sqrt{3}}$, giving
 \textbf{8 solutions}:
 \[(x,y,z) \in \left\{\tfrac{1}{\sqrt{3}}(\alpha,\beta,\gamma) : \alpha,\beta,\gamma \in \{\pm 1\}\right\}\]
-plus the solutions $\{(x_1,x_2,x_3) \in K : x_i = x_j = 0,\ i \neq j\}$.
+plus the solutions $\{(x_1,x_2,x_3) \in \partial K : x_i = x_j = 0,\ i \neq j\}$, that is, the
+six points $\pm e_1, \pm e_2, \pm e_3$ (with $\lambda = 0$).
 
 \textbf{To justify division by $z$, $x$ or $y$ in $(*)$:} if $z = 0$, then
 $-\lambda x = -\lambda y = xy = 0$, giving $x = 0$ or $y = 0$, and $\lambda = 0$, since
@@ -502,7 +508,7 @@ Consider the ball $U := \{(x,y,z) : x^2+y^2+z^2 < 1\}$ and the function
   \item Motivate rigorously why $f$ attains its absolute maximum and minimum in $\overline{U}$.
   \item Find all the critical points of $f$ which lie in the interior of $U$. Say whether
     $\sup_U f$ (or $\inf_U f$) is attained at some point in $U$.
-  \item Say whether $\max_{\partial U} f$ and $\min_{\partial U}$ exist.
+  \item Say whether $\max_{\partial U} f$ and $\min_{\partial U} f$ exist.
   \item With the method of Lagrange multipliers, find the possible critical points for the
     constrained problem $\max\{f(x,y,z) : (x,y,z) \in \partial U\}$, and same for min.
   \item Among all the points you have found, clarify at which points the maximum/minimum of $f$

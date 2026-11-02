@@ -32,7 +32,7 @@ two constraints $g_1(x,y) := |x|^2-1 = 0$ and $g_2(x,y) := |y|^2-1=0$.
 % is stated explicitly instead, which is what the sentence above it already proposed.
 It is $h(x,y) := -2\langle x,y\rangle$ that we optimise, not $f$ itself. The two are interchangeable
 here for a reason worth stating: $f = g_1 + g_2 + 2 + h$ identically on $\mathbb{R}^{2n}$, so $f$
-and $h$ agree on $M$ and their gradients differ by $\nabla g_1 + \nabla g_2$ --- a combination the
+and $h$ agree on $M$ and their gradients differ by $\nabla g_1 + \nabla g_2$, a combination the
 multipliers absorb, leaving the same critical points. Computing gradients in
 $\mathbb{R}^{2n} = \mathbb{R}^n_x \times \mathbb{R}^n_y$:
 \[\nabla h = (-2y,\,-2x), \qquad \nabla g_1 = (2x,\,0), \qquad \nabla g_2 = (0,\,2y).\]
@@ -107,14 +107,21 @@ With $g_1(x,y,z) := x^2+y^2+z^2-1$ and $g_2(x,y,z) := x+y$, the Lagrangian
 $L := f - \lambda_1 g_1 - \lambda_2 g_2$ gives the system
 \[3 - 2\lambda_1 x - \lambda_2 = 0, \qquad -1-2\lambda_1 y - \lambda_2 = 0, \qquad 2 - 2\lambda_1 z = 0, \qquad x+y=0, \qquad x^2+y^2+z^2=1.\]
 From $x+y=0$, $y=-x$. Subtracting the second equation from the first eliminates $\lambda_2$:
-\[4 - 2\lambda_1 x - 2\lambda_1(-x) \cdot(-1)= 4-2\lambda_1x-2\lambda_1x=4-4\lambda_1 x = 0 \implies \lambda_1 x = 1.\]
+\[4 - 2\lambda_1 x + 2\lambda_1 y = 4 - 2\lambda_1 x - 2\lambda_1 x = 4 - 4\lambda_1 x = 0,
+  \qquad\text{so}\qquad \lambda_1 x = 1.\]
 From $2-2\lambda_1 z=0$, $\lambda_1 = 1/z$ (so $z \neq 0$), hence $x = z$ (from $\lambda_1 x = 1 =
 \lambda_1 z$). With $y=-x=-z$, the constraint becomes $3x^2 = 1$, i.e.\ $x = \pm\tfrac{1}{\sqrt3}$,
 giving the two points $\tfrac{1}{\sqrt3}(1,-1,1)$ and $-\tfrac{1}{\sqrt3}(1,-1,1)$. Evaluating,
 \[f\Big(\tfrac{1}{\sqrt3}(1,-1,1)\Big) = \frac{3+1+2}{\sqrt3} = 2\sqrt3, \qquad f\Big({-\tfrac{1}{\sqrt3}}(1,-1,1)\Big) = -2\sqrt3.\]
-Since $M$ is compact (closed and bounded in $\mathbb{R}^3$) and $f$ is continuous, these are the
-only Lagrange candidates, so $f$ attains its \textbf{maximum} $2\sqrt3$ at $\tfrac{1}{\sqrt3}(1,-1,1)$
-and its \textbf{minimum} $-2\sqrt3$ at $-\tfrac{1}{\sqrt3}(1,-1,1)$.
+% Correction: Claude Opus 5.5 (Extra) --- the closing sentence ran "compact ..., these are the only
+% Lagrange candidates, so ...", skipping both the existence step and the independence check that
+% the multiplier rule needs.
+The method is legitimate here: $\nabla g_1 = 2(x,y,z)$ and $\nabla g_2 = (1,1,0)$ are dependent
+only where $z = 0$ and $x = y$, which together with $x + y = 0$ gives the origin, not a point of
+$M$. Since $M$ is compact (closed and bounded in $\mathbb{R}^3$) and $f$ is continuous, $f$
+attains a maximum and a minimum on $M$, and both must be among the two candidates. So $f$ attains
+its \textbf{maximum} $2\sqrt3$ at $\tfrac{1}{\sqrt3}(1,-1,1)$ and its \textbf{minimum} $-2\sqrt3$
+at $-\tfrac{1}{\sqrt3}(1,-1,1)$.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Solution to \cref{ex:closest_point_hyperbolic_paraboloid}]
@@ -122,8 +129,9 @@ and its \textbf{minimum} $-2\sqrt3$ at $-\tfrac{1}{\sqrt3}(1,-1,1)$.
 % Generator: Claude Sonnet 5 (Medium)
 Minimizing the distance to $(0,0,1)$ is the same as minimizing
 $f(x,y,z) := x^2+y^2+(z-1)^2$ subject to $g(x,y,z) := z-x^2+y^2 = 0$. Since $f$ is a distance
-squared to a fixed point, its minimum over the (closed) constraint set is attained. Lagrange's
-condition $\nabla f = \lambda \nabla g$ reads
+squared to a fixed point, its minimum over the (closed) constraint set is attained. Since
+$\nabla g = (-2x,2y,1)$ never vanishes, Lagrange's condition $\nabla f = \lambda \nabla g$ holds
+at the minimiser, and it reads
 \[2x = -2\lambda x, \qquad 2y = 2\lambda y, \qquad 2(z-1) = \lambda,\]
 i.e.\ $x(1+\lambda) = 0$ and $y(1-\lambda) = 0$.
 
@@ -212,7 +220,7 @@ The result is the discrete Gibbs inequality: among all probability vectors on $n
 uniform one has the least $\sum x_i\log x_i$, that is, the \emph{greatest} entropy $-\sum x_i \log
 x_i$, namely $\log n$. The mechanism is convexity: $\Hess f(x) = \diag(1/x_1,\dots,1/x_n)$ is
 positive definite on the interior, so $f$ is strictly convex there, and a strictly convex function on
-a convex set has at most one critical point --- which is why part \textbf{(a)} finds exactly one and
+a convex set has at most one critical point. That is why part \textbf{(a)} finds exactly one and
 part \textbf{(b)} can then simply rule out the boundary.
 \end{remark}
 \end{exercisesolution}
@@ -255,7 +263,7 @@ theorem there is no constrained extremum either.
     given. Knowing $f$ only up to an additive constant is exactly enough.
 \end{itemize}
 The transferable point is that the constrained problem can be settled without ever writing down
-$f$, and that an inconsistent Lagrange system is a legitimate --- and here decisive --- outcome.
+$f$, and that an inconsistent Lagrange system is a legitimate outcome, here a decisive one.
 \end{remark}
 \end{exercisesolution}
 
@@ -276,19 +284,22 @@ the maximum. Its value is $\varphi(1/2) = 1 + 1/2 - 1/4 = 5/4$, attained where $
 $x^2 = 1/2-1/4 = 1/4$ and $z^2 = 1/2$, that is at the four points
 $\left(\pm\tfrac12,\ \tfrac12,\ \pm\tfrac{1}{\sqrt2}\right)$.
 
-The constraint set is compact --- it is the intersection of a sphere with a cylinder, two circles
-of radius $1/\sqrt{2}$ at heights $z = \pm 1/\sqrt2$ --- so a maximum exists and the computation
+The constraint set is compact (it is the intersection of a sphere with a cylinder, two circles
+of radius $1/\sqrt{2}$ at heights $z = \pm 1/\sqrt2$), so a maximum exists and the computation
 above finds it.
 \begin{remark}[Reach for Lagrange second]
 \label{rem:constraints_before_multipliers}
 Two constraints in three variables leave a one-dimensional set, and \cref{prop:constrained_optimization}
 with two multipliers will find the answer. It is more work than the problem needs. The constraints
 here are algebraically compatible in a way that eliminates two of the three variables outright, and
-noticing that turns a $4 \times 4$ system into a one-variable parabola.
+noticing that turns a system of five equations in five unknowns ($x,y,z,\lambda_1,\lambda_2$)
+into a one-variable parabola.
+% Correction: Claude Opus 5.5 (Extra) --- "a 4 x 4 system": three gradient equations plus two
+% constraints in x, y, z and two multipliers make five equations in five unknowns.
 
 The habit worth forming: before setting up multipliers, ask whether the constraints can be
-\emph{solved}. Multipliers exist for the case where they cannot --- where the constraint set has no
-convenient parametrisation --- and applying them to a constraint set you could have parametrised is
+\emph{solved}. Multipliers exist for the case where they cannot, where the constraint set has no
+convenient parametrisation, and applying them to a constraint set you could have parametrised is
 a common way to lose marks to arithmetic.
 \end{remark}
 \end{exercisesolution}

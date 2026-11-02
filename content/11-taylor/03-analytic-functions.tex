@@ -8,7 +8,7 @@ Just as in one variable, we can ask when a smooth function is exactly equal to i
 \begin{definition}[Analytic estimates]
 \label{def:analytic_estimates}
 Let $U \subseteq \mathbb{R}^n$ be open. A smooth function $f \in C^\infty(U, \mathbb{R})$ satisfies \newterm{analytic estimates} if for every $x_0 \in U$, there exist $\rho > 0$ and $C > 0$ such that for all multi-indices $\alpha \in \mathbb{N}^n$,
-\[ \max_{x \in B_\rho(x_0)} |\partial^\alpha f(x)| \leq C |\alpha|! \left(n\rho\right)^{-|\alpha|}. \]
+\[ \sup_{x \in B_\rho(x_0)} |\partial^\alpha f(x)| \leq C |\alpha|! \left(n\rho\right)^{-|\alpha|}. \]
 Such functions are called \newterm{real analytic}.
 \end{definition}
 
@@ -17,6 +17,27 @@ Such functions are called \newterm{real analytic}.
 If $f \in C^\infty(U, \mathbb{R})$ satisfies analytic estimates, then its Taylor series converges to $f(x)$ near $x_0$. That is, for all $h \in B_\rho(0)$,
 \[ f(x_0+h) = \sum_{k=0}^\infty \sum_{|\alpha|=k} \frac{\partial^\alpha f(x_0)}{\alpha!} h^\alpha. \]
 \end{theorem}
+
+% Generator: Claude Opus 5.5 (Extra) --- stated without proof; it is the Lagrange remainder plus
+% the multinomial theorem, and it shows where the odd-looking constant n*rho comes from.
+\begin{proof}
+Let $\lvert h\rvert < \rho$, so the segment from $x_0$ to $x_0+h$ lies in $B_\rho(x_0)$. By
+\cref{thm:taylor_lagrange_remainder}, the difference between $f(x_0+h)$ and the $k$-th partial sum
+is $R_k(h) = \sum_{\lvert\alpha\rvert=k+1}\partial^\alpha f(x_0+\theta h)\,h^\alpha/\alpha!$ for
+some $\theta \in (0,1)$. The analytic estimate and the multinomial theorem
+$\sum_{\lvert\alpha\rvert = m}\frac{m!}{\alpha!}\lvert h^\alpha\rvert = \big(\lvert h_1\rvert +
+\dots + \lvert h_n\rvert\big)^m$ give
+\[\lvert R_k(h)\rvert \leq C\,(k+1)!\,(n\rho)^{-(k+1)}\sum_{\lvert\alpha\rvert=k+1}
+  \frac{\lvert h^\alpha\rvert}{\alpha!}
+  = C\left(\frac{\lvert h_1\rvert + \dots + \lvert h_n\rvert}{n\rho}\right)^{k+1}.\]
+By Cauchy--Schwarz $\lvert h_1\rvert + \dots + \lvert h_n\rvert \leq \sqrt n\,\lvert h\rvert <
+\sqrt n\,\rho \leq n\rho$, so the base of the power is a number $q < 1$, and
+$\lvert R_k(h)\rvert \leq Cq^{k+1} \to 0$ as $k \to \infty$. The partial sums therefore converge to
+$f(x_0+h)$.
+\end{proof}
+
+The factor $n$ in the estimate is what the multinomial theorem consumes: it turns the sum over all
+$\binom{k+n}{n-1}$ multi-indices of order $k+1$ into a single power.
 
 \begin{example}[An analytic function]
 \label{ex:analytic_function_sin_xy}

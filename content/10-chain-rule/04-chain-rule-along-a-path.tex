@@ -6,7 +6,7 @@
 
 An important special case of the chain rule is that of a composition of a scalar field with a
 path. Suppose $f : \mathbb{R}^n \supseteq U \to \mathbb{R}$ and
-$\gamma : [0,1]\to\mathbb{R}^n$ are a $C^1$ \newterm{scalar field} \germanfor{Skalarfeld} and
+$\gamma : [0,1]\to U$ are a $C^1$ \newterm{scalar field} \germanfor{Skalarfeld} and
 path, respectively. Then
 \[
 \begin{aligned}
@@ -20,7 +20,10 @@ $\dfrac{\partial f}{\partial \gamma_i} := \partial_i f(\gamma(t))$.
 
 This operation is so common in physics that it has its own notation: for $f$ as above, we look at
 each coordinate as a function of \textbf{time} and differentiate:
-\[\frac{d}{dt}f(x_1,\dots,x_n) := Df(x_1(t),\dots,x_n(t)) = \sum_{i=1}^{n}\frac{\partial f}{\partial x_i}\frac{\partial x_i}{\partial t}.\]
+% Correction: Claude Opus 5.5 (Extra) --- read d/dt f(x_1,...,x_n) := Df(x_1(t),...,x_n(t)) = ...,
+% which drops the velocity factor (Df alone is the differential, not the derivative of the
+% composition), and wrote the ordinary derivative dx_i/dt as a partial.
+\[\frac{d}{dt}f\big(x_1(t),\dots,x_n(t)\big) = Df\big(x(t)\big)\,x'(t) = \sum_{i=1}^{n}\frac{\partial f}{\partial x_i}\frac{dx_i}{dt}.\]
 
 % Generator: Claude Opus 5 (High)
 The middle line, $D(f\circ\gamma)(t) = \langle\nabla f(\gamma(t)),\gamma'(t)\rangle$, is worth

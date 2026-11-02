@@ -38,6 +38,11 @@ differentiation. In particular the Hessian $\Hess f(x)$ of
 \cref{rem:second_order_taylor_hessian} is a \textbf{symmetric} matrix.
 \end{theorem}
 
+% Pointer added by Claude Opus 5.5 (Extra): the proof sits in ch. 12, where the Hessian is first
+% used, and nothing here said so.
+The proof, by two applications of the mean value theorem to a second difference, is given at the
+start of \cref{sec:hessian_test}, where the symmetry of the Hessian is first put to work.
+
 \begin{remark}[The hypothesis is not decoration]
 \label{rem:schwarz_needs_c2}
 Continuity of the second derivatives is genuinely needed. The standard counterexample is
@@ -184,6 +189,24 @@ f(\bar x)$, and $\varphi^{(k+1)}(\theta) = \big(\sum_mh_m\partial_m\big)^{k+1}f(
 gives the working-formula version. The multi-index version follows by expanding
 $\big(\sum_mh_m\partial_m\big)^\ell$ via the multinomial theorem, exactly as in
 \cref{ex:taylor_maximal_expansion}.
+\end{proof}
+
+% Generator: Claude Opus 5.5 (Extra) --- thm:taylor_working_formula was stated without proof; it
+% follows from the Lagrange form one order down plus continuity of the k-th derivatives.
+\begin{proof}[Proof of \cref{thm:taylor_working_formula}]
+For $k = 0$ the claim is continuity of $f$ at $\bar x$, so let $k \geq 1$ and $h$ be small enough
+that $\bar x + th \in U$ for $t \in [0,1]$. Apply \cref{thm:taylor_lagrange_remainder} with $k-1$
+in place of $k$, which needs only $f \in C^k$: for some $\theta \in (0,1)$,
+\[f(\bar x+h) = \sum_{|\alpha|\leq k-1}\partial^\alpha f(\bar x)\,\frac{h^\alpha}{\alpha!}
+  + \sum_{|\alpha| = k}\partial^\alpha f(\bar x+\theta h)\,\frac{h^\alpha}{\alpha!}.\]
+Replacing $\bar x+\theta h$ by $\bar x$ in the last sum produces exactly the order-$k$ Taylor
+polynomial, at the cost of the error
+\[E(h) := \sum_{|\alpha| = k}\Big(\partial^\alpha f(\bar x+\theta h) - \partial^\alpha f(\bar x)\Big)
+  \frac{h^\alpha}{\alpha!}.\]
+Since $\lvert h^\alpha\rvert \leq \lvert h\rvert^{k}$ for $\lvert\alpha\rvert = k$, we get
+$\lvert E(h)\rvert \leq \lvert h\rvert^k\sum_{|\alpha|=k}\big\lvert\partial^\alpha f(\bar x+\theta h)
+- \partial^\alpha f(\bar x)\big\rvert$, and every summand tends to $0$ as $h \to 0$ because the
+$k$-th partial derivatives are continuous at $\bar x$. So $E(h) = o(\lvert h\rvert^k)$.
 \end{proof}
 
 \begin{remark}
@@ -535,6 +558,15 @@ f(x_0+th) &= f(x_0) + t\left.\frac{d}{dt}\right|_{t=0}f(x_0+th) + \frac{t^2}{2}\
 \]
 Setting $t = 1$ gives the result.
 \end{exercisesolution}
+
+% Added by Claude Opus 5.5 (Extra).
+\begin{ainote}
+The last step of Corsin's argument needs care. The remainder $o(\lvert th\rvert^2)$ is a statement
+about $t \to 0$ with $h$ fixed, so it says nothing at the single value $t = 1$; what the formula
+needs is a remainder that is small as $h \to 0$. The computation above is the right one, but the
+limit has to be taken in $h$, which is what the proof of \cref{thm:taylor_working_formula} does:
+it uses the exact Lagrange form for the fixed $h$, and only then lets $h \to 0$.
+\end{ainote}
 
 
 % --- exercises relocated here from the dissolved sheets ---

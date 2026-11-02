@@ -251,7 +251,8 @@ Let $U \subseteq \mathbb{R}^n$ be open and convex.
 \end{tikzpicture}
 \end{center}
 
-The picture records both halves of \textbf{(b)} at once. Each tangent line lies weakly
+The picture records both halves of \cref{ex:convexity_characterizations}\textbf{(b)} at once.
+Each tangent line lies weakly
 \emph{below} the graph, which is the inequality $f(y)-f(x) \geq Df_x(y-x)$ read along the
 segment, and the slope grows from $s$ to $t$, which is $f'_{x,y}$ increasing.
 
@@ -286,13 +287,14 @@ every point, which a closed domain would not allow at its boundary.
 \begin{proposition}[Jensen's inequality]
 \label{prop:jensen_inequality}
 Let $U \subseteq \mathbb{R}^n$ be open and convex and $f : U \to \mathbb{R}$ convex. Then for
-every finite collection of points $x_1,\dots,x_N \in U$ and weights $w_1,\dots,w_N \in (0,1)$
+every finite collection of points $x_1,\dots,x_N \in U$ and weights $w_1,\dots,w_N > 0$
 with $\sum_{i=1}^N w_i = 1$,
 \[f\Big(\sum_{i=1}^N w_ix_i\Big) \ \leq\ \sum_{i=1}^N w_if(x_i).\]
 \end{proposition}
 
 \begin{proof}
-Let $z := \sum_i w_ix_i \in U$ ($U$ is convex, so this weighted average lies in $U$). By
+Suppose first that $f \in C^1(U)$, which is the case met in practice. Let
+$z := \sum_i w_ix_i \in U$ ($U$ is convex, so this weighted average lies in $U$). By
 \cref{ex:convexity_characterizations}\textbf{(b)} (valid already for $f \in C^1$), applied to the
 pair $(z,x_i)$ for each $i$,
 \[f(x_i) - f(z) \geq Df_z(x_i-z), \qquad i=1,\dots,N.\]
@@ -302,10 +304,18 @@ Multiply the $i$-th inequality by $w_i>0$ and sum over $i$:
   &\geq Df_z\Big(\sum_i w_i(x_i-z)\Big) = Df_z\Big(\sum_iw_ix_i - z\Big) = Df_z(0) = 0,
 \end{align*}
 using $\sum_iw_i=1$ to pull $f(z)$ out on the left and $\sum_iw_ix_i=z$ in the last step.
-Rearranging gives $f(z) \leq \sum_iw_if(x_i)$, which is the claim. (For $f$ merely convex,
-without $C^1$ regularity, the same computation goes through with
-\cref{ex:convexity_characterizations}\textbf{(b)} replaced by the general subgradient
-inequality, which holds for any convex function on an open set.)
+Rearranging gives $f(z) \leq \sum_iw_if(x_i)$, which is the claim.
+
+% Correction: Claude Opus 5.5 (Extra) --- the proposition assumes only convexity, but the proof
+% above differentiates f, and the parenthetical that covered the general case appealed to a
+% "subgradient inequality" proved nowhere in these notes. Induction on N needs nothing but the
+% definition, so it now carries the general case.
+If $f$ is merely convex and not $C^1$, induct on $N$ instead. For $N = 1$ there is nothing to
+show, and $N = 2$ is the definition. For $N \geq 3$ put $W := w_1 + \dots + w_{N-1} = 1 - w_N$
+and $z' := \sum_{i<N}(w_i/W)\,x_i$, a weighted average with weights summing to $1$, so $z' \in U$.
+Then $z = Wz' + w_Nx_N$, and convexity followed by the induction hypothesis gives
+\[f(z) \leq Wf(z') + w_Nf(x_N) \leq W\sum_{i<N}\frac{w_i}{W}f(x_i) + w_Nf(x_N)
+  = \sum_{i=1}^N w_if(x_i). \qedhere\]
 \end{proof}
 
 \begin{remark}

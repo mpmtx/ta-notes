@@ -14,14 +14,37 @@ The same identity holds for the corresponding Jacobi matrices, where the composi
 right becomes an ordinary matrix product.
 \end{theorem}
 
-% Generator: Claude Opus 5 (High)
-\begin{ainote}
-Corsin states the chain rule without proof, as does the lecture at this point. The one-line
-reason it is true is worth carrying, though: differentiability says $f$ and $g$ are each well
-approximated by a linear map near the relevant point, and composing two approximations composes
-the linear maps, with the error terms of the two compositions still $o(|h|)$. Making that
-precise is the whole proof, and it is the same argument as in one variable.
-\end{ainote}
+% Correction: Claude Opus 5.5 (Extra) --- this was an ainote (Claude Opus 5 (High)) saying Corsin
+% and the lecture state the chain rule without proof and that "making that precise is the whole
+% proof". It is made precise below; the one delicate point is the division by |k| when k = 0,
+% which the auxiliary function sigma absorbs.
+\begin{proof}
+Read the statement at a point: $f$ differentiable at $x$, $g$ differentiable at $y := f(x)$, and
+$f(U) \subseteq V$ with $U,V$ open. Write $A := Df_x$ and $B := Dg_y$, so that
+\[f(x+h) = y + Ah + r(h), \qquad g(y+k) = g(y) + Bk + s(k),\]
+with $r(h) = o(\lvert h\rvert)$ and $s(k) = o(\lvert k\rvert)$. The idea is simply to substitute
+the first expansion into the second. Put $k(h) := f(x+h) - y = Ah + r(h)$; then
+\[g(f(x+h)) = g(y) + BAh + \underbrace{Br(h) + s\big(k(h)\big)}_{=:\,E(h)},\]
+and it remains to show $E(h) = o(\lvert h\rvert)$.
+\begin{itemize}
+  \item $\lvert Br(h)\rvert \leq \lVert B\rVert_2\,\lvert r(h)\rvert$ by
+    \cref{lem:hilbert_schmidt_bounds_lengths}, and this is $o(\lvert h\rvert)$.
+  \item For the second term, define $\sigma(k) := \lvert s(k)\rvert/\lvert k\rvert$ for $k \neq 0$
+    and $\sigma(0) := 0$, so that $\lvert s(k)\rvert = \sigma(k)\lvert k\rvert$ for \emph{every} $k$
+    and $\sigma(k) \to 0$ as $k \to 0$. Since
+    $\lvert k(h)\rvert \leq \lVert A\rVert_2\lvert h\rvert + \lvert r(h)\rvert \leq
+    (\lVert A\rVert_2 + 1)\lvert h\rvert$ for all small $h$, we get
+    $\lvert s(k(h))\rvert \leq (\lVert A\rVert_2 + 1)\,\sigma\big(k(h)\big)\,\lvert h\rvert$, and
+    $\sigma(k(h)) \to 0$ because $k(h) \to 0$.
+\end{itemize}
+Hence $g\circ f$ is differentiable at $x$ with $D(g\circ f)_x = BA = Dg_{f(x)}\,Df_x$. The matrix
+statement follows because the matrix of a composition of linear maps is the product of their
+matrices.
+\end{proof}
+
+The proof is the one-variable proof with $\lvert\cdot\rvert$ in place of absolute values, and its
+one delicate point is the same too: $k(h)$ may vanish for $h \neq 0$, so one cannot simply divide
+by $\lvert k(h)\rvert$. The function $\sigma$ is what makes that harmless.
 
 % Supplement: Sascha Brack/Class Notes/Week_04_Notes_Friday_Updated.pdf, pp. 7--10
 \begin{remark}[The chain rule as a sum over paths]

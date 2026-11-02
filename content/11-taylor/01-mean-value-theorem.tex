@@ -9,8 +9,9 @@
 % it", which is false: Theorem 10.28, printed p. 44, is this theorem, with this proof.
 % Supplement: lec_notes.pdf, p. 44 (Theorem 10.28)
 \begin{ainote}
-The mean value theorem is used twice in this chapter, in the official hint to \Cref{ex:directional_derivative_vanishes} and
-again in its solution, but none of the transcribed TA notes state it. It is therefore stated here,
+The mean value theorem is used twice in the previous chapter, in the official hint to
+\Cref{ex:directional_derivative_vanishes} and again in its solution, but none of the transcribed
+TA notes state it. It is therefore stated here,
 together with the warning that follows, which is what \cref{ex:directional_derivative_vanishes} actually turns on. In the
 lecture notes it is Theorem 10.28 (\qt{Higher dimensional Mean Value Theorem}, p.\ 44), proved
 exactly as below.
@@ -78,7 +79,7 @@ By the chain rule along a path (\cref{sec:chain_rule_along_path}), $\varphi$ is 
 \]
 Applying the Cauchy--Schwarz inequality and the definition of the operator norm, we obtain
 \[
-|F(x+h) - F(x)| \leq |u| \, |DF_{x+t_0 h}(h)| \leq 1 \cdot \|DF_{x+t_0 h}\|_{\mathrm{op}} \, |h| \leq \left( \sup_{t \in [0,1]} \|DF_{x+th}\|_{\mathrm{op}} \right) |h|,
+|F(x+h) - F(x)| \leq |u| \, |DF_{x+t_0 h}(h)| \leq 1 \cdot \|DF_{x+t_0 h}\|_{\mathrm{op}} \, |h| \leq \left( \sup_{t \in [0,1]} \|DF_{x+th}\|_{\mathrm{op}} \right) |h|. \qedhere
 \]
 \end{proof}
 
