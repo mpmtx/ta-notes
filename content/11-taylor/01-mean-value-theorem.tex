@@ -8,13 +8,14 @@
 % Corrected 2026-08-09 against lec_notes.pdf. The note previously read "the course never states
 % it", which is false: Theorem 10.28, printed p. 44, is this theorem, with this proof.
 % Supplement: lec_notes.pdf, p. 44 (Theorem 10.28)
+% None of the transcribed TA notes state the mean value theorem (tutor reference moved out of the
+% typeset text, 2026-11-04).
 \begin{ainote}
 The mean value theorem is used twice in the previous chapter, in the official hint to
-\Cref{ex:directional_derivative_vanishes} and again in its solution, but none of the transcribed
-TA notes state it. It is therefore stated here,
-together with the warning that follows, which is what \cref{ex:directional_derivative_vanishes} actually turns on. In the
-lecture notes it is Theorem 10.28 (\qt{Higher dimensional Mean Value Theorem}, p.\ 44), proved
-exactly as below.
+\Cref{ex:directional_derivative_vanishes} and again in its solution. It is stated here, together
+with the warning that follows, which is what \cref{ex:directional_derivative_vanishes} actually
+turns on. In the lecture notes it is Theorem 10.28 (\qt{Higher dimensional Mean Value Theorem},
+p.\ 44), proved exactly as below.
 \end{ainote}
 
 \begin{theorem}[Mean value theorem]
@@ -185,7 +186,8 @@ Applying the Cauchy--Schwarz inequality and the definition of the operator norm,
 
 \begin{remark}[Global Lipschitz bound on convex domains]
 \label{rem:mvi_lipschitz_bound}
-As Diego Torres Tejeda emphasizes in his notes, \Cref{thm:mean_value_inequality} is the principal multivariable tool for establishing Lipschitz continuity. If $U \subseteq \mathbb{R}^n$ is \emph{convex} and $F : U \to \mathbb{R}^m$ is differentiable with $\|DF_z\|_{\mathrm{op}} \leq M$ for all $z \in U$, then for any pair $x, y \in U$, the line segment $[x, y]$ lies in $U$, so
+% (Emphasised in Diego Torres Tejeda's notes; tutor reference moved out of the typeset text.)
+\Cref{thm:mean_value_inequality} is the principal multivariable tool for establishing Lipschitz continuity. If $U \subseteq \mathbb{R}^n$ is \emph{convex} and $F : U \to \mathbb{R}^m$ is differentiable with $\|DF_z\|_{\mathrm{op}} \leq M$ for all $z \in U$, then for any pair $x, y \in U$, the line segment $[x, y]$ lies in $U$, so
 \[
 |F(y) - F(x)| \leq M |y - x|.
 \]

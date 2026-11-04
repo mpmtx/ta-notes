@@ -11,9 +11,10 @@
 \label{ch:repetition_quiz}
 
 % Transition: Claude Opus 5 (Medium)
-Corsin devoted the first half of one exercise class to a quiz revisiting everything up to that
-point: differentiability, the chain rule, extrema, the implicit function theorem,
-submanifolds. It ranges across \crefrange{ch:prerequisites}{ch:submanifolds} and belongs to no
+% Corsin devoted the first half of one exercise class to the first quiz (tutor reference moved out
+% of the typeset text, 2026-11-04).
+The first quiz below revisits everything up to the middle of the course: differentiability, the
+chain rule, extrema, the implicit function theorem, submanifolds. It ranges across \crefrange{ch:prerequisites}{ch:submanifolds} and belongs to no
 single chapter, so it is collected here. A second quiz follows it, covering the integration half
 of the course in the same format, so that the two together span the whole document.
 
@@ -21,11 +22,12 @@ of the course in the same format, so that the two together span the whole docume
 \section{The mid-semester quiz}
 \label{sec:repetition_quiz}
 
+% Corsin ran these from a shared Kahoot at the mid-semester repetition session; on his pages green
+% marks the correct statement and red an incorrect one (tutor reference moved out of the typeset
+% text, 2026-11-04).
 \begin{ainote}
-Corsin credits the questions to Prof.\ Serra and Prof.\ Lang, and ran them from a shared Kahoot
-at the mid-semester repetition session. On his pages, \textcolor{green!60!black}{green} marks the
-\emph{correct} statement and \textcolor{red!80!black}{red} an \emph{incorrect} one; that colouring
-is rendered below as explicit \textbf{True}/\textbf{False} verdicts.
+The questions in this section are by Prof.\ Serra and Prof.\ Lang, from the mid-semester
+repetition session. Each answer gives an explicit \textbf{True}/\textbf{False} verdict.
 \end{ainote}
 
 \begin{question}
@@ -86,8 +88,8 @@ Let $X \subseteq \mathbb{R}^2$ as above. If $X$ is not open, is it closed?
 
 % Generator: Claude Opus 5 (Medium) --- Corsin gives the verdict without a counterexample.
 \begin{ainote}
-Corsin marks this false but gives no counterexample; the half-open square
-$X := [0,1] \times (0,1)$ from \cref{ex:open_closed_neither_R2} is one, being neither open
+The half-open square $X := [0,1] \times (0,1)$ from \cref{ex:open_closed_neither_R2} is a
+counterexample, being neither open
 nor closed. \qt{Open} and \qt{closed} are not opposites and not exhaustive: $\emptyset$ and
 $\mathbb{R}^2$ are both, most sets are neither, and the excluded values
 $X \neq \emptyset,\ X \neq \mathbb{R}^2$ in the hypothesis are there precisely to rule out the
@@ -159,12 +161,13 @@ $\alpha < -\sqrt2 < \sqrt2$ we again have $2-\alpha^2 < 0$, so $0$ is a saddle p
 a local minimum. The statement is true only on $-\sqrt2 < \alpha < \sqrt2$.
 \end{answer}
 
+% Corsin's third bullet reads "for alpha != sqrt2", but det(Hess f(0)) = 2 - alpha^2 vanishes at
+% alpha = -sqrt2 as well, so it must read alpha != +-sqrt2; typeset with +- above. The ainote that
+% recorded this named him; what remains of it is the observation below.
 \begin{ainote}
-Corsin's third bullet reads \qt{for $\alpha \neq \sqrt2$}, but $\det(\Hess f(0)) = 2-\alpha^2$
-vanishes at $\alpha = -\sqrt2$ as well, so it must read $\alpha \neq \pm\sqrt2$; typeset with
-$\pm$ above. The oversight is a conspicuous one here, since the \emph{next} bullet is false for
-exactly the reason the third one omits. The quiz is built around the missing negative root.
-
+The negative root is the whole trap of this question. Part \textbf{(c)} has to exclude
+$\alpha = -\sqrt2$ as well as $\alpha = \sqrt2$, since $\det(\Hess f(0)) = 2-\alpha^2$ vanishes at
+both, and part \textbf{(d)} is false for exactly that reason.
 \end{ainote}
 
 % Source: Corsin Nick/Class Notes/Week 8.pdf, p. 5
@@ -251,7 +254,7 @@ The quiz ends here, and with it the differential-topology half of the course.
 \section{A second quiz: the integration half}
 \label{sec:repetition_quiz_integration}
 
-Corsin's quiz stops where integration begins, so on its own it tests
+The mid-semester quiz stops where integration begins, so on its own it tests
 \crefrange{ch:prerequisites}{ch:submanifolds} and leaves
 \crefrange{ch:jordan_measure}{ch:stokes} untested. The seven questions below close that gap, in
 the same format and at the same level: each is answerable from a definition or a theorem

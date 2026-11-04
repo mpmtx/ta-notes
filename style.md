@@ -506,9 +506,13 @@ does not help and thin in the places it does.
 * **Logic Checks:** If a proof seems circular or a matrix calculation is visibly incorrect, flag
   it in an `ainote` while applying the stylistic edits, and mention it to the user in your reply.
 * **Commit Messages:** When asked to generate a commit message, be specific about the mathematical or stylistic changes made.
-* ⚠️ **Flagging errors — `ainote` is the whole system.** If a source appears to contain an error,
-  say so in an `ainote` at that spot, stating what the source says, what it should say, and
-  whether you changed it. Do **not** silently substitute a corrected version.
+* ⚠️ **Flagging errors.** If a source appears to contain an error, record it at that spot,
+  stating what the source says, what it should say, and whether you changed it. Do **not**
+  silently substitute a corrected version. **Where** the record goes depends on the source:
+  an error in a **tutor's notes** goes in a `%` comment (tutors are never named in the typeset
+  text; see *Tutors are not named in the text* below); an error in the **official lecture script
+  or a problem sheet**, which the reader will meet themselves, goes in an `ainote`, citing the
+  script or sheet and naming no tutor.
 
   There is no separate register to update: **this project has no open-questions file, and no
   OQ numbering.** Earlier revisions of this file referred to both, and to flagging errors with
@@ -516,8 +520,22 @@ does not help and thin in the places it does.
   the preamble on 2026-08-09 rather than left defined, since a macro kept *"for future use if
   needed"* is an invitation to use it. One mechanism, in one place, next to the mathematics it
   concerns.
-* **Illegible source text:** Mark as `⟨?word⟩` inline in the `.tex` and add an `ainote` saying
+* **Illegible source text:** Mark as `⟨?word⟩` inline in the `.tex` and add a `%` comment saying
   what is unreadable and where. Never guess silently.
+* ⚠️ **Tutors are not named in the text.** Added 2026-11-04 on the user's instruction: *"the whole
+  book should read as a stand-alone math book, no sign from tutors other than source citations"*.
+  A tutor's name may appear in typeset text **only as a source citation**: in an `\exinfo`, in the
+  title of an `\exhint[...]` or `exercisehint`, in a citation inside an exercise statement, and in
+  the one citation line of the priority key in appendix D. Everything else about a tutor goes in a
+  `%` comment: what they wrote, which slip they made, who supplied a proof or a figure, the order
+  they taught things in, what they called "not exam relevant". This applies to `ainote`s too.
+  * **BAD:** `Sascha Brack pairs the function above with one that looks almost identical.`
+  * **GOOD:** `The function above has a near twin, and telling the two apart is a good test:`
+    with `% (Sascha Brack pairs them this way.)` beside it.
+
+  When removing a name leaves an `ainote` with only mathematics in it, that block was a `remark`
+  all along (Test 1 below); when it leaves nothing but provenance, it was a comment.
+  `tools/audit.py` checks for tutor names in typeset text outside the allowed citations.
 * **Custom Sections:** You are allowed and encouraged to inject custom `\section`, `\subsection`,
   and `\subsubsection` headings wherever they improve readability or navigation — do not feel
   constrained by the existing structure. Adding logical subdivisions that are not present in the
@@ -717,8 +735,9 @@ does not help and thin in the places it does.
   an already-transcribed section: cite it with a `% Quelle: <relative path>` (or `% Source: ...`)
   comment naming the exact file, and where relevant the page/section, e.g.
   `% Quelle: Diego Torres Tejeda/Addendum - Sequential and Topological Compactness.pdf`. State in
-  an `ainote` *why* the primary tutor's notes don't already cover it (skipped, stated without
-  proof, etc.) before presenting the supplement, and reformulate rather than copying verbatim.
+  the same `%` comment *why* the primary tutor's notes don't already cover it (skipped, stated
+  without proof, etc.), and reformulate rather than copying verbatim. Not in an `ainote`: that
+  would name tutors in the typeset text (*Tutors are not named in the text*, above).
 
 ## EXERCISES — TRANSCRIPTION CONVENTIONS
 
@@ -836,13 +855,14 @@ Each environment has a precise semantic role. Using the wrong one is a style err
   `content/19-jordan-measure/03-a-glimpse-of-lebesgue.tex`, and that ratio is about right.
 * **`notation`** — strictly for introducing or summarising notation conventions used by the
   author in their notes. Do **not** use `notation` to comment on the fact that a particular
-  tutor uses unusual notation — that is an `ainote`.
+  tutor uses unusual notation — that is a `%` comment, since tutors are not named in the text.
 * **`ainote`** (AI-Note) — for **all** meta, editorial, and AI-generated observations that
   are not part of the mathematical content itself. Use it for:
   - Comments about the typesetting process, transcription choices, or source ambiguity.
-  - Observations about a tutor's idiosyncratic notation that differ from standard usage.
-  - Flagging suspected or confirmed errors in a source (see *Flagging errors* above — the
-    `ainote` is the flag; there is no separate register).
+  - Notation of the lecture script or the problem sheets that differs from this document's.
+  - Flagging suspected or confirmed errors in the lecture script or a problem sheet (see
+    *Flagging errors* above). Errors and habits of a **tutor** never go here: they go in a `%`
+    comment, because tutors are not named in the typeset text.
   - Any remark where you are injecting knowledge that goes beyond what the source says.
   Example:
   ```latex
@@ -873,8 +893,9 @@ Each environment has a precise semantic role. Using the wrong one is a style err
   | A reader, who would otherwise be misled or left wondering | `ainote` |
   | Only an editor, mining a source or auditing provenance | a `%` comment |
 
-  Reader-facing, and therefore a genuine `ainote`: a **flagged error in a source** and what was
-  done about it; a **notation divergence** the reader will meet in the lecture or the script; a
+  Reader-facing, and therefore a genuine `ainote`: a **flagged error in the script or a sheet** and
+  what was done about it (a tutor's error is a `%` comment); a **notation divergence** the reader
+  will meet in the lecture or the script; a
   **divergence from the official solution**; **why an expected proof is absent** ("the course
   states this without proof").
 
@@ -929,8 +950,10 @@ Each environment has a precise semantic role. Using the wrong one is a style err
   not move content into an `ainote` merely because you now can point at it.
 
   Conversely, do not over-correct in the other direction either. An `ainote` that flags a real
-  error, or warns that a tutor's $\|\cdot\|_*$ means the operator norm, earns its box: deleting
-  it loses information the reader needs. Test 2 removes *logistics*, not *warnings*.
+  error in the script, or warns that the script's $\|\cdot\|_*$ means the operator norm, earns its
+  box: deleting it loses information the reader needs. Test 2 removes *logistics*, not
+  *warnings*. (A warning about a tutor's notation is the exception: the reader never sees the
+  tutor's notes, so it is a `%` comment.)
 * ⚠️ **"The course does not prove this" belongs in an `ainote`, and only after you have looked.**
   Added 2026-08-09 on the user's instruction. Two separate rules, and the second is the one that
   bites:

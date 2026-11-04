@@ -4,10 +4,11 @@
 \label{sec:orientable_manifolds}
 
 % Source: Corsin Nick/Class Notes/Week 12.pdf, p. 7
+% Corsin reproduces the two definitions below directly from the lecture script, rather than
+% writing them out in his own hand, and adds margin annotations (tutor reference moved out of the
+% typeset text, 2026-11-04).
 \begin{ainote}
-The two definitions below are reproduced by Corsin directly from the lecture script (numbered
-there as Definitions 14.68 and 14.65), rather than written out in his own hand; he adds the
-margin annotations quoted and figured below.
+The two definitions below are those of the lecture script (Definitions 14.68 and 14.65).
 \end{ainote}
 
 \begin{definition}[Support of a $k$-form]
@@ -41,15 +42,14 @@ determinant condition above it is called an \newterm{orientation} of $M$. Once s
 is chosen, $M$ is said to be \newterm{oriented}.
 \end{definition}
 
-\begin{ainote}
-Corsin marks the family $\{\phi_i\}$ itself with the margin note \qt{is called an Atlas} next
-to the covering condition, and the positivity condition with \qt{Atlas} again next to the
-determinant inequality, flagging that \qt{atlas} names the family regardless of
-whether the determinant condition holds, while \qt{orientation} is the stronger notion once it
-does. This matches the definition's own wording above.
-\end{ainote}
+% Moved out of the typeset text (the book names tutors only in source citations):
+% Corsin marks the family {phi_i} itself with the margin note "is called an Atlas" next to the
+% covering condition, and the positivity condition with "Atlas" again next to the determinant
+% inequality, flagging that "atlas" names the family regardless of whether the determinant
+% condition holds, while "orientation" is the stronger notion once it does. This matches the
+% definition's own wording above. The figure below redraws his hand-drawn counterexample.
 
-Corsin illustrates the failure of the orientation condition with a hand-drawn counterexample:
+The figure below shows how the orientation condition fails:
 two overlapping local parametrizations $\phi, \psi$ of the same patch of a surface, whose
 coordinate frames $(\partial_1\phi,\partial_2\phi)$ and $(\partial_1\psi,\partial_2\psi)$ at a
 shared point disagree in handedness.
@@ -114,21 +114,23 @@ shared point disagree in handedness.
 \end{tikzpicture}
 \end{center}
 
-\begin{ainote}
+% Corsin's caption on this figure: "Here, det(D(phi^{-1} o psi)) < 0!". The ainote that quoted it
+% is now the remark below, without the tutor reference.
+\begin{remark}[An atlas that is not an orientation]
 At the shared point, $(\partial_1\phi,\partial_2\phi)$ turns counterclockwise while
 $(\partial_1\psi,\partial_2\psi)$ turns clockwise, so the two frames are mirror images of each
-other. Corsin's caption: \qt{Here, $\det(D(\phi^{-1}\circ\psi)) < 0$!} This is exactly the atlas
-$\{\phi,\psi\}$ failing \cref{def:orientable_manifold}: it covers the patch, but its transition
-map has \emph{negative} Jacobian determinant there, so $\{\phi,\psi\}$ is an atlas but not an
+other, and $\det(D(\phi^{-1}\circ\psi)) < 0$ there. This is exactly the atlas $\{\phi,\psi\}$
+failing \cref{def:orientable_manifold}: it covers the patch, but its transition map has
+\emph{negative} Jacobian determinant there, so $\{\phi,\psi\}$ is an atlas but not an
 orientation.
-\end{ainote}
+\end{remark}
 
 % Generator: Claude Sonnet 5 (Medium)
 \begin{ainote}
 \Cref{ex:stokes_work_along_paths} and Exercise 12.6 (the latter not reproduced below, see the priority table)
-invoke \newterm{Stokes' theorem} in its classical $\mathbb{R}^3$ form, which Corsin's transcribed
-pages reach only in \cref{sec:stokes_in_r3}, as a consequence of the general theorem. It is
-recorded here ahead of that, since the exercise-sheet solutions rely on it.
+invoke \newterm{Stokes' theorem} in its classical $\mathbb{R}^3$ form, which this book derives
+only in \cref{sec:stokes_in_r3}, as a consequence of the general theorem. It is recorded here
+ahead of that, since the exercise-sheet solutions rely on it.
 \end{ainote}
 
 % Merged: Claude Opus 5.5 (Extra) --- this was stated a second time in

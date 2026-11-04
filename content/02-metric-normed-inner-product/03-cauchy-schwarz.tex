@@ -7,9 +7,10 @@
 \label{sec:inner_products_recap}
 
 % Transition: Claude Opus 5 (High)
-Corsin opens his Friday session by recalling the two definitions, which this chapter has already
-stated in \cref{sec:structured_spaces}, where the hierarchy of structured spaces was drawn and
-where the first supplements needed them. Rather than repeat them, here is what to have in mind:
+% Corsin opens his Friday session by recalling the two definitions (tutor reference moved out of
+% the typeset text).
+Both definitions were stated in \cref{sec:structured_spaces}, where the hierarchy of structured
+spaces was drawn. Rather than repeat them, here is what to have in mind:
 \begin{itemize}
   \item An \emph{inner product} (\cref{def:inner_product}) is \textbf{bilinear},
     \textbf{symmetric} and \textbf{definite}. It measures length \emph{and} angle.
@@ -156,8 +157,9 @@ $u - \pi_v(u) = 0$, which says precisely that $u$ is a scalar multiple of $v$.
 \begin{remark}[The same proof twice]
 \label{rem:two_proofs_cauchy_schwarz}
 This is the second proof of Cauchy--Schwarz in these notes;
-\cref{prop:cauchy_schwarz_geometric_proof} gave another, following Diego Torres
-Tejeda. The two look different at first. One minimises the quadratic
+\cref{prop:cauchy_schwarz_geometric_proof} gave another.
+% (The earlier proof follows Diego Torres Tejeda; tutor reference moved out of the typeset text.)
+The two look different at first. One minimises the quadratic
 $f(\lambda) := \|v-\lambda w\|^2$ over $\lambda$, while the other expands
 $\|u-\pi_v(u)\|^2 \geq 0$. But the minimiser found in the first is
 $\lambda_0 = \tfrac{\langle v,w\rangle}{\|w\|^2}$, which is exactly the coefficient defining
@@ -208,10 +210,9 @@ linearly dependent.
 \exsol{sol:cauchy_schwarz_statement}
 \end{exercise}
 
-\begin{remark}
-Corsin devotes the whole second half of Friday (\cref{sec:cauchy_schwarz}) to this problem,
-including the geometric reading and an explicit proof hint.
-\end{remark}
+% Moved out of the typeset text (it was a remark about the tutor, not about the mathematics):
+% Corsin devotes the whole second half of Friday (sec:cauchy_schwarz) to this problem, including
+% the geometric reading and an explicit proof hint.
 
 % Originally: content/exercise-sheets/week-03.tex, problem 3.8
 % Source: exercises/Ex3_Analysis2_eng.pdf
@@ -255,9 +256,10 @@ $\tilde f$.}
 \end{exercise}
 
 \begin{remark}
-Hint 3.9.3 is exactly Corsin's reason \#2 for caring about compactness
-(\cref{sec:why_compactness_matters}), namely the Weierstrass extreme value theorem applied on the
-compact unit sphere.
+Hint 3.9.3 is the Weierstrass extreme value theorem
+(\cref{item:extreme_value_theorem}) applied on the compact unit sphere, which is one of the main
+reasons to care about compactness at all.
+% (Corsin lists it as his reason #2 for caring about compactness.)
 \end{remark}
 
 % Supplement: Analysis_II_Script_v1.pdf, p. 35

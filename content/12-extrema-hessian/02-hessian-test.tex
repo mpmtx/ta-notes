@@ -95,14 +95,18 @@ A symmetric matrix $A \in \mathbb{R}^{n\times n}$ is:
 \end{itemize}
 \end{definition}
 
-\begin{ainote}
-Corsin defines degenerate as \qt{there exists $v \neq 0$ with $v\transp Av = 0$}. That
-condition is much weaker than intended: if $A$ is indefinite, with $v\transp Av > 0$ and
+% Corsin defines degenerate as "there exists v != 0 with v^T A v = 0"; corrected above. The ainote
+% that recorded this is now the remark below, without the tutor reference (the book names tutors
+% only in source citations).
+\begin{remark}[Degenerate means a nontrivial kernel]
+It is tempting to call $A$ degenerate when $v\transp Av = 0$ for some $v \neq 0$. That condition
+is much weaker than the definition above: if $A$ is indefinite, with $v\transp Av > 0$ and
 $u\transp Au < 0$, then $t \mapsto (tv+(1-t)u)\transp A(tv+(1-t)u)$ is continuous and changes
-sign, so it vanishes at some $w \neq 0$. Every indefinite matrix would then be degenerate, and
-the third bullet of \cref{thm:hessian_test} vacuous. The intended notion is a nontrivial kernel
-($\det A = 0$), which is also what \cref{ex:signature_2x2_matrix} states. Corrected above.
-\end{ainote}
+sign, so it vanishes at some $w = tv+(1-t)u$, and $w \neq 0$ because $u$ is not a negative
+multiple of $v$. Every indefinite matrix would then count as degenerate, and the distinction drawn
+in \cref{thm:hessian_test} would collapse. The right notion is a nontrivial kernel
+($\det A = 0$), which is also what \cref{ex:signature_2x2_matrix} uses.
+\end{remark}
 
 % Supplement: Sascha Brack/Class Notes/Week_05_Notes_Friday.pdf, pp. 3--4
 \begin{remark}[Linear algebra interlude: diagonalizing the Hessian]
@@ -163,17 +167,17 @@ $0$ an eigenvalue), the test gives \textbf{no information}, and all three behavi
 possible.
 \end{theorem}
 
-\begin{ainote}
-Corsin's third bullet reads \qt{indefinite and not degenerate}. With degeneracy corrected to
-$\det A = 0$ the extra hypothesis is unnecessary: indefiniteness alone already forces a saddle,
-since directions $v$ with $v\transp\Hess f(x_0)v > 0$ and $u$ with $u\transp\Hess f(x_0)u < 0$
-make $t\mapsto f(x_0+tv)$ increase and $t\mapsto f(x_0+tu)$ decrease away from $x_0$. Dropped
-above. The genuinely inconclusive case, semidefinite \emph{and} degenerate, is stated explicitly
-instead, since that is the one students actually run into (\cref{ex:semidefinite_hessian_multiple_choice} is exactly this trap).
-The official script carries the identical redundant hypothesis (its Prop.\ 11.15(3):
-\qt{indefinite and non-degenerate}), so this is not a slip specific to Corsin's notes. Both
-sources state the theorem with one clause more than it needs.
-\end{ainote}
+% Corsin's third bullet reads "indefinite and not degenerate"; the extra hypothesis was dropped
+% above. The ainote that recorded this is now the remark below, without the tutor reference.
+\begin{remark}[Indefiniteness needs no further hypothesis]
+Indefiniteness alone forces a saddle. If $v\transp\Hess f(x_0)v > 0$ and
+$u\transp\Hess f(x_0)u < 0$, the second-order Taylor expansion makes $t\mapsto f(x_0+tv)$
+increase and $t\mapsto f(x_0+tu)$ decrease away from $x_0$, so $x_0$ is neither a local
+minimum nor a local maximum. The lecture script states this case as \qt{indefinite and
+non-degenerate} (Prop.\ 11.15(3)), one clause more than it needs. The genuinely inconclusive case
+is the other one, semidefinite \emph{and} degenerate, and it is the one students actually run
+into: \cref{ex:semidefinite_hessian_multiple_choice} is exactly this trap.
+\end{remark}
 
 % Quelle: Linus Lüchinger/Slides/Slides-03-23.pdf, slides 10--11
 % Generator: Claude Opus 5 (High)
@@ -335,13 +339,12 @@ point. And when some $\lambda_i = 0$ that direction is \emph{flat} to second ord
 quadratic term says nothing about it, and the test must fall silent. That is exactly the
 degenerate case, illustrated by $x^4+y^4$ against $x^4-y^4$ below.
 
+% Corsin also states the test for C^3 (tutor reference moved out of the typeset text).
 \begin{ainote}
-The regularity in \cref{thm:hessian_test} is stated by Corsin as $C^3$; the test needs only
-$C^2$ (which is what the Hessian's definition assumes). Relaxed to $C^2$ above. This is not just
-Corsin's own habit. The official script's Prop.\ 11.15 independently requires $f \in C^3$ too,
-and its proof indeed only uses the second-order Taylor expansion (with an $o(\lvert h\rvert^2)$
-remainder), which needs nothing beyond $C^2$. Ours is both the weaker hypothesis and the
-standard statement of this theorem.
+The lecture script's Prop.\ 11.15 states \cref{thm:hessian_test} for $f \in C^3$. The test needs
+only $C^2$, which is what the Hessian's definition assumes, and the script's own proof uses
+nothing beyond the second-order Taylor expansion with an $o(\lvert h\rvert^2)$ remainder. The
+statement above is both the weaker hypothesis and the standard form of the theorem.
 \end{ainote}
 
 \begin{aiexample}[Inconclusive Hessian Test at a Degenerate Critical Point]
@@ -405,10 +408,9 @@ $e_1\transp Ae_1 = 1 > 0 > -1 = e_3\transp Ae_3$, so $A$ is indefinite. For a de
 has to look at the eigenvalues, or at \emph{all} principal minors, not only the leading ones.
 \end{ainote}
 
-\begin{ainote}
-Corsin writes the characteristic equation as ``$A - \lambda\id = 0$'', omitting the determinant.
-Corrected above.
-\end{ainote}
+% Moved out of the typeset text (the book names tutors only in source citations):
+% Corsin writes the characteristic equation as "A - lambda id = 0", omitting the determinant.
+% Corrected above.
 
 % Source: Corsin Nick/Class Notes/Week 5.pdf, pp. 9--10
 \begin{example}[Definiteness calculations]

@@ -200,8 +200,10 @@ connectedness-free alternative.
 \end{remark}
 \begin{exercise}[Completeness is not a topological property]
 \label{ex:completeness_not_topological}
-Corsin does not address whether completeness survives a change of metric; Diego Torres Tejeda
-sets this exercise, which settles it. Let $X := (0,1]$, let $d_{\text{eucl}}(x,y) := |x-y|$ be
+% Corsin does not address whether completeness survives a change of metric; Diego Torres Tejeda
+% sets this exercise, which settles it (tutor reference moved out of the typeset text).
+Does completeness survive a change of metric that leaves the open sets alone? This exercise
+settles it. Let $X := (0,1]$, let $d_{\text{eucl}}(x,y) := |x-y|$ be
 the standard metric on $X$, and define
 \[d(x,y) := \left|\frac1x - \frac1y\right|, \qquad x,y \in X.\]
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -210,21 +212,21 @@ the standard metric on $X$, and define
   \item Show that $(X,d)$ \textbf{is} complete.
   \item Show that $d_{\text{eucl}}$ and $d$ induce the \textbf{same topology} on $X$.
 \end{enumerate}
-\exhint[Diego's hint for (c)]{Let $(x_n)$ be $d$-Cauchy. Then $(1/x_n)$ is Cauchy for
-the standard metric, so it has a limit $\ell \in \mathbb{R}$; show $\ell \geq 1$ and that
-$x_n \to 1/\ell$.}
+\exhint[Diego Torres Tejeda's hint for (c)]{Let $(x_n)$ be $d$-Cauchy. Then $(1/x_n)$ is
+Cauchy for the standard metric, so it has a limit $\ell \in \mathbb{R}$; show $\ell \geq 1$ and
+that $x_n \to 1/\ell$.}
+\exinfo{This exercise is adapted from Diego Torres Tejeda's class notes.}
 \exsol{sol:completeness_not_topological}
 \end{exercise}
 
-\begin{ainote}
-Diego states this exercise on $X = (0,\infty)$, where part \textbf{(c)} is false. On
-$(0,\infty)$ the map $x\mapsto1/x$ is a bijection \emph{onto} $(0,\infty)$, so $(X,d)$ is
-isometric to $\big((0,\infty),|\cdot|\big)$, which is not complete: concretely, $x_n := n$
-satisfies $d(x_n,x_m) = |\tfrac1n-\tfrac1m| \to 0$ yet has no limit in $X$. His own hint asks to
-show $\ell > 0$, and that is precisely the step that fails. Restricting to a bounded interval
-repairs it, since on $(0,1]$ the image is $[1,\infty)$, which \emph{is} closed in $\mathbb{R}$ and
-hence complete. The exercise is therefore typeset with $X := (0,1]$ above.
-\end{ainote}
+% Moved out of the typeset text (the book names tutors only in source citations; it was also a
+% spoiler for part (c), sitting above the exercise's solution):
+% Diego states this exercise on X = (0,infty), where part (c) is false. On (0,infty) the map
+% x -> 1/x is a bijection onto (0,infty), so (X,d) is isometric to ((0,infty),|.|), which is not
+% complete: concretely, x_n := n satisfies d(x_n,x_m) = |1/n - 1/m| -> 0 yet has no limit in X. His
+% own hint asks to show l > 0, and that is precisely the step that fails. Restricting to a bounded
+% interval repairs it, since on (0,1] the image is [1,infty), which is closed in R and hence
+% complete. The exercise is therefore typeset with X := (0,1] above.
 
 % Sonnet 5 (Medium)
 Compactness will turn out to be a strictly stronger finiteness-type property than completeness:

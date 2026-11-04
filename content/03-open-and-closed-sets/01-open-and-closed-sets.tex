@@ -12,8 +12,10 @@ Let $(X,d)$ be a metric space, let $x \in X$, and let $r \in \mathbb{R}$. Then w
 \[B_r(x) := \{\,\boxed{y \in X}\, : d(y,x) < r\,\}\]
 \end{definition}
 
+% Corsin marks the boxed part in red as an "important subtlety" (tutor reference moved out of the
+% typeset text, 2026-11-04: the book names tutors only in source citations).
 \begin{importantremark}
-Corsin marks the boxed part in red as an \qt{important subtlety}: the ambient set $X$ in
+The boxed part is an important subtlety: the ambient set $X$ in
 $y \in X$ is what makes openness relative to the space, and it is exactly what the common
 misconception in \cref{rem:common_misconception} turns on.
 \end{importantremark}
@@ -27,8 +29,8 @@ but loose; the two degenerate cases are spelled out in the remark below.
 Second, and more likely to trip you up when reading alongside the lecture: \textbf{the lecture
 notes put the arguments the other way round}, writing $B(x,r)$ where this document writes
 $B_r(x)$ (Definition 9.38, p.\ 11). The two mean exactly the same set, centre $x$ and radius $r$;
-only the typography differs. This document keeps $B_r(x)$, because that is what Corsin's notes
-use and it is what every later chapter here is written in. The one thing to watch is that in the
+only the typography differs. This document keeps $B_r(x)$, which is what every later chapter here
+is written in. The one thing to watch is that in the
 lecture's ordering the centre comes \emph{first}, so $B(0,1)$ and $B_1(0)$ are the same ball
 while $B(1,0)$ and $B_1(0)$ are not.
 \end{ainote}
@@ -215,8 +217,7 @@ Consider the following subsets of $\mathbb{R}$ with the standard metric:
 % {1/n} u {0}) are dropped; what remains is the part that is not already answered.
 \begin{exercise}[A longer self-test]
 \label{ex:open_closed_self_test}
-Linus sets the following list as a self-test at the end of his first session. Each subset of
-$\mathbb{R}$ carries the standard metric; decide for each whether it is \textbf{open},
+The following list makes a good self-test. Each subset of $\mathbb{R}$ carries the standard metric; decide for each whether it is \textbf{open},
 \textbf{closed}, \textbf{both}, or \textbf{neither}.
 \begin{enumerate}[label=\textbf{(\alph*)}]
   \item $[0,\infty)$

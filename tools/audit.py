@@ -533,6 +533,35 @@ report("glossary Ch. column disagrees with where the term is mirrored",
         for t in sorted(glossary_rows)
         if t in mirrored and glossary_ch[t] != chapter_of(mirrored[t][0])])
 
+# ------------------------------------------- I. tutors in the typeset text ---
+# style.md, "Tutors are not named in the text" (user's instruction, 2026-11-04): the book reads as
+# a stand-alone mathematics book, and a tutor's name may be typeset only as a source citation.
+# Allowed: \exinfo{...}, the title of \exhint[...] or of an exercisehint, a "(cf. ...)" citation
+# inside an exercise statement, and any other line that carries the marker `% tutor-citation`.
+# Everything else about a tutor belongs in a % comment.
+TUTOR = re.compile(r"Corsin|Sascha|\bBrack\b|Linus|L(?:ü|\\\"u)chinger|Lukas|Krause|"
+                   r"J(?:é|\\'e)r(?:ô|\\\^o)me|Paschoud|Diego|Torres Tejeda|Michaels?\b|"
+                   r"\btutors?\b")
+ALLOWED_CITATION = re.compile(r"\\exinfo\{.*|\\exhint\[[^\]]*\]|"
+                              r"\\begin\{exercisehint\}\[[^\]]*\]|\(cf\.\\? [^)]*\)")
+tutor_hits = []
+for f in FILES:
+    lines = TEXT[f].split("\n")
+    for i, raw in enumerate(lines, 1):
+        if "% tutor-citation" in raw:
+            continue
+        line = ALLOWED_CITATION.sub("", code(raw))
+        # An \exinfo that wraps keeps its name on the first line, but a wrapped tail line can
+        # still carry one; treat a line as part of the citation if the previous code line opened
+        # an \exinfo that is not yet closed.
+        prev = code(lines[i - 2]) if i >= 2 else ""
+        if "\\exinfo{" in prev and prev.count("{") > prev.count("}"):
+            continue
+        m = TUTOR.search(line)
+        if m:
+            tutor_hits.append(f"{rel(f)}:{i}  '{m.group(0)}'  {line.strip()[:70]}")
+report("tutor named in the typeset text outside a source citation", tutor_hits)
+
 # ------------------------------------------------------------- verdict ------
 print("\n" + "-" * 62)
 if findings:

@@ -37,8 +37,8 @@ even though both partial derivatives exist there.
 % Supplement: Sascha Brack/Class Notes/Week_03_Notes_Monday.pdf, p. 7
 \begin{remark}[The same expression, squared, behaves completely differently]
 \label{rem:continuity_contrast_pair}
-Sascha Brack pairs the function above with one that looks almost identical, as a test of whether
-you can tell them apart:
+The function above has a near twin, and telling the two apart is a good test:
+% (Sascha Brack pairs them this way; tutor reference moved out of the typeset text.)
 \[f_1(x,y) := \frac{xy}{x^2+y^2}, \qquad\qquad f_2(x,y) := \frac{x^2y^2}{x^2+y^2},\]
 both extended by $0$ at the origin. Substituting $x = r\cos\theta$, $y = r\sin\theta$ settles
 both at once:
@@ -77,7 +77,7 @@ step 3 of \cref{rem:differentiability_recipe} insists on \qt{uniformly in $\thet
 
 % Transition: Claude Opus 5 (High) --- the diagram below arrived with no text at all around
 % it, between a figure and a \subsection heading.
-Sascha Brack's notes collect these relationships into one picture. Read it as a hierarchy: the
+The picture below collects these relationships. Read it as a hierarchy: the
 strongest condition is at the bottom, and every arrow points at something weaker.
 
 % Supplement: Sascha Brack/Class Notes/Week_04_Notes_Monday_Updated.pdf, p. 4
@@ -163,12 +163,10 @@ This vector is the \textbf{velocity of the curve} \germanfor{Geschwindigkeit} at
 $t = \tfrac{\pi}{4}$; its length $|\gamma'(t)|$ is the \textbf{speed}. We get that
 \[\gamma\!\left(\tfrac{\pi}{4}+h\right) = \frac{1}{\sqrt{2}}\begin{pmatrix}1\\1\end{pmatrix} + \frac{h}{\sqrt{2}}\begin{pmatrix}-1\\1\end{pmatrix} + o(|h|).\]
 
-\begin{ainote}
-Corsin calls $\gamma'(\tfrac{\pi}{4})$ the \qt{speed} of the curve. Strictly, $\gamma'(t)$ is the
-\emph{velocity}, a vector carrying both a direction and a magnitude, whereas the speed is the
-scalar $|\gamma'(t)|$, here $|(-1,1)|/\sqrt2 = 1$. Since the display below uses the vector, the
-distinction matters. Corrected above.
-\end{ainote}
+% Moved out of the typeset text (the book names tutors only in source citations):
+% Corsin calls gamma'(pi/4) the "speed" of the curve. Strictly, gamma'(t) is the velocity, a
+% vector, whereas the speed is the scalar |gamma'(t)|, here |(-1,1)|/sqrt2 = 1. Since the display
+% below uses the vector, the distinction matters. Corrected above.
 
 % Source: Corsin Nick/Class Notes/Week 4.pdf, p. 4
 From this example, we see that the \textbf{column} vectors of the Jacobian are the partial
@@ -199,11 +197,10 @@ From this, we see that the \textbf{rows} of the Jacobian are the \newterm{gradie
 \germanfor{Gradient}:
 \[\Jac F(x) = \begin{pmatrix} \nabla F_1 \\ \hline \vdots \\ \hline \nabla F_m \end{pmatrix}\]
 
-\begin{ainote}
-Corsin's sentence reads ``the columns of the Jacobian are the gradients'', but the displayed
-matrix stacks $\nabla F_1, \dots, \nabla F_m$ as rows. The display is the correct one, and it is
-consistent with $(\nabla f)\transp$ just above. Corrected to ``rows''.
-\end{ainote}
+% Moved out of the typeset text (the book names tutors only in source citations):
+% Corsin's sentence reads "the columns of the Jacobian are the gradients", but the displayed matrix
+% stacks nabla F_1, ..., nabla F_m as rows. The display is the correct one, and it is consistent
+% with (nabla f)^T just above. Corrected to "rows".
 
 % Supplement: Sascha Brack/Class Notes/Week_04_Notes_Monday_Updated.pdf, pp. 10--11
 \begin{example}[A function that is differentiable but not $C^1$]

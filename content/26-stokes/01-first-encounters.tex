@@ -3,11 +3,14 @@
 \section{Sneak peek at Stokes' theorem}
 \label{sec:stokes_sneak_peek}
 
-\begin{ainote}
-Before the formal introduction of Stokes' theorem (\cref{sec:stokes_general}), Sascha presented introductory examples to build intuition. The classical version of Stokes' theorem states that for a surface $A \subset \mathbb{R}^3$ and a vector field $F$,
+% The introductory examples below are Sascha Brack's. This stood as an ainote naming him; it is
+% now plain framing prose (the book names tutors only in source citations).
+Before the general theorem of \cref{sec:stokes_general}, a few examples build intuition for its
+classical form (\cref{thm:stokes_classical}): for a surface $A \subset \mathbb{R}^3$ and a vector
+field $F$,
 \[\int_A (\curl F)\cdot \nu \mathop{d\text{vol}}_2 = \int_{\partial A} F \cdot \tau \,dL,\]
-where $\nu$ is the unit normal to $A$ and $\tau$ is the unit tangent vector to the boundary curve $\partial A$.
-\end{ainote}
+where $\nu$ is the unit normal to $A$ and $\tau$ is the unit tangent vector to the boundary curve
+$\partial A$.
 
 \begin{example}[Stokes' theorem on a hemisphere: a quadratic field]
 \label{ex:stokes_hemisphere}

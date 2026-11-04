@@ -5,13 +5,13 @@
 % Diego Torres Tejeda's supplementary note "Addendum - Sequential and Topological Compactness.pdf"
 % is the one typeset document among his materials, the rest being handwritten scans. Its proof is
 % adapted below into this project's notation and house style.
-\begin{ainote}
-Neither this equivalence nor \cref{thm:sequential_compactness} above is proved in the
-transcribed notes. A complete, self-contained proof is supplied here
-from a second tutor's addendum. By the reduction already noted above, compactness of
-$K \subseteq X$ being compactness of the metric space $(K,d|_{K\times K})$, it suffices to treat a
-whole metric space $X$ rather than a subset $K$.
-\end{ainote}
+% Neither this equivalence nor thm:sequential_compactness is proved in the transcribed notes; the
+% proof below is adapted from Diego Torres Tejeda's addendum (tutor reference moved out of the
+% typeset text, where it stood as an ainote).
+This subsection proves \cref{thm:sequential_compactness} and the equivalence of sequential and
+topological compactness (\cref{thm:sequential_topological_compactness_equivalence}). By the reduction
+noted above, compactness of $K \subseteq X$ being compactness of the metric space
+$(K,d|_{K\times K})$, it suffices to treat a whole metric space $X$ rather than a subset $K$.
 
 \begin{lemma}[Continuous functions attain extrema on sequentially compact spaces]
 \label{lem:sequential_compactness_extreme_values}
@@ -213,8 +213,9 @@ $U_{i_1},\dots,U_{i_n}$ form a finite subcover of $X$.
 
 \begin{remark}[Total boundedness, more generally]
 \label{rem:compact_iff_complete_totally_bounded}
-Diego's note records a sharper characterization as a further exercise: $(X,d)$ is compact if and
-only if it is complete and totally bounded. \Cref{lem:sequentially_compact_totally_bounded} gives
+% (Diego Torres Tejeda's note records this as a further exercise.)
+A sharper characterization holds: $(X,d)$ is compact if and only if it is complete and totally
+bounded. \Cref{lem:sequentially_compact_totally_bounded} gives
 one direction (compact $\implies$ complete, by \cref{ex:compact_finite_complete} below, and
 totally bounded); for the converse, a Cauchy subsequence can be extracted from any sequence using
 total boundedness (cover by finitely many $\tfrac1k$-balls for $k=1,2,\dots$ and pass to nested
@@ -450,10 +451,9 @@ Let $(X,d)$ be a metric space.
 
 % Moved here from after the two aiexercises below (review item D3): its "above" pointed
 % past them to this solution, which is what it actually comments on.
-\begin{ainote}
-Corsin writes $n_k > k$ above; for a subsequence the standing fact is $n_k \geq k$. Immaterial to
-the argument.
-\end{ainote}
+% Moved out of the typeset text (the book names tutors only in source citations):
+% Corsin writes n_k > k above; for a subsequence the standing fact is n_k >= k. Immaterial to the
+% argument.
 
 % Source: Jérôme Paschoud/Notizen/Woche 3.1 Banach und Kompaktheit.pdf, p. 3
 % Generator: Gemini 3.6 Flash (High)

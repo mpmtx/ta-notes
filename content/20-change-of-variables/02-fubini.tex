@@ -174,16 +174,16 @@ For any $t \in [0,1]$, the cross-section of $C\Omega$ at height $t$ is $(C\Omega
 \]
 \end{example}
 
-\begin{ainote}
-Corsin writes the first line as $\int_0^1 dx \int_0^1 dy$, but the antiderivative taken on the
-next line is in $x$, and it produces $x^{y+2}/(y+2)$, evaluated from $0$ to $1$. The
-differentials are therefore swapped relative to the computation actually performed. The order is corrected
-above and the result is unaffected.
-
-The example is well chosen: integrating $x^{y+1}$ in $y$ first would mean integrating an
-exponential in the exponent, which is far worse. Fubini's real use is that you may pick the
-easier order, and here only one of the two is comfortable.
-\end{ainote}
+% Moved out of the typeset text (the book names tutors only in source citations):
+% Corsin writes the first line as \int_0^1 dx \int_0^1 dy, but the antiderivative taken on the next
+% line is in x, and it produces x^{y+2}/(y+2), evaluated from 0 to 1. The differentials are
+% therefore swapped relative to the computation actually performed. The order is corrected above
+% and the result is unaffected. The second paragraph of that ainote is the remark below.
+\begin{remark}[Pick the easier order]
+Integrating $x^{y+1}$ in $y$ first would mean integrating an exponential in the exponent, which is
+far worse. That is Fubini's real use: you may pick the easier order, and here only one of the two
+is comfortable.
+\end{remark}
 
 % Supplement: Sascha Brack/Class Notes/Week_08_Notes_Friday.pdf, pp. 4--5
 \begin{example}[Changing the order of integration]

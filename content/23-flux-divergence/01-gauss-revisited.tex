@@ -1,28 +1,21 @@
 % Originally: content/week-11.tex, \section{Gauss' theorem revisited: the case n=1} (Corsin Week 11)
 
 
-\section{Gauss' theorem revisited: the case \texorpdfstring{$n=1$}{n=1}, and a direct proof
-for a square}
+\section{Gauss' theorem in low dimensions: the case \texorpdfstring{$n=1$}{n=1} and the unit
+square}
 \label{sec:gauss_intuition}
 % Corsin taught this a week after the divergence theorem, so the source carried a
 % \continuedfrom{sec:flux_divergence_theorem} back-pointer. Here the section comes first, as
 % motivation, and the pointer would have run forwards; it is gone, and the sentence below
 % already \cref's the theorem it previews.
 %
-% ⚠️ OPEN, raised by the 2026-08-13 audit and deliberately not resolved here. Moving the section
-% forward is defensible for the n=1 warm-up, which is motivation and reads perfectly well before
-% the statement. It is harder to defend for what follows it: the block below is a genuine
-% \begin{proof}[Proof of thm:gauss_divergence for n=2, B=(0,1)^2], and it now sits about ninety
-% lines BEFORE the theorem it proves is stated. A reader meets a proof of something they have not
-% been told yet. Two repairs are available and each costs something:
-%   (a) leave the n=1 warm-up here and move the n=2 proof into sec:flux_divergence_theorem, just
-%       under thm:gauss_divergence, where a proof belongs. Splits one source page across two
-%       sections, and the "conversely, the FTC can be used to PROVE Gauss" sentence loses the
-%       n=1 calculation it answers.
-%   (b) relabel the n=2 block as a worked example previewing the theorem rather than proving it,
-%       which is closer to what it does in its current position, and keep everything in place.
-% (b) is the smaller change and probably the right one. Not taken unilaterally because it alters
-% what the block claims to be, and Corsin's own framing is that it proves the theorem.
+% RESOLVED 2026-11-04 (Claude Opus 5.5, Extra), option (b) on the user's instruction. The 2026-08-13
+% audit found that the block below was a \begin{proof}[Proof of thm:gauss_divergence for n=2,
+% B=(0,1)^2] sitting about ninety lines BEFORE the theorem it proves is stated. The two repairs
+% were (a) moving the n=2 proof under thm:gauss_divergence, or (b) relabelling it as a worked
+% example previewing the theorem. (b) is done: the block is now ex:gauss_unit_square_by_hand, and
+% the section title says "the unit square" rather than "a direct proof". The computation is
+% unchanged and still proves that one case; Corsin's own framing calls it a proof.
 
 % Source: Corsin Nick/Class Notes/Week 11.pdf, p. 2
 Gauss' theorem (\cref{thm:gauss_divergence}), stated in \cref{sec:flux_divergence_theorem}
@@ -38,18 +31,23 @@ The last step identifies $\int_{\partial[a,b]} \langle f,\nu\rangle\,d\vol_0$ wi
 by treating $\partial[a,b] = \{a,b\}$ as a $0$-dimensional submanifold with outward unit
 normals $\nu(a) = -1$, $\nu(b) = +1$, and $\vol_0$ as counting measure.
 
+% Corsin flags the gaps himself ("there are several problems with this argument, for example what a
+% 0-dim Jordan measure or 0-dim submanifold is"), and the word "almost" above is his. This stood
+% as an ainote quoting him; it is now neutral (the book names tutors only in source citations).
 \begin{ainote}
-Corsin flags this himself: \qt{there are several problems with this argument, for example
-what a $0$-dim Jordan measure or $0$-dim submanifold is}, and notes that \qt{the definitions
-from the lecture can be extended to include this case} without carrying out the extension.
-The word \qt{almost} above is his. Not pursued further here; the point of the calculation is
-the analogy with the FTC, not a rigorous $n=1$ instance of \cref{thm:gauss_divergence}.
+The calculation has gaps: it needs a $0$-dimensional Jordan measure and a $0$-dimensional
+submanifold, which the definitions of this course do not provide, although they can be extended
+to include this case. Hence the \qt{almost}. The point of the calculation is the analogy with the
+FTC, not a rigorous $n=1$ instance of \cref{thm:gauss_divergence}.
 \end{ainote}
 
 % Source: Corsin Nick/Class Notes/Week 11.pdf, p. 3
-\begin{proof}[Proof of \cref{thm:gauss_divergence} for $n=2$, $B = (0,1)^2$]
-Conversely, the fundamental theorem of calculus can be used to \emph{prove} Gauss' theorem;
-we carry this out for the unit square. Let $F : [0,1]^2 \to \mathbb{R}^2$ be a $C^1$ vector
+\begin{example}[The divergence theorem on the unit square, by hand]
+\label{ex:gauss_unit_square_by_hand}
+Conversely, the fundamental theorem of calculus can be used to verify Gauss' theorem directly in
+the simplest two-dimensional case, the unit square. This is a preview of
+\cref{thm:gauss_divergence}, which is stated in the next section; for $B = (0,1)^2$ the
+computation below proves it. Let $F : [0,1]^2 \to \mathbb{R}^2$ be a $C^1$ vector
 field and $B := (0,1)^2$. The boundary $\partial B$ splits into four edges, with outward unit
 normals $-e_1$, $e_1$, $-e_2$, $e_2$ on the left, right, bottom, and top edges respectively.
 
@@ -90,6 +88,6 @@ and by Fubini,
 \[
 \int_{\partial B} \langle F,\nu\rangle\,d\vol_1
   = \int_B \partial_1 F_1\,d\vol_2 + \int_B \partial_2 F_2\,d\vol_2
-  = \int_B \divg F\,d\vol_2. \qedhere
+  = \int_B \divg F\,d\vol_2.
 \]
-\end{proof}
+\end{example}

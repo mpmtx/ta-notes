@@ -130,15 +130,13 @@ we may take the cheapest one:
 Hence $\partial^{(2,0,1)} f(x,y,z) = -4e^{2x}\sin(z)$.
 \end{example}
 
-\begin{ainote}
-Corsin writes the recall line as
-$\partial^\alpha = \partial_{\alpha_1}\partial_{\alpha_2}\cdots\partial_{\alpha_n}$ with the
-example $\partial^{(2,1)} = \partial_2\partial_1$. Read literally that is the wrong object, since
-a multi-index $\alpha$ records \textit{how many times} each $\partial_i$ is applied, so
-$\partial^{(2,1)} = \partial_1^2\partial_2$. His own expansion above uses
-$\partial_1^2\partial_2 f(\bar x)\,\tfrac{h_1^2h_2}{2}$ for $\delta_2$, confirming the intended
-meaning. Corrected above.
-\end{ainote}
+% Moved out of the typeset text (the book names tutors only in source citations):
+% Corsin writes the recall line as \partial^\alpha = \partial_{\alpha_1}...\partial_{\alpha_n}
+% with the example \partial^{(2,1)} = \partial_2\partial_1. Read literally that is the wrong
+% object, since a multi-index records how many times each \partial_i is applied, so
+% \partial^{(2,1)} = \partial_1^2\partial_2. His own expansion above uses
+% \partial_1^2\partial_2 f(\bar x) h_1^2h_2/2 for \delta_2, confirming the intended meaning.
+% Corrected above.
 
 % Sonnet 5 (Medium)
 \subsection{The working formula}
@@ -563,9 +561,10 @@ f(x_0+th) &= f(x_0) + t\left.\frac{d}{dt}\right|_{t=0}f(x_0+th) + \frac{t^2}{2}\
 Setting $t = 1$ gives the result.
 \end{exercisesolution}
 
-% Added by Claude Opus 5.5 (Extra).
+% Added by Claude Opus 5.5 (Extra). (The argument above is Corsin's; tutor reference moved out of
+% the typeset text.)
 \begin{ainote}
-The last step of Corsin's argument needs care. The remainder $o(\lvert th\rvert^2)$ is a statement
+The last step of the argument above needs care. The remainder $o(\lvert th\rvert^2)$ is a statement
 about $t \to 0$ with $h$ fixed, so it says nothing at the single value $t = 1$; what the formula
 needs is a remainder that is small as $h \to 0$. The computation above is the right one, but the
 limit has to be taken in $h$, which is what the proof of \cref{thm:taylor_working_formula} does:

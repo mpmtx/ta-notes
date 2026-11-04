@@ -49,10 +49,11 @@ by $\lvert k(h)\rvert$. The function $\sigma$ is what makes that harmless.
 % Supplement: Sascha Brack/Class Notes/Week_04_Notes_Friday_Updated.pdf, pp. 7--10
 \begin{remark}[The chain rule as a sum over paths]
 \label{rem:chain_rule_paths}
-Stated as $D(g\circ f) = Dg\cdot Df$ the rule is compact but, as Sascha Brack puts it in his
-notes, \qt{pretty abstract}. It says nothing about \emph{why} a sum appears when the rule is
-written out in coordinates. His device is to draw the variables as a graph and read the formula
-off it.
+% The device and the phrase "pretty abstract" are Sascha Brack's (tutor reference moved out of
+% the typeset text, 2026-11-04).
+Stated as $D(g\circ f) = Dg\cdot Df$ the rule is compact but rather abstract. It says nothing
+about \emph{why} a sum appears when the rule is written out in coordinates. A useful device is to
+draw the variables as a graph and read the formula off it.
 
 Write $x \in \mathbb{R}^n \xmapsto{\ f\ } y \in \mathbb{R}^m \xmapsto{\ g\ } z \in \mathbb{R}^k$
 and join each variable to those it feeds into. Then $x_i$ influences $z_j$ only by first moving
@@ -87,9 +88,9 @@ along it. Summing over the routes gives the chain rule:
 
 The right-hand equality is just the definition of matrix multiplication, and that is precisely the
 point: \textbf{matrix multiplication is a sum over paths}, and the chain rule looks like a product of
-matrices precisely because composing functions composes those graphs. Sascha's summary is that
-computing $\partial z_j/\partial x_i$ this way is nothing more than \qt{computing single
-components of the chain rule}.
+matrices precisely because composing functions composes those graphs. Computing
+$\partial z_j/\partial x_i$ this way is nothing more than computing single components of the
+chain rule.
 
 The reading is worth having because it makes the coordinate form reconstructible instead of
 memorised: count the intermediate variables, one term each, each term a product of two factors,

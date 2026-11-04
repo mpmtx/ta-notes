@@ -20,8 +20,9 @@ Given $k \geq 1$, a bounded open set $\Omega \subset \mathbb{R}^n$ is called a
 \end{enumerate}
 \end{definition}
 
-Citing the 2024 lecture notes, Corsin builds up the machinery needed to actually \emph{use}
-this definition. To define \newterm{flux} we need the concept of interior and exterior
+% Corsin builds this up citing the 2024 lecture notes (tutor reference moved out of the typeset
+% text, 2026-11-04).
+Some machinery is needed to actually \emph{use} this definition. To define \newterm{flux} we need the concept of interior and exterior
 normal vectors. For $\Omega$ as above, a normal vector $v \in N_p(\partial\Omega)$ is
 \newterm{interior} if
 \[p + hv \in \Omega \quad \text{for all } h>0 \text{ small},\]
@@ -66,12 +67,14 @@ $g > 0$, which lie outside $\overline\Omega$, arbitrarily close to every boundar
 near the inner sphere there are none.
 \end{remark}
 
+% Corsin's notes also state the definition with condition (a) alone (tutor reference moved out of
+% the typeset text).
 \begin{ainote}
-Corsin's notes state \cref{def:bounded_ck_domain} with condition \textbf{(a)} alone and then
-assert that a unique interior and exterior Gauss map exists, which
-\cref{rem:c1_domain_needs_one_side} refutes. Condition \textbf{(b)} has been added here so that
-the assertion, and with it the flux and the divergence theorem built on it, holds. The domains to
-which this document applies those results all satisfy it.
+This definition is sometimes stated with condition \textbf{(a)} alone, together with the
+assertion that a unique interior and exterior Gauss map exists, which
+\cref{rem:c1_domain_needs_one_side} refutes. Condition \textbf{(b)} has been added here so that the assertion, and with it the flux
+and the divergence theorem built on it, holds. The domains to which this document applies those
+results all satisfy it.
 \end{ainote}
 
 % Source: Corsin Nick/Class Notes/Week 10.pdf, p. 6

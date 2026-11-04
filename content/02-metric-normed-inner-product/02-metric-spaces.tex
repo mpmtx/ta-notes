@@ -18,10 +18,9 @@ $x, y, z \in X$:
 \end{enumerate}
 \end{definition}
 
-\begin{ainote}
-Corsin's gloss on definiteness reads \qt{the distance positive}; the formula $d \geq 0$ is
-correct, but the gloss omits the ``non-''. Corrected in the prose above.
-\end{ainote}
+% Moved out of the typeset text (the book names tutors only in source citations):
+% Corsin's gloss on definiteness reads "the distance positive"; the formula d >= 0 is correct, but
+% the gloss omits the "non-". Corrected in the prose above.
 
 \begin{center}
 \begin{tikzpicture}[>=Latex]
@@ -169,14 +168,15 @@ $m = 1, 2$. Definiteness and symmetry are clear; the triangle inequality is the
 \newterm{Minkowski inequality}, proved by a convexity argument in
 \cref{ex:p_norms_unit_balls}\textbf{(e)}.
 
-\begin{ainote}
-Corsin writes this formula as $\sqrt[m]{\sum_k (x_k-y_k)^m}$, without the absolute values, and
-for any $m$. Two corrections have been applied above. The powers must be taken of
-\textbf{absolute values}, since for odd $m$ the radicand can otherwise be negative. And the
-result is a metric only for $m \geq 1$: for $m \in (0,1)$ the triangle inequality fails, as
-part \textbf{(f)} of \cref{ex:p_norms_unit_balls} shows with $x = e_1$ and $y = e_2$, where
-$|x+y|_m = 2^{1/m} > 2 = |x|_m + |y|_m$.
-\end{ainote}
+% Corsin writes this formula as \sqrt[m]{\sum_k (x_k-y_k)^m}, without the absolute values, and for
+% any m; both corrections are applied above. The ainote that recorded this is now the remark
+% below, without the tutor reference (the book names tutors only in source citations).
+\begin{remark}[Why the absolute values, and why $m \geq 1$]
+The powers must be taken of \textbf{absolute values}, since for odd $m$ the radicand could
+otherwise be negative. And the result is a metric only for $m \geq 1$: for $m \in (0,1)$ the
+triangle inequality fails, as part \textbf{(f)} of \cref{ex:p_norms_unit_balls} shows with
+$x = e_1$ and $y = e_2$, where $|x+y|_m = 2^{1/m} > 2 = |x|_m + |y|_m$.
+\end{remark}
 
 % Quelle: Linus Lüchinger/Slides/Slides-02-26.pdf, slide 4
 % Generator: Claude Opus 5 (High)
@@ -424,8 +424,9 @@ space than the three axioms actually give.
 % Generator: Claude Opus 5 (High)
 \begin{remark}[Naming points and their components]
 \label{rem:naming_points_and_components}
-A practical point, which Linus reports as the single most common source of avoidable errors in
-submitted solutions. Once a proof involves several points, each with several components, two
+% Linus Lüchinger reports this as the single most common source of avoidable errors in submitted
+% solutions (tutor reference moved out of the typeset text).
+A practical point, and a common source of avoidable errors in written solutions. Once a proof involves several points, each with several components, two
 independent naming decisions have to be made, and mixing the two conventions is what causes the
 damage:
 \begin{itemize}
@@ -503,9 +504,9 @@ The official problem sheets are not reproduced as blocks anywhere in this docume
 is quoted verbatim (from \texttt{exercises/ExN\_Analysis2\_eng.pdf}; attribution: Prof.\ Joaquim
 Serra, D-MATH, ETH Z\"urich) and placed with the material it tests, so a problem from sheet 3 may
 well appear several chapters away from a problem from sheet 2. Its solution is then in the
-\emph{Solutions} section of that same chapter. Corsin's priority tags (\textbf{important},
-\textbf{semi-important}, \textbf{optional}) and the official \textbf{(*)} difficulty marker are
-carried along in each problem's title.
+\emph{Solutions} section of that same chapter. The priority tags (\textbf{important},
+\textbf{semi-important}, \textbf{optional}; see \cref{not:priority_key}) and the official
+\textbf{(*)} difficulty marker are carried along in each problem's title.
 \end{ainote}
 
 \begin{notation}

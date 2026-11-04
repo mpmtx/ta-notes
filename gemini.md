@@ -171,8 +171,12 @@ away.
 Two habits worth keeping, because they cost nothing and preserve the audit trail:
 
 * mark new content you write with `% Generator: <model> (<effort>)`;
-* when you correct an outright mathematical error in transcribed material, say so in an `ainote`
-  right there, so the divergence from the tutor's PDF stays visible.
+* when you correct an outright mathematical error in transcribed material, say so in a
+  `% Correction:` comment right there, so the divergence from the tutor's PDF stays visible to the
+  next editor. **Tutors are never named in the typeset text** (user's instruction, 2026-11-04: the
+  book must read as a stand-alone mathematics book). A tutor's slip is recorded in a comment and
+  nowhere else; only an error in the official lecture script or a problem sheet, which the reader
+  will meet themselves, earns an `ainote`. See *Tutors are not named in the text* in `style.md`.
 
 > **The week → topic restructure.** This document was reorganised once, on the user's explicit
 > instruction, from one chapter per teaching week into topic chapters (see *Document skeleton*

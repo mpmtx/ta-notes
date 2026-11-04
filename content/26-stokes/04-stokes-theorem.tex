@@ -52,11 +52,13 @@ same one that produces $\tau = (-\nu_2,\nu_1)$ in Green's theorem and the right-
 \cref{rem:right_hand_rule_as_cross_product}.
 \end{ainote}
 
+% (thm:stokes_classical was stated ahead of Corsin's own notes; tutor reference moved out of the
+% typeset text, 2026-11-04.)
 \begin{ainote}
-\Cref{thm:stokes_classical} was stated ahead of Corsin's own notes, as background
-needed to solve \cref{ex:stokes_work_along_paths}, in its classical $\mathbb{R}^3$ curl-theorem form. It is
+\Cref{thm:stokes_classical} was stated earlier, as background needed to solve
+\cref{ex:stokes_work_along_paths}, in its classical $\mathbb{R}^3$ curl-theorem form. It is
 exactly the case $m=2$, $n=3$, $\omega=\omega_F$ of the general theorem above, as
-\cref{sec:stokes_in_r3} below confirms directly from Corsin's own derivation.
+\cref{sec:stokes_in_r3} below confirms.
 \end{ainote}
 
 \subsection{Example: Green's theorem}
@@ -82,13 +84,12 @@ using $dx\wedge dx = dy\wedge dy = 0$ and $dy\wedge dx = -dx\wedge dy$.
 % Merged: Claude Opus 5.5 (Extra) --- Corsin restates Green's theorem here, copied from the lecture
 % script (Theorem 14.24), and then derives it. The restatement used to stand as a second numbered
 % theorem (thm:green_theorem) with the same content as thm:greens_theorem; it is now the proof of
-% that theorem, and every citation of the old label points at the surviving one.
-\begin{ainote}
-Corsin reproduces Green's theorem at this point directly from the lecture script (numbered there
-as Theorem 14.24), as with the two definitions quoted in \cref{sec:orientable_manifolds}. It is
-\cref{thm:greens_theorem}, stated in \cref{sec:greens_theorem_conservative_fields} and used since;
-what he adds is the derivation below.
-\end{ainote}
+% that theorem, and every citation of the old label points at the surviving one. The ainote that
+% said so named the tutor and was removed 2026-11-04 (the book names tutors only in source
+% citations); the sentence below replaces it.
+Green's theorem (\cref{thm:greens_theorem}, Theorem 14.24 of the lecture script) has been used
+since \cref{sec:greens_theorem_conservative_fields}. With the general theorem in hand it takes three
+lines.
 
 \begin{proof}[Proof of \cref{thm:greens_theorem}]
 Write $F(x,y) = (P(x,y),Q(x,y))$, so that $\curl F = \partial_xQ - \partial_yP$ (the scalar
