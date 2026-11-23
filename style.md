@@ -426,10 +426,14 @@ does not help and thin in the places it does.
 
 ## TYPOGRAPHY & SPACING RULES
 
-* **Paragraph Spacing & Indentation:** Paragraph indentation is set globally to `\setlength{\parindent}{0pt}` with `\setlength{\parskip}{3pt plus 1.5pt minus 0.5pt}`. Paragraphs must NEVER have indentation — whether preceded by `\section`, `\subsection`, or `\subsubsection`, or followed/preceded by `itemize` or `enumerate`.
+* **Vertical rhythm (2026-11-23, as in the Algebra I book):** every vertical space in the preamble is a multiple of `\textline`, the body line distance (12.6pt), so a different line spacing scales every gap with the lines. The table is the "Vertical rhythm" comment in `main.tex`. Never write a vertical space in `pt` or `ex` into the preamble; write it as a multiple of `\textline`.
+* **Paragraph Spacing & Indentation:** Paragraph indentation is set globally to `\setlength{\parindent}{0pt}`, and `\parskip` is `\customparskip` (0.238 L, i.e. 3pt). Paragraphs must NEVER have indentation — whether preceded by `\section`, `\subsection`, or `\subsubsection`, or followed/preceded by `itemize` or `enumerate`.
 * **List Spacing:** Top-level and nested `itemize`/`enumerate` environments use compact zero-spacing (`topsep=0pt`, `itemsep=0pt`, `parsep=0.5\customparskip`).
-* **Theorem Environment Spacing:** All theorem-like environments use `\customenvspace` (`2.0ex plus 0.5ex minus 0.2ex`) for above and below spacing.
-* **Line Spread:** Line spread is configured to `\linespread{1.05}` across the entire document.
+* **Theorem Environment Spacing:** All theorem-like environments use `\customenvspace` (0.683 L, i.e. 2ex) plus the paragraph skip, the same above and below the statement (an amsthm patch adds the paragraph skip above, which amsthm leaves out).
+* **Proofs:** a proof starts after the same gap as a statement (right after a heading, after the heading's own space); the title "Proof:" stands on a line of its own, followed by an ordinary paragraph break; after the Q.E.D. or Solved box the text goes on after an ordinary paragraph break.
+* **Hint, Info and Solution lines** (`\exhint`, `\exinfo`, `\exsol`) follow the line above them after an ordinary line break, with no gap.
+* **`\emph`** is sans-serif bold in black (since 2026-11-23; it was EmphBrown).
+* **Line Spread:** `\linespread{\textlinespread}`, with `\textlinespread` 1.05 unless defined before the preamble is read (`pdflatex -jobname=spacing-test '\def\textlinespread{1.3}\input{main}'` tries another spacing without touching the document).
 
 * ⚠️ **Draw order is paint order, and the reader may not be looking at a bright screen.**
   Added 2026-08-23 on the user's instruction, who reads the PDF on an e-reader. TikZ paints in

@@ -73,7 +73,7 @@ section and subsection titles are `MidnightBlue`; subsubsection is `TextBoldColo
 ## Numbering is automatic — do not configure it
 
 * **Theorem Numbering — do NOT set it per file in this project.** The scheme is
-  `Chapter.SectionLetter.TheoremNumber` (e.g. 2.b.1), and `main.tex:476` already derives it
+  `Chapter.SectionLetter.TheoremNumber` (e.g. 2.b.1), and `main.tex:538` already derives it
   automatically from `\thechapter` and the section counter, resetting per chapter. **No
   `content/*.tex` file overrides `\thetheorem`, and none should.**
 
@@ -87,7 +87,7 @@ section and subsection titles are `MidnightBlue`; subsubsection is `TextBoldColo
   > corroboration. **That comment no longer exists** — `git log -S Biran -- main.tex` puts its
   > removal in `ee8ddb8`, and `main.tex` has contained no such string since. The instruction to
   > ignore the imported numbering still stands; only its supporting evidence is gone.
-* **Exercises are already numbered — nothing to configure.** `main.tex:535` declares
+* **Exercises are already numbered — nothing to configure.** `main.tex:597` declares
   `exercise` via `\newaliascnt{exercise}{theorem}`, so every `\begin{exercise}` is numbered and
   `\cref{ex:...}` resolves to a clickable reference out of the box. Do **not** declare a local
   counter, and do not look for an `exercise*` variant — there isn't one. Give every exercise a
@@ -341,7 +341,7 @@ not trustworthy on its own, because parentheses in ordinary text confuse the obv
 
 % !! The block below is the GENERIC TEMPLATE and is NOT what this repo does. !!
 % In this project every one of these is NUMBERED via \newaliascnt{name}{theorem},
-% except `ainote`. See "This project's override" below, and main.tex:435-705,
+% except `ainote`. See "This project's override" below, and main.tex:482-767,
 % which is authoritative. Reproduced here only to show the available names:
 %   remark, exercise, example, summary, warmup, question, answer,
 %   importantremark, goals, conclusion, notation, ainote, aiexample, aiexercise,
@@ -361,7 +361,8 @@ not trustworthy on its own, because parentheses in ordinary text confuse the obv
 % Trailing notes on an exercise/example (added 2026-08-10 / 2026-08-23; main.tex, just below
 % exercisesolution, carries the full comment). All three hang off the END of a statement,
 % inside the environment, and share one geometry via \exnoteopen: a centred block
-% indented \exnoteindent on each side, small italic, in a muted colour.
+% indented \exnoteindent on each side, small italic, in a muted colour, following the line
+% above it after an ordinary line break (no gap; since 2026-11-23).
 %   \exhint[Label]{...}   \faLightbulb[regular], HintTint -- how to start it
 %   \exinfo{...}          \faTag, TextMetaNote gray -- where the problem came from
 %   \exsol{sol:label}     \faCheckCircle[regular], SolTint -- forward link to worked solution
@@ -373,7 +374,7 @@ not trustworthy on its own, because parentheses in ordinary text confuse the obv
 \newenvironment{exerciseinfo}{\exnoteopen{TextMetaNote}{\faTag}{Info}}{\exnoteclose}
 \newenvironment{exercisehint}[1][Hint]{\exnoteopen{HintTint}{\faLightbulb[regular]}{#1}}{\exnoteclose}
 \newenvironment{exercisesol}[1][Solution]{\exnoteopen{SolTint}{\faCheckCircle[regular]}{#1}}{\exnoteclose}
-% \newterm  -> ENGLISH quotes (main.tex:229). \germanterm (main.tex:230) is the
+% \newterm  -> ENGLISH quotes (main.tex:274). \germanterm (main.tex:275) is the
 % \glqq...\grqq one. They are deliberately different -- the German-mirroring
 % convention in style.md depends on it. Do not collapse them.
 % NOTE the colour is \QuoteRed, not BrickRed; earlier revisions of this file
@@ -448,7 +449,7 @@ commit itself looked completely normal. Two habits prevent it:
   this one.
 
 MiKTeX at `C:\Users\miche\AppData\Local\Programs\MiKTeX\miktex\bin\x64`.
-**Be careful with** the theorem / `aliascnt` / `cleveref` block at roughly `main.tex:435–705` —
+**Be careful with** the theorem / `aliascnt` / `cleveref` block at roughly `main.tex:482–767` —
 its comments document real bugs already solved (duplicate hyperref anchors, `cleveref` printing
 the wrong environment name for aliased counters). If you extend it, follow the existing pattern
 exactly: every environment in this project is numbered, and every one of them except `ainote`

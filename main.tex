@@ -107,7 +107,10 @@
 % \definecolor{EmphOrange}{HTML}{EC820C}
 % \colorlet{TextEmphColor}{EmphOrange}
 \definecolor{EmphBrown}{HTML}{BD6400}
-\colorlet{TextEmphColor}{EmphBrown}
+% \colorlet{TextEmphColor}{EmphBrown}
+% Black since 2026-11-23, as in the Algebra I book: the sans-serif bold carries the emphasis
+% alone. EmphBrown stays defined for the subtitle on the title page.
+\colorlet{TextEmphColor}{black}
 % \colorlet{TextBoldColor}{Brown!80!black}   % Espresso brown
 % \definecolor{TextBoldColor}{HTML}{A8651E}    % Warm Bronze Brown
 \definecolor{TextBoldColor}{HTML}{0E6C95}
@@ -180,8 +183,56 @@
 % ==========================================
 % TYPOGRAPHY & SPACING UNITS
 % ==========================================
-\linespread{1.05}
+% --- VERTICAL RHYTHM (2026-11-23, as in the Algebra I book) ---
+% Every vertical space is a multiple of \textline, the line distance of the body text
+% (\baselineskip at \normalsize: 12.6pt with 10pt type and \linespread{1.05}). A different line
+% spacing scales every gap with the lines; to try one, define \textlinespread before the
+% preamble is read, e.g.
+%   pdflatex -jobname=spacing-test '\def\textlinespread{1.3}\input{main}'
+% The multiples come from the earlier pt/ex values (1ex = 0.342 L), so the pages look as before.
+%
+%   line break                         0                (hint, info and solution lines; the
+%                                                       title "Proof:" and its first line)
+%   paragraph                          0.238 L          \parskip (\customparskip, 3pt); also after
+%                                                       the Q.E.D. box
+%   block: statement, proof            0.683 L + 0.238 L  \customenvspace (2ex) plus \parskip,
+%                                                       the same above and below a statement
+%   display formula                    0.286 L          (short: 0.119 L above, 0.190 L below)
+%   centred figure or table            0.635 L + 0.238 L  \topsep of center, plus \parskip
+%   subsubsection / subsection /       0.752 / 0.923 / 1.093 L above,
+%     section                          0.308 / 0.376 / 0.444 L below
+%   footnotes                          0.714 L          above the footnote rule
+%
+% (The part pages, the title page and the contents keep their own spacing, and so do the
+% insides of formulas.)
+\providecommand{\textlinespread}{1.05}
+\linespread{\textlinespread}
+\newlength{\textline}
+\makeatletter
+\newcommand{\rhythm@displayskips}{%
+  \setlength{\abovedisplayskip}{0.286\textline plus 0.171\textline minus 0.068\textline}%
+  \setlength{\belowdisplayskip}{0.286\textline plus 0.171\textline minus 0.068\textline}%
+  \setlength{\abovedisplayshortskip}{0.119\textline plus 0.068\textline}%
+  \setlength{\belowdisplayshortskip}{0.190\textline plus 0.068\textline minus 0.034\textline}}
+% \normalsize resets the display skips to the class's 10pt; this keeps ours.
+\g@addto@macro\normalsize{\ifdim\textline>\z@\rhythm@displayskips\fi}
+\AtBeginDocument{%
+  \normalsize
+  \setlength{\textline}{\baselineskip}%
+  \setlength{\customparskip}{0.238\textline plus 0.119\textline minus 0.040\textline}%
+  \setlength{\parskip}{\customparskip}%
+  \setlength{\customenvspace}{0.683\textline plus 0.171\textline minus 0.068\textline}%
+  \rhythm@displayskips
+  \setlength{\topsep}{0.635\textline plus 0.159\textline minus 0.317\textline}%
+  \setlength{\partopsep}{0.159\textline plus 0.079\textline minus 0.079\textline}%
+  \setlength{\floatsep}{0.952\textline plus 0.159\textline minus 0.159\textline}%
+  \setlength{\intextsep}{0.952\textline plus 0.159\textline minus 0.159\textline}%
+  \setlength{\textfloatsep}{1.587\textline plus 0.159\textline minus 0.317\textline}%
+  \setlength{\skip\footins}{0.714\textline plus 0.317\textline minus 0.159\textline}%
+}
+\makeatother
 
+% The values below are placeholders until \begin{document} sets them from \textline.
 \newlength{\customparskip}
 \setlength{\customparskip}{3pt plus 1.5pt minus 0.5pt}
 
@@ -204,13 +255,7 @@
 % Matrix and table rows
 \renewcommand{\arraystretch}{1.15}
 
-% Proportional math display spacing
-\AtBeginDocument{
-  \setlength{\abovedisplayskip}{1.2\customparskip plus 0.5ex minus 0.2ex}
-  \setlength{\belowdisplayskip}{1.2\customparskip plus 0.5ex minus 0.2ex}
-  \setlength{\abovedisplayshortskip}{0.5\customparskip plus 0.2ex}
-  \setlength{\belowdisplayshortskip}{0.8\customparskip plus 0.2ex minus 0.1ex}
-}
+% Math display spacing: see "Vertical rhythm" above.
 
 % RETIRED 2026-08-09: \omitted{...}, a red-text macro from a dead error-flagging convention.
 % It was marked "kept for future use if needed" and had zero uses in content/. Errors are
@@ -298,7 +343,7 @@
 [{\color{ChapLine}\rule{\textwidth}{0.8pt}}]
 
 % 2. Space-efficient Chapter Headings
-\titlespacing*{\chapter}{\chapouthang}{-7ex}{2.2ex}
+\titlespacing*{\chapter}{\chapouthang}{-2.392\textline}{0.752\textline}
 
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
@@ -346,10 +391,11 @@
 {0ex}
 {#1}
 
-% 4. Space-efficient Heading Spacing
-\titlespacing*{\section}{\secouthang}{3.2ex plus 0.8ex minus .2ex}{1.3ex plus .2ex}
-\titlespacing*{\subsection}{\subsecouthang}{2.7ex plus 0.8ex minus .2ex}{1.1ex plus .2ex}
-\titlespacing*{\subsubsection}{\subsubsecouthang}{2.2ex plus 0.8ex minus .2ex}{0.9ex plus .2ex}
+% 4. Space-efficient Heading Spacing (in line distances, see "Vertical rhythm"; before:
+% 3.2ex/1.3ex, 2.7ex/1.1ex, 2.2ex/0.9ex)
+\titlespacing*{\section}{\secouthang}{1.093\textline plus 0.273\textline minus 0.068\textline}{0.444\textline plus 0.068\textline}
+\titlespacing*{\subsection}{\subsecouthang}{0.923\textline plus 0.273\textline minus 0.068\textline}{0.376\textline plus 0.068\textline}
+\titlespacing*{\subsubsection}{\subsubsecouthang}{0.752\textline plus 0.273\textline minus 0.068\textline}{0.308\textline plus 0.068\textline}
 
 % ==========================================
 % TABLE OF CONTENTS TYPOGRAPHY & COLORS
@@ -470,6 +516,20 @@
 {\textcolor{EnvTheorem}{\faLightbulb}\hspace{0.4em}%
  \thmname{\textcolor{EnvTheorem}{\sffamily\bfseries#1}}\thmnumber{\sffamily\bfseries\ #2}%
  \thmnote{\ \textcolor{EnvTheorem}{\bfseries(}{\normalfont\sffamily\itshape#3}\textcolor{EnvTheorem}{\bfseries)}}}
+
+% amsthm takes the paragraph skip away above a statement and leaves it below; the patch adds it
+% above too, so a statement has the same gap on both sides (2026-11-23, as in the Algebra I
+% book). It also reads \customenvspace afresh at every statement: \newtheoremstyle stores the
+% value the length had when the style was defined, and the rhythm sets it at \begin{document}.
+% cleveref keeps amsthm's \@thm in two copies, with and without an optional argument.
+\makeatletter
+\patchcmd{\cref@thmnoarg}{\@topsep\thm@preskip}{\thm@preskip\customenvspace\thm@postskip\customenvspace
+  \@topsep\thm@preskip\advance\@topsep\parskip}{}%
+  {\PackageWarningNoLine{ta-notes}{Patching amsthm's theorem space failed (noarg)}}
+\patchcmd{\cref@thmoptarg}{\@topsep\thm@preskip}{\thm@preskip\customenvspace\thm@postskip\customenvspace
+  \@topsep\thm@preskip\advance\@topsep\parskip}{}%
+  {\PackageWarningNoLine{ta-notes}{Patching amsthm's theorem space failed (optarg)}}
+\makeatother
 
 \theoremstyle{purplethm}
 
@@ -731,17 +791,22 @@
 % \qedsymbol for the duration of one environment. Do not inline \qedbox in the `proof' end
 % code again -- that is what made the marker unswitchable.
 
+% A proof starts after the block gap of a statement (right after a heading, after the heading's
+% own space, as a statement does), the title stands on a line of its own and the first
+% paragraph follows it after an ordinary paragraph break, and the text after the Q.E.D. box
+% goes on after an ordinary paragraph break (2026-11-23, as in the Algebra I book; before:
+% 2.2ex above, 0.8ex under the title, 2ex after the box, 1ex less right after a heading).
 \makeatletter
 \renewenvironment{proof}[1][\proofname]{%
-  \par\if@nobreak\vspace{-1ex}\else\addvspace{2.2ex plus 0.5ex minus 0.2ex}\fi
+  \par\if@nobreak\else\addvspace{\customenvspace}\fi
   \pushQED{\qed}%
   \noindent\textcolor{ProofTint}{\faPenNib}\hspace{0.5em}%
   {\normalfont\sffamily\bfseries\color{ProofTint}#1:}%
-  \par\nobreak\vspace{0.8ex plus .1ex}\vspace{-\parskip}
+  \par\nobreak
   \@afterindentfalse\@afterheading
 }{%
   \popQED
-  {\parfillskip=0pt\par}\vspace{2ex}%
+  {\parfillskip=0pt\par}%
 }
 \makeatother
 
@@ -821,9 +886,12 @@
 \newlength{\exnoteindent}
 \setlength{\exnoteindent}{2.5em}
 
+% Each note follows the line above it after an ordinary line break, with no paragraph gap,
+% and the text after the last one goes on as after any line (2026-11-23, as in the Algebra I
+% book; before: 1.2ex above a note, 0.4ex below it).
 % #1 colour, #2 icon, #3 label
 \newcommand{\exnoteopen}[3]{%
-  \par\addvspace{1.2ex plus 0.3ex minus 0.2ex}%
+  \par\nobreak\vspace{-\parskip}%
   \begingroup
   % \centering must come FIRST: it overwrites \leftskip and \rightskip with 0pt plus 1fil,
   % so an indent set before it would be silently discarded. Advancing them afterwards keeps
@@ -837,7 +905,6 @@
 \newcommand{\exnoteclose}{%
   \par
   \endgroup
-  \addvspace{0.4ex plus 0.2ex}%
 }
 
 \newenvironment{exerciseinfo}{\exnoteopen{TextMetaNote}{\faTag}{Info}}{\exnoteclose}
@@ -1010,7 +1077,7 @@
     \vspace{0.2cm}
     {\color{ThemeAccent1}\rule{0.6\linewidth}{1.5pt}\par}
     \vspace{2.0cm}
-    {\sffamily\fontsize{18pt}{24pt}\selectfont\bfseries\color{TextEmphColor} Several Variables --- Exercise Class Notes \& Transcript \par}
+    {\sffamily\fontsize{18pt}{24pt}\selectfont\bfseries\color{EmphBrown} Several Variables --- Exercise Class Notes \& Transcript \par}
     \vspace{0.6cm}
     {\sffamily\fontsize{15pt}{22pt}\selectfont\color{TextBoldColor} Lecturer: \textbf{Prof. Joaquim Serra} \par}
     \vspace{0.3cm}
