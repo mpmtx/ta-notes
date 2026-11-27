@@ -13,16 +13,32 @@ While \cref{sec:volume_embedded_surfaces} explains how to compute the $d$-volume
 % condition now lives in R^n, where the support does.
 To achieve this, we cover the $m$-dimensional submanifold $M$ with the images of local parametrizations $\Phi_l : V_l \to \mathbb{R}^n$, called an \newterm{atlas}. Each image is relatively open in $M$, that is, $\operatorname{Im}(\Phi_l) = M \cap U_l$ for an open set $U_l \subseteq \mathbb{R}^n$. By employing a smooth \newterm{partition of unity} $\eta_l \in C_c^\infty(\mathbb{R}^n, [0,1])$ (see \cref{note:partitions_of_unity_motivation} and \cref{prop:partition_of_unity_finite} for a rigorous construction) subordinate to this cover, we ensure that:
 \begin{enumerate}[label=\textbf{(\alph*)}]
-    \item $\sum_{l=1}^N \eta_l \equiv 1$ on $M$,
+    \item $\sum_{l=1}^N \eta_l \equiv 1$ on $M$ (or at least on the compact set $K$ of the
+      definition below),
     \item $\operatorname{supp}(\eta_l) \subset U_l$, so that on $M$ the function $\eta_l$
       vanishes outside $\operatorname{Im}(\Phi_l)$.
 \end{enumerate}
 
+% Correction: Claude Opus 5.5 (Max) --- the definition took any submanifold M and any function f.
+% Finitely many compactly supported eta_l cannot sum to 1 on an unbounded M, and an unbounded f
+% makes the integrals diverge even on a bounded M; see the paragraph after the definition. It
+% now asks for f continuous and vanishing outside a compact subset of M.
 \begin{definition}[Integral of a scalar function over a submanifold]
 \label{def:integral_scalar_submanifold}
-Given an $m$-dimensional submanifold $M \subseteq \mathbb{R}^n$, an atlas of local parametrizations $\Phi_l : V_l \to \mathbb{R}^n$, and a subordinate partition of unity $\{\eta_l\}$, the integral of a function $f : M \to \mathbb{R}$ over $M$ is defined as:
+Let $M \subseteq \mathbb{R}^n$ be an $m$-dimensional submanifold and $f : M \to \mathbb{R}$ a
+continuous function that vanishes outside some compact set $K \subseteq M$ (when $M$ is compact,
+every continuous $f$ qualifies, with $K = M$). Take finitely many local parametrizations
+$\Phi_l : V_l \to \mathbb{R}^n$ whose images cover $K$, and a subordinate partition of unity
+$\{\eta_l\}$ with $\sum_l \eta_l \equiv 1$ on $K$. The integral of $f$ over $M$ is defined as:
 \[\int_M f \mathop{d\text{vol}}_m := \sum_{l=1}^N \int_{V_l} f(\Phi_l(x)) \eta_l(\Phi_l(x)) \sqrt{\det(\Jac\Phi_l\transp(x) \Jac\Phi_l(x))} \,dx.\]
 \end{definition}
+
+% Generator: Claude Opus 5.5 (Max)
+Both hypotheses are needed. Finitely many compactly supported $\eta_l$ cannot sum to $1$ on an
+unbounded set, and an unbounded $f$ breaks the integrals even when $M$ is bounded: on
+$M := (0,1)\times\{0\} \subseteq \mathbb{R}^2$ the continuous function $f(t,0) := 1/t^2$ has
+$\int_0^1 t^{-2}\,dt = \infty$. With them, each integrand above is continuous and vanishes outside
+the compact set $\Phi_l^{-1}(\supp(\eta_l)\cap K) \subseteq V_l$, so every integral exists.
 
 This definition pieces together the local integrals (weighted by $\eta_l$) to compute the global integral over the entire submanifold, generalizing the volume integral from \cref{def:d_volume_parametrized_submanifold}.
 
@@ -76,20 +92,22 @@ over $l$ first, using $\sum_l\eta_l \equiv 1$, collapses the double sum to $J$. 
 
 \begin{remark}[When a single chart already does, this costs nothing]
 \label{rem:one_chart_recovers_the_earlier_definition}
-If $M$ is covered by a single parametrization $\Phi_1$, a partition subordinate to that atlas
-has $\eta_1 \equiv 1$ on $M$, and \cref{def:integral_scalar_submanifold} collapses to
+% Correction: Claude Opus 5.5 (Max) --- adjusted to the compact-support hypothesis now in the
+% definition: eta_1 is 1 on K rather than on all of M, and f = 1 is the earlier definition's case.
+If $M$ is covered by a single parametrization $\Phi_1$, the partition can be taken with
+$\eta_1 \equiv 1$ on $K$, and \cref{def:integral_scalar_submanifold} collapses to
 \[\int_M f \mathop{d\text{vol}}_m
   = \int_{V_1} f(\Phi_1(x))\sqrt{\det\big(\Jac\Phi_1\transp\Jac\Phi_1\big)}\,dx ,\]
-which is \cref{def:d_volume_parametrized_submanifold} with $f$ carried along; at $f \equiv 1$ it
-returns $\vol_m(M)$ exactly. So the general definition extends the earlier one rather than
-competing with it.
+which is \cref{def:d_volume_parametrized_submanifold} with $f$ carried along; for $f \equiv 1$
+that earlier definition is exactly $\vol_m(M)$. So the general definition extends the earlier one
+rather than competing with it.
 
 In practice one almost never builds a partition of unity, because a single chart usually covers
 all of $M$ but a null set --- spherical coordinates miss only a half-meridian of $S^2$, which
 carries no $\vol_2$ --- and a null set contributes nothing to the integral. That is why every
 surface integral in \cref{sec:volume_embedded_surfaces} could be evaluated from one
 parametrization without comment. The partition of unity is what makes the definition \emph{exist}
-for an arbitrary $M$; it is not a device for computing with.
+for a compact $M$ that no single chart covers; it is not a device for computing with.
 \end{remark}
 
 % Generator: Claude Opus 5 (Ultracode)

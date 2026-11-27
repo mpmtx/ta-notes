@@ -37,7 +37,7 @@ Write $C := \{y \in \mathbb{R}^n : d(x,y) \leq r\}$ for the target set.
 \textbf{$\overline{B_r(x)} \subseteq C$.} $C$ is closed (it is $d(x,\cdot)^{-1}([0,r])$, the
 preimage of a closed set under the continuous map $d(x,\cdot)$) and contains $B_r(x)$, and the
 closure is the \emph{smallest} closed set containing $B_r(x)$
-(\cref{def:interior_closure_boundary}).
+(\cref{prop:interior_closure_extremal}\textbf{(b)}).
 
 \textbf{$C \subseteq \overline{B_r(x)}$.} Let $y \in C$, so $d(x,y) \leq r$; we must show every
 ball $B_\varepsilon(y)$ meets $B_r(x)$. If $d(x,y) < r$ then $y \in B_r(x)$ itself, so this is
@@ -81,7 +81,7 @@ $\overline{Y_i} \subseteq \overline{Y_1\cup Y_2}$ for $i=1,2$, which gives \qt{$
 Conversely $\overline{Y_1}\cup\overline{Y_2}$ is a \emph{finite} union of closed sets, hence
 closed (\cref{prop:open_closed_operations}\textbf{(c)}), and it contains $Y_1\cup Y_2$; since
 $\overline{Y_1\cup Y_2}$ is the smallest closed set containing $Y_1 \cup Y_2$
-(\cref{def:interior_closure_boundary}), \qt{$\subseteq$} follows.
+(\cref{prop:interior_closure_extremal}\textbf{(b)}), \qt{$\subseteq$} follows.
 
 \textbf{(c) True,} and it is the easy half: $Y_1\cap Y_2 \subseteq Y_i$ gives
 $\overline{Y_1\cap Y_2} \subseteq \overline{Y_i}$ for each $i$ by monotonicity, hence

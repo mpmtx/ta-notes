@@ -6,11 +6,14 @@
 
 \begin{theorem}[Inverse function theorem]
 \label{thm:inverse_function_theorem}
-Let $U \subseteq \mathbb{R}^n$ be open, let $f \in C^k(U,\mathbb{R}^n)$, and let $x_0 \in U$ be
-such that $Df_{x_0}$ is invertible. Then there exists an open neighbourhood $U_0 \subseteq U$ of
-$x_0$ such that
+% Correction: Claude Opus 5.5 (Max) --- the conclusion never said that f(U_0) is open, although
+% the chapter uses exactly that (ex:open_mapping_grad_nonzero, and the local-diffeomorphism
+% solution in 99-solutions.tex). Also k >= 1: Df_{x_0} has to exist.
+Let $U \subseteq \mathbb{R}^n$ be open, let $f \in C^k(U,\mathbb{R}^n)$ with $k \geq 1$, and let
+$x_0 \in U$ be such that $Df_{x_0}$ is invertible. Then there exists an open neighbourhood
+$U_0 \subseteq U$ of $x_0$ such that $f(U_0)$ is open in $\mathbb{R}^n$,
 \[f|_{U_0} : U_0 \to f(U_0)\]
-is a $C^k$-\newterm{diffeomorphism} \germanfor{Diffeomorphismus} and
+is a $C^k$-\newterm{diffeomorphism} \germanfor{Diffeomorphismus}, and
 \[D\big(f|_{U_0}^{-1}\big)_{f(x)} = D\big(f|_{U_0}\big)_x^{-1} \quad \text{for all } x \in U_0.\]
 \end{theorem}
 

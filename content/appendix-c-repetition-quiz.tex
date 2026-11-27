@@ -43,10 +43,16 @@ $f(x,y) := \sin(xy) - y^4$. Which of the following holds?
 $f(U) \subseteq \mathbb{R}$ is compact (\cref{item:continuity_preserves_compact}) and connected
 (\cref{thm:continuity_preserves_connected}). The connected subsets of $\mathbb{R}$ are exactly
 the intervals, and a compact one is closed and bounded, so $f(U) = [a,b]$.
+% Correction: Claude Opus 5.5 (Max) --- the answer stopped at f(U) = [a,b] although the question
+% asks for a < b, which fails for a constant f; two evaluations settle it. The ainote's "f is
+% never evaluated" is adjusted to match.
+It is not a single point: $(1,0)$ and $(0,1)$ lie in $U$, and $f(1,0) = 0 \neq -1 = f(0,1)$, so
+$a < b$.
 \end{answer}
 
 \begin{ainote}
-Worth noting how little computation this needs: $f$ is never evaluated. The annulus $U$ is
+Worth noting how little computation this needs: beyond the two values that rule out a constant,
+$f$ is never evaluated. The annulus $U$ is
 connected (it is \emph{not} simply connected, but that is a different property and irrelevant
 here), and the two preservation theorems do the rest. Recognising that a question
 is asking about preserved properties rather than about values is most of the work.
@@ -366,7 +372,9 @@ on $U$. Which of the following holds?
 vanishing of $\curl F$ is \emph{necessary} for $F$ to be conservative, and
 \cref{cor:potentials_simply_connected} makes it sufficient once the domain is simply connected,
 which gives \textbf{(b)}. A ball is star-shaped, so \textbf{(c)} follows from the Poincaré lemma
-(\cref{thm:poincare_lemma}) and shows that the failure in \textbf{(a)} can only ever be global.
+% Correction: Claude Opus 5.5 (Max) --- retargeted from thm:poincare_lemma to the star-shaped
+% statement this sentence means.
+(\cref{thm:poincare_lemma_star_shaped}) and shows that the failure in \textbf{(a)} can only ever be global.
 
 For \textbf{(a)} itself, take $U := \mathbb{R}^3\setminus\{x = y = 0\}$, the complement of the
 $z$-axis, and
@@ -465,7 +473,8 @@ Part \textbf{(b)} is worth holding onto, because it is the first obstruction in 
 that is detected by an \emph{integral} rather than by a computation. The angle form of
 \cref{ex:ai_angle_form_closed} was closed and not exact for the same reason, one dimension down,
 and there too the witness was a number: $2\pi$ around the puncture, $4\pi$ over the sphere. In
-both cases the domain is not star-shaped, so \cref{thm:poincare_lemma} does not apply, and in
+% Correction: Claude Opus 5.5 (Max) --- retargeted from thm:poincare_lemma, as above.
+both cases the domain is not star-shaped, so \cref{thm:poincare_lemma_star_shaped} does not apply, and in
 both cases the integral says not merely that the lemma is unavailable but that its conclusion is
 genuinely false.
 \end{ainote}

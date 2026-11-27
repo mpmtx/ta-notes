@@ -8,7 +8,8 @@
 \begin{enumerate}[label=\textbf{(\alph*)}]
   \item \label{item:continuity_preserves_compact}
     \textbf{Preserved by continuous functions:} $X$, $Y$ metric spaces, $K \subseteq X$
-    compact, $f : X \to Y$ continuous. Then $f(K) \subseteq Y$ is compact.
+    compact, $f : X \to Y$ continuous. Then $f(K) \subseteq Y$ is compact. This is proved
+    directly after the list.
   \item \label{item:extreme_value_theorem}
     \textbf{Weierstrass theorem / Extreme value theorem:} $X$ metric space,
     $K \subseteq X$ compact, $f : K \to \mathbb{R}$ continuous. Then $f$ attains its maximum and
@@ -28,6 +29,16 @@
     as \cref{prop:compact_implies_uniformly_continuous}, via the Lebesgue number of the cover
     $\{f^{-1}(B_{\varepsilon/2}(y))\}_{y}$.
 \end{enumerate}
+
+% Generator: Claude Opus 5.5 (Max) --- (b) and (c) point at their proofs and (a) had none,
+% although (a) is cited about ten times, once as "the exact dual" of the connectedness proof.
+\begin{proof}[Proof of \textbf{(a)}]
+Let $\{V_i\}_{i \in I}$ be open subsets of $Y$ covering $f(K)$. Each $f^{-1}(V_i)$ is open in $X$
+by continuity (\cref{def:continuous}\textbf{(c)}), and together they cover $K$, since every
+$x \in K$ has $f(x)$ in some $V_i$. As $K$ is compact, finitely many of them,
+$f^{-1}(V_{i_1}),\dots,f^{-1}(V_{i_N})$, already cover $K$, and then
+$V_{i_1},\dots,V_{i_N}$ cover $f(K)$. So every open cover of $f(K)$ has a finite subcover.
+\end{proof}
 
 % Sonnet 5 (Medium): illustrates item (b), the extreme value theorem.
 \begin{center}

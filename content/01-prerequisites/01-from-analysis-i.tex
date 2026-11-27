@@ -15,12 +15,19 @@ that relied on the \emph{order} of $\mathbb{R}$: there is no \qt{$\leq$} on $\ma
 $n \geq 2$, so statements like the intermediate value theorem or \qt{every bounded sequence has a
 convergent subsequence} need new proofs, or new hypotheses, once we leave $\mathbb{R}$.
 
+% Correction: Claude Opus 5.5 (Max) --- the remark called the quoted statement "false as
+% written", but the quote above already reads "has a convergent subsequence", which is the true
+% Bolzano--Weierstrass theorem: the remark had been written against an older wording of the
+% quote. Rewritten to say what does deserve care, the subsequence and the new proof in R^n.
 \begin{remark}
-The second of those statements is worth stating carefully, because it is false as written and true
-after one word is changed. Bounded does not imply convergent. What is true is that a bounded
-sequence in $\mathbb{R}^n$ always has a convergent \emph{subsequence}, which is the
-Bolzano--Weierstrass theorem, revisited via \cref{ex:analysis1_recap} below. It reappears in a more general
-form as the Heine--Borel theorem once compactness is introduced in \cref{sec:compactness}.
+The second of those statements is worth stating carefully, because it is easily misremembered as
+\qt{every bounded sequence converges}, which is false already in $\mathbb{R}$: bounded does not
+imply convergent. What is true is that a bounded sequence in $\mathbb{R}^n$ always has a
+convergent \emph{subsequence}, which is the Bolzano--Weierstrass theorem, revisited via
+\cref{ex:analysis1_recap} below. The proof from \emph{Analysis I} uses the order of
+$\mathbb{R}$; in $\mathbb{R}^n$ one applies it to one coordinate at a time, passing to a further
+subsequence each time. It reappears in a more general form as the Heine--Borel theorem once
+compactness is introduced in \cref{sec:compactness}.
 \end{remark}
 
 % The common-mistakes note from Linus Lüchinger/Slides/Slides-02-23.pdf used to sit here, above

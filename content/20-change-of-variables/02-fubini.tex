@@ -23,7 +23,14 @@ $x \mapsto \int_Y f(x,y)\,dy$.
 % $A$: see the ainote below for a set whose slice at one height is $\mathbb{Q}\cap[0,1]$. The
 % hypothesis is now stated. (Every set the document applies this to has interval or ball slices,
 % so no application changes.)
-Let $A, B \subseteq \mathbb{R}^{n+1}$ be Jordan measurable sets. For each height $t \in \mathbb{R}$, denote by $A_t := \{x \in \mathbb{R}^n \mid (x,t) \in A\}$ and $B_t := \{x \in \mathbb{R}^n \mid (x,t) \in B\}$ the $n$-dimensional cross-sections at $t$, and suppose every one of these slices is itself Jordan measurable. If the cross-sectional volumes agree for all $t \in \mathbb{R}$, i.e.\
+% Correction: Claude Opus 5.5 (Max) --- the slice formula mu_{n+1}(A) = int mu_n(A_t) dt was
+% proved here but stated only inside the proof, while thm:cone_volume_formula below applies the
+% formula, not the comparison of two sets. It is now part of the statement.
+Let $A, B \subseteq \mathbb{R}^{n+1}$ be Jordan measurable sets. For each height $t \in \mathbb{R}$, denote by $A_t := \{x \in \mathbb{R}^n \mid (x,t) \in A\}$ and $B_t := \{x \in \mathbb{R}^n \mid (x,t) \in B\}$ the $n$-dimensional cross-sections at $t$, and suppose every one of these slices is itself Jordan measurable. Then $t \mapsto \mu_n(A_t)$ is Riemann integrable, and
+\[
+\mu_{n+1}(A) = \int_{\mathbb{R}} \mu_n(A_t) \,dt,
+\]
+and likewise for $B$. In particular, if the cross-sectional volumes agree for all $t \in \mathbb{R}$, i.e.\
 \[
 \mu_n(A_t) = \mu_n(B_t) \quad \forall t \in \mathbb{R},
 \]
@@ -36,7 +43,7 @@ function over slices gives:
 \[
 \mu_{n+1}(A) = \int_{\mathbb{R}^{n+1}} \chi_A(x,t) \,dx\,dt = \int_{\mathbb{R}} \left( \int_{\mathbb{R}^n} \chi_{A_t}(x) \,dx \right) dt = \int_{\mathbb{R}} \mu_n(A_t) \,dt.
 \]
-Replacing $\mu_n(A_t)$ with $\mu_n(B_t)$ yields $\mu_{n+1}(B)$.
+The same computation applies to $B$, and if the slice volumes agree, so do the two integrals.
 \end{proof}
 
 \begin{ainote}
@@ -75,8 +82,43 @@ Then $C\Omega$ is Jordan measurable in $\mathbb{R}^{n+1}$, and its volume is giv
 \]
 \end{theorem}
 
+% Correction: Claude Opus 5.5 (Max) --- the theorem asserts that C(Omega) is Jordan measurable,
+% and the proof then applied Cavalieri, which assumes exactly that. Measurability is now proved
+% (boundary criterion, slab-by-slab cover of the cone over the boundary); the volume computation
+% is unchanged, with the slices' measurability now cited.
 \begin{proof}
-For any $t \in [0,1]$, the cross-section of $C\Omega$ at height $t$ is $(C\Omega)_t = (1-t)\Omega \subseteq \mathbb{R}^n$. By the scaling property of $n$-dimensional Jordan measure, $\mu_n\big((1-t)\Omega\big) = (1-t)^n \mu_n(\Omega)$. Applying Cavalieri's Principle (\cref{prop:cavalieri_principle}):
+\textbf{$C\Omega$ is Jordan measurable.} Write $\Phi(x,t) := \big((1-t)x,\,t\big)$, so that
+$C\Omega = \Phi(\Omega\times[0,1])$. By \cref{thm:jordan_measurability_boundary_criterion} it
+suffices to show that $\partial(C\Omega)$ is a Jordan null set. The set
+$\Phi(\overline\Omega\times[0,1])$ is compact, as a continuous image of a compact set, and
+contains $C\Omega$, so it contains the closure of $C\Omega$. On $\mathbb{R}^n\times(-\infty,1)$
+the map $\Phi$ is a homeomorphism onto itself, with inverse $(y,t) \mapsto \big(y/(1-t),\,t\big)$,
+so it maps the open set $\operatorname{int}(\Omega)\times(0,1)$ onto an open subset of $C\Omega$,
+all of whose points are interior points of $C\Omega$. Since
+$\overline\Omega = \operatorname{int}(\Omega) \cup \partial\Omega$, this leaves
+\[\partial(C\Omega) \subseteq \Phi\big(\partial\Omega\times[0,1]\big) \,\cup\,
+  \big(\overline\Omega\times\{0\}\big) \,\cup\, \{(0,1)\}.\]
+Fix $R$ with $\overline\Omega \subseteq [-R,R]^n$. The last two sets are Jordan null: the base
+lies in boxes $[-R,R]^n \times [-\delta,\delta]$ of arbitrarily small height, and the vertex is
+a point. For the first, $\partial\Omega$ is a Jordan null set by the same criterion. Given
+$\varepsilon > 0$, cover it by $N$ dyadic cubes of side $s$ with $Ns^n < \varepsilon$, all inside
+$[-R,R]^n$ after enlarging $R$, and cut $[0,1]$ into $M$ intervals of length $1/M$. For $t, t_0$
+in one interval and $y$ in one of the cubes $Q$, the points $(1-t)y$ and $(1-t_0)y$ differ by at
+most $R/M$ in each coordinate, so while $t$ runs through the interval, the scaled cube $(1-t)Q$
+stays inside a cube of side $s + 2R/M$. Hence $\Phi(\partial\Omega\times[0,1])$ is covered by
+$NM$ boxes of total volume at most
+\[NM\Big(s+\frac{2R}{M}\Big)^n\frac1M = N\Big(s+\frac{2R}{M}\Big)^n
+  \xrightarrow{\ M\to\infty\ } Ns^n < \varepsilon,\]
+and finitely many boxes of total volume below $\varepsilon$ are covered by a dyadic set of
+volume below $2\varepsilon$ once its generation is fine enough. So this piece is Jordan null too.
+
+\textbf{The volume.} For $t \in [0,1)$ the cross-section of $C\Omega$ at height $t$ is
+$(C\Omega)_t = (1-t)\Omega$, the image of $\Omega$ under the invertible linear map
+$x \mapsto (1-t)x$, so by \cref{thm:jordan_measure_linear_transformation} it is Jordan measurable
+with $\mu_n\big((1-t)\Omega\big) = (1-t)^n \mu_n(\Omega)$. At $t = 1$ the slice is at most the
+single point $0$, and outside $[0,1]$ it is empty, so every slice is Jordan measurable, with
+measure $(1-t)^n\mu_n(\Omega)$ for $t \in [0,1]$ and $0$ otherwise. The slice formula of
+\cref{prop:cavalieri_principle} now gives
 \[
 \mu_{n+1}(C\Omega) = \int_0^1 \mu_n\big((1-t)\Omega\big) \,dt = \mu_n(\Omega) \int_0^1 (1-t)^n \,dt = \mu_n(\Omega) \left[ -\frac{(1-t)^{n+1}}{n+1} \right]_0^1 = \frac{\mu_n(\Omega)}{n+1}.
 \]

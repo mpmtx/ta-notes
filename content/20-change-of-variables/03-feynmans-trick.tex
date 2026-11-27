@@ -25,7 +25,10 @@ is continuously differentiable, and
 \label{ex:feynman_log_integral}
 We want to compute the integral
 \[I(1) = \int_0^1 \frac{\log(1+x)}{1+x^2}\,dx,\]
-which has no convenient antiderivative. By introducing a parameter $\alpha \in (-1,1)$:
+% Correction: Claude Opus 5.5 (Max) --- the parameter was declared in (-1,1), and the example then
+% evaluates at alpha = 1 and integrates over [0,1]. Below, the coefficient comparison divided by
+% alpha while alpha = 0 is part of that range; it now solves for A without dividing.
+which has no convenient antiderivative. By introducing a parameter $\alpha \in [0,1]$:
 \[I(\alpha) := \int_0^1 \frac{\log(1+\alpha x)}{1+x^2}\,dx.\]
 Note that the integrand is a $C^1$ function on
 $U := \big(-\tfrac{1}{1+\varepsilon},\ \tfrac1\varepsilon\big) \times (-\varepsilon,\ 1+\varepsilon)$
@@ -40,8 +43,8 @@ Partial fractions: writing
 \[\frac{x}{(1+\alpha x)(1+x^2)} = \frac{A}{1+\alpha x} + \frac{Bx+C}{1+x^2}\]
 and clearing denominators gives $A + Ax^2 + Bx + B\alpha x^2 + C + C\alpha x = x$, so comparing
 coefficients,
-\[-A = C, \qquad -\tfrac{A}{\alpha} = B, \qquad B + C\alpha = 1
-  \implies -\tfrac{A}{\alpha} - A\alpha = 1,\]
+\[A = -\alpha B, \qquad C = -A = \alpha B, \qquad B + C\alpha = 1
+  \implies B(1+\alpha^2) = 1,\]
 whence
 \[A = -\frac{\alpha}{1+\alpha^2}, \qquad B = \frac{1}{1+\alpha^2}, \qquad C = \frac{\alpha}{1+\alpha^2}.\]
 Therefore

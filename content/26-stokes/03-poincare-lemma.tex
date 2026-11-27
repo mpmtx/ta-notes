@@ -95,6 +95,44 @@ loop would have to return $f(\gamma(1))-f(\gamma(0))=0$). This is exactly the wi
 conditions are necessary but, on a domain that is not simply connected, not sufficient.
 \end{example}
 
+% Generator: Claude Opus 5.5 (Max) --- five passages (22/99, 23/99, 24/99 and appendix C twice)
+% cited thm:poincare_lemma for "closed forms on star-shaped domains are exact", in degree two as
+% well, which is not what that theorem says, and "star-shaped" was defined nowhere. The statement
+% they mean is recorded here, and the citations now point at it.
+\begin{definition}[Star-shaped set]
+\label{def:star_shaped}
+A set $U \subseteq \mathbb{R}^n$ is \newterm{star-shaped} \germanfor{sternförmig} with respect to
+a point $x_0 \in U$ if for every $x \in U$ the whole segment from $x_0$ to $x$ lies in $U$, that
+is, $x_0 + t(x-x_0) \in U$ for all $t \in [0,1]$.
+\end{definition}
+
+Every convex set is star-shaped with respect to each of its points, so $\mathbb{R}^n$, balls and
+half-spaces are examples. The punctured spaces $\mathbb{R}^2\setminus\{0\}$ and
+$\mathbb{R}^3\setminus\{0\}$ are star-shaped with respect to no point, although the second is
+simply connected. In degree two that difference matters: on $\mathbb{R}^3\setminus\{0\}$ the
+field $x/\lvert x\rvert^3$ is divergence free without being a curl
+(\cref{sol:flux_through_nested_spheres}).
+
+\begin{theorem}[Poincaré lemma for star-shaped domains]
+\label{thm:poincare_lemma_star_shaped}
+Let $U \subseteq \mathbb{R}^n$ be open and star-shaped, and let $\omega$ be a closed $C^1$
+$p$-form on $U$ with $p \geq 1$, that is, $d\omega = 0$. Then $\omega$ is exact: there is a $C^1$
+$(p-1)$-form $\eta$ on $U$ with $d\eta = \omega$.
+\end{theorem}
+
+\begin{ainote}
+The course does not prove this theorem in this generality. For $p = 1$ it is
+\cref{cor:potentials_simply_connected}, because a star-shaped open set is simply connected: the
+segments to $x_0$ contract it exactly as the map $H$ does in
+\cref{sol:topology_continuous_images_tf}\textbf{(b)}. For $p = 2$ in $\mathbb{R}^3$, where it
+says that a divergence-free field is a curl,
+\cref{ex:constructing_vector_potential_divergence_free} constructs the potential explicitly. The
+general proof integrates along the same segments,
+\[\eta_x(v_1,\dots,v_{p-1}) := \int_0^1 t^{p-1}\,
+  \omega_{x_0+t(x-x_0)}\big(x-x_0,\,v_1,\dots,v_{p-1}\big)\,dt,\]
+and checks $d\eta = \omega$ by a computation that is beyond this document.
+\end{ainote}
+
 % Source: old_exams/HS20.pdf (Analysis I & II, 27 January 2021, Prof. Peter S. Jossen),
 % Teil B, Aufgabe 3, p. 20
 % Extractor: Claude Opus 5 (High)

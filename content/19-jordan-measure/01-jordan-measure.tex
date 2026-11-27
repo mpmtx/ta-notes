@@ -89,7 +89,28 @@ The requirement that all cubes share a generation is not cosmetic: it is what se
 Jordan theory from the Lebesgue theory, as \cref{rem:jordan_vs_lebesgue_sizes} makes precise.
 
 % Supplement: Sascha Brack/Class Notes/Week_08_Notes_Monday.pdf, pp. 5--7
-Similar to the 1D Riemann integral, we approximate the volume of a set $E \subseteq \mathbb{R}^n$ using an outer sequence of dyadic sets $G_i \supseteq E$ and an inner sequence $F_i \subseteq E$. If the limits of their volumes coincide as the pixel size $2^{-p} \to 0$, $E$ is \newterm{Jordan measurable}.
+% Correction: Claude Opus 5.5 (Max) --- Jordan measurability was defined only in words here ("if
+% the limits of their volumes coincide"), while mu_in and mu_out are used by name later in this
+% chapter, in ch. 20 and in appendix C without ever being defined. Now a definition. The German
+% mirror moved here from 20/01, which mirrored the term a chapter after it is introduced.
+Similar to the 1D Riemann integral, we approximate the volume of a set $E \subseteq \mathbb{R}^n$
+from the inside and from the outside by dyadic sets, and call $E$ measurable when the two
+approximations meet as the pixel size $2^{-p}$ tends to $0$.
+
+\begin{definition}[Inner and outer Jordan measure]
+\label{def:jordan_measurable}
+Let $E \subseteq \mathbb{R}^n$ be bounded. Its \newterm{inner} and \newterm{outer Jordan measure}
+are
+\begin{align*}
+  \mu_{\mathrm{in}}(E) &:= \sup\{\mu(F) : F \text{ a dyadic set with } F \subseteq E\}, \\
+  \mu_{\mathrm{out}}(E) &:= \inf\{\mu(G) : G \text{ a dyadic set with } G \supseteq E\},
+\end{align*}
+so that $0 \leq \mu_{\mathrm{in}}(E) \leq \mu_{\mathrm{out}}(E) < \infty$. The set $E$ is
+\newterm{Jordan measurable} \germanfor{Jordan-messbar} if $\mu_{\mathrm{in}}(E) =
+\mu_{\mathrm{out}}(E)$, and this common value $\mu(E)$ is its Jordan measure. A bounded set with
+$\mu_{\mathrm{out}}(E) = 0$ is a Jordan null set: finitely many dyadic cubes of arbitrarily small
+total volume cover it.
+\end{definition}
 
 Furthermore, the multidimensional integral of a non-negative function $f : A \to \mathbb{R}$ is exactly the $(n+1)$-dimensional Jordan measure (volume) of its hypograph $\Gamma_A(f)$:
 
@@ -121,14 +142,26 @@ Furthermore, the multidimensional integral of a non-negative function $f : A \to
 
 % Source: Jérôme Paschoud/Notizen/Woche 8.2 Riemann-Integral.pdf, p. 1
 % Generator: Gemini 3.1 Pro (High)
+% Correction: Claude Opus 5.5 (Max) --- the definition took sup and inf of "\int_A g" over step
+% functions without saying what a step function or its integral is, and without requiring A or f
+% to be bounded (for an unbounded f or A there is no upper step function at all). Both are now
+% explicit, with f extended by zero outside A.
 \begin{definition}[Riemann integral in $\mathbb{R}^n$]
 \label{def:riemann_integral_rn}
-Let $A \subseteq \mathbb{R}^n$ and $f: A \to \mathbb{R}$. Analogous to Analysis I, the integral is defined via dyadic step functions \germanfor{dyadische Treppenfunktionen}. The lower and upper integrals are defined as
+Functions $g : \mathbb{R}^n \to \mathbb{R}$ that, for some generation $p$, are constant on every
+dyadic cube $Q_p(a)$ and vanish outside finitely many of them, say outside
+$Q_p(a(1)),\dots,Q_p(a(N))$, are called \newterm{dyadic step functions}
+\germanfor{dyadische Treppenfunktionen}. Writing $g(Q)$ for the value of $g$ on a cube $Q$, the
+integral of such a $g$ is
+\[\int g := \sum_{\ell=1}^{N} g\big(Q_p(a(\ell))\big)\,\mu\big(Q_p(a(\ell))\big).\]
+Now let $A \subseteq \mathbb{R}^n$ and $f : A \to \mathbb{R}$ both be bounded, and extend $f$ by
+zero to $f_A : \mathbb{R}^n \to \mathbb{R}$. Analogous to Analysis I, the lower and upper
+integrals are
 \begin{align*}
-  \underline{\int}_A f &:= \sup \left\{ \int_A g \;\middle|\; g: \mathbb{R}^n \to \mathbb{R} \text{ dyadic step function with } g \leq f \right\}, \\
-  \overline{\int}_A f &:= \inf \left\{ \int_A h \;\middle|\; h: \mathbb{R}^n \to \mathbb{R} \text{ dyadic step function with } h \geq f \right\}.
+  \underline{\int}_A f &:= \sup \left\{ \int g \;\middle|\; g \text{ a dyadic step function with } g \leq f_A \right\}, \\
+  \overline{\int}_A f &:= \inf \left\{ \int h \;\middle|\; h \text{ a dyadic step function with } h \geq f_A \right\}.
 \end{align*}
-The function $f$ is \newterm{Riemann integrable} if $\underline{\int}_A f = \overline{\int}_A f$. In this case, their common value is denoted by $\int_A f$.
+The function $f$ is \newterm{Riemann integrable} on $A$ if $\underline{\int}_A f = \overline{\int}_A f$. In this case, their common value is denoted by $\int_A f$.
 \end{definition}
 
 % Correction: Claude Opus 5 (Extra), 2026-08-13 --- everything from here to the closing remark
@@ -257,7 +290,7 @@ construction stacks columns over dyadic cubes instead of intervals:
 \label{rem:riemann_integral_inherited_properties}
 This integral satisfies all the \qt{good} properties from the one-dimensional case, such as
 linearity. Moreover, if $E \subseteq \mathbb{R}^n$ is Jordan measurable and
-$f: \overline{E} \to [0, \infty)$ is continuous, then $f$ is Riemann integrable on $E$. The course
+$f: \overline{E} \to \mathbb{R}$ is continuous, then $f$ is Riemann integrable on $E$. The course
 states this without proving it, and the proof is the same one as in \emph{Analysis I} with cubes
 in place of intervals: continuity on the compact set $\overline{E}$ gives uniform continuity
 (\cref{prop:compact_implies_uniformly_continuous}), which bounds the oscillation of $f$ on every

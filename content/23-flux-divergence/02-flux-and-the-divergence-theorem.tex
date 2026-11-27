@@ -158,13 +158,24 @@ field, which is the shape of the fundamental theorem of calculus.
 Let $\Omega \subseteq \mathbb{R}^n$ be a bounded open set whose boundary can be written as a
 finite union
 \[\partial\Omega = S_1 \cup \dots \cup S_N\]
-of $C^1$ hypersurfaces meeting only along a set of $\vol_{n-1}$-measure zero, and let
-$F : \overline\Omega \to \mathbb{R}^n$ be a $C^1$ vector field. Then the conclusion of
-\cref{thm:gauss_divergence} still holds,
+of $C^1$ hypersurfaces meeting only along a set $E$ of $\vol_{n-1}$-measure zero. Suppose that
+off $E$ the set $\Omega$ lies locally on one side of its boundary, as in
+\cref{def:bounded_ck_domain}\textbf{(b)}: every $p \in \partial\Omega \setminus E$ has an open
+neighbourhood $V$ with a function $g \in C^1(V)$ such that $\nabla g \neq 0$ on $V$ and
+$\Omega \cap V = \{x \in V : g(x) < 0\}$. Let $F : \overline\Omega \to \mathbb{R}^n$ be a $C^1$
+vector field. Then the conclusion of \cref{thm:gauss_divergence} still holds,
 \[\int_\Omega \divg F\,d\vol_n = \int_{\partial\Omega} \langle F,\nu\rangle\,d\vol_{n-1}
   = \sum_{i=1}^N \int_{S_i} \langle F,\nu\rangle\,d\vol_{n-1},\]
-where the exterior unit normal $\nu$ is defined at every boundary point off the exceptional set.
+where the exterior unit normal $\nu$ is defined at every boundary point off $E$.
 \end{theorem}
+
+% Correction: Claude Opus 5.5 (Max) --- the theorem had no one-sidedness hypothesis, and the
+% counterexample that ch. 22 gives for exactly that omission satisfied every clause it did have.
+% Hypothesis added (the condition of def:bounded_ck_domain(b), required off E); the sentence below
+% records why it is there.
+The one-sidedness condition cannot be dropped: the set $B_1(0)\setminus\partial B_{1/2}(0)$ of
+\cref{rem:c1_domain_needs_one_side} has two disjoint spheres as its boundary, so it satisfies
+every other hypothesis, and it violates the conclusion.
 
 \begin{ainote}
 % Correction: Claude Opus 5 (Ultracode) --- this inventory named only two of the sites needing

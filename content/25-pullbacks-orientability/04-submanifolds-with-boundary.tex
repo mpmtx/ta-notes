@@ -109,18 +109,36 @@ parametrization $\phi$ around $p \in \partial M$, then $\{\partial_2\phi,\ldots,
 Consider the cylindrical surface
 \[C = \{(x,y,z) \in \mathbb{R}^3 : y^2+z^2 = r^2,\ 0\leq x\leq L\},\]
 a $2$-dimensional submanifold with boundary, and the two parametrizations $\phi,\psi :
-[-L,0]\times[0,2\pi] \to C$ (both domains $\subseteq \mathcal{H}^2$),
+(-L,0]\times(0,2\pi) \to C$,
 \[\phi(x,\theta) = \begin{pmatrix} -x \\ r\cos\theta \\ -r\sin\theta \end{pmatrix}, \qquad
   \psi(x,\theta) = \begin{pmatrix} x+L \\ r\cos\theta \\ r\sin\theta \end{pmatrix}.\]
-Both cover all of $C$: as the local $x$-coordinate ranges over $[-L,0]$, $-x$ and $x+L$ both
-range over $[0,L]$.
+% Correction: Claude Opus 5.5 (Max) --- domains and transition map repaired; see the ainote below.
+Their common domain is open in $\mathcal{H}^2$, being
+$\big((-L,1)\times(0,2\pi)\big) \cap \mathcal{H}^2$, as \cref{def:submanifold_with_boundary}
+requires. As the local $x$-coordinate ranges over $(-L,0]$, $-x$ ranges over $[0,L)$ and $x+L$
+over $(0,L]$, so $\phi$ covers the part of $C$ with $x < L$ and $\psi$ the part with $x > 0$, each
+except the segment $\{y = r,\ z = 0\}$, where $\theta$ would have to be $0$. The same two formulas
+on $(-L,0]\times(-\pi,\pi)$ cover that segment, and the four maps together are an atlas of $C$.
 
-The two are positively oriented with respect to each other: writing out the composition,
-\[\phi^{-1}\circ\psi(x,\theta) = \phi^{-1}(x+L,\,r\cos\theta,\,r\sin\theta) = (-x-L,-\theta)
-  = -(x+L,\theta),\]
-so $D(\phi^{-1}\circ\psi) = \begin{pmatrix}-1&0\\0&-1\end{pmatrix}$ and $\det D(\phi^{-1}
-\circ\psi) = 1 > 0$: $\{\phi,\psi\}$ is a valid orientation of $C$ by
+The two are positively oriented with respect to each other. Where their images overlap, that is
+for $(x,\theta) \in (-L,0)\times(0,2\pi)$, the point $\psi(x,\theta)$ equals $\phi(x',\theta')$
+exactly when $x' = -x-L$, $\cos\theta' = \cos\theta$ and $\sin\theta' = -\sin\theta$, so
+\[\phi^{-1}\circ\psi(x,\theta) = (-x-L,\ 2\pi-\theta),\]
+with $2\pi-\theta \in (0,2\pi)$, as it must be. So $D(\phi^{-1}\circ\psi) =
+\begin{pmatrix}-1&0\\0&-1\end{pmatrix}$ and $\det D(\phi^{-1}\circ\psi) = 1 > 0$. Every other pair
+among the four charts has a transition map of the form $(x,\theta) \mapsto (x,\ \theta+c)$ or
+$(x,\theta) \mapsto (-x-L,\ c-\theta)$, with $c$ constant on each piece of the overlap, and so
+Jacobian determinant $+1$ as well: the four charts are an orientation of $C$ by
 \cref{def:orientable_manifold}.
+
+\begin{ainote}
+Corsin takes both charts on the closed rectangle $[-L,0]\times[0,2\pi]$ and writes the transition
+map as $(-x-L,-\theta)$. The rectangle is not open in $\mathcal{H}^2$, and it glues
+$\theta = 0$ to $\theta = 2\pi$, so neither map is a local parametrization in the sense of
+\cref{def:submanifold_with_boundary}; and $-\theta$ lies outside the chart's range. Both are
+repaired above. The conclusion, a transition determinant of $+1$, is unaffected, since
+$2\pi-\theta$ and $-\theta$ have the same derivative.
+\end{ainote}
 
 But restricted to the line $\partial\mathcal{H}^2 = \{(x,\theta) : x=0\}$, $\phi$ and $\psi$
 parametrize \emph{opposite} boundary components of the cylinder. Here $\phi(0,\cdot)$ traces the

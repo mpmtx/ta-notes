@@ -22,6 +22,28 @@ differentiable at every $x \in U$, and
 Such an $F$ is called \newterm{continuously differentiable}, written $F \in C^1(U)$.
 \end{theorem}
 
+% Generator: Claude Opus 5.5 (Max) --- the theorem had no proof, although
+% rem:componentwise_scope in ch. 9 refers to "the proof that continuous partial derivatives
+% suffice". This is the standard one, via the one-variable mean value theorem.
+\begin{proof}
+By \cref{lem:differentiability_componentwise} it suffices to treat a scalar function
+$f : U \to \mathbb{R}$. Fix $x \in U$ and $r > 0$ with $B_r(x) \subseteq U$, and let $|h| < r$.
+Walk from $x$ to $x+h$ one coordinate at a time, through the points
+\[x^{(0)} := x, \qquad x^{(k)} := x + h_1e_1 + \dots + h_ke_k \quad (1 \leq k \leq n),\]
+all of which lie in $B_r(x)$, since $|x^{(k)} - x| \leq |h|$. On the $k$-th leg only the $k$-th
+coordinate moves, so the one-variable mean value theorem, applied to
+$t \mapsto f(x^{(k-1)} + te_k)$ between $0$ and $h_k$, gives a point $\xi_k$ on the segment from
+$x^{(k-1)}$ to $x^{(k)}$ with
+\[f(x^{(k)}) - f(x^{(k-1)}) = \partial_kf(\xi_k)\,h_k.\]
+Summing the $n$ legs,
+\[\Big|f(x+h) - f(x) - \sum_{k=1}^n \partial_kf(x)\,h_k\Big|
+  = \Big|\sum_{k=1}^n \big(\partial_kf(\xi_k) - \partial_kf(x)\big)h_k\Big|
+  \leq |h|\sum_{k=1}^n \big|\partial_kf(\xi_k) - \partial_kf(x)\big|.\]
+Every $\xi_k$ satisfies $|\xi_k - x| \leq |h|$, so continuity of the partial derivatives at $x$
+makes the last sum tend to $0$ as $h \to 0$. The remainder is therefore $o(|h|)$, and $f$ is
+differentiable at $x$ with $Df_x(h) = \sum_k \partial_kf(x)\,h_k$.
+\end{proof}
+
 This is the theorem that makes the subject workable: in practice one almost never checks the
 definition directly. Compute the partials, observe that they are built from continuous pieces,
 and differentiability follows. That is exactly why the course can write $f \in C^1$, $C^2$ and

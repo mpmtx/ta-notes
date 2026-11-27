@@ -9,19 +9,32 @@ and $\omega \in \Omega^m(\mathcal{M})$ is an $m$-form, then
 \[\int_{\mathcal{M}} \omega := \int_{\mathcal{M}} \omega_x(e_1,\ldots,e_m)\,dx;\]
 in particular, for $f \in C^\infty(\mathcal{M})$,
 \[\int_{\mathcal{M}} f\,dx^1\wedge\cdots\wedge dx^m = \int_{\mathcal{M}} f(x)\,dx,\]
-recovering the ordinary Lebesgue integral of $f$.
+% Correction: Claude Opus 5.5 (Max) --- read "the ordinary Lebesgue integral"; the integral this
+% course builds is the Riemann integral.
+recovering the ordinary (Riemann) integral of $f$.
 
+% Correction: Claude Opus 5.5 (Max) --- the definition fixed no orientation, so the sign of
+% \int_L\omega was undetermined, although the aiexample and ainote below and
+% sol:ai_area_form_over_hemisphere all say it depends on one, and the aiexercise below asks which
+% hypothesis of this definition accounts for a change of sign. The hypothesis is now stated. In
+% the display after the definition, f(x) is now f(\phi(x)): f lives on L, x in U.
 \begin{definition}[Integral of a form over a parametrized submanifold]
 \label{def:integral_of_form_over_submanifold}
-If $L^k \subseteq \mathbb{R}^n$ is a $k$-dimensional submanifold, $n>k$, and $\phi : U \to L$
-is a parametrization with $U \subseteq \mathbb{R}^k$ open, then the integral of $\omega \in
-\Omega^k(L)$ is defined as
+Let $L^k \subseteq \mathbb{R}^n$ be a $k$-dimensional submanifold, $n>k$, carrying an orientation
+(\cref{def:orientable_manifold}), and let $\phi : U \to L$ be a parametrization of $L$ with
+$U \subseteq \mathbb{R}^k$ open that is compatible with this orientation, that is, adding $\phi$
+to the orienting atlas keeps every transition determinant positive. Then the integral of
+$\omega \in \Omega^k(L)$ over $L$ is defined as
 \[\int_L \omega := \int_U \phi^*\omega = \int_U \omega_{\phi(x)}\!\left(\frac{\partial\phi}
   {\partial x^1},\ldots,\frac{\partial\phi}{\partial x^k}\right) dx.\]
 \end{definition}
 
+Composing $\phi$ with a reflection of $\mathbb{R}^k$, such as
+$(x^1,x^2,\dots,x^k) \mapsto (-x^1,x^2,\dots,x^k)$, reverses the orientation and changes the sign
+of the right-hand side, which is why the orientation has to be part of the data.
+
 In particular, for $f \in C^\infty(L)$ and $1\leq i_1<\cdots<i_k\leq n$,
-\[\int_L f\,dx^{i_1}\wedge\cdots\wedge dx^{i_k} = \int_U f(x)\det\!\left(\frac{\partial
+\[\int_L f\,dx^{i_1}\wedge\cdots\wedge dx^{i_k} = \int_U f(\phi(x))\det\!\left(\frac{\partial
   \phi^{i_s}}{\partial x^t}\right)_{1\leq s,t\leq k} dx,\]
 because, by property \textbf{(d)} of \cref{def:wedge_product},
 \[dx^{i_1}\wedge\cdots\wedge dx^{i_k}(\partial_1\phi,\ldots,\partial_k\phi) = \det\!\left(
@@ -128,6 +141,35 @@ Let $K \subseteq \mathbb{R}^n$ be compact, and let $\{B_{r_l}(p_l)\}_{l=1}^N$ be
 \end{enumerate}
 In particular, on the neighborhood $U$ of $K$, $\tilde{\eta} \equiv 0$ so that $\sum_{l=1}^N \eta_l(x) = 1$.
 \end{proposition}
+
+% Generator: Claude Opus 5.5 (Max) --- note:partitions_of_unity_motivation announces this
+% definition and the proposition above supplies its tool, but the definition itself was never
+% written down, although the aiexercise below and thm:stokes_general in ch. 26 integrate forms
+% over S^2 and over general compact manifolds. Modelled on def:integral_scalar_submanifold.
+\begin{definition}[Integral of a form over an oriented submanifold]
+\label{def:integral_of_form_oriented}
+Let $M \subseteq \mathbb{R}^n$ be an oriented $k$-dimensional submanifold, possibly with boundary
+(\cref{def:orientable_manifold,def:submanifold_with_boundary}), and let $\omega$ be a continuous
+$k$-form on $M$ that vanishes outside some compact set $K \subseteq M$ (when $M$ is compact, every
+continuous $\omega$ qualifies, with $K = M$). Take finitely many local parametrizations
+$\phi_l : V_l \to M \cap U_l$ of the orienting atlas whose images cover $K$, and smooth functions
+$\eta_l$ with $\supp(\eta_l) \subseteq U_l$ and $\sum_l \eta_l \equiv 1$ on $K$; these exist by
+\cref{prop:partition_of_unity_finite}, applied to finitely many balls that cover $K$, each inside
+some $U_l$. Then
+\[\int_M \omega := \sum_{l=1}^N \int_{V_l} \phi_l^*(\eta_l\,\omega).\]
+\end{definition}
+
+Each summand is the integral of a continuous function vanishing outside a compact subset of $V_l$,
+as in \cref{def:integral_scalar_submanifold}. The argument of
+\cref{prop:integral_over_submanifold_well_defined} shows that the value depends neither on the
+parametrizations nor on the $\eta_l$, with \cref{ex:change_of_variables_differential_forms} in
+place of the area formula: positivity of the transition determinants is exactly what lets the
+change of variables go through without an absolute value. As for scalar integrals
+(\cref{rem:one_chart_recovers_the_earlier_definition}), a single parametrization of the
+orientation that covers $M$ up to a $\vol_k$-null set gives $\int_M\omega$ as one integral of a
+pullback, and the integral over a union of two pieces meeting in a null set is the sum of the two
+integrals. These facts are proved exactly as in the scalar case, and are used below without
+repeating the argument.
 
 
 % --- exercises relocated here from the dissolved sheets ---

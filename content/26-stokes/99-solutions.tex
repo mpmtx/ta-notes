@@ -377,8 +377,10 @@ also a gradient is precisely what the domain decides.
     $\lvert\dot\sigma\rvert^2 = 1$ and
 \[\int_\sigma X \cdot d\sigma = \int_0^{2\pi} 1 \, dt = 2\pi \neq 0 .\]
     So no potential exists on $U$. Being closed is not enough; $U$ is not simply connected, and this
-    field is the standard witness that the Poincaré lemma (\cref{thm:poincare_lemma}) genuinely needs
-    that hypothesis.
+    % Correction: Claude Opus 5.5 (Max) --- the hypothesis meant is simple connectedness, which
+    % is cor:potentials_simply_connected's, not thm:poincare_lemma's; retargeted.
+    field is the standard witness that the existence of potentials
+    (\cref{cor:potentials_simply_connected}) genuinely needs that hypothesis.
   \item \textbf{True.} The half-plane $V$ is convex, hence simply connected, so a closed field on it
     is exact (\cref{cor:potentials_simply_connected}). Explicitly, $v(x,y) := \arctan(y/x)$ is $C^1$
     on $V$ --- note $x > 0$ there, so the quotient is defined and smooth --- and
@@ -659,7 +661,9 @@ The correct answer is \textbf{(d)}, the guarded one.
     field $V(x,y) := (x,y)\transp$ has $\curl V = 0$ and $\divg V = 2$.
   \item \textbf{True}, and it is true because it claims almost nothing: \emph{may} be. It is
     satisfied by any irrotational field on a simply connected $G$, for instance $G =
-    \mathbb{R}^2$, where \cref{thm:poincare_lemma} produces a potential outright.
+    \mathbb{R}^2$, where \cref{cor:potentials_simply_connected} produces a potential outright.
+    % Correction: Claude Opus 5.5 (Max) --- cited thm:poincare_lemma, which produces no potential;
+    % the corollary does.
 \end{enumerate}
 \begin{remark}[Why the correct answer is the weakest one]
 \label{rem:irrotational_weakest_true_statement}

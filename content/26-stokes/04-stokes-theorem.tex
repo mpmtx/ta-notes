@@ -134,9 +134,16 @@ Restated in full, and with the orientation convention spelled out, this is the f
 convention at the end of the statement is what the rest of the section computes with.
 
 % Source: Jérôme Paschoud/Notizen/Woche 13.1 Stokes.pdf, p. 4
+% Correction: Claude Opus 5.5 (Max) --- the statement asked only for an "orientable, parametrized"
+% surface. Without compactness it is false: the open unit disk in the plane z = 0 has empty boundary
+% as a submanifold with boundary, yet F = (-y,x,0) gives \int curl F . nu = 2 pi over it. Without a
+% fixed orientation the sign is open. Both repaired, as thm:stokes_general and
+% thm:stokes_classical already state them.
 \begin{theorem}[Stokes' theorem in 3D]
 \label{thm:stokes_3d}
-For an orientable, parametrized $2$-dimensional submanifold $M \subseteq \mathbb{R}^3$ with boundary $\partial M$, and a $C^1$ vector field $F$:
+Let $M \subseteq \mathbb{R}^3$ be a compact, oriented $2$-dimensional submanifold with boundary
+$\partial M$, its orientation given by the unit normal $\nu$, and let $F$ be a $C^1$ vector field
+on a neighbourhood of $M$. Then
 \[\int_M \curl(F) \cdot \nu \,d\vol_2 = \int_{\partial M} F \cdot \tau \,d\vol_1.\]
 The orientation of $\partial M$ is chosen such that when traversing $\partial M$ in the direction of $\tau$, the surface $M$ (given by the normal $\nu$) is to the left (the ``right-hand rule'').
 \end{theorem}
@@ -231,7 +238,7 @@ Thus, $\int_H \curl(F) \cdot \nu \,d\vol_2 = \pi$.
 \begin{exercise}[Flux through a cylinder, direct and via Stokes]
 \label{ex:cylinder_flux_direct_and_stokes}
 Let $F(x,y,z) := (yz,x^2,1)\transp$ on $\mathbb{R}^3$, and let $M$ be the lateral surface of the
-cylinder $M := \{(x,y,z) : x^2+y^2=1,\ 0<z<1\}$, with the outward-pointing normal
+cylinder $M := \{(x,y,z) : x^2+y^2=1,\ 0\leq z\leq 1\}$, with the outward-pointing normal
 $\nu(x,y,z)=(x,y,0)$. Compute $\int_M\curl(F)\cdot\nu\,d\vol_2$ directly, and again using
 Stokes' theorem.
 \end{exercise}
@@ -275,7 +282,10 @@ $\int_{\partial M}F\cdot\tau\,d\vol_1 = 0+\pi = \pi$, agreeing with the direct c
 % Supplement: Analysis_II_Script_v1.pdf, p. 163
 \begin{exercise}[Flux through a spherical cap, via Stokes and via Gauss]
 \label{ex:spherical_cap_flux_stokes_gauss}
-Let $0<h<1$ and let $S := \{(x,y,z)\in S^2 : z>-h\}$ be the part of the unit sphere above
+% Correction: Claude Opus 5.5 (Max) --- this cap and the cylinder above were defined by strict
+% inequalities, which makes them open surfaces with empty boundary in the sense of
+% def:submanifold_with_boundary; Stokes needs the rims included. Now non-strict.
+Let $0<h<1$ and let $S := \{(x,y,z)\in S^2 : z\geq -h\}$ be the part of the unit sphere above
 height $-h$. Consider $F(x,y,z) := (-y,x,0)\transp$. Calculate the flux
 $\int_S\curl(F)\cdot\nu\,d\vol_2$ (outward normal) directly, once using Stokes' theorem, and
 once using the divergence theorem.

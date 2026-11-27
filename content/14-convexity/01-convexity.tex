@@ -190,6 +190,30 @@ Let $U \subseteq \mathbb{R}^n$ be open and convex.
 \end{enumerate}
 \end{exercisesolution}
 
+% Generator: Claude Opus 5.5 (Max) --- the chapter opener and the proposition promise three
+% equivalent conditions, and the exercise above proves only (a) <=> (c). The Hessian condition
+% (b) was never proved; this closes the proposition, using part (a) of the exercise.
+\begin{proof}[Proof of \cref{prop:convexity_characterizations}]
+The equivalence \textbf{(a)}$\iff$\textbf{(c)} is part \textbf{(b)} of
+\cref{ex:convexity_characterizations}. For \textbf{(a)}$\iff$\textbf{(b)}, part \textbf{(a)} of
+the same exercise reduces everything to one variable. For $x, y \in U$, the function
+$f_{x,y}(s) = f(x+s(y-x))$ is defined and $C^2$ on an open interval containing $[0,1]$, since
+$U$ is open, and the chain rule applied twice gives
+\[f_{x,y}''(s) = (y-x)\transp\,\Hess f\big(x+s(y-x)\big)\,(y-x).\]
+
+\textbf{(b)$\Rightarrow$(a).} If every $\Hess f(z)$ is positive semidefinite, then
+$f_{x,y}'' \geq 0$ on $[0,1]$, so $f_{x,y}'$ is increasing and $f_{x,y}$ is convex, by the
+one-variable criterion recalled in the solution of part \textbf{(b)}. This holds for all
+$x, y \in U$, so $f$ is convex by part \textbf{(a)}.
+
+\textbf{(a)$\Rightarrow$(b).} Fix $x \in U$ and $v \in \mathbb{R}^n$. Since $U$ is open, there is
+$\varepsilon > 0$ with $x + sv \in U$ for $|s| < \varepsilon$, and $g(s) := f(x+sv)$ is convex on
+$(-\varepsilon,\varepsilon)$, being the restriction of a convex function to a segment. A convex
+$C^2$ function of one variable has an increasing derivative, hence $g'' \geq 0$, and so
+\[0 \leq g''(0) = v\transp\,\Hess f(x)\,v.\]
+As $v$ was arbitrary, $\Hess f(x)$ is positive semidefinite.
+\end{proof}
+
 % Sonnet 5 (Medium) --- FIG-W06-01, drawn from the page image seen while transcribing
 \begin{center}
 \begin{tikzpicture}[>=Latex, scale=1.15]

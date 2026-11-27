@@ -164,6 +164,31 @@ $0$ an eigenvalue), the test gives \textbf{no information}, and all three behavi
 possible.
 \end{theorem}
 
+% Generator: Claude Opus 5.5 (Max) --- the theorem was stated without proof. The remark below
+% motivates it; the one thing the motivation cannot supply, uniformity over all directions, comes
+% from compactness of the unit sphere.
+\begin{proof}
+Write $A := \Hess f(x_0)$. Since $\nabla f(x_0) = 0$, the second-order Taylor formula
+(\cref{rem:second_order_taylor_hessian}, proved in \cref{ex:hessian_taylor_proof}) reads
+\[f(x_0+h) - f(x_0) = \tfrac12\,h\transp Ah + R(h), \qquad R(h) = o(|h|^2).\]
+Suppose $A$ is positive definite. The unit sphere $\{u \in \mathbb{R}^n : |u| = 1\}$ is closed
+and bounded, hence compact (\cref{thm:heine_borel}), and $u \mapsto u\transp Au$ is continuous and
+positive on it, so it attains a minimum $\lambda > 0$ (\cref{item:extreme_value_theorem}).
+Applied to $u = h/|h|$, this gives $h\transp Ah \geq \lambda|h|^2$ for every $h$. Now choose
+$\delta > 0$ with $B_\delta(x_0) \subseteq U$ and $|R(h)| \leq \tfrac{\lambda}{4}|h|^2$ for
+$|h| < \delta$. For $0 < |h| < \delta$,
+\[f(x_0+h) - f(x_0) \geq \tfrac{\lambda}{2}|h|^2 - \tfrac{\lambda}{4}|h|^2 > 0,\]
+so $x_0$ is a strict local minimum. If $A$ is negative definite, apply this to $-f$.
+
+If $A$ is indefinite, pick $v, w$ with $v\transp Av > 0$ and $w\transp Aw < 0$. Along the line
+through $x_0$ in the direction $v$,
+\[f(x_0+tv) - f(x_0) = t^2\Big(\tfrac12\,v\transp Av + \frac{R(tv)}{t^2}\Big),\]
+and $R(tv)/t^2 \to 0$ as $t \to 0$, so the left-hand side is positive for all small $t \neq 0$;
+along $w$ it is negative in the same way. Every neighbourhood of $x_0$ therefore contains points
+where $f$ is larger and points where it is smaller than $f(x_0)$, so $x_0$ is a saddle point.
+That the degenerate case can go any way is shown by the examples later in this section.
+\end{proof}
+
 \begin{ainote}
 Corsin's third bullet reads \qt{indefinite and not degenerate}. With degeneracy corrected to
 $\det A = 0$ the extra hypothesis is unnecessary: indefiniteness alone already forces a saddle,
@@ -180,6 +205,10 @@ sources state the theorem with one clause more than it needs.
 % Generator: Claude Opus 5 (High)
 % Feedback: Gemini 3.1 Pro (2026-08-11) --- praised for tying the abstract quadratic form to the
 % Taylor expansion geometrically. Keep the two-step reading and the $n=1$ specialisation.
+% Correction: Claude Opus 5.5 (Max) --- "f increases in every direction ..., and that is a strict
+% local minimum" skipped the uniformity over directions that the conclusion needs (an increase
+% along every line through a point does not make it a minimum in general). One sentence added in
+% the last paragraph; the two-step reading the feedback asks to keep is untouched.
 \begin{remark}[Why positive definite means minimum]
 \label{rem:hessian_test_intuition}
 The statement is easy to memorise and easy to find unmotivated: it is not obvious what a
@@ -205,7 +234,11 @@ form it does.
 
 Now the theorem reads itself. If $\Hess f(x_0)$ is positive definite, then
 $v\transp \Hess f(x_0) v > 0$ for every $v \neq 0$, so $f$ increases in \emph{every} direction
-away from $x_0$, and that is a strict local minimum. Negative definite reverses every
+away from $x_0$. One more ingredient turns this into a strict local minimum: the increase has to
+be uniform over the directions. Compactness of the unit sphere supplies a single $\lambda > 0$ with
+$v\transp \Hess f(x_0) v \geq \lambda|v|^2$ for all $v$, and that margin is what lets the
+quadratic term beat the discarded higher-order terms in all directions at once (an increase along
+each line separately would not be enough; the proof above makes this precise). Negative definite reverses every
 inequality. Indefinite means some directions give a positive value and others a negative one, so
 $f$ rises along some and falls along others: a saddle. The degenerate-but-not-indefinite case is
 now inconclusive for a visible reason. Along an eigenvector with eigenvalue $0$ the quadratic

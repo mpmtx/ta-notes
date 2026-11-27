@@ -9,13 +9,41 @@
 \label{def:interior_closure_boundary}
 Let $(X,d)$ be a metric space and $A \subseteq X$. The \newterm{interior}
 \germanfor{Inneres} of $A$ is
-\[\operatorname{int}(A) := \{x \in A : \exists\, r>0 \text{ such that } B_r(x) \subseteq A\},\]
-the largest open subset of $X$ contained in $A$. The \newterm{closure} \germanfor{Abschluss} of
-$A$ is
-\[\overline{A} := \{x \in X : B_r(x) \cap A \neq \emptyset \text{ for all } r > 0\},\]
-the smallest closed subset of $X$ containing $A$. The \newterm{boundary} \germanfor{Rand} of
-$A$ is $\partial A := \overline{A} \setminus \operatorname{int}(A)$.
+\[\operatorname{int}(A) := \{x \in A : \exists\, r>0 \text{ such that } B_r(x) \subseteq A\}.\]
+The \newterm{closure} \germanfor{Abschluss} of $A$ is
+\[\overline{A} := \{x \in X : B_r(x) \cap A \neq \emptyset \text{ for all } r > 0\}.\]
+The \newterm{boundary} \germanfor{Rand} of $A$ is
+$\partial A := \overline{A} \setminus \operatorname{int}(A)$.
 \end{definition}
+
+% Generator: Claude Opus 5.5 (Max) --- the two extremal descriptions used to sit inside the
+% definition as bare assertions ("the largest open subset ...", "the smallest closed subset ...")
+% and were then cited as facts in 99-solutions.tex. They are now stated and proved.
+\begin{proposition}[Interior and closure are extremal]
+\label{prop:interior_closure_extremal}
+Let $(X,d)$ be a metric space and $A \subseteq X$.
+\begin{enumerate}[label=\textbf{(\alph*)}]
+  \item $\operatorname{int}(A)$ is open and contains every open set $U \subseteq A$: it is the
+    largest open subset of $X$ contained in $A$.
+  \item $\overline{A}$ is closed and is contained in every closed set $F \supseteq A$: it is the
+    smallest closed subset of $X$ containing $A$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\textbf{(a)} Let $x \in \operatorname{int}(A)$, with $B_r(x) \subseteq A$. For $y \in B_r(x)$
+put $s := r - d(x,y) > 0$; the triangle inequality gives $B_s(y) \subseteq B_r(x) \subseteq A$,
+so $y \in \operatorname{int}(A)$. Hence $B_r(x) \subseteq \operatorname{int}(A)$, and
+$\operatorname{int}(A)$ is open. If $U \subseteq A$ is open, every $x \in U$ has a ball
+$B_r(x) \subseteq U \subseteq A$, so $x \in \operatorname{int}(A)$.
+
+\textbf{(b)} Unwinding the definition, $x \notin \overline{A}$ exactly when some ball $B_r(x)$
+misses $A$, that is, lies in $X \setminus A$. So $X \setminus \overline{A} =
+\operatorname{int}(X \setminus A)$, which is open by \textbf{(a)}, and $\overline{A}$ is closed.
+If $F \supseteq A$ is closed and $x \notin F$, then $X \setminus F$ is open, so some ball
+$B_r(x)$ lies in $X \setminus F \subseteq X \setminus A$; it misses $A$, so
+$x \notin \overline{A}$. Hence $\overline{A} \subseteq F$.
+\end{proof}
 
 \begin{aiexample}[Interior, Closure, and Boundary of an Interval]
 % Generator: Gemini 3.6 Flash (Medium)

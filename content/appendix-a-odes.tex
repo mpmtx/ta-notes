@@ -204,9 +204,12 @@ so, since $(r^2)'=2rr'$, the radius satisfies the autonomous scalar equation
 Separating variables and solving gives $r(t) = \exp(t)/\sqrt{A+\exp(2t)}$ for
 $A := 1/(x_0^2+y_0^2)-1 \in (-1,\infty)$, and $r(t) \to 1$ as $t \to \infty$
 \emph{regardless of the initial value}. Therefore the circle $r=1$ is a \newterm{limit cycle}
-\germanfor{Grenzzykel}, attracting every trajectory except the equilibrium at the origin. A
-short computation with the angle ($u\varphi'=u-r^2u$ from the system, matched against $u'$, and
-symmetrically for $v$) gives $\varphi'\equiv1$ away from the origin, so the motion is a steady
+\germanfor{Grenzzykel}, attracting every trajectory except the equilibrium at the origin.
+% Correction: Claude Opus 5.5 (Max) --- the parenthetical read "u phi' = u - r^2 u from the system",
+% which would give phi' = 1 - r^2, not 1. Replaced by the computation that does give phi' = 1.
+A short computation with the angle gives $\varphi'\equiv1$ away from the origin: from
+$u = r\cos\varphi$ and $v = r\sin\varphi$ one gets $uv'-vu' = r^2\varphi'$, while the system
+gives $uv'-vu' = u(u+v-r^2v)-v(u-v-r^2u) = u^2+v^2 = r^2$. So the motion is a steady
 rotation combined with the radial approach to $r=1$: trajectories starting outside the unit
 circle spiral in, and those starting inside spiral out, both converging to the same circular
 orbit.
